@@ -15,3 +15,6 @@ class App
     }
 
 }
+
+
+spl_autoload_register(['supjos\App', 'autoload']);
