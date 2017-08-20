@@ -67,13 +67,13 @@ Now the **Speed** supported much features, such as **Zip|Reflex(IOC)|Excel|Query
          $query->insert( 'ord', ['oid', 'gid', 'much'], [[3, 33, 333], [4, 55, 555], [5, 77, 777], [6, 99, 999]] );
          $query->select('*')->from( '{{%product}}' )->orderBy( ['id' => SORT_DESC] )->limit( 5 )->all();
 
-####supjos\tool\Zip
+#### supjos\tool\Zip
 
          $zip = App::createObject(Zip::getClass());  // Use the universal object-create method to create instance
          $zip->addFile(['b.txt', 'c.xlxs', 'd.php', 'e.java']);
          $zip->createZip('all.zip');
 
-####supjos\tool\Excel
+#### supjos\tool\Excel
 
          $excel = Excel::getInstance();
          $excel->setHeader(['name', 'age', 'score']);
@@ -82,9 +82,9 @@ Now the **Speed** supported much features, such as **Zip|Reflex(IOC)|Excel|Query
 
 More features waiting you to join us.
 
-**License: MIT
+** License: MIT
 Author: Josin 774542602@qq.com
-Copyright 2017-2020 www.supjos.cn All Rights Reserved.**
+Copyright 2017-2020 www.supjos.cn All Rights Reserved. **
  
 #### Below were some example for the Speed using:
  
@@ -157,7 +157,7 @@ Copyright 2017-2020 www.supjos.cn All Rights Reserved.**
 	} );
 
 
-To handle the **Post** request with the URL** path-info** equal to **'/name'**
+To handle the ** Post ** request with the URL** path-info ** equal to ** '/name' **
 
 	$app->post( '/name', function ( $request, $response ) {
 	    
