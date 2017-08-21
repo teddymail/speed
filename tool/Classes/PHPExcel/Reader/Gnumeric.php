@@ -37,9 +37,9 @@ if ( !defined( 'PHPEXCEL_ROOT' ) ) {
 /**
  * PHPExcel_Reader_Gnumeric
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Reader
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPExcel_Reader_IReader
 {
@@ -72,6 +72,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
      * Can the current PHPExcel_Reader_IReader read the file?
      *
      * @param    string $pFilename
+     *
      * @return    boolean
      * @throws PHPExcel_Reader_Exception
      */
@@ -79,8 +80,8 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
     {
         // Check if file exists
         if ( !file_exists( $pFilename ) ) {
-            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! File does not exist."
-            );
+            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename .
+                                                 " for reading! File does not exist." );
         }
         
         // Check if gzlib functions are available
@@ -104,19 +105,19 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
      * Reads names of the worksheets from a file, without parsing the whole file to a PHPExcel object
      *
      * @param    string $pFilename
+     *
      * @throws    PHPExcel_Reader_Exception
      */
     public function listWorksheetNames( $pFilename )
     {
         // Check if file exists
         if ( !file_exists( $pFilename ) ) {
-            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! File does not exist."
-            );
+            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename .
+                                                 " for reading! File does not exist." );
         }
         
         $xml = new XMLReader();
-        $xml->open( 'compress.zlib://' . realpath( $pFilename ), NULL, PHPExcel_Settings::getLibXmlLoaderOptions()
-        );
+        $xml->open( 'compress.zlib://' . realpath( $pFilename ), NULL, PHPExcel_Settings::getLibXmlLoaderOptions() );
         $xml->setParserProperty( 2, TRUE );
         
         $worksheetNames = [];
@@ -137,19 +138,19 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
      * Return worksheet info (Name, Last Column Letter, Last Column Index, Total Rows, Total Columns)
      *
      * @param   string $pFilename
+     *
      * @throws   PHPExcel_Reader_Exception
      */
     public function listWorksheetInfo( $pFilename )
     {
         // Check if file exists
         if ( !file_exists( $pFilename ) ) {
-            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! File does not exist."
-            );
+            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename .
+                                                 " for reading! File does not exist." );
         }
         
         $xml = new XMLReader();
-        $xml->open( 'compress.zlib://' . realpath( $pFilename ), NULL, PHPExcel_Settings::getLibXmlLoaderOptions()
-        );
+        $xml->open( 'compress.zlib://' . realpath( $pFilename ), NULL, PHPExcel_Settings::getLibXmlLoaderOptions() );
         $xml->setParserProperty( 2, TRUE );
         
         $worksheetInfo = [];
@@ -203,6 +204,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
      * Loads PHPExcel from file
      *
      * @param    string $pFilename
+     *
      * @return    PHPExcel
      * @throws    PHPExcel_Reader_Exception
      */
@@ -220,6 +222,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
      *
      * @param    string   $pFilename
      * @param    PHPExcel $objPHPExcel
+     *
      * @return    PHPExcel
      * @throws    PHPExcel_Reader_Exception
      */
@@ -227,8 +230,8 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
     {
         // Check if file exists
         if ( !file_exists( $pFilename ) ) {
-            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! File does not exist."
-            );
+            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename .
+                                                 " for reading! File does not exist." );
         }
         
         $timezoneObj = new DateTimeZone( 'Europe/London' );
@@ -461,8 +464,8 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
                                                                                   $cellAttributes->Col -
                                                                                   $expression[ 'column' ],
                                                                                   $cellAttributes->Row -
-                                                                                  $expression[ 'row' ], $worksheetName
-                        );
+                                                                                  $expression[ 'row' ],
+                                                                                  $worksheetName );
                         //						echo 'SHARED EXPRESSION ',$ExprID,'<br />';
                         //						echo 'New Value is ',$cell,'<br />';
                     }
@@ -707,49 +710,35 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
                             if ( isset( $styleRegion->Style->StyleBorder ) ) {
                                 if ( isset( $styleRegion->Style->StyleBorder->Top ) ) {
                                     $styleArray[ 'borders' ][ 'top' ] =
-                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->Top->attributes(
-                                        )
-                                        );
+                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->Top->attributes() );
                                 }
                                 if ( isset( $styleRegion->Style->StyleBorder->Bottom ) ) {
                                     $styleArray[ 'borders' ][ 'bottom' ] =
-                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->Bottom->attributes(
-                                        )
-                                        );
+                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->Bottom->attributes() );
                                 }
                                 if ( isset( $styleRegion->Style->StyleBorder->Left ) ) {
                                     $styleArray[ 'borders' ][ 'left' ] =
-                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->Left->attributes(
-                                        )
-                                        );
+                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->Left->attributes() );
                                 }
                                 if ( isset( $styleRegion->Style->StyleBorder->Right ) ) {
                                     $styleArray[ 'borders' ][ 'right' ] =
-                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->Right->attributes(
-                                        )
-                                        );
+                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->Right->attributes() );
                                 }
                                 if ( ( isset( $styleRegion->Style->StyleBorder->Diagonal ) ) &&
                                      ( isset( $styleRegion->Style->StyleBorder->{'Rev-Diagonal'} ) )
                                 ) {
                                     $styleArray[ 'borders' ][ 'diagonal' ] =
-                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->Diagonal->attributes(
-                                        )
-                                        );
+                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->Diagonal->attributes() );
                                     $styleArray[ 'borders' ][ 'diagonaldirection' ] =
                                         PHPExcel_Style_Borders::DIAGONAL_BOTH;
                                 } elseif ( isset( $styleRegion->Style->StyleBorder->Diagonal ) ) {
                                     $styleArray[ 'borders' ][ 'diagonal' ] =
-                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->Diagonal->attributes(
-                                        )
-                                        );
+                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->Diagonal->attributes() );
                                     $styleArray[ 'borders' ][ 'diagonaldirection' ] =
                                         PHPExcel_Style_Borders::DIAGONAL_UP;
                                 } elseif ( isset( $styleRegion->Style->StyleBorder->{'Rev-Diagonal'} ) ) {
                                     $styleArray[ 'borders' ][ 'diagonal' ] =
-                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->{'Rev-Diagonal'}->attributes(
-                                        )
-                                        );
+                                        self::_parseBorderAttributes( $styleRegion->Style->StyleBorder->{'Rev-Diagonal'}->attributes() );
                                     $styleArray[ 'borders' ][ 'diagonaldirection' ] =
                                         PHPExcel_Style_Borders::DIAGONAL_DOWN;
                                 }
@@ -793,9 +782,7 @@ class PHPExcel_Reader_Gnumeric extends PHPExcel_Reader_Abstract implements PHPEx
                                     ->setWidth( $columnWidth );
                         if ( $hidden ) {
                             $objPHPExcel->getActiveSheet()
-                                        ->getColumnDimension( PHPExcel_Cell::stringFromColumnIndex( $c
-                                        )
-                                        )
+                                        ->getColumnDimension( PHPExcel_Cell::stringFromColumnIndex( $c ) )
                                         ->setVisible( FALSE );
                         }
                         ++$c;

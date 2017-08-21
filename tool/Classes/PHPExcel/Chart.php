@@ -19,9 +19,9 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Chart
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license        http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
  * @version        1.8.0, 2014-03-02
  */
@@ -29,9 +29,9 @@
 /**
  * PHPExcel_Chart
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Chart
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Chart
 {
@@ -144,7 +144,9 @@ class PHPExcel_Chart
     /**
      * Create a new PHPExcel_Chart
      */
-    public function __construct( $name, PHPExcel_Chart_Title $title = NULL, PHPExcel_Chart_Legend $legend = NULL, PHPExcel_Chart_PlotArea $plotArea = NULL, $plotVisibleOnly = TRUE, $displayBlanksAs = '0', PHPExcel_Chart_Title $xAxisLabel = NULL, PHPExcel_Chart_Title $yAxisLabel = NULL )
+    public function __construct( $name, PHPExcel_Chart_Title $title = NULL, PHPExcel_Chart_Legend $legend = NULL,
+        PHPExcel_Chart_PlotArea $plotArea = NULL, $plotVisibleOnly = TRUE, $displayBlanksAs = '0',
+        PHPExcel_Chart_Title $xAxisLabel = NULL, PHPExcel_Chart_Title $yAxisLabel = NULL )
     {
         $this->_name = $name;
         $this->_title = $title;
@@ -180,6 +182,7 @@ class PHPExcel_Chart
      * Set Worksheet
      *
      * @param    PHPExcel_Worksheet $pValue
+     *
      * @throws    PHPExcel_Chart_Exception
      * @return PHPExcel_Chart
      */
@@ -204,6 +207,7 @@ class PHPExcel_Chart
      * Set Title
      *
      * @param    PHPExcel_Chart_Title $title
+     *
      * @return    PHPExcel_Chart
      */
     public function setTitle( PHPExcel_Chart_Title $title )
@@ -227,6 +231,7 @@ class PHPExcel_Chart
      * Set Legend
      *
      * @param    PHPExcel_Chart_Legend $legend
+     *
      * @return    PHPExcel_Chart
      */
     public function setLegend( PHPExcel_Chart_Legend $legend )
@@ -250,6 +255,7 @@ class PHPExcel_Chart
      * Set X-Axis Label
      *
      * @param    PHPExcel_Chart_Title $label
+     *
      * @return    PHPExcel_Chart
      */
     public function setXAxisLabel( PHPExcel_Chart_Title $label )
@@ -273,6 +279,7 @@ class PHPExcel_Chart
      * Set Y-Axis Label
      *
      * @param    PHPExcel_Chart_Title $label
+     *
      * @return    PHPExcel_Chart
      */
     public function setYAxisLabel( PHPExcel_Chart_Title $label )
@@ -306,6 +313,7 @@ class PHPExcel_Chart
      * Set Plot Visible Only
      *
      * @param boolean $plotVisibleOnly
+     *
      * @return PHPExcel_Chart
      */
     public function setPlotVisibleOnly( $plotVisibleOnly = TRUE )
@@ -329,6 +337,7 @@ class PHPExcel_Chart
      * Set Display Blanks as
      *
      * @param string $displayBlanksAs
+     *
      * @return PHPExcel_Chart
      */
     public function setDisplayBlanksAs( $displayBlanksAs = '0' )
@@ -342,6 +351,7 @@ class PHPExcel_Chart
      * @param    string  $cell
      * @param    integer $xOffset
      * @param    integer $yOffset
+     *
      * @return PHPExcel_Chart
      */
     public function setTopLeftPosition( $cell, $xOffset = NULL, $yOffset = NULL )
@@ -360,7 +370,8 @@ class PHPExcel_Chart
     /**
      * Get the top left position of the chart
      *
-     * @return array    an associative array containing the cell address, X-Offset and Y-Offset from the top left of that cell
+     * @return array    an associative array containing the cell address, X-Offset and Y-Offset from the top left of
+     *                  that cell
      */
     public function getTopLeftPosition()
     {
@@ -385,6 +396,7 @@ class PHPExcel_Chart
      * Set the Top Left cell position for the chart
      *
      * @param    string $cell
+     *
      * @return PHPExcel_Chart
      */
     public function setTopLeftCell( $cell )
@@ -399,6 +411,7 @@ class PHPExcel_Chart
      *
      * @param    integer $xOffset
      * @param    integer $yOffset
+     *
      * @return PHPExcel_Chart
      */
     public function setTopLeftOffset( $xOffset = NULL, $yOffset = NULL )
@@ -456,6 +469,7 @@ class PHPExcel_Chart
      * @param    string  $cell
      * @param    integer $xOffset
      * @param    integer $yOffset
+     *
      * @return PHPExcel_Chart
      */
     public function setBottomRightPosition( $cell, $xOffset = NULL, $yOffset = NULL )
@@ -474,7 +488,8 @@ class PHPExcel_Chart
     /**
      * Get the bottom right position of the chart
      *
-     * @return array    an associative array containing the cell address, X-Offset and Y-Offset from the top left of that cell
+     * @return array    an associative array containing the cell address, X-Offset and Y-Offset from the top left of
+     *                  that cell
      */
     public function getBottomRightPosition()
     {
@@ -507,6 +522,7 @@ class PHPExcel_Chart
      *
      * @param    integer $xOffset
      * @param    integer $yOffset
+     *
      * @return PHPExcel_Chart
      */
     public function setBottomRightOffset( $xOffset = NULL, $yOffset = NULL )

@@ -79,66 +79,77 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     
     /**
      * Maximum number of characters for a string (LABEL record in BIFF5)
+     *
      * @var integer
      */
     public $_xls_strmax;
     
     /**
      * Array containing format information for columns
+     *
      * @var array
      */
     public $_colinfo;
     
     /**
      * Array containing the selected area for the worksheet
+     *
      * @var array
      */
     public $_selection;
     
     /**
      * The active pane for the worksheet
+     *
      * @var integer
      */
     public $_active_pane;
     
     /**
      * Whether to use outline.
+     *
      * @var integer
      */
     public $_outline_on;
     
     /**
      * Auto outline styles.
+     *
      * @var bool
      */
     public $_outline_style;
     
     /**
      * Whether to have outline summary below.
+     *
      * @var bool
      */
     public $_outline_below;
     
     /**
      * Whether to have outline summary at the right.
+     *
      * @var bool
      */
     public $_outline_right;
     
     /**
      * Reference to the total number of strings in the workbook
+     *
      * @var integer
      */
     public $_str_total;
     
     /**
      * Reference to the number of unique strings in the workbook
+     *
      * @var integer
      */
     public $_str_unique;
     
     /**
      * Reference to the array containing all the unique strings in the workbook
+     *
      * @var array
      */
     public $_str_table;
@@ -150,30 +161,35 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     
     /**
      * Index of first used row (at least 0)
+     *
      * @var int
      */
     private $_firstRowIndex;
     
     /**
      * Index of last used row. (no used rows means -1)
+     *
      * @var int
      */
     private $_lastRowIndex;
     
     /**
      * Index of first used column (at least 0)
+     *
      * @var int
      */
     private $_firstColumnIndex;
     
     /**
      * Index of last used column (no used columns means -1)
+     *
      * @var int
      */
     private $_lastColumnIndex;
     
     /**
      * Sheet object
+     *
      * @var PHPExcel_Worksheet
      */
     public $_phpSheet;
@@ -202,16 +218,18 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     /**
      * Constructor
      *
-     * @param int                &$str_total Total number of strings
-     * @param int                &$str_unique Total number of unique strings
-     * @param array              &$str_table String Table
-     * @param array              &$colors Colour Table
-     * @param mixed              $parser The formula parser created for the Workbook
-     * @param boolean            $preCalculateFormulas Flag indicating whether formulas should be calculated or just written
-     * @param string             $phpSheet The worksheet to write
+     * @param int                &$str_total           Total number of strings
+     * @param int                &$str_unique          Total number of unique strings
+     * @param array              &$str_table           String Table
+     * @param array              &$colors              Colour Table
+     * @param mixed              $parser               The formula parser created for the Workbook
+     * @param boolean            $preCalculateFormulas Flag indicating whether formulas should be calculated or just
+     *                                                 written
+     * @param string             $phpSheet             The worksheet to write
      * @param PHPExcel_Worksheet $phpSheet
      */
-    public function __construct( &$str_total, &$str_unique, &$str_table, &$colors, $parser, $preCalculateFormulas, $phpSheet )
+    public function __construct( &$str_total, &$str_unique, &$str_table, &$colors, $parser, $preCalculateFormulas,
+        $phpSheet )
     {
         // It needs to call its parent's constructor explicitly
         parent::__construct();
@@ -270,8 +288,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         }
         
         $this->_countCellStyleXfs = count( $phpSheet->getParent()
-                                                    ->getCellStyleXfCollection()
-        );
+                                                    ->getCellStyleXfCollection() );
     }
     
     /**
@@ -279,7 +296,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * and to the end of the workbook.
      *
      * @access public
-     * @see PHPExcel_Writer_Excel5_Workbook::storeWorkbook()
+     * @see    PHPExcel_Writer_Excel5_Workbook::storeWorkbook()
      */
     function close()
     {
@@ -309,8 +326,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         ) {
             $defaultWidth = PHPExcel_Shared_Font::getDefaultColumnWidthByFont( $_phpSheet->getParent()
                                                                                          ->getDefaultStyle()
-                                                                                         ->getFont()
-            );
+                                                                                         ->getFont() );
         }
         
         $columnDimensions = $_phpSheet->getColumnDimensions();
@@ -425,8 +441,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         foreach ( $_phpSheet->getRowDimensions() as $rowDimension ) {
             $xfIndex = $rowDimension->getXfIndex() + 15; // there are 15 cellXfs
             $this->_writeRow( $rowDimension->getRowIndex() - 1, $rowDimension->getRowHeight(), $xfIndex,
-                ( $rowDimension->getVisible() ? '0' : '1' ), $rowDimension->getOutlineLevel()
-            );
+                ( $rowDimension->getVisible() ? '0' : '1' ), $rowDimension->getOutlineLevel() );
         }
         
         // Write Cells
@@ -577,6 +592,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * See section 2.5.14 in OpenOffice.org's Documentation of the Microsoft Excel File Format
      *
      * @param string $range E.g. 'A1' or 'A1:B6'
+     *
      * @return string Binary data
      */
     private function _writeBIFF8CellRangeAddressFixed( $range = 'A1' )
@@ -598,8 +614,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         
         return ( pack( 'vvvv', $firstCellCoordinates[ 1 ] - 1, $lastCellCoordinates[ 1 ] - 1,
                        PHPExcel_Cell::columnIndexFromString( $firstCellCoordinates[ 0 ] ) - 1,
-                       PHPExcel_Cell::columnIndexFromString( $lastCellCoordinates[ 0 ] ) - 1
-        ) );
+                       PHPExcel_Cell::columnIndexFromString( $lastCellCoordinates[ 0 ] ) - 1 ) );
     }
     
     /**
@@ -628,6 +643,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * Set the option to print the row and column headers on the printed page.
      *
      * @access public
+     *
      * @param integer $print Whether to print the headers or not. Defaults to 1 (print).
      */
     function printRowColHeaders( $print = 1 )
@@ -665,10 +681,11 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * Returns  0 : normal termination
      *         -2 : row or column out of range
      *
-     * @param integer $row Zero indexed row
-     * @param integer $col Zero indexed column
-     * @param float   $num The number to write
+     * @param integer $row     Zero indexed row
+     * @param integer $col     Zero indexed column
+     * @param float   $num     The number to write
      * @param mixed   $xfIndex The optional XF format
+     *
      * @return integer
      */
     private function _writeNumber( $row, $col, $num, $xfIndex )
@@ -691,9 +708,9 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     /**
      * Write a LABELSST record or a LABEL record. Which one depends on BIFF version
      *
-     * @param int    $row Row index (0-based)
-     * @param int    $col Column index (0-based)
-     * @param string $str The string
+     * @param int    $row     Row index (0-based)
+     * @param int    $col     Column index (0-based)
+     * @param string $str     The string
      * @param int    $xfIndex Index to XF record
      */
     private function _writeString( $row, $col, $str, $xfIndex )
@@ -704,9 +721,10 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     /**
      * Write a LABELSST record or a LABEL record. Which one depends on BIFF version
      * It differs from _writeString by the writing of rich text strings.
-     * @param int    $row Row index (0-based)
-     * @param int    $col Column index (0-based)
-     * @param string $str The string
+     *
+     * @param int    $row     Row index (0-based)
+     * @param int    $col     Column index (0-based)
+     * @param string $str     The string
      * @param mixed  $xfIndex The XF format index for the cell
      * @param array  $arrcRun Index to Font record and characters beginning
      */
@@ -736,10 +754,12 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      *         -3 : long string truncated to 255 chars
      *
      * @access public
-     * @param integer $row Zero indexed row
-     * @param integer $col Zero indexed column
-     * @param string  $str The string to write
+     *
+     * @param integer $row     Zero indexed row
+     * @param integer $col     Zero indexed column
+     * @param string  $str     The string to write
      * @param mixed   $xfIndex The XF format index for the cell
+     *
      * @return integer
      */
     private function _writeLabel( $row, $col, $str, $xfIndex )
@@ -773,10 +793,12 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      *         -3 : long string truncated to 255 chars
      *
      * @access public
-     * @param integer $row Zero indexed row
-     * @param integer $col Zero indexed column
-     * @param string  $str The string to write
+     *
+     * @param integer $row     Zero indexed row
+     * @param integer $col     Zero indexed column
+     * @param string  $str     The string to write
      * @param mixed   $xfIndex The XF format index for the cell
+     *
      * @return integer
      */
     private function _writeLabelSst( $row, $col, $str, $xfIndex )
@@ -801,8 +823,8 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * Writes a note associated with the cell given by the row and column.
      * NOTE records don't have a length limit.
      *
-     * @param integer $row Zero indexed row
-     * @param integer $col Zero indexed column
+     * @param integer $row  Zero indexed row
+     * @param integer $col  Zero indexed column
      * @param string  $note The note to write
      */
     private function _writeNote( $row, $col, $note )
@@ -839,8 +861,8 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      *         -1 : insufficient number of arguments
      *         -2 : row or column out of range
      *
-     * @param integer $row Zero indexed row
-     * @param integer $col Zero indexed column
+     * @param integer $row     Zero indexed row
+     * @param integer $col     Zero indexed column
      * @param mixed   $xfIndex The XF format index
      */
     function _writeBlank( $row, $col, $xfIndex )
@@ -858,8 +880,8 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     /**
      * Write a boolean or an error type to the specified row and column (zero indexed)
      *
-     * @param int     $row Row index (0-based)
-     * @param int     $col Column index (0-based)
+     * @param int     $row     Row index (0-based)
+     * @param int     $col     Column index (0-based)
      * @param int     $value
      * @param boolean $isError Error or Boolean?
      * @param int     $xfIndex
@@ -885,11 +907,12 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      *         -1 : formula errors (bad formula)
      *         -2 : row or column out of range
      *
-     * @param integer $row Zero indexed row
-     * @param integer $col Zero indexed column
-     * @param string  $formula The formula text string
-     * @param mixed   $xfIndex The XF format index
+     * @param integer $row             Zero indexed row
+     * @param integer $col             Zero indexed column
+     * @param string  $formula         The formula text string
+     * @param mixed   $xfIndex         The XF format index
      * @param mixed   $calculatedValue Calculated value
+     *
      * @return integer
      */
     private function _writeFormula( $row, $col, $formula, $xfIndex, $calculatedValue )
@@ -998,6 +1021,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * @param integer $row Row
      * @param integer $col Column
      * @param string  $url URL string
+     *
      * @return integer
      */
     private function _writeUrl( $row, $col, $url )
@@ -1013,12 +1037,14 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * (Sheet1!A1) or external ('c:\temp\foo.xls#Sheet1!A1').
      *
      * @access private
-     * @see _writeUrl()
+     * @see    _writeUrl()
+     *
      * @param integer $row1 Start row
      * @param integer $col1 Start column
      * @param integer $row2 End row
      * @param integer $col2 End column
-     * @param string  $url URL string
+     * @param string  $url  URL string
+     *
      * @return integer
      */
     function _writeUrlRange( $row1, $col1, $row2, $col2, $url )
@@ -1040,12 +1066,14 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * sheet. However it is differentiated by the $unknown2 data stream.
      *
      * @access private
-     * @see _writeUrl()
+     * @see    _writeUrl()
+     *
      * @param integer $row1 Start row
      * @param integer $col1 Start column
      * @param integer $row2 End row
      * @param integer $col2 End column
-     * @param string  $url URL string
+     * @param string  $url  URL string
+     *
      * @return integer
      */
     function _writeUrlWeb( $row1, $col1, $row2, $col2, $url )
@@ -1083,12 +1111,14 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * Used to write internal reference hyperlinks such as "Sheet1!A1".
      *
      * @access private
-     * @see _writeUrl()
+     * @see    _writeUrl()
+     *
      * @param integer $row1 Start row
      * @param integer $col1 Start column
      * @param integer $row2 End row
      * @param integer $col2 End column
-     * @param string  $url URL string
+     * @param string  $url  URL string
+     *
      * @return integer
      */
     function _writeUrlInternal( $row1, $col1, $row2, $col2, $url )
@@ -1134,12 +1164,14 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * these cases for the sake of simpler code.
      *
      * @access private
-     * @see _writeUrl()
+     * @see    _writeUrl()
+     *
      * @param integer $row1 Start row
      * @param integer $col1 Start column
      * @param integer $row2 End row
      * @param integer $col2 End column
-     * @param string  $url URL string
+     * @param string  $url  URL string
+     *
      * @return integer
      */
     function _writeUrlExternal( $row1, $col1, $row2, $col2, $url )
@@ -1222,12 +1254,12 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     /**
      * This method is used to set the height and format for a row.
      *
-     * @param integer $row The row to set
-     * @param integer $height Height we are giving to the row.
-     *                        Use null to set XF without setting height
+     * @param integer $row     The row to set
+     * @param integer $height  Height we are giving to the row.
+     *                         Use null to set XF without setting height
      * @param integer $xfIndex The optional cell style Xf index to apply to the columns
-     * @param bool    $hidden The optional hidden attribute
-     * @param integer $level The optional outline level for row, in range [0,7]
+     * @param bool    $hidden  The optional hidden attribute
+     * @param integer $level   The optional outline level for row, in range [0,7]
      */
     private function _writeRow( $row, $height, $xfIndex, $hidden = FALSE, $level = 0 )
     {
@@ -1392,12 +1424,12 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * length record.
      *
      * @param array $col_array This is the only parameter received and is composed of the following:
-     *                0 => First formatted column,
-     *                1 => Last formatted column,
-     *                2 => Col width (8.43 is Excel default),
-     *                3 => The optional XF format of the column,
-     *                4 => Option flags.
-     *                5 => Optional outline level
+     *                         0 => First formatted column,
+     *                         1 => Last formatted column,
+     *                         2 => Col width (8.43 is Excel default),
+     *                         3 => The optional XF format of the column,
+     *                         4 => Option flags.
+     *                         5 => Optional outline level
      */
     private function _writeColinfo( $col_array )
     {
@@ -1491,16 +1523,14 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         
         // Swap last row/col for first row/col as necessary
         if ( $rwFirst > $rwLast ) {
-            list( $rwFirst, $rwLast
-                ) = [
+            list( $rwFirst, $rwLast ) = [
                 $rwLast,
                 $rwFirst
             ];
         }
         
         if ( $colFirst > $colLast ) {
-            list( $colFirst, $colLast
-                ) = [
+            list( $colFirst, $colLast ) = [
                 $colLast,
                 $colFirst
             ];
@@ -1551,8 +1581,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             
             $recordData .= pack( 'vvvv', $firstRow - 1, $lastRow - 1,
                                  PHPExcel_Cell::columnIndexFromString( $firstColumn ) - 1,
-                                 PHPExcel_Cell::columnIndexFromString( $lastColumn ) - 1
-            );
+                                 PHPExcel_Cell::columnIndexFromString( $lastColumn ) - 1 );
             
             // flush record if we have reached limit for number of merged cells, or reached final merged cell
             if ( $j == $maxCountMergeCellsPerRecord or $i == $countMergeCells ) {
@@ -1658,16 +1687,14 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             $cellRanges = explode( ' ', $range );
             $cref = count( $cellRanges );
             
-            $recordData = pack( 'vvVVvCVvVv', 0x0868, 0x00, 0x0000, 0x0000, 0x02, 0x0, 0x0000, $cref, 0x0000, 0x00
-            );
+            $recordData = pack( 'vvVVvCVvVv', 0x0868, 0x00, 0x0000, 0x0000, 0x02, 0x0, 0x0000, $cref, 0x0000, 0x00 );
             
             foreach ( $cellRanges as $cellRange ) {
                 $recordData .= $this->_writeBIFF8CellRangeAddressFixed( $cellRange );
             }
             
             // the rgbFeat structure
-            $recordData .= pack( 'VV', 0x0000, hexdec( $password )
-            );
+            $recordData .= pack( 'VV', 0x0000, hexdec( $password ) );
             
             $recordData .= PHPExcel_Shared_String::UTF8toBIFF8UnicodeLong( 'p' . md5( $recordData ) );
             
@@ -1897,8 +1924,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
          */
         
         $recordData = PHPExcel_Shared_String::UTF8toBIFF8UnicodeLong( $this->_phpSheet->getHeaderFooter()
-                                                                                      ->getOddHeader()
-        );
+                                                                                      ->getOddHeader() );
         $length = strlen( $recordData );
         
         $header = pack( "vv", $record, $length );
@@ -1923,8 +1949,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
          */
         
         $recordData = PHPExcel_Shared_String::UTF8toBIFF8UnicodeLong( $this->_phpSheet->getHeaderFooter()
-                                                                                      ->getOddFooter()
-        );
+                                                                                      ->getOddFooter() );
         $length = strlen( $recordData );
         
         $header = pack( "vv", $record, $length );
@@ -2095,7 +2120,8 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     }
     
     /**
-     * Write the AUTOFILTERINFO BIFF record. This is used to configure the number of autofilter select used in the sheet.
+     * Write the AUTOFILTERINFO BIFF record. This is used to configure the number of autofilter select used in the
+     * sheet.
      */
     private function _writeAutoFilterInfo()
     {
@@ -2103,8 +2129,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         $length = 0x0002;      // Bytes to follow
         
         $rangeBounds = PHPExcel_Cell::rangeBoundaries( $this->_phpSheet->getAutoFilter()
-                                                                       ->getRange()
-        );
+                                                                       ->getRange() );
         $iNumFilters = 1 + $rangeBounds[ 1 ][ 0 ] - $rangeBounds[ 0 ][ 0 ];
         
         $header = pack( "vv", $record, $length );
@@ -2377,8 +2402,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         $length = 0x0002;      // Bytes to follow
         
         $wPassword = hexdec( $this->_phpSheet->getProtection()
-                                             ->getPassword()
-        );  // Encoded password
+                                             ->getPassword() );  // Encoded password
         
         $header = pack( "vv", $record, $length );
         $data = pack( "v", $wPassword );
@@ -2390,11 +2414,12 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * Insert a 24bit bitmap image in a worksheet.
      *
      * @access public
-     * @param integer $row The row we are going to insert the bitmap into
-     * @param integer $col The column we are going to insert the bitmap into
-     * @param mixed   $bitmap The bitmap filename or GD-image resource
-     * @param integer $x The horizontal position (offset) of the image inside the cell.
-     * @param integer $y The vertical position (offset) of the image inside the cell.
+     *
+     * @param integer $row     The row we are going to insert the bitmap into
+     * @param integer $col     The column we are going to insert the bitmap into
+     * @param mixed   $bitmap  The bitmap filename or GD-image resource
+     * @param integer $x       The horizontal position (offset) of the image inside the cell.
+     * @param integer $y       The vertical position (offset) of the image inside the cell.
      * @param float   $scale_x The horizontal scale
      * @param float   $scale_y The vertical scale
      */
@@ -2465,12 +2490,13 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      *        percentage of 1024.
      *
      * @access private
+     *
      * @param integer $col_start Col containing upper left corner of object
      * @param integer $row_start Row containing top left corner of object
-     * @param integer $x1 Distance to left side of object
-     * @param integer $y1 Distance to top of object
-     * @param integer $width Width of image frame
-     * @param integer $height Height of image frame
+     * @param integer $x1        Distance to left side of object
+     * @param integer $y1        Distance to top of object
+     * @param integer $width     Width of image frame
+     * @param integer $height    Height of image frame
      */
     function _positionImage( $col_start, $row_start, $x1, $y1, $width, $height )
     {
@@ -2491,12 +2517,10 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         $height = $height + $y1 - 1;
         
         // Subtract the underlying cell widths to find the end cell of the image
-        while ( $width >=
-                PHPExcel_Shared_Excel5::sizeCol( $this->_phpSheet, PHPExcel_Cell::stringFromColumnIndex( $col_end )
-                ) ) {
+        while ( $width >= PHPExcel_Shared_Excel5::sizeCol( $this->_phpSheet,
+                                                           PHPExcel_Cell::stringFromColumnIndex( $col_end ) ) ) {
             $width -= PHPExcel_Shared_Excel5::sizeCol( $this->_phpSheet,
-                                                       PHPExcel_Cell::stringFromColumnIndex( $col_end )
-            );
+                                                       PHPExcel_Cell::stringFromColumnIndex( $col_end ) );
             ++$col_end;
         }
         
@@ -2545,13 +2569,13 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * to support other Excel objects.
      *
      * @param integer $colL Column containing upper left corner of object
-     * @param integer $dxL Distance from left side of cell
-     * @param integer $rwT Row containing top left corner of object
-     * @param integer $dyT Distance from top of cell
+     * @param integer $dxL  Distance from left side of cell
+     * @param integer $rwT  Row containing top left corner of object
+     * @param integer $dyT  Distance from top of cell
      * @param integer $colR Column containing lower right corner of object
-     * @param integer $dxR Distance from right of cell
-     * @param integer $rwB Row containing bottom right corner of object
-     * @param integer $dyB Distance from bottom of cell
+     * @param integer $dxR  Distance from right of cell
+     * @param integer $rwB  Row containing bottom right corner of object
+     * @param integer $dyB  Distance from bottom of cell
      */
     private function _writeObjPicture( $colL, $dxL, $rwT, $dyT, $colR, $dxR, $rwB, $dyB )
     {
@@ -2623,7 +2647,9 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * Convert a GD-image into the internal format.
      *
      * @access private
+     *
      * @param resource $image The image to process
+     *
      * @return array Array with data and properties of the bitmap
      */
     function _processBitmapGd( $image )
@@ -2663,7 +2689,9 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * MSDN library.
      *
      * @access private
+     *
      * @param string $bitmap The bitmap to process
+     *
      * @return array Array with data and properties of the bitmap
      */
     function _processBitmap( $bitmap )
@@ -2766,8 +2794,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
         
         $header = pack( "vv", $record, $length );
         $data = pack( "vv", $this->_phpSheet->getSheetView()
-                                            ->getZoomScale(), 100
-        );
+                                            ->getZoomScale(), 100 );
         $this->_append( $header . $data );
     }
     
@@ -3057,6 +3084,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
      * Map Error code
      *
      * @param string $errorCode
+     *
      * @return int
      */
     private static function _mapErrorCode( $errorCode )
@@ -3116,6 +3144,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     
     /**
      * Write CFRule Record
+     *
      * @param PHPExcel_Style_Conditional $conditional
      */
     private function _writeCFRule( PHPExcel_Style_Conditional $conditional )
@@ -3228,8 +3257,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
                                      ->getARGB() == PHPExcel_Style_Color::COLOR_BLACK && $conditional->getStyle()
                                                                                                      ->getBorders()
                                                                                                      ->getLeft()
-                                                                                                     ->getBorderStyle(
-                                                                                                     ) ==
+                                                                                                     ->getBorderStyle() ==
                                                                                          PHPExcel_Style_Border::BORDER_NONE ?
             1 : 0 );
         $bBorderRight = ( $conditional->getStyle()
@@ -3239,8 +3267,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
                                       ->getARGB() == PHPExcel_Style_Color::COLOR_BLACK && $conditional->getStyle()
                                                                                                       ->getBorders()
                                                                                                       ->getRight()
-                                                                                                      ->getBorderStyle(
-                                                                                                      ) ==
+                                                                                                      ->getBorderStyle() ==
                                                                                           PHPExcel_Style_Border::BORDER_NONE ?
             1 : 0 );
         $bBorderTop = ( $conditional->getStyle()
@@ -3250,8 +3277,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
                                     ->getARGB() == PHPExcel_Style_Color::COLOR_BLACK && $conditional->getStyle()
                                                                                                     ->getBorders()
                                                                                                     ->getTop()
-                                                                                                    ->getBorderStyle(
-                                                                                                    ) ==
+                                                                                                    ->getBorderStyle() ==
                                                                                         PHPExcel_Style_Border::BORDER_NONE ?
             1 : 0 );
         $bBorderBottom = ( $conditional->getStyle()
@@ -3261,8 +3287,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
                                        ->getARGB() == PHPExcel_Style_Color::COLOR_BLACK && $conditional->getStyle()
                                                                                                        ->getBorders()
                                                                                                        ->getBottom()
-                                                                                                       ->getBorderStyle(
-                                                                                                       ) ==
+                                                                                                       ->getBorderStyle() ==
                                                                                            PHPExcel_Style_Border::BORDER_NONE ?
             1 : 0 );
         if ( $bBorderLeft == 0 || $bBorderRight == 0 || $bBorderTop == 0 || $bBorderBottom == 0 ) {
@@ -3301,8 +3326,8 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
                                                               ->getFont()
                                                               ->getSuperScript() != NULL || $conditional->getStyle()
                                                                                                         ->getFont()
-                                                                                                        ->getSubScript(
-                                                                                                        ) != NULL ||
+                                                                                                        ->getSubScript() !=
+                                                                                            NULL ||
              $conditional->getStyle()
                          ->getFont()
                          ->getUnderline() != NULL || $conditional->getStyle()
@@ -3366,16 +3391,13 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             ) {
                 $dataBlockFont =
                     pack( 'VVVVVVVV', 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-                          0x00000000, 0x00000000
-                    );
+                          0x00000000, 0x00000000 );
                 $dataBlockFont .= pack( 'VVVVVVVV', 0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000000,
-                                        0x00000000, 0x00000000, 0x00000000
-                );
+                                        0x00000000, 0x00000000, 0x00000000 );
             } else {
                 $dataBlockFont = PHPExcel_Shared_String::UTF8toBIFF8UnicodeLong( $conditional->getStyle()
                                                                                              ->getFont()
-                                                                                             ->getName()
-                );
+                                                                                             ->getName() );
             }
             // Font Size
             if ( $conditional->getStyle()
@@ -3386,8 +3408,7 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
             } else {
                 $dataBlockFont .= pack( 'V', 20 * $conditional->getStyle()
                                                               ->getFont()
-                                                              ->getSize()
-                );
+                                                              ->getSize() );
             }
             // Font Options
             $dataBlockFont .= pack( 'V', 0 );

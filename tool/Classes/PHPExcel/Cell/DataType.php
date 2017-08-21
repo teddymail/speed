@@ -35,6 +35,7 @@
  */
 class PHPExcel_Cell_DataType
 {
+    
     /* Data types */
     
     const TYPE_STRING2 = 'str';
@@ -75,7 +76,9 @@ class PHPExcel_Cell_DataType
      * DataType for value
      *
      * @deprecated  Replaced by PHPExcel_Cell_IValueBinder infrastructure, will be removed in version 1.8.0
+     *
      * @param       mixed $pValue
+     *
      * @return      string
      */
     public static function dataTypeForValue( $pValue = NULL )
@@ -87,6 +90,7 @@ class PHPExcel_Cell_DataType
      * Check a string that it satisfies Excel requirements
      *
      * @param  mixed  Value to sanitize to an Excel string
+     *
      * @return mixed  Sanitized value
      */
     public static function checkString( $pValue = NULL )
@@ -103,8 +107,7 @@ class PHPExcel_Cell_DataType
         $pValue = str_replace( [
                                    "\r\n",
                                    "\r"
-                               ], "\n", $pValue
-        );
+                               ], "\n", $pValue );
         
         return $pValue;
     }
@@ -113,6 +116,7 @@ class PHPExcel_Cell_DataType
      * Check a value that it is a valid error code
      *
      * @param  mixed   Value to sanitize to an Excel error code
+     *
      * @return string  Sanitized value
      */
     public static function checkErrorCode( $pValue = NULL )

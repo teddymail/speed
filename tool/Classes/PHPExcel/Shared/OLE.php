@@ -24,6 +24,7 @@
 /**
  * Array for storing OLE instances that are accessed from
  * OLE_ChainedBlockStream::stream_open().
+ *
  * @var  array
  */
 $GLOBALS[ '_OLE_INSTANCES' ] = [];
@@ -31,8 +32,8 @@ $GLOBALS[ '_OLE_INSTANCES' ] = [];
 /**
  * OLE package base class.
  *
- * @author   Xavier Noguer <xnoguer@php.net>
- * @author   Christian Schmidt <schmidt@php.net>
+ * @author     Xavier Noguer <xnoguer@php.net>
+ * @author     Christian Schmidt <schmidt@php.net>
  * @category   PHPExcel
  * @package    PHPExcel_Shared_OLE
  */
@@ -48,42 +49,49 @@ class PHPExcel_Shared_OLE
     
     /**
      * The file handle for reading an OLE container
+     *
      * @var resource
      */
     public $_file_handle;
     
     /**
      * Array of PPS's found on the OLE container
+     *
      * @var array
      */
     public $_list = [];
     
     /**
      * Root directory of OLE container
+     *
      * @var OLE_PPS_Root
      */
     public $root;
     
     /**
      * Big Block Allocation Table
+     *
      * @var array  (blockId => nextBlockId)
      */
     public $bbat;
     
     /**
      * Short Block Allocation Table
+     *
      * @var array  (blockId => nextBlockId)
      */
     public $sbat;
     
     /**
      * Size of big blocks. This is usually 512.
+     *
      * @var  int  number of octets per block.
      */
     public $bigBlockSize;
     
     /**
      * Size of small blocks. This is usually 64.
+     *
      * @var  int  number of octets per block
      */
     public $smallBlockSize;
@@ -92,7 +100,9 @@ class PHPExcel_Shared_OLE
      * Reads an OLE container from the contents of the file given.
      *
      * @acces public
+     *
      * @param string $file
+     *
      * @return mixed true on success, PEAR_Error on failure
      */
     public function read( $file )
@@ -183,6 +193,7 @@ class PHPExcel_Shared_OLE
     /**
      * @param  int  block id
      * @param  int  byte offset from beginning of file
+     *
      * @access public
      */
     public function _getBlockOffset( $blockId )
@@ -193,7 +204,9 @@ class PHPExcel_Shared_OLE
     /**
      * Returns a stream for use with fread() etc. External callers should
      * use PHPExcel_Shared_OLE_PPS_File::getStream().
+     *
      * @param   int|PPS block id or PPS
+     *
      * @return  resource  read-only stream
      */
     public function getStream( $blockIdOrPps )
@@ -223,7 +236,9 @@ class PHPExcel_Shared_OLE
     
     /**
      * Reads a signed char.
+     *
      * @param   resource  file handle
+     *
      * @return  int
      * @access public
      */
@@ -236,7 +251,9 @@ class PHPExcel_Shared_OLE
     
     /**
      * Reads an unsigned short (2 octets).
+     *
      * @param   resource  file handle
+     *
      * @return  int
      * @access public
      */
@@ -249,7 +266,9 @@ class PHPExcel_Shared_OLE
     
     /**
      * Reads an unsigned long (4 octets).
+     *
      * @param   resource  file handle
+     *
      * @return  int
      * @access public
      */
@@ -265,7 +284,9 @@ class PHPExcel_Shared_OLE
      * creates an OLE_PPS object for each one.
      *
      * @access public
+     *
      * @param  integer  the block id of the first block
+     *
      * @return mixed true on success, PEAR_Error on failure
      */
     public function _readPpsWks( $blockId )
@@ -340,7 +361,9 @@ class PHPExcel_Shared_OLE
      * starting with the given PPS (not necessarily root)
      *
      * @access public
+     *
      * @param integer $index The index of the PPS from which we are checking
+     *
      * @return boolean Whether the PPS tree for the given PPS is complete
      */
     public function _ppsTreeComplete( $index )
@@ -356,7 +379,9 @@ class PHPExcel_Shared_OLE
      * If there is no PPS for the index given, it will return false.
      *
      * @access public
+     *
      * @param integer $index The index for the PPS
+     *
      * @return bool true if it's a File PPS, false otherwise
      */
     public function isFile( $index )
@@ -373,7 +398,9 @@ class PHPExcel_Shared_OLE
      * If there is no PPS for the index given, it will return false.
      *
      * @access public
+     *
      * @param integer $index The index for the PPS.
+     *
      * @return bool true if it's a Root PPS, false otherwise
      */
     public function isRoot( $index )
@@ -401,12 +428,14 @@ class PHPExcel_Shared_OLE
      * If there is no PPS for the index given, it will return an empty string.
      *
      * @access public
-     * @param integer $index The index for the PPS
+     *
+     * @param integer $index    The index for the PPS
      * @param integer $position The position from which to start reading
      *                          (relative to the PPS)
-     * @param integer $length The amount of bytes to read (at most)
+     * @param integer $length   The amount of bytes to read (at most)
+     *
      * @return string The binary string containing the data requested
-     * @see OLE_PPS_File::getStream()
+     * @see    OLE_PPS_File::getStream()
      */
     public function getData( $index, $position, $length )
     {
@@ -426,7 +455,9 @@ class PHPExcel_Shared_OLE
      * If there is no PPS for the index given, it will return 0.
      *
      * @access public
+     *
      * @param integer $index The index for the PPS
+     *
      * @return integer The amount of bytes in data the PPS has
      */
     public function getDataLength( $index )
@@ -443,7 +474,9 @@ class PHPExcel_Shared_OLE
      *
      * @access public
      * @static
+     *
      * @param string $ascii The ASCII string to transform
+     *
      * @return string The string in Unicode
      */
     public static function Asc2Ucs( $ascii )
@@ -462,7 +495,9 @@ class PHPExcel_Shared_OLE
      *
      * @access public
      * @static
+     *
      * @param integer $date A timestamp
+     *
      * @return string The string for the OLE container
      */
     public static function LocalDate2OLE( $date = NULL )
@@ -479,8 +514,7 @@ class PHPExcel_Shared_OLE
         // calculate seconds
         $big_date = $days * 24 * 3600 +
                     gmmktime( date( "H", $date ), date( "i", $date ), date( "s", $date ), date( "m", $date ),
-                              date( "d", $date ), date( "Y", $date )
-                    );
+                              date( "d", $date ), date( "Y", $date ) );
         // multiply just to make MS happy
         $big_date *= 10000000;
         
@@ -510,7 +544,9 @@ class PHPExcel_Shared_OLE
      *
      * @access public
      * @static
+     *
      * @param integer $string A binary string with the encoded date
+     *
      * @return string The timestamp corresponding to the string
      */
     public static function OLE2LocalDate( $string )

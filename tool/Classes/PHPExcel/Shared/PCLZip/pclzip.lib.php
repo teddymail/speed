@@ -302,8 +302,7 @@ class PclZip
                                                                     PCLZIP_OPT_TEMP_FILE_ON        => 'optional',
                                                                     PCLZIP_OPT_TEMP_FILE_OFF       => 'optional'
                                                                     //, PCLZIP_OPT_CRYPT => 'optional'
-                                                                ]
-                );
+                                                                ] );
                 if ( $v_result != 1 ) {
                     return 0;
                 }
@@ -480,8 +479,7 @@ class PclZip
                                                                     PCLZIP_OPT_TEMP_FILE_ON        => 'optional',
                                                                     PCLZIP_OPT_TEMP_FILE_OFF       => 'optional'
                                                                     //, PCLZIP_OPT_CRYPT => 'optional'
-                                                                ]
-                );
+                                                                ] );
                 if ( $v_result != 1 ) {
                     return 0;
                 }
@@ -535,8 +533,7 @@ class PclZip
         } // ----- Invalid variable type for $p_filelist
         else {
             PclZip::privErrorLog( PCLZIP_ERR_INVALID_PARAMETER,
-                                  "Invalid variable type '" . gettype( $p_filelist ) . "' for p_filelist"
-            );
+                                  "Invalid variable type '" . gettype( $p_filelist ) . "' for p_filelist" );
             
             return 0;
         }
@@ -734,8 +731,7 @@ class PclZip
                                                                     PCLZIP_OPT_TEMP_FILE_THRESHOLD     => 'optional',
                                                                     PCLZIP_OPT_TEMP_FILE_ON            => 'optional',
                                                                     PCLZIP_OPT_TEMP_FILE_OFF           => 'optional'
-                                                                ]
-                );
+                                                                ] );
                 if ( $v_result != 1 ) {
                     return 0;
                 }
@@ -888,8 +884,7 @@ class PclZip
                                                                     PCLZIP_OPT_TEMP_FILE_THRESHOLD     => 'optional',
                                                                     PCLZIP_OPT_TEMP_FILE_ON            => 'optional',
                                                                     PCLZIP_OPT_TEMP_FILE_OFF           => 'optional'
-                                                                ]
-                );
+                                                                ] );
                 if ( $v_result != 1 ) {
                     return 0;
                 }
@@ -949,8 +944,7 @@ class PclZip
         ];
         $v_options_trick = [];
         $v_result = $this->privParseOptions( $v_arg_trick, sizeof( $v_arg_trick ), $v_options_trick,
-                                             [PCLZIP_OPT_BY_INDEX => 'optional']
-        );
+                                             [PCLZIP_OPT_BY_INDEX => 'optional'] );
         if ( $v_result != 1 ) {
             return 0;
         }
@@ -1018,8 +1012,7 @@ class PclZip
                                                                 PCLZIP_OPT_BY_EREG  => 'optional',
                                                                 PCLZIP_OPT_BY_PREG  => 'optional',
                                                                 PCLZIP_OPT_BY_INDEX => 'optional'
-                                                            ]
-            );
+                                                            ] );
             if ( $v_result != 1 ) {
                 return 0;
             }
@@ -1105,8 +1098,7 @@ class PclZip
                 
                 // ----- Error log
                 PclZip::privErrorLog( PCLZIP_ERR_READ_OPEN_FAIL,
-                                      'Unable to open archive \'' . $this->zipname . '\' in binary read mode'
-                );
+                                      'Unable to open archive \'' . $this->zipname . '\' in binary read mode' );
                 
                 // ----- Return
                 return 0;
@@ -1399,8 +1391,7 @@ class PclZip
             if ( !isset( $v_requested_options[ $p_options_list[ $i ] ] ) ) {
                 // ----- Error log
                 PclZip::privErrorLog( PCLZIP_ERR_INVALID_PARAMETER,
-                                      "Invalid optional parameter '" . $p_options_list[ $i ] . "' for this method"
-                );
+                                      "Invalid optional parameter '" . $p_options_list[ $i ] . "' for this method" );
                 
                 // ----- Return
                 return PclZip::errorCode();
@@ -1416,9 +1407,8 @@ class PclZip
                     if ( ( $i + 1 ) >= $p_size ) {
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_MISSING_OPTION_VALUE, "Missing parameter value for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1434,9 +1424,8 @@ class PclZip
                     // ----- Check the number of parameters
                     if ( ( $i + 1 ) >= $p_size ) {
                         PclZip::privErrorLog( PCLZIP_ERR_MISSING_OPTION_VALUE, "Missing parameter value for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         return PclZip::errorCode();
                     }
@@ -1445,8 +1434,7 @@ class PclZip
                     if ( isset( $v_result_list[ PCLZIP_OPT_TEMP_FILE_OFF ] ) ) {
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_PARAMETER,
                                               "Option '" . PclZipUtilOptionText( $p_options_list[ $i ] ) .
-                                              "' can not be used with option 'PCLZIP_OPT_TEMP_FILE_OFF'"
-                        );
+                                              "' can not be used with option 'PCLZIP_OPT_TEMP_FILE_OFF'" );
                         
                         return PclZip::errorCode();
                     }
@@ -1455,9 +1443,8 @@ class PclZip
                     $v_value = $p_options_list[ $i + 1 ];
                     if ( ( !is_integer( $v_value ) ) || ( $v_value < 0 ) ) {
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_OPTION_VALUE, "Integer expected for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         return PclZip::errorCode();
                     }
@@ -1472,8 +1459,7 @@ class PclZip
                     if ( isset( $v_result_list[ PCLZIP_OPT_TEMP_FILE_OFF ] ) ) {
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_PARAMETER,
                                               "Option '" . PclZipUtilOptionText( $p_options_list[ $i ] ) .
-                                              "' can not be used with option 'PCLZIP_OPT_TEMP_FILE_OFF'"
-                        );
+                                              "' can not be used with option 'PCLZIP_OPT_TEMP_FILE_OFF'" );
                         
                         return PclZip::errorCode();
                     }
@@ -1486,8 +1472,7 @@ class PclZip
                     if ( isset( $v_result_list[ PCLZIP_OPT_TEMP_FILE_ON ] ) ) {
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_PARAMETER,
                                               "Option '" . PclZipUtilOptionText( $p_options_list[ $i ] ) .
-                                              "' can not be used with option 'PCLZIP_OPT_TEMP_FILE_ON'"
-                        );
+                                              "' can not be used with option 'PCLZIP_OPT_TEMP_FILE_ON'" );
                         
                         return PclZip::errorCode();
                     }
@@ -1495,8 +1480,7 @@ class PclZip
                     if ( isset( $v_result_list[ PCLZIP_OPT_TEMP_FILE_THRESHOLD ] ) ) {
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_PARAMETER,
                                               "Option '" . PclZipUtilOptionText( $p_options_list[ $i ] ) .
-                                              "' can not be used with option 'PCLZIP_OPT_TEMP_FILE_THRESHOLD'"
-                        );
+                                              "' can not be used with option 'PCLZIP_OPT_TEMP_FILE_THRESHOLD'" );
                         
                         return PclZip::errorCode();
                     }
@@ -1509,9 +1493,8 @@ class PclZip
                     if ( ( $i + 1 ) >= $p_size ) {
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_MISSING_OPTION_VALUE, "Missing parameter value for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1533,9 +1516,8 @@ class PclZip
                     if ( ( $i + 1 ) >= $p_size ) {
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_MISSING_OPTION_VALUE, "Missing parameter value for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1549,9 +1531,8 @@ class PclZip
                     } else {
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_OPTION_VALUE, "Wrong parameter value for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1570,9 +1551,8 @@ class PclZip
                     if ( ( $i + 1 ) >= $p_size ) {
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_MISSING_OPTION_VALUE, "Missing parameter value for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1584,9 +1564,8 @@ class PclZip
                     } else {
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_OPTION_VALUE, "Wrong parameter value for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1602,9 +1581,8 @@ class PclZip
                     if ( ( $i + 1 ) >= $p_size ) {
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_MISSING_OPTION_VALUE, "Missing parameter value for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1616,9 +1594,8 @@ class PclZip
                     } else {
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_OPTION_VALUE, "Wrong parameter value for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1632,9 +1609,8 @@ class PclZip
                     if ( ( $i + 1 ) >= $p_size ) {
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_MISSING_OPTION_VALUE, "Missing parameter value for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1657,8 +1633,7 @@ class PclZip
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_OPTION_VALUE,
                                               "Value must be integer, string or array for option '" .
-                                              PclZipUtilOptionText( $p_options_list[ $i ] ) . "'"
-                        );
+                                              PclZipUtilOptionText( $p_options_list[ $i ] ) . "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1690,8 +1665,7 @@ class PclZip
                             // ----- Error log
                             PclZip::privErrorLog( PCLZIP_ERR_INVALID_OPTION_VALUE,
                                                   "Too many values in index range for option '" .
-                                                  PclZipUtilOptionText( $p_options_list[ $i ] ) . "'"
-                            );
+                                                  PclZipUtilOptionText( $p_options_list[ $i ] ) . "'" );
                             
                             // ----- Return
                             return PclZip::errorCode();
@@ -1706,8 +1680,7 @@ class PclZip
                             // ----- Error log
                             PclZip::privErrorLog( PCLZIP_ERR_INVALID_OPTION_VALUE,
                                                   "Invalid order of index range for option '" .
-                                                  PclZipUtilOptionText( $p_options_list[ $i ] ) . "'"
-                            );
+                                                  PclZipUtilOptionText( $p_options_list[ $i ] ) . "'" );
                             
                             // ----- Return
                             return PclZip::errorCode();
@@ -1740,9 +1713,8 @@ class PclZip
                     if ( ( $i + 1 ) >= $p_size ) {
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_MISSING_OPTION_VALUE, "Missing parameter value for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1768,9 +1740,8 @@ class PclZip
                     if ( ( $i + 1 ) >= $p_size ) {
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_MISSING_OPTION_VALUE, "Missing parameter value for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1784,9 +1755,8 @@ class PclZip
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_OPTION_VALUE, "Function '" . $v_function_name .
                                                                                "()' is not an existing function for option '" .
-                                                                               PclZipUtilOptionText( $p_options_list[ $i ]
-                                                                               ) . "'"
-                        );
+                                                                               PclZipUtilOptionText( $p_options_list[ $i ] ) .
+                                                                               "'" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1800,8 +1770,7 @@ class PclZip
                 default :
                     // ----- Error log
                     PclZip::privErrorLog( PCLZIP_ERR_INVALID_PARAMETER,
-                                          "Unknown parameter '" . $p_options_list[ $i ] . "'"
-                    );
+                                          "Unknown parameter '" . $p_options_list[ $i ] . "'" );
                     
                     // ----- Return
                     return PclZip::errorCode();
@@ -1822,8 +1791,7 @@ class PclZip
                         // ----- Error log
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_PARAMETER,
                                               "Missing mandatory parameter " . PclZipUtilOptionText( $key ) . "(" .
-                                              $key . ")"
-                        );
+                                              $key . ")" );
                         
                         // ----- Return
                         return PclZip::errorCode();
@@ -1907,8 +1875,7 @@ class PclZip
             if ( !isset( $v_requested_options[ $v_key ] ) ) {
                 // ----- Error log
                 PclZip::privErrorLog( PCLZIP_ERR_INVALID_PARAMETER,
-                                      "Invalid file attribute '" . $v_key . "' for this file"
-                );
+                                      "Invalid file attribute '" . $v_key . "' for this file" );
                 
                 // ----- Return
                 return PclZip::errorCode();
@@ -1920,8 +1887,8 @@ class PclZip
                     if ( !is_string( $v_value ) ) {
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_ATTRIBUTE_VALUE,
                                               "Invalid type " . gettype( $v_value ) .
-                                              ". String expected for attribute '" . PclZipUtilOptionText( $v_key ) . "'"
-                        );
+                                              ". String expected for attribute '" . PclZipUtilOptionText( $v_key ) .
+                                              "'" );
                         
                         return PclZip::errorCode();
                     }
@@ -1931,8 +1898,7 @@ class PclZip
                     if ( $p_filedescr[ 'filename' ] == '' ) {
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_ATTRIBUTE_VALUE,
                                               "Invalid empty filename for attribute '" .
-                                              PclZipUtilOptionText( $v_key ) . "'"
-                        );
+                                              PclZipUtilOptionText( $v_key ) . "'" );
                         
                         return PclZip::errorCode();
                     }
@@ -1943,8 +1909,8 @@ class PclZip
                     if ( !is_string( $v_value ) ) {
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_ATTRIBUTE_VALUE,
                                               "Invalid type " . gettype( $v_value ) .
-                                              ". String expected for attribute '" . PclZipUtilOptionText( $v_key ) . "'"
-                        );
+                                              ". String expected for attribute '" . PclZipUtilOptionText( $v_key ) .
+                                              "'" );
                         
                         return PclZip::errorCode();
                     }
@@ -1954,8 +1920,7 @@ class PclZip
                     if ( $p_filedescr[ 'new_short_name' ] == '' ) {
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_ATTRIBUTE_VALUE,
                                               "Invalid empty short filename for attribute '" .
-                                              PclZipUtilOptionText( $v_key ) . "'"
-                        );
+                                              PclZipUtilOptionText( $v_key ) . "'" );
                         
                         return PclZip::errorCode();
                     }
@@ -1965,8 +1930,8 @@ class PclZip
                     if ( !is_string( $v_value ) ) {
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_ATTRIBUTE_VALUE,
                                               "Invalid type " . gettype( $v_value ) .
-                                              ". String expected for attribute '" . PclZipUtilOptionText( $v_key ) . "'"
-                        );
+                                              ". String expected for attribute '" . PclZipUtilOptionText( $v_key ) .
+                                              "'" );
                         
                         return PclZip::errorCode();
                     }
@@ -1976,8 +1941,7 @@ class PclZip
                     if ( $p_filedescr[ 'new_full_name' ] == '' ) {
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_ATTRIBUTE_VALUE,
                                               "Invalid empty full filename for attribute '" .
-                                              PclZipUtilOptionText( $v_key ) . "'"
-                        );
+                                              PclZipUtilOptionText( $v_key ) . "'" );
                         
                         return PclZip::errorCode();
                     }
@@ -1988,8 +1952,8 @@ class PclZip
                     if ( !is_string( $v_value ) ) {
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_ATTRIBUTE_VALUE,
                                               "Invalid type " . gettype( $v_value ) .
-                                              ". String expected for attribute '" . PclZipUtilOptionText( $v_key ) . "'"
-                        );
+                                              ". String expected for attribute '" . PclZipUtilOptionText( $v_key ) .
+                                              "'" );
                         
                         return PclZip::errorCode();
                     }
@@ -2002,8 +1966,7 @@ class PclZip
                         PclZip::privErrorLog( PCLZIP_ERR_INVALID_ATTRIBUTE_VALUE,
                                               "Invalid type " . gettype( $v_value ) .
                                               ". Integer expected for attribute '" . PclZipUtilOptionText( $v_key ) .
-                                              "'"
-                        );
+                                              "'" );
                         
                         return PclZip::errorCode();
                     }
@@ -2033,8 +1996,7 @@ class PclZip
                         if ( !isset( $p_file_list[ $key ] ) ) {
                             PclZip::privErrorLog( PCLZIP_ERR_INVALID_PARAMETER,
                                                   "Missing mandatory parameter " . PclZipUtilOptionText( $key ) . "(" .
-                                                  $key . ")"
-                            );
+                                                  $key . ")" );
                             
                             return PclZip::errorCode();
                         }
@@ -2264,8 +2226,7 @@ class PclZip
             $this->privSwapBackMagicQuotes();
             
             PclZip::privErrorLog( PCLZIP_ERR_READ_OPEN_FAIL,
-                                  'Unable to open temporary file \'' . $v_zip_temp_name . '\' in binary write mode'
-            );
+                                  'Unable to open temporary file \'' . $v_zip_temp_name . '\' in binary write mode' );
             
             // ----- Return
             return PclZip::errorCode();
@@ -2348,9 +2309,8 @@ class PclZip
         $v_size = @ftell( $this->zip_fd ) - $v_offset;
         
         // ----- Create the central dir footer
-        if ( ( $v_result =
-                $this->privWriteCentralHeader( $v_count + $v_central_dir[ 'entries' ], $v_size, $v_offset, $v_comment
-                ) ) != 1
+        if ( ( $v_result = $this->privWriteCentralHeader( $v_count + $v_central_dir[ 'entries' ], $v_size, $v_offset,
+                                                          $v_comment ) ) != 1
         ) {
             // ----- Reset the file list
             unset( $v_header_list );
@@ -2410,8 +2370,7 @@ class PclZip
         if ( ( $this->zip_fd = @fopen( $this->zipname, $p_mode ) ) == 0 ) {
             // ----- Error log
             PclZip::privErrorLog( PCLZIP_ERR_READ_OPEN_FAIL,
-                                  'Unable to open archive \'' . $this->zipname . '\' in ' . $p_mode . ' mode'
-            );
+                                  'Unable to open archive \'' . $this->zipname . '\' in ' . $p_mode . ' mode' );
             
             // ----- Return
             return PclZip::errorCode();
@@ -2542,8 +2501,7 @@ class PclZip
                  ( !file_exists( $p_filedescr_list[ $j ][ 'filename' ] ) )
             ) {
                 PclZip::privErrorLog( PCLZIP_ERR_MISSING_FILE,
-                                      "File '" . $p_filedescr_list[ $j ][ 'filename' ] . "' does not exist"
-                );
+                                      "File '" . $p_filedescr_list[ $j ][ 'filename' ] . "' does not exist" );
                 
                 return PclZip::errorCode();
             }
@@ -2716,8 +2674,7 @@ class PclZip
                     // ----- Open the source file
                     if ( ( $v_file = @fopen( $p_filename, "rb" ) ) == 0 ) {
                         PclZip::privErrorLog( PCLZIP_ERR_READ_OPEN_FAIL,
-                                              "Unable to open file '$p_filename' in binary read mode"
-                        );
+                                              "Unable to open file '$p_filename' in binary read mode" );
                         
                         return PclZip::errorCode();
                     }
@@ -2858,8 +2815,7 @@ class PclZip
         if ( ( $v_file_compressed = @gzopen( $v_gzip_temp_name, "wb" ) ) == 0 ) {
             fclose( $v_file );
             PclZip::privErrorLog( PCLZIP_ERR_WRITE_OPEN_FAIL,
-                                  'Unable to open temporary file \'' . $v_gzip_temp_name . '\' in binary write mode'
-            );
+                                  'Unable to open temporary file \'' . $v_gzip_temp_name . '\' in binary write mode' );
             
             return PclZip::errorCode();
         }
@@ -2881,8 +2837,7 @@ class PclZip
         // ----- Check the minimum file size
         if ( filesize( $v_gzip_temp_name ) < 18 ) {
             PclZip::privErrorLog( PCLZIP_ERR_BAD_FORMAT, 'gzip temporary file \'' . $v_gzip_temp_name .
-                                                         '\' has invalid filesize - should be minimum 18 bytes'
-            );
+                                                         '\' has invalid filesize - should be minimum 18 bytes' );
             
             return PclZip::errorCode();
         }
@@ -2890,8 +2845,7 @@ class PclZip
         // ----- Extract the compressed attributes
         if ( ( $v_file_compressed = @fopen( $v_gzip_temp_name, "rb" ) ) == 0 ) {
             PclZip::privErrorLog( PCLZIP_ERR_READ_OPEN_FAIL,
-                                  'Unable to open temporary file \'' . $v_gzip_temp_name . '\' in binary read mode'
-            );
+                                  'Unable to open temporary file \'' . $v_gzip_temp_name . '\' in binary read mode' );
             
             return PclZip::errorCode();
         }
@@ -2925,8 +2879,7 @@ class PclZip
         // ----- Add the compressed data
         if ( ( $v_file_compressed = @fopen( $v_gzip_temp_name, "rb" ) ) == 0 ) {
             PclZip::privErrorLog( PCLZIP_ERR_READ_OPEN_FAIL,
-                                  'Unable to open temporary file \'' . $v_gzip_temp_name . '\' in binary read mode'
-            );
+                                  'Unable to open temporary file \'' . $v_gzip_temp_name . '\' in binary read mode' );
             
             return PclZip::errorCode();
         }
@@ -3078,8 +3031,7 @@ class PclZip
         $v_binary_data = pack( "VvvvvvVVVvv", 0x04034b50, $p_header[ 'version_extracted' ], $p_header[ 'flag' ],
                                $p_header[ 'compression' ], $v_mtime, $v_mdate, $p_header[ 'crc' ],
                                $p_header[ 'compressed_size' ], $p_header[ 'size' ],
-                               strlen( $p_header[ 'stored_filename' ] ), $p_header[ 'extra_len' ]
-        );
+                               strlen( $p_header[ 'stored_filename' ] ), $p_header[ 'extra_len' ] );
         
         // ----- Write the first 148 bytes of the header in the archive
         fputs( $this->zip_fd, $v_binary_data, 30 );
@@ -3122,8 +3074,7 @@ class PclZip
                   $p_header[ 'flag' ], $p_header[ 'compression' ], $v_mtime, $v_mdate, $p_header[ 'crc' ],
                   $p_header[ 'compressed_size' ], $p_header[ 'size' ], strlen( $p_header[ 'stored_filename' ] ),
                   $p_header[ 'extra_len' ], $p_header[ 'comment_len' ], $p_header[ 'disk' ], $p_header[ 'internal' ],
-                  $p_header[ 'external' ], $p_header[ 'offset' ]
-            );
+                  $p_header[ 'external' ], $p_header[ 'offset' ] );
         
         // ----- Write the 42 bytes of the header in the zip file
         fputs( $this->zip_fd, $v_binary_data, 46 );
@@ -3155,9 +3106,8 @@ class PclZip
         $v_result = 1;
         
         // ----- Packed data
-        $v_binary_data =
-            pack( "VvvvvVVv", 0x06054b50, 0, 0, $p_nb_entries, $p_nb_entries, $p_size, $p_offset, strlen( $p_comment )
-            );
+        $v_binary_data = pack( "VvvvvVVv", 0x06054b50, 0, 0, $p_nb_entries, $p_nb_entries, $p_size, $p_offset,
+                               strlen( $p_comment ) );
         
         // ----- Write the 22 bytes of the header in the zip file
         fputs( $this->zip_fd, $v_binary_data, 22 );
@@ -3192,8 +3142,7 @@ class PclZip
             
             // ----- Error log
             PclZip::privErrorLog( PCLZIP_ERR_READ_OPEN_FAIL,
-                                  'Unable to open archive \'' . $this->zipname . '\' in binary read mode'
-            );
+                                  'Unable to open archive \'' . $this->zipname . '\' in binary read mode' );
             
             // ----- Return
             return PclZip::errorCode();
@@ -3401,8 +3350,8 @@ class PclZip
                         if ( ( strlen( $v_header[ 'stored_filename' ] ) >
                                strlen( $p_options[ PCLZIP_OPT_BY_NAME ][ $j ] ) ) &&
                              ( substr( $v_header[ 'stored_filename' ], 0,
-                                       strlen( $p_options[ PCLZIP_OPT_BY_NAME ][ $j ] )
-                               ) == $p_options[ PCLZIP_OPT_BY_NAME ][ $j ] )
+                                       strlen( $p_options[ PCLZIP_OPT_BY_NAME ][ $j ] ) ) ==
+                               $p_options[ PCLZIP_OPT_BY_NAME ][ $j ] )
                         ) {
                             $v_extract = TRUE;
                         }
@@ -3469,8 +3418,7 @@ class PclZip
                     PclZip::privErrorLog( PCLZIP_ERR_UNSUPPORTED_COMPRESSION,
                                           "Filename '" . $v_header[ 'stored_filename' ] . "' is " .
                                           "compressed by an unsupported compression " . "method (" .
-                                          $v_header[ 'compression' ] . ") "
-                    );
+                                          $v_header[ 'compression' ] . ") " );
                     
                     return PclZip::errorCode();
                 }
@@ -3489,8 +3437,7 @@ class PclZip
                     
                     PclZip::privErrorLog( PCLZIP_ERR_UNSUPPORTED_ENCRYPTION,
                                           "Unsupported encryption for " . " filename '" .
-                                          $v_header[ 'stored_filename' ] . "'"
-                    );
+                                          $v_header[ 'stored_filename' ] . "'" );
                     
                     return PclZip::errorCode();
                 }
@@ -3698,8 +3645,7 @@ class PclZip
                 
                 PclZip::privErrorLog( PCLZIP_ERR_DIRECTORY_RESTRICTION,
                                       "Filename '" . $p_entry[ 'filename' ] . "' is " .
-                                      "outside PCLZIP_OPT_EXTRACT_DIR_RESTRICTION"
-                );
+                                      "outside PCLZIP_OPT_EXTRACT_DIR_RESTRICTION" );
                 
                 return PclZip::errorCode();
             }
@@ -3757,8 +3703,7 @@ class PclZip
                         
                         PclZip::privErrorLog( PCLZIP_ERR_ALREADY_A_DIRECTORY,
                                               "Filename '" . $p_entry[ 'filename' ] . "' is " .
-                                              "already used by an existing directory"
-                        );
+                                              "already used by an existing directory" );
                         
                         return PclZip::errorCode();
                     }
@@ -3777,8 +3722,7 @@ class PclZip
                         
                         PclZip::privErrorLog( PCLZIP_ERR_WRITE_OPEN_FAIL,
                                               "Filename '" . $p_entry[ 'filename' ] . "' exists " .
-                                              "and is write protected"
-                        );
+                                              "and is write protected" );
                         
                         return PclZip::errorCode();
                     }
@@ -3801,8 +3745,7 @@ class PclZip
                             
                             PclZip::privErrorLog( PCLZIP_ERR_WRITE_OPEN_FAIL,
                                                   "Newer version of '" . $p_entry[ 'filename' ] . "' exists " .
-                                                  "and option PCLZIP_OPT_REPLACE_NEWER is not selected"
-                            );
+                                                  "and option PCLZIP_OPT_REPLACE_NEWER is not selected" );
                             
                             return PclZip::errorCode();
                         }
@@ -3822,9 +3765,8 @@ class PclZip
                     $v_dir_to_check = dirname( $p_entry[ 'filename' ] );
                 }
                 
-                if ( ( $v_result =
-                        $this->privDirCheck( $v_dir_to_check, ( ( $p_entry[ 'external' ] & 0x00000010 ) == 0x00000010 )
-                        ) ) != 1
+                if ( ( $v_result = $this->privDirCheck( $v_dir_to_check,
+                        ( ( $p_entry[ 'external' ] & 0x00000010 ) == 0x00000010 ) ) ) != 1
                 ) {
                     
                     // ----- Change the file status
@@ -3879,8 +3821,7 @@ class PclZip
                     // Need to be finished
                     if ( ( $p_entry[ 'flag' ] & 1 ) == 1 ) {
                         PclZip::privErrorLog( PCLZIP_ERR_UNSUPPORTED_ENCRYPTION, 'File \'' . $p_entry[ 'filename' ] .
-                                                                                 '\' is encrypted. Encrypted files are not supported.'
-                        );
+                                                                                 '\' is encrypted. Encrypted files are not supported.' );
                         
                         return PclZip::errorCode();
                     }
@@ -3987,8 +3928,7 @@ class PclZip
         if ( ( $v_dest_file = @fopen( $v_gzip_temp_name, "wb" ) ) == 0 ) {
             fclose( $v_file );
             PclZip::privErrorLog( PCLZIP_ERR_WRITE_OPEN_FAIL,
-                                  'Unable to open temporary file \'' . $v_gzip_temp_name . '\' in binary write mode'
-            );
+                                  'Unable to open temporary file \'' . $v_gzip_temp_name . '\' in binary write mode' );
             
             return PclZip::errorCode();
         }
@@ -4028,8 +3968,7 @@ class PclZip
             @fclose( $v_dest_file );
             $p_entry[ 'status' ] = "read_error";
             PclZip::privErrorLog( PCLZIP_ERR_READ_OPEN_FAIL,
-                                  'Unable to open temporary file \'' . $v_gzip_temp_name . '\' in binary read mode'
-            );
+                                  'Unable to open temporary file \'' . $v_gzip_temp_name . '\' in binary read mode' );
             
             return PclZip::errorCode();
         }
@@ -4322,8 +4261,7 @@ class PclZip
         // ----- Extract the values
         $v_data =
             unpack( 'vversion/vflag/vcompression/vmtime/vmdate/Vcrc/Vcompressed_size/Vsize/vfilename_len/vextra_len',
-                    $v_binary_data
-            );
+                    $v_binary_data );
         
         // ----- Get filename
         $p_header[ 'filename' ] = fread( $this->zip_fd, $v_data[ 'filename_len' ] );
@@ -4420,8 +4358,7 @@ class PclZip
         // ----- Extract the values
         $p_header =
             unpack( 'vversion/vversion_extracted/vflag/vcompression/vmtime/vmdate/Vcrc/Vcompressed_size/Vsize/vfilename_len/vextra_len/vcomment_len/vdisk/vinternal/Vexternal/Voffset',
-                    $v_binary_data
-            );
+                    $v_binary_data );
         
         // ----- Get filename
         if ( $p_header[ 'filename_len' ] != 0 ) {
@@ -4544,8 +4481,7 @@ class PclZip
         if ( @ftell( $this->zip_fd ) != $v_size ) {
             // ----- Error log
             PclZip::privErrorLog( PCLZIP_ERR_BAD_FORMAT,
-                                  'Unable to go to the end of the archive \'' . $this->zipname . '\''
-            );
+                                  'Unable to go to the end of the archive \'' . $this->zipname . '\'' );
             
             // ----- Return
             return PclZip::errorCode();
@@ -4559,8 +4495,7 @@ class PclZip
             if ( ( $v_pos = @ftell( $this->zip_fd ) ) != ( $v_size - 22 ) ) {
                 // ----- Error log
                 PclZip::privErrorLog( PCLZIP_ERR_BAD_FORMAT,
-                                      'Unable to seek back to the middle of the archive \'' . $this->zipname . '\''
-                );
+                                      'Unable to seek back to the middle of the archive \'' . $this->zipname . '\'' );
                 
                 // ----- Return
                 return PclZip::errorCode();
@@ -4588,8 +4523,7 @@ class PclZip
             if ( @ftell( $this->zip_fd ) != ( $v_size - $v_maximum_size ) ) {
                 // ----- Error log
                 PclZip::privErrorLog( PCLZIP_ERR_BAD_FORMAT,
-                                      'Unable to seek back to the middle of the archive \'' . $this->zipname . '\''
-                );
+                                      'Unable to seek back to the middle of the archive \'' . $this->zipname . '\'' );
                 
                 // ----- Return
                 return PclZip::errorCode();
@@ -4636,8 +4570,7 @@ class PclZip
             
             // ----- Error log
             PclZip::privErrorLog( PCLZIP_ERR_BAD_FORMAT,
-                                  "Invalid End of Central Dir Record size : " . strlen( $v_binary_data )
-            );
+                                  "Invalid End of Central Dir Record size : " . strlen( $v_binary_data ) );
             
             // ----- Return
             return PclZip::errorCode();
@@ -4656,8 +4589,7 @@ class PclZip
             if ( 0 ) {
                 // ----- Error log
                 PclZip::privErrorLog( PCLZIP_ERR_BAD_FORMAT, 'The central dir is not at the end of the archive.' .
-                                                             ' Some trailing bytes exists after the archive.'
-                );
+                                                             ' Some trailing bytes exists after the archive.' );
                 
                 // ----- Return
                 return PclZip::errorCode();
@@ -4763,8 +4695,8 @@ class PclZip
                         if ( ( strlen( $v_header_list[ $v_nb_extracted ][ 'stored_filename' ] ) >
                                strlen( $p_options[ PCLZIP_OPT_BY_NAME ][ $j ] ) ) &&
                              ( substr( $v_header_list[ $v_nb_extracted ][ 'stored_filename' ], 0,
-                                       strlen( $p_options[ PCLZIP_OPT_BY_NAME ][ $j ] )
-                               ) == $p_options[ PCLZIP_OPT_BY_NAME ][ $j ] )
+                                       strlen( $p_options[ PCLZIP_OPT_BY_NAME ][ $j ] ) ) ==
+                               $p_options[ PCLZIP_OPT_BY_NAME ][ $j ] )
                         ) {
                             $v_found = TRUE;
                         } elseif ( ( ( $v_header_list[ $v_nb_extracted ][ 'external' ] & 0x00000010 ) == 0x00000010 )
@@ -4799,8 +4731,7 @@ class PclZip
             else if ( ( isset( $p_options[ PCLZIP_OPT_BY_PREG ] ) ) && ( $p_options[ PCLZIP_OPT_BY_PREG ] != "" ) ) {
                 
                 if ( preg_match( $p_options[ PCLZIP_OPT_BY_PREG ],
-                                 $v_header_list[ $v_nb_extracted ][ 'stored_filename' ]
-                ) ) {
+                                 $v_header_list[ $v_nb_extracted ][ 'stored_filename' ] ) ) {
                     $v_found = TRUE;
                 }
             } // ----- Look for extract by index rule
@@ -4900,8 +4831,7 @@ class PclZip
                 
                 // ----- Read/write the data block
                 if ( ( $v_result = PclZipUtilCopyBlock( $this->zip_fd, $v_temp_zip->zip_fd,
-                                                        $v_header_list[ $i ][ 'compressed_size' ]
-                    ) ) != 1
+                                                        $v_header_list[ $i ][ 'compressed_size' ] ) ) != 1
                 ) {
                     // ----- Close the zip file
                     $this->privCloseFd();
@@ -5122,8 +5052,7 @@ class PclZip
             $p_archive_to_add->privCloseFd();
             
             PclZip::privErrorLog( PCLZIP_ERR_READ_OPEN_FAIL,
-                                  'Unable to open temporary file \'' . $v_zip_temp_name . '\' in binary write mode'
-            );
+                                  'Unable to open temporary file \'' . $v_zip_temp_name . '\' in binary write mode' );
             
             // ----- Return
             return PclZip::errorCode();
@@ -5185,8 +5114,7 @@ class PclZip
         // ----- Create the central dir footer
         if ( ( $v_result =
                 $this->privWriteCentralHeader( $v_central_dir[ 'entries' ] + $v_central_dir_to_add[ 'entries' ],
-                                               $v_size, $v_offset, $v_comment
-                ) ) != 1
+                                               $v_size, $v_offset, $v_comment ) ) != 1
         ) {
             $this->privCloseFd();
             $p_archive_to_add->privCloseFd();
@@ -5257,8 +5185,7 @@ class PclZip
             $this->privCloseFd();
             
             PclZip::privErrorLog( PCLZIP_ERR_READ_OPEN_FAIL,
-                                  'Unable to open archive file \'' . $p_archive_filename . '\' in binary write mode'
-            );
+                                  'Unable to open archive file \'' . $p_archive_filename . '\' in binary write mode' );
             
             // ----- Return
             return PclZip::errorCode();

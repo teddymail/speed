@@ -29,9 +29,9 @@
 /**
  * PHPExcel_Reader_Excel5_MD5
  *
- * @category        PHPExcel
+ * @category               PHPExcel
  * @package                PHPExcel_Reader_Excel5
- * @copyright        Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright              Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Reader_Excel5_MD5
 {

@@ -177,6 +177,7 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
      * Return worksheet info (Name, Last Column Letter, Last Column Index, Total Rows, Total Columns)
      *
      * @param    string $pFilename
+     *
      * @throws    PHPExcel_Reader_Exception
      */
     public function listWorksheetInfo( $pFilename )
@@ -225,6 +226,7 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
      * Loads PHPExcel from file
      *
      * @param    string $pFilename
+     *
      * @return PHPExcel
      * @throws PHPExcel_Reader_Exception
      */
@@ -242,6 +244,7 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
      *
      * @param    string   $pFilename
      * @param    PHPExcel $objPHPExcel
+     *
      * @return    PHPExcel
      * @throws    PHPExcel_Reader_Exception
      */
@@ -328,6 +331,7 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
      * Set delimiter
      *
      * @param    string $pValue Delimiter, defaults to ,
+     *
      * @return    PHPExcel_Reader_CSV
      */
     public function setDelimiter( $pValue = ',' )
@@ -351,6 +355,7 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
      * Set enclosure
      *
      * @param    string $pValue Enclosure, defaults to "
+     *
      * @return PHPExcel_Reader_CSV
      */
     public function setEnclosure( $pValue = '"' )
@@ -377,6 +382,7 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
      * Set line ending
      *
      * @param    string $pValue Line ending, defaults to OS line ending (PHP_EOL)
+     *
      * @return PHPExcel_Reader_CSV
      */
     public function setLineEnding( $pValue = PHP_EOL )
@@ -400,6 +406,7 @@ class PHPExcel_Reader_CSV extends PHPExcel_Reader_Abstract implements PHPExcel_R
      * Set sheet index
      *
      * @param    integer $pValue Sheet index
+     *
      * @return PHPExcel_Reader_CSV
      */
     public function setSheetIndex( $pValue = 0 )

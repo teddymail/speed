@@ -76,10 +76,11 @@ class PHPExcel_Shared_ZipStreamWrapper
     /**
      * Implements support for fopen().
      *
-     * @param    string $path resource name including scheme, e.g.
-     * @param    string $mode only "r" is supported
-     * @param    int    $options mask of STREAM_REPORT_ERRORS and STREAM_USE_PATH
+     * @param    string $path        resource name including scheme, e.g.
+     * @param    string $mode        only "r" is supported
+     * @param    int    $options     mask of STREAM_REPORT_ERRORS and STREAM_USE_PATH
      * @param    string &$openedPath absolute path of the opened stream (out parameter)
+     *
      * @return    bool    true on success
      */
     public function stream_open( $path, $mode, $options, &$opened_path )
@@ -138,6 +139,7 @@ class PHPExcel_Shared_ZipStreamWrapper
      * Implements support for fread(), fgets() etc.
      *
      * @param   int $count maximum number of bytes to read
+     *
      * @return  string
      */
     function stream_read( $count )
@@ -174,6 +176,7 @@ class PHPExcel_Shared_ZipStreamWrapper
      *
      * @param    int $offset byte offset
      * @param    int $whence SEEK_SET, SEEK_CUR or SEEK_END
+     *
      * @return    bool
      */
     public function stream_seek( $offset, $whence )

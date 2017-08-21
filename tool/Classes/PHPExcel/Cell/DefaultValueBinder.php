@@ -47,8 +47,9 @@ class PHPExcel_Cell_DefaultValueBinder implements PHPExcel_Cell_IValueBinder
     /**
      * Bind value to a cell
      *
-     * @param  PHPExcel_Cell $cell Cell to bind value to
+     * @param  PHPExcel_Cell $cell  Cell to bind value to
      * @param  mixed         $value Value to bind in cell
+     *
      * @return boolean
      */
     public function bindValue( PHPExcel_Cell $cell, $value = NULL )
@@ -69,6 +70,7 @@ class PHPExcel_Cell_DefaultValueBinder implements PHPExcel_Cell_IValueBinder
      * DataType for value
      *
      * @param   mixed $pValue
+     *
      * @return  string
      */
     public static function dataTypeForValue( $pValue = NULL )

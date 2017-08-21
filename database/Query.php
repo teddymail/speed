@@ -37,6 +37,7 @@ use supjos\exception\ParameterNotMatch;
  */
 class Query extends Object implements QueryInterface
 {
+    
     /**
      * @var \PDO $queryInstance The instance of the Query class
      */
@@ -81,6 +82,7 @@ class Query extends Object implements QueryInterface
      */
     private function __construct()
     {
+        
         $config = App::createObject( Config::getClass() );
         
         $configDb = $config->getConfig( 'db' );
@@ -99,6 +101,7 @@ class Query extends Object implements QueryInterface
      */
     public static function getQuery()
     {
+        
         if ( static::$instance === NULL ) {
             static::$instance = new static();
         }
@@ -116,6 +119,7 @@ class Query extends Object implements QueryInterface
      */
     function select( $selectFields = '*' )
     {
+        
         if ( is_array( $selectFields ) && !empty( $selectFields ) ) {
             foreach ( $selectFields as $field ) {
                 $this->SELECT .= "`$field`" . ', ';
@@ -138,6 +142,7 @@ class Query extends Object implements QueryInterface
      */
     function from( $fromTable )
     {
+        
         if ( is_string( $fromTable ) && !empty( $fromTable ) ) {
             $this->FROM = preg_replace( '/\{\{%(\w+)\}\}/', $this->getConfigDbPrefix() . '$1', $fromTable );
         }
@@ -154,6 +159,7 @@ class Query extends Object implements QueryInterface
      */
     private function getConfigDbPrefix()
     {
+        
         $config = App::createObject( Config::getClass() );
         
         $configDb = $config->getConfig( 'db' );
@@ -201,6 +207,7 @@ class Query extends Object implements QueryInterface
      */
     function groupBy( $groupBy )
     {
+        
         if ( is_array( $groupBy ) && !empty( $groupBy ) ) {
             $this->GROUP = 'GROUP BY ';
             foreach ( $groupBy as $colName => $sort ) {
@@ -224,6 +231,7 @@ class Query extends Object implements QueryInterface
      */
     private function getSqlSort( $phpSort = SORT_ASC )
     {
+        
         $sortOrder = [
             SORT_DESC => 'DESC',
             SORT_ASC  => 'ASC'
@@ -239,6 +247,7 @@ class Query extends Object implements QueryInterface
      */
     function having( $having )
     {
+        
         if ( is_array( $having ) && !empty( $having ) ) {
             $this->HAVING = 'HAVING ';
             foreach ( $having as $key => $value ) {
@@ -260,6 +269,7 @@ class Query extends Object implements QueryInterface
      */
     function orderBy( $orderBy )
     {
+        
         if ( is_array( $orderBy ) && !empty( $orderBy ) ) {
             $this->ORDER = 'ORDER BY ';
             foreach ( $orderBy as $colName => $sort ) {
@@ -282,6 +292,7 @@ class Query extends Object implements QueryInterface
      */
     function limit( $limit )
     {
+        
         if ( !empty( $limit ) ) {
             $this->LIMIT = " LIMIT $limit";
         }
@@ -296,18 +307,8 @@ class Query extends Object implements QueryInterface
      */
     function distinct()
     {
+        
         $this->DISTINCT = 'DISTINCT';
-    }
-    
-    /**
-     * @param $resultStyle Setting the result style, It can be one of the following: ```array```, ```both```,
-     *                     ```class```, ```into```, ```lazy```, ```num```, ```object```
-     */
-    public function setResultStyle( $resultStyle )
-    {
-        if ( array_key_exists( $resultStyle, $this->fetchRealStyle ) ) {
-            $this->fetchStyle = $resultStyle;
-        }
     }
     
     /**
@@ -317,6 +318,7 @@ class Query extends Object implements QueryInterface
      */
     function one()
     {
+        
         $prepareStatements = $this->execute( $this->buildPrepareSql(), $this->bindArray );
         
         $resultRow = $prepareStatements->fetch( $this->fetchRealStyle[ $this->fetchStyle ] );
@@ -336,6 +338,7 @@ class Query extends Object implements QueryInterface
      */
     function execute( $prepareSql, $bindValues = [] )
     {
+        
         $this->currentPdoStatements = $pdoStatement = static::$queryInstance->prepare( $prepareSql );
         $pdoStatement->execute( $bindValues );
         
@@ -354,6 +357,7 @@ class Query extends Object implements QueryInterface
      */
     public function getIsOk()
     {
+        
         return $this->getErrorCode() === '00000';
     }
     
@@ -364,6 +368,7 @@ class Query extends Object implements QueryInterface
      */
     public function getErrorCode()
     {
+        
         return $this->currentPdoStatements->errorCode();
     }
     
@@ -374,6 +379,7 @@ class Query extends Object implements QueryInterface
      */
     public function getSqlErrors()
     {
+        
         $errorInfo = $this->currentPdoStatements->errorInfo();
         
         return empty( $errorInfo ) ? NULL :
@@ -385,6 +391,7 @@ class Query extends Object implements QueryInterface
      */
     private function buildPrepareSql()
     {
+        
         return str_replace( [
                                 '{SELECT}',
                                 '{DISTINCT}',
@@ -411,6 +418,7 @@ class Query extends Object implements QueryInterface
      */
     private function flushTempData()
     {
+        
         $this->SELECT = NULL;
         $this->DISTINCT = NULL;
         $this->FROM = NULL;
@@ -430,6 +438,7 @@ class Query extends Object implements QueryInterface
      */
     function all()
     {
+        
         $prepareStatements = $this->execute( $this->buildPrepareSql(), $this->bindArray );
         
         $resultRows = $prepareStatements->fetchAll( $this->fetchRealStyle[ $this->fetchStyle ] );
@@ -446,6 +455,7 @@ class Query extends Object implements QueryInterface
      */
     function update( $updateSql, $bindValues )
     {
+        
         $pdoStatements = $this->execute( $this->buildExecuteSql( $updateSql ), $bindValues );
         
         return $pdoStatements->rowCount();
@@ -458,6 +468,7 @@ class Query extends Object implements QueryInterface
      */
     private function buildExecuteSql( $executeSql )
     {
+        
         return preg_replace( [
                                  '/\{\{%(\w+)\}\}/',
                                  '/\[\[(\w+)\]\]/'
@@ -475,6 +486,7 @@ class Query extends Object implements QueryInterface
      */
     function delete( $deleteSql, $bindValues )
     {
+        
         $pdoStatements = $this->execute( $this->buildExecuteSql( $deleteSql ), $bindValues );
         
         return $pdoStatements->rowCount();
@@ -489,6 +501,7 @@ class Query extends Object implements QueryInterface
      */
     function insert( $insertTable, $insertFields = [], $insertArrays = [] )
     {
+        
         $insertSql = 'INSERT INTO ';
         if ( !empty( $insertTable ) && !empty( $insertFields ) ) {
             $insertSql .= $insertTable . ' (';
@@ -532,10 +545,23 @@ class Query extends Object implements QueryInterface
     }
     
     /**
+     * @param $resultStyle Setting the result style, It can be one of the following: ```array```, ```both```,
+     *                     ```class```, ```into```, ```lazy```, ```num```, ```object```
+     */
+    public function setResultStyle( $resultStyle )
+    {
+        
+        if ( array_key_exists( $resultStyle, $this->fetchRealStyle ) ) {
+            $this->fetchStyle = $resultStyle;
+        }
+    }
+    
+    /**
      * @return id The last insert id returned by SQL
      */
     public function getPreviousInsertId()
     {
+        
         return static::$queryInstance->lastInsertId();
     }
     
@@ -546,6 +572,7 @@ class Query extends Object implements QueryInterface
      */
     public function beginTransaction()
     {
+        
         return static::$queryInstance->beginTransaction();
     }
     
@@ -556,6 +583,7 @@ class Query extends Object implements QueryInterface
      */
     public function commit()
     {
+        
         return static::$queryInstance->commit();
     }
     
@@ -566,17 +594,19 @@ class Query extends Object implements QueryInterface
      */
     public function rollBack()
     {
+        
         return static::$queryInstance->rollBack();
     }
     
     /**
-     * @param $rawSql     The raw sql which you want to use
-     * @param $bindValues The bind-value you used in the raw sql
+     * @param                            $rawSql     The raw sql which you want to use
+     * @param array|\supjos\database\The $bindValues The bind-value you used in the raw sql
      *
      * @return \supjos\database\QueryRaw
      */
     public function createCommand( $rawSql, $bindValues = [] )
     {
+        
         $finishedRawSql = $this->buildExecuteSql( $rawSql );
         
         $queryRaw = QueryRaw::getQueryRaw();

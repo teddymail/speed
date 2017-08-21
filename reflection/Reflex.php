@@ -1,8 +1,9 @@
 <?php
 
-namespace supjos\di;
+namespace supjos\reflection;
 
 use App;
+use Object;
 use supjos\exception\ClassNotSetException;
 use supjos\exception\ParameterNotMatch;
 
@@ -12,7 +13,7 @@ use supjos\exception\ParameterNotMatch;
  * @copyright (c) 2017-2020, www.supjos.cn All Rights Reserved.
  * @version       1.2.2
  */
-class Reflex
+class Reflex extends Object
 {
     
     /**
@@ -28,8 +29,8 @@ class Reflex
      * Invoke the method of the given class-name, return the method result
      *
      * @param string|object $className The class-name or class object
-     * @param string        $method The method which you want to invoke from the given class-name
-     * @param array         $params The parameters which you passed to the method
+     * @param string        $method    The method which you want to invoke from the given class-name
+     * @param array         $params    The parameters which you passed to the method
      *
      * @return mixed The result of the method return
      * @throws ParameterNotMatch

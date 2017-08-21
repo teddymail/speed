@@ -70,6 +70,7 @@ class PHPExcel_Polynomial_Best_Fit extends PHPExcel_Best_Fit
      * Return the Y-Value for a specified value of X
      *
      * @param     float $xValue X-Value
+     *
      * @return     float                        Y-Value
      * */
     public function getValueOfYForX( $xValue )
@@ -91,6 +92,7 @@ class PHPExcel_Polynomial_Best_Fit extends PHPExcel_Best_Fit
      * Return the X-Value for a specified value of Y
      *
      * @param     float $yValue Y-Value
+     *
      * @return     float                        X-Value
      * */
     public function getValueOfXForY( $yValue )
@@ -104,6 +106,7 @@ class PHPExcel_Polynomial_Best_Fit extends PHPExcel_Best_Fit
      * Return the Equation of the best-fit line
      *
      * @param     int $dp Number of places of decimal precision to display
+     *
      * @return     string
      * */
     public function getEquation( $dp = 0 )
@@ -130,6 +133,7 @@ class PHPExcel_Polynomial_Best_Fit extends PHPExcel_Best_Fit
      * Return the Slope of the line
      *
      * @param     int $dp Number of places of decimal precision to display
+     *
      * @return     string
      * */
     public function getSlope( $dp = 0 )
@@ -158,7 +162,7 @@ class PHPExcel_Polynomial_Best_Fit extends PHPExcel_Best_Fit
     /**
      * Execute the regression and calculate the goodness of fit for a set of X and Y data values
      *
-     * @param    int     $order Order of Polynomial for this regression
+     * @param    int     $order   Order of Polynomial for this regression
      * @param    float[] $yValues The set of Y-values for this regression
      * @param    float[] $xValues The set of X-values for this regression
      * @param    boolean $const
@@ -217,7 +221,7 @@ class PHPExcel_Polynomial_Best_Fit extends PHPExcel_Best_Fit
     /**
      * Define the regression and calculate the goodness of fit for a set of X and Y data values
      *
-     * @param    int     $order Order of Polynomial for this regression
+     * @param    int     $order   Order of Polynomial for this regression
      * @param    float[] $yValues The set of Y-values for this regression
      * @param    float[] $xValues The set of X-values for this regression
      * @param    boolean $const

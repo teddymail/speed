@@ -53,7 +53,7 @@ class PHPExcel_Cell_Hyperlink
     /**
      * Create a new PHPExcel_Cell_Hyperlink
      *
-     * @param  string $pUrl Url to link the cell to
+     * @param  string $pUrl     Url to link the cell to
      * @param  string $pTooltip Tooltip to display on the hyperlink
      */
     public function __construct( $pUrl = '', $pTooltip = '' )
@@ -77,6 +77,7 @@ class PHPExcel_Cell_Hyperlink
      * Set URL
      *
      * @param  string $value
+     *
      * @return PHPExcel_Cell_Hyperlink
      */
     public function setUrl( $value = '' )
@@ -100,6 +101,7 @@ class PHPExcel_Cell_Hyperlink
      * Set tooltip
      *
      * @param  string $value
+     *
      * @return PHPExcel_Cell_Hyperlink
      */
     public function setTooltip( $value = '' )
@@ -126,8 +128,7 @@ class PHPExcel_Cell_Hyperlink
      */
     public function getHashCode()
     {
-        return md5( $this->_url . $this->_tooltip . __CLASS__
-        );
+        return md5( $this->_url . $this->_tooltip . __CLASS__ );
     }
     
 }

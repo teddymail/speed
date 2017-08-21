@@ -35,6 +35,7 @@
  */
 class PHPExcel_Cell_DataValidation
 {
+    
     /* Data validation types */
     
     const TYPE_NONE       = 'none';
@@ -187,6 +188,7 @@ class PHPExcel_Cell_DataValidation
      * Set Formula 1
      *
      * @param  string $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setFormula1( $value = '' )
@@ -210,6 +212,7 @@ class PHPExcel_Cell_DataValidation
      * Set Formula 2
      *
      * @param  string $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setFormula2( $value = '' )
@@ -233,6 +236,7 @@ class PHPExcel_Cell_DataValidation
      * Set Type
      *
      * @param  string $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setType( $value = PHPExcel_Cell_DataValidation::TYPE_NONE )
@@ -256,6 +260,7 @@ class PHPExcel_Cell_DataValidation
      * Set Error style
      *
      * @param  string $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setErrorStyle( $value = PHPExcel_Cell_DataValidation::STYLE_STOP )
@@ -279,6 +284,7 @@ class PHPExcel_Cell_DataValidation
      * Set Operator
      *
      * @param  string $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setOperator( $value = '' )
@@ -302,6 +308,7 @@ class PHPExcel_Cell_DataValidation
      * Set Allow Blank
      *
      * @param  boolean $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setAllowBlank( $value = FALSE )
@@ -325,6 +332,7 @@ class PHPExcel_Cell_DataValidation
      * Set Show DropDown
      *
      * @param  boolean $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setShowDropDown( $value = FALSE )
@@ -348,6 +356,7 @@ class PHPExcel_Cell_DataValidation
      * Set Show InputMessage
      *
      * @param  boolean $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setShowInputMessage( $value = FALSE )
@@ -371,6 +380,7 @@ class PHPExcel_Cell_DataValidation
      * Set Show ErrorMessage
      *
      * @param  boolean $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setShowErrorMessage( $value = FALSE )
@@ -394,6 +404,7 @@ class PHPExcel_Cell_DataValidation
      * Set Error title
      *
      * @param  string $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setErrorTitle( $value = '' )
@@ -417,6 +428,7 @@ class PHPExcel_Cell_DataValidation
      * Set Error
      *
      * @param  string $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setError( $value = '' )
@@ -440,6 +452,7 @@ class PHPExcel_Cell_DataValidation
      * Set Prompt title
      *
      * @param  string $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setPromptTitle( $value = '' )
@@ -463,6 +476,7 @@ class PHPExcel_Cell_DataValidation
      * Set Prompt
      *
      * @param  string $value
+     *
      * @return PHPExcel_Cell_DataValidation
      */
     public function setPrompt( $value = '' )
@@ -489,8 +503,7 @@ class PHPExcel_Cell_DataValidation
                                                                              ( $this->_showErrorMessage ? 't' : 'f' ) .
                                                                              $this->_errorTitle . $this->_error .
                                                                              $this->_promptTitle . $this->_prompt .
-                                                                             __CLASS__
-        );
+                                                                             __CLASS__ );
     }
     
     /**

@@ -13,6 +13,7 @@ use Object;
 
 class QueryRaw extends Object
 {
+    
     /**
      * @var \supjos\database\QueryRaw $queryRawInstance The instance of the QueryRaw class
      */
@@ -123,7 +124,7 @@ class QueryRaw extends Object
      */
     private function __clone()
     {
-    
+        
     }
     
 }

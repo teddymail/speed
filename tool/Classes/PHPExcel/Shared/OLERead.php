@@ -64,6 +64,7 @@ class PHPExcel_Shared_OLERead
      * Read the file
      *
      * @param $sFileName string Filename
+     *
      * @throws PHPExcel_Reader_Exception
      */
     public function read( $sFileName )
@@ -71,8 +72,7 @@ class PHPExcel_Shared_OLERead
         // Check if file exists and is readable
         if ( !is_readable( $sFileName ) ) {
             throw new PHPExcel_Reader_Exception( "Could not open " . $sFileName .
-                                                 " for reading! File does not exist, or it is not readable."
-            );
+                                                 " for reading! File does not exist, or it is not readable." );
         }
         
         // Get the file identifier
@@ -212,6 +212,7 @@ class PHPExcel_Shared_OLERead
      * Read a standard stream (by joining sectors using information from SAT)
      *
      * @param int $bl Sector ID where the stream starts
+     *
      * @return string Data for standard stream
      */
     private function _readData( $bl )
@@ -295,6 +296,7 @@ class PHPExcel_Shared_OLERead
      *
      * @param string $data
      * @param int    $pos
+     *
      * @return int
      */
     private static function _GetInt4d( $data, $pos )

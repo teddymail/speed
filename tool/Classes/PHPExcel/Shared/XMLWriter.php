@@ -57,7 +57,7 @@ class PHPExcel_Shared_XMLWriter extends XMLWriter
     /**
      * Create a new PHPExcel_Shared_XMLWriter instance
      *
-     * @param int    $pTemporaryStorage Temporary storage location
+     * @param int    $pTemporaryStorage       Temporary storage location
      * @param string $pTemporaryStorageFolder Temporary storage folder
      */
     public function __construct( $pTemporaryStorage = self::STORAGE_MEMORY, $pTemporaryStorageFolder = NULL )
@@ -116,6 +116,7 @@ class PHPExcel_Shared_XMLWriter extends XMLWriter
      * Fallback method for writeRaw, introduced in PHP 5.2
      *
      * @param string $text
+     *
      * @return string
      */
     public function writeRawData( $text )

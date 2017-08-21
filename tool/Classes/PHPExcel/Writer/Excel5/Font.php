@@ -112,8 +112,7 @@ class PHPExcel_Writer_Excel5_Font
                       $grbit, $icv, //	Colour
                       self::_mapBold( $this->_font->getBold() ), //	Font weight
                       $sss, //	Superscript/Subscript
-                      self::_mapUnderline( $this->_font->getUnderline() ), $bFamily, $bCharSet, $reserved
-        );
+                      self::_mapUnderline( $this->_font->getUnderline() ), $bFamily, $bCharSet, $reserved );
         $data .= PHPExcel_Shared_String::UTF8toBIFF8UnicodeShort( $this->_font->getName() );
         
         $length = strlen( $data );
@@ -126,6 +125,7 @@ class PHPExcel_Writer_Excel5_Font
      * Map to BIFF5-BIFF8 codes for bold
      *
      * @param boolean $bold
+     *
      * @return int
      */
     private static function _mapBold( $bold )
@@ -139,6 +139,7 @@ class PHPExcel_Writer_Excel5_Font
     
     /**
      * Map of BIFF2-BIFF8 codes for underline styles
+     *
      * @static    array of int
      *
      */
@@ -154,6 +155,7 @@ class PHPExcel_Writer_Excel5_Font
      * Map underline
      *
      * @param string
+     *
      * @return int
      */
     private static function _mapUnderline( $underline )

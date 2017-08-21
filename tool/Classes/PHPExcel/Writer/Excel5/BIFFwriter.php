@@ -71,24 +71,28 @@ class PHPExcel_Writer_Excel5_BIFFwriter
     
     /**
      * The byte order of this architecture. 0 => little endian, 1 => big endian
+     *
      * @var integer
      */
     private static $_byte_order;
     
     /**
      * The string containing the data of the BIFF stream
+     *
      * @var string
      */
     public $_data;
     
     /**
      * The size of the data in bytes. Should be the same as strlen($this->_data)
+     *
      * @var integer
      */
     public $_datasize;
     
     /**
      * The maximum length for a BIFF record (excluding record header and length field). See _addContinue()
+     *
      * @var integer
      * @see _addContinue()
      */
@@ -134,6 +138,7 @@ class PHPExcel_Writer_Excel5_BIFFwriter
      * General storage function
      *
      * @param string $data binary data to append
+     *
      * @access private
      */
     function _append( $data )
@@ -149,6 +154,7 @@ class PHPExcel_Writer_Excel5_BIFFwriter
      * General storage function like _append, but returns string instead of modifying $this->_data
      *
      * @param string $data binary data to write
+     *
      * @return string
      */
     public function writeData( $data )
@@ -167,6 +173,7 @@ class PHPExcel_Writer_Excel5_BIFFwriter
      *
      * @param  integer $type Type of BIFF file to write: 0x0005 Workbook,
      *                       0x0010 Worksheet.
+     *
      * @access private
      */
     function _storeBof( $type )
@@ -224,6 +231,7 @@ class PHPExcel_Writer_Excel5_BIFFwriter
      * necessary.
      *
      * @param  string $data The original binary data to be written
+     *
      * @return string        A very convenient string of continue blocks
      * @access private
      */

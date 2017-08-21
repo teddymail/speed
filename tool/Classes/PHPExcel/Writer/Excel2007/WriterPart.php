@@ -47,6 +47,7 @@ abstract class PHPExcel_Writer_Excel2007_WriterPart
      * Set parent IWriter object
      *
      * @param PHPExcel_Writer_IWriter $pWriter
+     *
      * @throws PHPExcel_Writer_Exception
      */
     public function setParentWriter( PHPExcel_Writer_IWriter $pWriter = NULL )
@@ -73,6 +74,7 @@ abstract class PHPExcel_Writer_Excel2007_WriterPart
      * Set parent IWriter object
      *
      * @param PHPExcel_Writer_IWriter $pWriter
+     *
      * @throws PHPExcel_Writer_Exception
      */
     public function __construct( PHPExcel_Writer_IWriter $pWriter = NULL )

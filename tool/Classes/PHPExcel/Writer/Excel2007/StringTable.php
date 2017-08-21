@@ -39,8 +39,9 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
     /**
      * Create worksheet stringtable
      *
-     * @param    PHPExcel_Worksheet $pSheet Worksheet
+     * @param    PHPExcel_Worksheet $pSheet         Worksheet
      * @param    string[]           $pExistingTable Existing table to eventually merge with
+     *
      * @return    string[]                String table for worksheet
      * @throws    PHPExcel_Writer_Exception
      */
@@ -90,6 +91,7 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
      * Write string table to XML format
      *
      * @param    string[] $pStringTable
+     *
      * @return    string        XML Output
      * @throws    PHPExcel_Writer_Exception
      */
@@ -103,8 +105,7 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
             ) {
                 $objWriter = new PHPExcel_Shared_XMLWriter( PHPExcel_Shared_XMLWriter::STORAGE_DISK,
                                                             $this->getParentWriter()
-                                                                 ->getDiskCachingDirectory()
-                );
+                                                                 ->getDiskCachingDirectory() );
             } else {
                 $objWriter = new PHPExcel_Shared_XMLWriter( PHPExcel_Shared_XMLWriter::STORAGE_MEMORY );
             }
@@ -150,10 +151,12 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
      *
      * @param    PHPExcel_Shared_XMLWriter $objWriter XML Writer
      * @param    PHPExcel_RichText         $pRichText Rich text
-     * @param    string                    $prefix Optional Namespace prefix
+     * @param    string                    $prefix    Optional Namespace prefix
+     *
      * @throws    PHPExcel_Writer_Exception
      */
-    public function writeRichText( PHPExcel_Shared_XMLWriter $objWriter = NULL, PHPExcel_RichText $pRichText = NULL, $prefix = NULL )
+    public function writeRichText( PHPExcel_Shared_XMLWriter $objWriter = NULL, PHPExcel_RichText $pRichText = NULL,
+        $prefix = NULL )
     {
         if ( $prefix !== NULL ) {
             $prefix .= ':';
@@ -172,22 +175,19 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
                 // rFont
                 $objWriter->startElement( $prefix . 'rFont' );
                 $objWriter->writeAttribute( 'val', $element->getFont()
-                                                           ->getName()
-                );
+                                                           ->getName() );
                 $objWriter->endElement();
                 
                 // Bold
                 $objWriter->startElement( $prefix . 'b' );
                 $objWriter->writeAttribute( 'val', ( $element->getFont()
-                                                             ->getBold() ? 'true' : 'false' )
-                );
+                                                             ->getBold() ? 'true' : 'false' ) );
                 $objWriter->endElement();
                 
                 // Italic
                 $objWriter->startElement( $prefix . 'i' );
                 $objWriter->writeAttribute( 'val', ( $element->getFont()
-                                                             ->getItalic() ? 'true' : 'false' )
-                );
+                                                             ->getItalic() ? 'true' : 'false' ) );
                 $objWriter->endElement();
                 
                 // Superscript / subscript
@@ -211,30 +211,26 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
                 // Strikethrough
                 $objWriter->startElement( $prefix . 'strike' );
                 $objWriter->writeAttribute( 'val', ( $element->getFont()
-                                                             ->getStrikethrough() ? 'true' : 'false' )
-                );
+                                                             ->getStrikethrough() ? 'true' : 'false' ) );
                 $objWriter->endElement();
                 
                 // Color
                 $objWriter->startElement( $prefix . 'color' );
                 $objWriter->writeAttribute( 'rgb', $element->getFont()
                                                            ->getColor()
-                                                           ->getARGB()
-                );
+                                                           ->getARGB() );
                 $objWriter->endElement();
                 
                 // Size
                 $objWriter->startElement( $prefix . 'sz' );
                 $objWriter->writeAttribute( 'val', $element->getFont()
-                                                           ->getSize()
-                );
+                                                           ->getSize() );
                 $objWriter->endElement();
                 
                 // Underline
                 $objWriter->startElement( $prefix . 'u' );
                 $objWriter->writeAttribute( 'val', $element->getFont()
-                                                           ->getUnderline()
-                );
+                                                           ->getUnderline() );
                 $objWriter->endElement();
                 
                 $objWriter->endElement();
@@ -255,10 +251,12 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
      *
      * @param    PHPExcel_Shared_XMLWriter $objWriter XML Writer
      * @param    string|PHPExcel_RichText  $pRichText text string or Rich text
-     * @param    string                    $prefix Optional Namespace prefix
+     * @param    string                    $prefix    Optional Namespace prefix
+     *
      * @throws    PHPExcel_Writer_Exception
      */
-    public function writeRichTextForCharts( PHPExcel_Shared_XMLWriter $objWriter = NULL, $pRichText = NULL, $prefix = NULL )
+    public function writeRichTextForCharts( PHPExcel_Shared_XMLWriter $objWriter = NULL, $pRichText = NULL,
+        $prefix = NULL )
     {
         if ( !$pRichText instanceof PHPExcel_RichText ) {
             $textRun = $pRichText;
@@ -280,12 +278,10 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
             
             // Bold
             $objWriter->writeAttribute( 'b', ( $element->getFont()
-                                                       ->getBold() ? 1 : 0 )
-            );
+                                                       ->getBold() ? 1 : 0 ) );
             // Italic
             $objWriter->writeAttribute( 'i', ( $element->getFont()
-                                                       ->getItalic() ? 1 : 0 )
-            );
+                                                       ->getItalic() ? 1 : 0 ) );
             // Underline
             $underlineType = $element->getFont()
                                      ->getUnderline();
@@ -300,14 +296,12 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
             $objWriter->writeAttribute( 'u', $underlineType );
             // Strikethrough
             $objWriter->writeAttribute( 'strike', ( $element->getFont()
-                                                            ->getStrikethrough() ? 'sngStrike' : 'noStrike' )
-            );
+                                                            ->getStrikethrough() ? 'sngStrike' : 'noStrike' ) );
             
             // rFont
             $objWriter->startElement( $prefix . 'latin' );
             $objWriter->writeAttribute( 'typeface', $element->getFont()
-                                                            ->getName()
-            );
+                                                            ->getName() );
             $objWriter->endElement();
             
             // Superscript / subscript
@@ -337,6 +331,7 @@ class PHPExcel_Writer_Excel2007_StringTable extends PHPExcel_Writer_Excel2007_Wr
      * Flip string table (for index searching)
      *
      * @param    array $stringTable Stringtable
+     *
      * @return    array
      */
     public function flipStringTable( $stringTable = [] )

@@ -33,7 +33,8 @@
  * @package    PHPExcel_CachedObjectStorage
  * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
-class PHPExcel_CachedObjectStorage_Memory extends PHPExcel_CachedObjectStorage_CacheBase implements PHPExcel_CachedObjectStorage_ICache
+class PHPExcel_CachedObjectStorage_Memory extends PHPExcel_CachedObjectStorage_CacheBase implements
+    PHPExcel_CachedObjectStorage_ICache
 {
     
     /**
@@ -52,7 +53,8 @@ class PHPExcel_CachedObjectStorage_Memory extends PHPExcel_CachedObjectStorage_C
      * Add or Update a cell in cache identified by coordinate address
      *
      * @param    string        $pCoord Coordinate address of the cell to update
-     * @param    PHPExcel_Cell $cell Cell to update
+     * @param    PHPExcel_Cell $cell   Cell to update
+     *
      * @return    PHPExcel_Cell
      * @throws    PHPExcel_Exception
      */
@@ -72,6 +74,7 @@ class PHPExcel_CachedObjectStorage_Memory extends PHPExcel_CachedObjectStorage_C
      * Get cell at a specific coordinate
      *
      * @param    string $pCoord Coordinate of the cell
+     *
      * @throws    PHPExcel_Exception
      * @return    PHPExcel_Cell    Cell that was found, or null if not found
      */
@@ -98,6 +101,7 @@ class PHPExcel_CachedObjectStorage_Memory extends PHPExcel_CachedObjectStorage_C
      * Clone the cell collection
      *
      * @param    PHPExcel_Worksheet $parent The new worksheet
+     *
      * @return    void
      */
     public function copyCellCollection( PHPExcel_Worksheet $parent )

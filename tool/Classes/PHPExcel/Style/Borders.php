@@ -35,6 +35,7 @@
  */
 class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExcel_IComparable
 {
+    
     /* Diagonal directions */
     
     const DIAGONAL_NONE = 0;
@@ -122,11 +123,11 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
     /**
      * Create a new PHPExcel_Style_Borders
      *
-     * @param    boolean $isSupervisor Flag indicating if this is a supervisor or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isSupervisor        Flag indicating if this is a supervisor or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
-     * @param    boolean $isConditional Flag indicating if this is a conditional style or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isConditional       Flag indicating if this is a conditional style or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
      */
     public function __construct( $isSupervisor = FALSE, $isConditional = FALSE )
@@ -181,6 +182,7 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
      * Build style array from subcomponents
      *
      * @param array $array
+     *
      * @return array
      */
     public function getStyleArray( $array )
@@ -223,6 +225,7 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
      * </code>
      *
      * @param    array $pStyles Array containing style information
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Style_Borders
      */
@@ -419,6 +422,7 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
      * Set DiagonalDirection
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Style_Borders
      */
     public function setDiagonalDirection( $pValue = PHPExcel_Style_Borders::DIAGONAL_NONE )
@@ -456,8 +460,7 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
                                                                        ->getHashCode() . $this->getBottom()
                                                                                               ->getHashCode() .
                     $this->getDiagonal()
-                         ->getHashCode() . $this->getDiagonalDirection() . __CLASS__
-        );
+                         ->getHashCode() . $this->getDiagonalDirection() . __CLASS__ );
     }
     
 }

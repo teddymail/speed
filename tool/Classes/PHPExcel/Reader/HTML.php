@@ -156,6 +156,7 @@ class PHPExcel_Reader_HTML extends PHPExcel_Reader_Abstract implements PHPExcel_
      * Loads PHPExcel from file
      *
      * @param    string $pFilename
+     *
      * @return    PHPExcel
      * @throws    PHPExcel_Reader_Exception
      */
@@ -362,8 +363,7 @@ class PHPExcel_Reader_HTML extends PHPExcel_Reader_Abstract implements PHPExcel_
                             
                             if ( isset( $this->_formats[ $child->nodeName ] ) ) {
                                 $sheet->getStyle( $column . $row )
-                                      ->applyFromArray( $this->_formats[ $child->nodeName ]
-                                      );
+                                      ->applyFromArray( $this->_formats[ $child->nodeName ] );
                             }
                             
                             $row += 2;
@@ -444,6 +444,7 @@ class PHPExcel_Reader_HTML extends PHPExcel_Reader_Abstract implements PHPExcel_
      *
      * @param    string   $pFilename
      * @param    PHPExcel $objPHPExcel
+     *
      * @return    PHPExcel
      * @throws    PHPExcel_Reader_Exception
      */
@@ -465,7 +466,7 @@ class PHPExcel_Reader_HTML extends PHPExcel_Reader_Abstract implements PHPExcel_
         $objPHPExcel->setActiveSheetIndex( $this->_sheetIndex );
         
         //	Create a new DOM object
-        $dom = new domDocument;
+        $dom = new domDocument();
         //	Reload the HTML file into the DOM object
         $loaded = $dom->loadHTMLFile( $pFilename, PHPExcel_Settings::getLibXmlLoaderOptions() );
         if ( $loaded === FALSE ) {
@@ -501,6 +502,7 @@ class PHPExcel_Reader_HTML extends PHPExcel_Reader_Abstract implements PHPExcel_
      * Set sheet index
      *
      * @param    int $pValue Sheet index
+     *
      * @return PHPExcel_Reader_HTML
      */
     public function setSheetIndex( $pValue = 0 )

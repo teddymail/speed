@@ -35,6 +35,7 @@
  */
 class PHPExcel_Style_Fill extends PHPExcel_Style_Supervisor implements PHPExcel_IComparable
 {
+    
     /* Fill types */
     
     const FILL_NONE                    = 'none';
@@ -90,11 +91,11 @@ class PHPExcel_Style_Fill extends PHPExcel_Style_Supervisor implements PHPExcel_
     /**
      * Create a new PHPExcel_Style_Fill
      *
-     * @param    boolean $isSupervisor Flag indicating if this is a supervisor or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isSupervisor        Flag indicating if this is a supervisor or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
-     * @param    boolean $isConditional Flag indicating if this is a conditional style or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isConditional       Flag indicating if this is a conditional style or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
      */
     public function __construct( $isSupervisor = FALSE, $isConditional = FALSE )
@@ -133,6 +134,7 @@ class PHPExcel_Style_Fill extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Build style array from subcomponents
      *
      * @param array $array
+     *
      * @return array
      */
     public function getStyleArray( $array )
@@ -159,6 +161,7 @@ class PHPExcel_Style_Fill extends PHPExcel_Style_Supervisor implements PHPExcel_
      * </code>
      *
      * @param    array $pStyles Array containing style information
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Style_Fill
      */
@@ -215,6 +218,7 @@ class PHPExcel_Style_Fill extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Set Fill Type
      *
      * @param string $pValue PHPExcel_Style_Fill fill type
+     *
      * @return PHPExcel_Style_Fill
      */
     public function setFillType( $pValue = PHPExcel_Style_Fill::FILL_NONE )
@@ -250,6 +254,7 @@ class PHPExcel_Style_Fill extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Set Rotation
      *
      * @param double $pValue
+     *
      * @return PHPExcel_Style_Fill
      */
     public function setRotation( $pValue = 0 )
@@ -280,6 +285,7 @@ class PHPExcel_Style_Fill extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Set Start Color
      *
      * @param    PHPExcel_Style_Color $pValue
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Style_Fill
      */
@@ -315,6 +321,7 @@ class PHPExcel_Style_Fill extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Set End Color
      *
      * @param    PHPExcel_Style_Color $pValue
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Style_Fill
      */
@@ -351,8 +358,7 @@ class PHPExcel_Style_Fill extends PHPExcel_Style_Supervisor implements PHPExcel_
         return md5( $this->getFillType() . $this->getRotation() . $this->getStartColor()
                                                                        ->getHashCode() . $this->getEndColor()
                                                                                               ->getHashCode() .
-                    __CLASS__
-        );
+                    __CLASS__ );
     }
     
 }

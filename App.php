@@ -23,13 +23,20 @@ class App
     public static $aliases = [
         '@supjos' => __DIR__
     ];
-    
     /**
      * The container contains the App::createObject's return result for the current temporary use
      *
      * @var array
      */
     private static $_containerSet = [];
+    
+    /**
+     * @return string The version string returned
+     */
+    public static function getVersion()
+    {
+        return '1.0.8';
+    }
     
     /**
      * The autoload function to load the needed class
@@ -125,7 +132,6 @@ class App
     {
         if ( !empty( $aliasName ) && substr( $aliasName, 0, 1 ) == '@' ) {
             static::$aliases[ $aliasName ] = $aliasValue;
-            
         }
     }
     
@@ -140,14 +146,13 @@ class App
     public static function getWebPath()
     {
         return dirname( static::createObject( Request::getClass() )
-                              ->getScriptName()
-        );
+                              ->getScriptName() );
     }
     
     /**
      * The universal object-create function
      *
-     * @param string|array $class if the type of $class was array, the ````class```` key must be included
+     * @param string|array $class         if the type of $class was array, the ````class```` key must be included
      *                                    the array $class contains ````class```` and the other key will passed to the
      *                                    constructor to initialise the constructor
      * @param array        $objectOptions The array contains all the property attaching to the creating-object
@@ -182,7 +187,7 @@ class App
             }
             
             if ( !empty( $class ) && is_array( $class ) ) {
-                $parameterCount = count( $reflectionContructor->getParameters() );
+                $parameterCount = $reflectionContructor->getNumberOfRequiredParameters();
                 if ( $parameterCount > count( $class ) ) {
                     throw new ParameterNotMatch( "Class {$className}'s constructor parameter didn't satisfied." );
                 }
@@ -213,7 +218,7 @@ class App
     /**
      * Receive the HTTP GET request from the server and then call the $callBackFunc to do the job
      *
-     * @param string  $getUrl The HTTP URI
+     * @param string  $getUrl       The HTTP URI
      * @param Closure $callBackFunc The callback function to do the job
      */
     public function get( $getUrl, $callBackFunc )
@@ -224,9 +229,11 @@ class App
     /**
      * The universal Request method
      *
-     * @param $method       The request method, Such as post, get, delete, options etc
-     * @param $requestUrl   The request url which you want to deal with
-     * @param $callBackFunc The request callback function, to deal with the logic
+     * @param $method        The request method, Such as post, get, delete, options etc
+     * @param $requestUrl    The request url which you want to deal with
+     * @param $callBackFunc  The request callback function, to deal with the logic
+     *
+     * @throws \supjos\exception\NotFoundException
      */
     private function dealRequest( $method, $requestUrl, $callBackFunc )
     {
@@ -237,10 +244,9 @@ class App
             if ( !empty( $matches ) || ( $requestUrl == '/' && empty( $request->getPathInfo() ) ) ) {
                 if ( is_callable( $callBackFunc ) && $callBackFunc instanceof \Closure ) {
                     call_user_func_array( $callBackFunc, [
-                                                           $request,
-                                                           $response
-                                                       ]
-                    );
+                        $request,
+                        $response
+                    ] );
                 }
             } else {
                 $response->setStatusCode( 404 );
@@ -251,7 +257,7 @@ class App
     /**
      * Receive the HTTP POST request from the server and then call the $callBackFunc to do the job
      *
-     * @param string  $postUrl The HTTP URI
+     * @param string  $postUrl      The HTTP URI
      * @param Closure $callBackFunc The callback function to do the job
      */
     public function post( $postUrl, $callBackFunc )
@@ -262,7 +268,7 @@ class App
     /**
      * Receive the HTTP PUT request from the server and then call the $callBackFunc to do the job
      *
-     * @param string  $putUrl The HTTP URI
+     * @param string  $putUrl       The HTTP URI
      * @param Closure $callBackFunc The callback function to do the job
      */
     public function put( $putUrl, $callBackFunc )
@@ -273,7 +279,7 @@ class App
     /**
      * Receive the HTTP DELETE request from the server and then call the $callBackFunc to do the job
      *
-     * @param string  $deleteUrl The HTTP URI
+     * @param string  $deleteUrl    The HTTP URI
      * @param Closure $callBackFunc The callback function to do the job
      */
     public function delete( $deleteUrl, $callBackFunc )
@@ -284,7 +290,7 @@ class App
     /**
      * Receive the HTTP OPTIONS request from the server and then call the $callBackFunc to do the job
      *
-     * @param string  $optionsUrl The HTTP URI
+     * @param string  $optionsUrl   The HTTP URI
      * @param Closure $callBackFunc The callback function to do the job
      */
     public function options( $optionsUrl, $callBackFunc )
@@ -295,7 +301,7 @@ class App
     /**
      * Receive the HTTP PATCH request from the server and then call the $callBackFunc to do the job
      *
-     * @param string  $patchUrl The HTTP URI
+     * @param string  $patchUrl     The HTTP URI
      * @param Closure $callBackFunc The callback function to do the job
      */
     public function patch( $patchUrl, $callBackFunc )
@@ -305,10 +311,9 @@ class App
     
 }
 
-App::setAliases( '@webRoot', dirname( dirname( dirname( __DIR__ ) ) ) );
+App::setAliases( '@web', dirname( dirname( dirname( __DIR__ ) ) ) );
 
 spl_autoload_register( [
                            'App',
                            'autoload'
-                       ]
-);
+                       ] );

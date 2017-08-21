@@ -47,8 +47,9 @@ class PHPExcel_Cell_AdvancedValueBinder extends PHPExcel_Cell_DefaultValueBinder
     /**
      * Bind value to a cell
      *
-     * @param  PHPExcel_Cell $cell Cell to bind value to
+     * @param  PHPExcel_Cell $cell  Cell to bind value to
      * @param  mixed         $value Value to bind in cell
+     *
      * @return boolean
      */
     public function bindValue( PHPExcel_Cell $cell, $value = NULL )
@@ -107,8 +108,7 @@ class PHPExcel_Cell_AdvancedValueBinder extends PHPExcel_Cell_DefaultValueBinder
                 $cell->getWorksheet()
                      ->getStyle( $cell->getCoordinate() )
                      ->getNumberFormat()
-                     ->setFormatCode( '# ??/??'
-                     );
+                     ->setFormatCode( '# ??/??' );
                 
                 return TRUE;
             }
@@ -132,8 +132,7 @@ class PHPExcel_Cell_AdvancedValueBinder extends PHPExcel_Cell_DefaultValueBinder
             $decimalSeparator = PHPExcel_Shared_String::getDecimalSeparator();
             $thousandsSeparator = PHPExcel_Shared_String::getThousandsSeparator();
             if ( preg_match( '/^' . preg_quote( $currencyCode ) . ' *(\d{1,3}(' . preg_quote( $thousandsSeparator ) .
-                             '\d{3})*|(\d+))(' . preg_quote( $decimalSeparator ) . '\d{2})?$/', $value
-            ) ) {
+                             '\d{3})*|(\d+))(' . preg_quote( $decimalSeparator ) . '\d{2})?$/', $value ) ) {
                 // Convert value to number
                 $value = ( float )trim( str_replace( [
                                                          $currencyCode,
@@ -143,18 +142,14 @@ class PHPExcel_Cell_AdvancedValueBinder extends PHPExcel_Cell_DefaultValueBinder
                                                          '',
                                                          '',
                                                          '.'
-                                                     ], $value
-                                        )
-                );
+                                                     ], $value ) );
                 $cell->setValueExplicit( $value, PHPExcel_Cell_DataType::TYPE_NUMERIC );
                 // Set style
                 $cell->getWorksheet()
                      ->getStyle( $cell->getCoordinate() )
                      ->getNumberFormat()
                      ->setFormatCode( str_replace( '$', $currencyCode,
-                                                   PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD_SIMPLE
-                                      )
-                     );
+                                                   PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_USD_SIMPLE ) );
                 
                 return TRUE;
             } elseif ( preg_match( '/^\$ *(\d{1,3}(\,\d{3})*|(\d+))(\.\d{2})?$/', $value ) ) {
@@ -162,9 +157,7 @@ class PHPExcel_Cell_AdvancedValueBinder extends PHPExcel_Cell_DefaultValueBinder
                 $value = ( float )trim( str_replace( [
                                                          '$',
                                                          ','
-                                                     ], '', $value
-                                        )
-                );
+                                                     ], '', $value ) );
                 $cell->setValueExplicit( $value, PHPExcel_Cell_DataType::TYPE_NUMERIC );
                 // Set style
                 $cell->getWorksheet()
@@ -219,8 +212,7 @@ class PHPExcel_Cell_AdvancedValueBinder extends PHPExcel_Cell_DefaultValueBinder
                 $cell->getWorksheet()
                      ->getStyle( $cell->getCoordinate() )
                      ->getNumberFormat()
-                     ->setFormatCode( $formatCode
-                     );
+                     ->setFormatCode( $formatCode );
                 
                 return TRUE;
             }

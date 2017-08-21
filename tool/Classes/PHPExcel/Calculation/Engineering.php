@@ -19,9 +19,9 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Calculation
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license        http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
  * @version        1.8.0, 2014-03-02
  */
@@ -41,9 +41,9 @@ define( 'EULER', 2.71828182845904523536 );
 /**
  * PHPExcel_Calculation_Engineering
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Calculation
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Calculation_Engineering
 {
@@ -1070,6 +1070,7 @@ class PHPExcel_Calculation_Engineering
      * Parses a complex number into its real and imaginary parts, and an I or J suffix
      *
      * @param    string $complexNumber The complex number
+     *
      * @return    string[]    Indexed on "real", "imaginary" and "suffix"
      */
     public static function _parseComplex( $complexNumber )
@@ -1128,6 +1129,7 @@ class PHPExcel_Calculation_Engineering
      * Cleans the leading characters in a complex number string
      *
      * @param    string $complexNumber The complex number to clean
+     *
      * @return    string        The "cleaned" complex number
      */
     private static function _cleanComplex( $complexNumber )
@@ -1151,8 +1153,9 @@ class PHPExcel_Calculation_Engineering
     /**
      * Formats a number base string value with leading zeroes
      *
-     * @param    string  $xVal The "number" to pad
+     * @param    string  $xVal   The "number" to pad
      * @param    integer $places The length that we want to pad this value
+     *
      * @return    string        The padded "number"
      */
     private static function _nbrConversionFormat( $xVal, $places )
@@ -1180,13 +1183,15 @@ class PHPExcel_Calculation_Engineering
      *        BESSELI(x,ord)
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    float   $x The value at which to evaluate the function.
+     * @category  Engineering Functions
+     *
+     * @param    float   $x           The value at which to evaluate the function.
      *                                If x is nonnumeric, BESSELI returns the #VALUE! error value.
-     * @param    integer $ord The order of the Bessel function.
+     * @param    integer $ord         The order of the Bessel function.
      *                                If ord is not an integer, it is truncated.
      *                                If $ord is nonnumeric, BESSELI returns the #VALUE! error value.
      *                                If $ord < 0, BESSELI returns the #NUM! error value.
+     *
      * @return    float
      *
      */
@@ -1237,12 +1242,14 @@ class PHPExcel_Calculation_Engineering
      *        BESSELJ(x,ord)
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    float   $x The value at which to evaluate the function.
+     * @category  Engineering Functions
+     *
+     * @param    float   $x           The value at which to evaluate the function.
      *                                If x is nonnumeric, BESSELJ returns the #VALUE! error value.
-     * @param    integer $ord The order of the Bessel function. If n is not an integer, it is truncated.
+     * @param    integer $ord         The order of the Bessel function. If n is not an integer, it is truncated.
      *                                If $ord is nonnumeric, BESSELJ returns the #VALUE! error value.
      *                                If $ord < 0, BESSELJ returns the #NUM! error value.
+     *
      * @return    float
      *
      */
@@ -1358,12 +1365,14 @@ class PHPExcel_Calculation_Engineering
      *        BESSELK(x,ord)
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    float   $x The value at which to evaluate the function.
+     * @category  Engineering Functions
+     *
+     * @param    float   $x           The value at which to evaluate the function.
      *                                If x is nonnumeric, BESSELK returns the #VALUE! error value.
-     * @param    integer $ord The order of the Bessel function. If n is not an integer, it is truncated.
+     * @param    integer $ord         The order of the Bessel function. If n is not an integer, it is truncated.
      *                                If $ord is nonnumeric, BESSELK returns the #VALUE! error value.
      *                                If $ord < 0, BESSELK returns the #NUM! error value.
+     *
      * @return    float
      *
      */
@@ -1463,10 +1472,11 @@ class PHPExcel_Calculation_Engineering
      *        BESSELY(x,ord)
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    float   $x The value at which to evaluate the function.
+     * @category  Engineering Functions
+     *
+     * @param    float   $x           The value at which to evaluate the function.
      *                                If x is nonnumeric, BESSELK returns the #VALUE! error value.
-     * @param    integer $ord The order of the Bessel function. If n is not an integer, it is truncated.
+     * @param    integer $ord         The order of the Bessel function. If n is not an integer, it is truncated.
      *                                If $ord is nonnumeric, BESSELK returns the #VALUE! error value.
      *                                If $ord < 0, BESSELK returns the #NUM! error value.
      *
@@ -1517,13 +1527,15 @@ class PHPExcel_Calculation_Engineering
      *        BIN2DEC(x)
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string $x The binary number (as a string) that you want to convert. The number
+     * @category  Engineering Functions
+     *
+     * @param    string $x            The binary number (as a string) that you want to convert. The number
      *                                cannot contain more than 10 characters (10 bits). The most significant
      *                                bit of number is the sign bit. The remaining 9 bits are magnitude bits.
      *                                Negative numbers are represented using two's-complement notation.
      *                                If number is not a valid binary number, or if number contains more than
      *                                10 characters (10 bits), BIN2DEC returns the #NUM! error value.
+     *
      * @return    string
      */
     public static function BINTODEC( $x )
@@ -1571,19 +1583,21 @@ class PHPExcel_Calculation_Engineering
      *        BIN2HEX(x[,places])
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string  $x The binary number (as a string) that you want to convert. The number
+     * @category  Engineering Functions
+     *
+     * @param    string  $x           The binary number (as a string) that you want to convert. The number
      *                                cannot contain more than 10 characters (10 bits). The most significant
      *                                bit of number is the sign bit. The remaining 9 bits are magnitude bits.
      *                                Negative numbers are represented using two's-complement notation.
      *                                If number is not a valid binary number, or if number contains more than
      *                                10 characters (10 bits), BIN2HEX returns the #NUM! error value.
-     * @param    integer $places The number of characters to use. If places is omitted, BIN2HEX uses the
+     * @param    integer $places      The number of characters to use. If places is omitted, BIN2HEX uses the
      *                                minimum number of characters necessary. Places is useful for padding the
      *                                return value with leading 0s (zeros).
      *                                If places is not an integer, it is truncated.
      *                                If places is nonnumeric, BIN2HEX returns the #VALUE! error value.
      *                                If places is negative, BIN2HEX returns the #NUM! error value.
+     *
      * @return    string
      */
     public static function BINTOHEX( $x, $places = NULL )
@@ -1631,19 +1645,21 @@ class PHPExcel_Calculation_Engineering
      *        BIN2OCT(x[,places])
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string  $x The binary number (as a string) that you want to convert. The number
+     * @category  Engineering Functions
+     *
+     * @param    string  $x           The binary number (as a string) that you want to convert. The number
      *                                cannot contain more than 10 characters (10 bits). The most significant
      *                                bit of number is the sign bit. The remaining 9 bits are magnitude bits.
      *                                Negative numbers are represented using two's-complement notation.
      *                                If number is not a valid binary number, or if number contains more than
      *                                10 characters (10 bits), BIN2OCT returns the #NUM! error value.
-     * @param    integer $places The number of characters to use. If places is omitted, BIN2OCT uses the
+     * @param    integer $places      The number of characters to use. If places is omitted, BIN2OCT uses the
      *                                minimum number of characters necessary. Places is useful for padding the
      *                                return value with leading 0s (zeros).
      *                                If places is not an integer, it is truncated.
      *                                If places is nonnumeric, BIN2OCT returns the #VALUE! error value.
      *                                If places is negative, BIN2OCT returns the #NUM! error value.
+     *
      * @return    string
      */
     public static function BINTOOCT( $x, $places = NULL )
@@ -1691,8 +1707,9 @@ class PHPExcel_Calculation_Engineering
      *        DEC2BIN(x[,places])
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string  $x The decimal integer you want to convert. If number is negative,
+     * @category  Engineering Functions
+     *
+     * @param    string  $x           The decimal integer you want to convert. If number is negative,
      *                                valid place values are ignored and DEC2BIN returns a 10-character
      *                                (10-bit) binary number in which the most significant bit is the sign
      *                                bit. The remaining 9 bits are magnitude bits. Negative numbers are
@@ -1702,12 +1719,13 @@ class PHPExcel_Calculation_Engineering
      *                                If number is nonnumeric, DEC2BIN returns the #VALUE! error value.
      *                                If DEC2BIN requires more than places characters, it returns the #NUM!
      *                                error value.
-     * @param    integer $places The number of characters to use. If places is omitted, DEC2BIN uses
+     * @param    integer $places      The number of characters to use. If places is omitted, DEC2BIN uses
      *                                the minimum number of characters necessary. Places is useful for
      *                                padding the return value with leading 0s (zeros).
      *                                If places is not an integer, it is truncated.
      *                                If places is nonnumeric, DEC2BIN returns the #VALUE! error value.
      *                                If places is zero or negative, DEC2BIN returns the #NUM! error value.
+     *
      * @return    string
      */
     public static function DECTOBIN( $x, $places = NULL )
@@ -1751,8 +1769,9 @@ class PHPExcel_Calculation_Engineering
      *        DEC2HEX(x[,places])
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string  $x The decimal integer you want to convert. If number is negative,
+     * @category  Engineering Functions
+     *
+     * @param    string  $x           The decimal integer you want to convert. If number is negative,
      *                                places is ignored and DEC2HEX returns a 10-character (40-bit)
      *                                hexadecimal number in which the most significant bit is the sign
      *                                bit. The remaining 39 bits are magnitude bits. Negative numbers
@@ -1762,12 +1781,13 @@ class PHPExcel_Calculation_Engineering
      *                                If number is nonnumeric, DEC2HEX returns the #VALUE! error value.
      *                                If DEC2HEX requires more than places characters, it returns the
      *                                #NUM! error value.
-     * @param    integer $places The number of characters to use. If places is omitted, DEC2HEX uses
+     * @param    integer $places      The number of characters to use. If places is omitted, DEC2HEX uses
      *                                the minimum number of characters necessary. Places is useful for
      *                                padding the return value with leading 0s (zeros).
      *                                If places is not an integer, it is truncated.
      *                                If places is nonnumeric, DEC2HEX returns the #VALUE! error value.
      *                                If places is zero or negative, DEC2HEX returns the #NUM! error value.
+     *
      * @return    string
      */
     public static function DECTOHEX( $x, $places = NULL )
@@ -1809,8 +1829,9 @@ class PHPExcel_Calculation_Engineering
      *        DEC2OCT(x[,places])
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string  $x The decimal integer you want to convert. If number is negative,
+     * @category  Engineering Functions
+     *
+     * @param    string  $x           The decimal integer you want to convert. If number is negative,
      *                                places is ignored and DEC2OCT returns a 10-character (30-bit)
      *                                octal number in which the most significant bit is the sign bit.
      *                                The remaining 29 bits are magnitude bits. Negative numbers are
@@ -1820,12 +1841,13 @@ class PHPExcel_Calculation_Engineering
      *                                If number is nonnumeric, DEC2OCT returns the #VALUE! error value.
      *                                If DEC2OCT requires more than places characters, it returns the
      *                                #NUM! error value.
-     * @param    integer $places The number of characters to use. If places is omitted, DEC2OCT uses
+     * @param    integer $places      The number of characters to use. If places is omitted, DEC2OCT uses
      *                                the minimum number of characters necessary. Places is useful for
      *                                padding the return value with leading 0s (zeros).
      *                                If places is not an integer, it is truncated.
      *                                If places is nonnumeric, DEC2OCT returns the #VALUE! error value.
      *                                If places is zero or negative, DEC2OCT returns the #NUM! error value.
+     *
      * @return    string
      */
     public static function DECTOOCT( $x, $places = NULL )
@@ -1867,8 +1889,9 @@ class PHPExcel_Calculation_Engineering
      *        HEX2BIN(x[,places])
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string  $x the hexadecimal number you want to convert. Number cannot
+     * @category  Engineering Functions
+     *
+     * @param    string  $x               the hexadecimal number you want to convert. Number cannot
      *                                    contain more than 10 characters. The most significant bit of
      *                                    number is the sign bit (40th bit from the right). The remaining
      *                                    9 bits are magnitude bits. Negative numbers are represented
@@ -1881,12 +1904,13 @@ class PHPExcel_Calculation_Engineering
      *                                    the #NUM! error value.
      *                                    If HEX2BIN requires more than places characters, it returns
      *                                    the #NUM! error value.
-     * @param    integer $places The number of characters to use. If places is omitted,
+     * @param    integer $places          The number of characters to use. If places is omitted,
      *                                    HEX2BIN uses the minimum number of characters necessary. Places
      *                                    is useful for padding the return value with leading 0s (zeros).
      *                                    If places is not an integer, it is truncated.
      *                                    If places is nonnumeric, HEX2BIN returns the #VALUE! error value.
      *                                    If places is negative, HEX2BIN returns the #NUM! error value.
+     *
      * @return    string
      */
     public static function HEXTOBIN( $x, $places = NULL )
@@ -1917,14 +1941,16 @@ class PHPExcel_Calculation_Engineering
      *        HEX2DEC(x)
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string $x The hexadecimal number you want to convert. This number cannot
+     * @category  Engineering Functions
+     *
+     * @param    string $x            The hexadecimal number you want to convert. This number cannot
      *                                contain more than 10 characters (40 bits). The most significant
      *                                bit of number is the sign bit. The remaining 39 bits are magnitude
      *                                bits. Negative numbers are represented using two's-complement
      *                                notation.
      *                                If number is not a valid hexadecimal number, HEX2DEC returns the
      *                                #NUM! error value.
+     *
      * @return    string
      */
     public static function HEXTODEC( $x )
@@ -1953,8 +1979,9 @@ class PHPExcel_Calculation_Engineering
      *        HEX2OCT(x[,places])
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string  $x The hexadecimal number you want to convert. Number cannot
+     * @category  Engineering Functions
+     *
+     * @param    string  $x               The hexadecimal number you want to convert. Number cannot
      *                                    contain more than 10 characters. The most significant bit of
      *                                    number is the sign bit. The remaining 39 bits are magnitude
      *                                    bits. Negative numbers are represented using two's-complement
@@ -1967,13 +1994,14 @@ class PHPExcel_Calculation_Engineering
      *                                    the #NUM! error value.
      *                                    If HEX2OCT requires more than places characters, it returns
      *                                    the #NUM! error value.
-     * @param    integer $places The number of characters to use. If places is omitted, HEX2OCT
+     * @param    integer $places          The number of characters to use. If places is omitted, HEX2OCT
      *                                    uses the minimum number of characters necessary. Places is
      *                                    useful for padding the return value with leading 0s (zeros).
      *                                    If places is not an integer, it is truncated.
      *                                    If places is nonnumeric, HEX2OCT returns the #VALUE! error
      *                                    value.
      *                                    If places is negative, HEX2OCT returns the #NUM! error value.
+     *
      * @return    string
      */
     public static function HEXTOOCT( $x, $places = NULL )
@@ -2004,8 +2032,9 @@ class PHPExcel_Calculation_Engineering
      *        OCT2BIN(x[,places])
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string  $x The octal number you want to convert. Number may not
+     * @category  Engineering Functions
+     *
+     * @param    string  $x               The octal number you want to convert. Number may not
      *                                    contain more than 10 characters. The most significant
      *                                    bit of number is the sign bit. The remaining 29 bits
      *                                    are magnitude bits. Negative numbers are represented
@@ -2018,7 +2047,7 @@ class PHPExcel_Calculation_Engineering
      *                                    the #NUM! error value.
      *                                    If OCT2BIN requires more than places characters, it
      *                                    returns the #NUM! error value.
-     * @param    integer $places The number of characters to use. If places is omitted,
+     * @param    integer $places          The number of characters to use. If places is omitted,
      *                                    OCT2BIN uses the minimum number of characters necessary.
      *                                    Places is useful for padding the return value with
      *                                    leading 0s (zeros).
@@ -2027,6 +2056,7 @@ class PHPExcel_Calculation_Engineering
      *                                    error value.
      *                                    If places is negative, OCT2BIN returns the #NUM! error
      *                                    value.
+     *
      * @return    string
      */
     public static function OCTTOBIN( $x, $places = NULL )
@@ -2057,14 +2087,16 @@ class PHPExcel_Calculation_Engineering
      *        OCT2DEC(x)
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string $x The octal number you want to convert. Number may not contain
+     * @category  Engineering Functions
+     *
+     * @param    string $x            The octal number you want to convert. Number may not contain
      *                                more than 10 octal characters (30 bits). The most significant
      *                                bit of number is the sign bit. The remaining 29 bits are
      *                                magnitude bits. Negative numbers are represented using
      *                                two's-complement notation.
      *                                If number is not a valid octal number, OCT2DEC returns the
      *                                #NUM! error value.
+     *
      * @return    string
      */
     public static function OCTTODEC( $x )
@@ -2093,8 +2125,9 @@ class PHPExcel_Calculation_Engineering
      *        OCT2HEX(x[,places])
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string  $x The octal number you want to convert. Number may not contain
+     * @category  Engineering Functions
+     *
+     * @param    string  $x               The octal number you want to convert. Number may not contain
      *                                    more than 10 octal characters (30 bits). The most significant
      *                                    bit of number is the sign bit. The remaining 29 bits are
      *                                    magnitude bits. Negative numbers are represented using
@@ -2105,12 +2138,13 @@ class PHPExcel_Calculation_Engineering
      *                                    #NUM! error value.
      *                                    If OCT2HEX requires more than places characters, it returns
      *                                    the #NUM! error value.
-     * @param    integer $places The number of characters to use. If places is omitted, OCT2HEX
+     * @param    integer $places          The number of characters to use. If places is omitted, OCT2HEX
      *                                    uses the minimum number of characters necessary. Places is useful
      *                                    for padding the return value with leading 0s (zeros).
      *                                    If places is not an integer, it is truncated.
      *                                    If places is nonnumeric, OCT2HEX returns the #VALUE! error value.
      *                                    If places is negative, OCT2HEX returns the #NUM! error value.
+     *
      * @return    string
      */
     public static function OCTTOHEX( $x, $places = NULL )
@@ -2141,11 +2175,13 @@ class PHPExcel_Calculation_Engineering
      *        COMPLEX(realNumber,imaginary[,places])
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    float  $realNumber The real coefficient of the complex number.
-     * @param    float  $imaginary The imaginary coefficient of the complex number.
-     * @param    string $suffix The suffix for the imaginary component of the complex number.
+     * @category  Engineering Functions
+     *
+     * @param    float  $realNumber           The real coefficient of the complex number.
+     * @param    float  $imaginary            The imaginary coefficient of the complex number.
+     * @param    string $suffix               The suffix for the imaginary component of the complex number.
      *                                        If omitted, the suffix is assumed to be "i".
+     *
      * @return    string
      */
     public static function COMPLEX( $realNumber = 0.0, $imaginary = 0.0, $suffix = 'i' )
@@ -2202,9 +2238,11 @@ class PHPExcel_Calculation_Engineering
      *        IMAGINARY(complexNumber)
      *
      * @access    public
-     * @category Engineering Functions
-     * @param    string $complexNumber The complex number for which you want the imaginary
+     * @category  Engineering Functions
+     *
+     * @param    string $complexNumber        The complex number for which you want the imaginary
      *                                        coefficient.
+     *
      * @return    float
      */
     public static function IMAGINARY( $complexNumber )
@@ -2227,8 +2265,10 @@ class PHPExcel_Calculation_Engineering
      *        IMREAL(complexNumber)
      *
      * @access    public
-     * @category Engineering Functions
+     * @category  Engineering Functions
+     *
      * @param    string $complexNumber The complex number for which you want the real coefficient.
+     *
      * @return    float
      */
     public static function IMREAL( $complexNumber )
@@ -2251,6 +2291,7 @@ class PHPExcel_Calculation_Engineering
      *        IMABS(complexNumber)
      *
      * @param    string $complexNumber The complex number for which you want the absolute value.
+     *
      * @return    float
      */
     public static function IMABS( $complexNumber )
@@ -2260,8 +2301,7 @@ class PHPExcel_Calculation_Engineering
         $parsedComplex = self::_parseComplex( $complexNumber );
         
         return sqrt( ( $parsedComplex[ 'real' ] * $parsedComplex[ 'real' ] ) +
-                     ( $parsedComplex[ 'imaginary' ] * $parsedComplex[ 'imaginary' ] )
-        );
+                     ( $parsedComplex[ 'imaginary' ] * $parsedComplex[ 'imaginary' ] ) );
     }
     
     //	function IMABS()
@@ -2276,6 +2316,7 @@ class PHPExcel_Calculation_Engineering
      *        IMARGUMENT(complexNumber)
      *
      * @param    string $complexNumber The complex number for which you want the argument theta.
+     *
      * @return    float
      */
     public static function IMARGUMENT( $complexNumber )
@@ -2312,6 +2353,7 @@ class PHPExcel_Calculation_Engineering
      *        IMCONJUGATE(complexNumber)
      *
      * @param    string $complexNumber The complex number for which you want the conjugate.
+     *
      * @return    string
      */
     public static function IMCONJUGATE( $complexNumber )
@@ -2324,9 +2366,7 @@ class PHPExcel_Calculation_Engineering
             return $parsedComplex[ 'real' ];
         } else {
             return self::_cleanComplex( self::COMPLEX( $parsedComplex[ 'real' ], 0 - $parsedComplex[ 'imaginary' ],
-                                                       $parsedComplex[ 'suffix' ]
-            )
-            );
+                                                       $parsedComplex[ 'suffix' ] ) );
         }
     }
     
@@ -2341,6 +2381,7 @@ class PHPExcel_Calculation_Engineering
      *        IMCOS(complexNumber)
      *
      * @param    string $complexNumber The complex number for which you want the cosine.
+     *
      * @return    string|float
      */
     public static function IMCOS( $complexNumber )
@@ -2355,9 +2396,8 @@ class PHPExcel_Calculation_Engineering
             return self::IMCONJUGATE( self::COMPLEX( cos( $parsedComplex[ 'real' ] ) *
                                                      cosh( $parsedComplex[ 'imaginary' ] ),
                                                      sin( $parsedComplex[ 'real' ] ) *
-                                                     sinh( $parsedComplex[ 'imaginary' ] ), $parsedComplex[ 'suffix' ]
-            )
-            );
+                                                     sinh( $parsedComplex[ 'imaginary' ] ),
+                                                     $parsedComplex[ 'suffix' ] ) );
         }
     }
     
@@ -2372,6 +2412,7 @@ class PHPExcel_Calculation_Engineering
      *        IMSIN(complexNumber)
      *
      * @param    string $complexNumber The complex number for which you want the sine.
+     *
      * @return    string|float
      */
     public static function IMSIN( $complexNumber )
@@ -2385,8 +2426,7 @@ class PHPExcel_Calculation_Engineering
         } else {
             return self::COMPLEX( sin( $parsedComplex[ 'real' ] ) * cosh( $parsedComplex[ 'imaginary' ] ),
                                   cos( $parsedComplex[ 'real' ] ) * sinh( $parsedComplex[ 'imaginary' ] ),
-                                  $parsedComplex[ 'suffix' ]
-            );
+                                  $parsedComplex[ 'suffix' ] );
         }
     }
     
@@ -2401,6 +2441,7 @@ class PHPExcel_Calculation_Engineering
      *        IMSQRT(complexNumber)
      *
      * @param    string $complexNumber The complex number for which you want the square root.
+     *
      * @return    string
      */
     public static function IMSQRT( $complexNumber )
@@ -2413,9 +2454,7 @@ class PHPExcel_Calculation_Engineering
         $d1 = cos( $theta / 2 );
         $d2 = sin( $theta / 2 );
         $r = sqrt( sqrt( ( $parsedComplex[ 'real' ] * $parsedComplex[ 'real' ] ) +
-                         ( $parsedComplex[ 'imaginary' ] * $parsedComplex[ 'imaginary' ] )
-                   )
-        );
+                         ( $parsedComplex[ 'imaginary' ] * $parsedComplex[ 'imaginary' ] ) ) );
         
         if ( $parsedComplex[ 'suffix' ] == '' ) {
             return self::COMPLEX( $d1 * $r, $d2 * $r );
@@ -2435,6 +2474,7 @@ class PHPExcel_Calculation_Engineering
      *        IMLN(complexNumber)
      *
      * @param    string $complexNumber The complex number for which you want the natural logarithm.
+     *
      * @return    string
      */
     public static function IMLN( $complexNumber )
@@ -2448,9 +2488,7 @@ class PHPExcel_Calculation_Engineering
         }
         
         $logR = log( sqrt( ( $parsedComplex[ 'real' ] * $parsedComplex[ 'real' ] ) +
-                           ( $parsedComplex[ 'imaginary' ] * $parsedComplex[ 'imaginary' ] )
-                     )
-        );
+                           ( $parsedComplex[ 'imaginary' ] * $parsedComplex[ 'imaginary' ] ) ) );
         $t = self::IMARGUMENT( $complexNumber );
         
         if ( $parsedComplex[ 'suffix' ] == '' ) {
@@ -2471,6 +2509,7 @@ class PHPExcel_Calculation_Engineering
      *        IMLOG10(complexNumber)
      *
      * @param    string $complexNumber The complex number for which you want the common logarithm.
+     *
      * @return    string
      */
     public static function IMLOG10( $complexNumber )
@@ -2499,6 +2538,7 @@ class PHPExcel_Calculation_Engineering
      *        IMLOG2(complexNumber)
      *
      * @param    string $complexNumber The complex number for which you want the base-2 logarithm.
+     *
      * @return    string
      */
     public static function IMLOG2( $complexNumber )
@@ -2527,6 +2567,7 @@ class PHPExcel_Calculation_Engineering
      *        IMEXP(complexNumber)
      *
      * @param    string $complexNumber The complex number for which you want the exponential.
+     *
      * @return    string
      */
     public static function IMEXP( $complexNumber )
@@ -2561,7 +2602,8 @@ class PHPExcel_Calculation_Engineering
      *        IMPOWER(complexNumber,realNumber)
      *
      * @param    string $complexNumber The complex number you want to raise to a power.
-     * @param    float  $realNumber The power to which you want to raise the complex number.
+     * @param    float  $realNumber    The power to which you want to raise the complex number.
+     *
      * @return    string
      */
     public static function IMPOWER( $complexNumber, $realNumber )
@@ -2576,8 +2618,7 @@ class PHPExcel_Calculation_Engineering
         $parsedComplex = self::_parseComplex( $complexNumber );
         
         $r = sqrt( ( $parsedComplex[ 'real' ] * $parsedComplex[ 'real' ] ) +
-                   ( $parsedComplex[ 'imaginary' ] * $parsedComplex[ 'imaginary' ] )
-        );
+                   ( $parsedComplex[ 'imaginary' ] * $parsedComplex[ 'imaginary' ] ) );
         $rPower = pow( $r, $realNumber );
         $theta = self::IMARGUMENT( $complexNumber ) * $realNumber;
         if ( $theta == 0 ) {
@@ -2600,7 +2641,8 @@ class PHPExcel_Calculation_Engineering
      *        IMDIV(complexDividend,complexDivisor)
      *
      * @param    string $complexDividend The complex numerator or dividend.
-     * @param    string $complexDivisor The complex denominator or divisor.
+     * @param    string $complexDivisor  The complex denominator or divisor.
+     *
      * @return    string
      */
     public static function IMDIV( $complexDividend, $complexDivisor )
@@ -2651,6 +2693,7 @@ class PHPExcel_Calculation_Engineering
      *
      * @param    string $complexNumber1 The complex number from which to subtract complexNumber2.
      * @param    string $complexNumber2 The complex number to subtract from complexNumber1.
+     *
      * @return    string
      */
     public static function IMSUB( $complexNumber1, $complexNumber2 )
@@ -2686,6 +2729,7 @@ class PHPExcel_Calculation_Engineering
      *        IMSUM(complexNumber[,complexNumber[,...]])
      *
      * @param    string $complexNumber,... Series of complex numbers to add
+     *
      * @return    string
      */
     public static function IMSUM()
@@ -2727,6 +2771,7 @@ class PHPExcel_Calculation_Engineering
      *        IMPRODUCT(complexNumber[,complexNumber[,...]])
      *
      * @param    string $complexNumber,... Series of complex numbers to multiply
+     *
      * @return    string
      */
     public static function IMPRODUCT()
@@ -2774,6 +2819,7 @@ class PHPExcel_Calculation_Engineering
      *
      * @param    float $a The first number.
      * @param    float $b The second number. If omitted, b is assumed to be zero.
+     *
      * @return    int
      */
     public static function DELTA( $a, $b = 0 )
@@ -2796,9 +2842,10 @@ class PHPExcel_Calculation_Engineering
      *    Use this function to filter a set of values. For example, by summing several GESTEP
      *    functions you calculate the count of values that exceed a threshold.
      *
-     * @param    float $number The value to test against step.
-     * @param    float $step The threshold value.
+     * @param    float $number            The value to test against step.
+     * @param    float $step              The threshold value.
      *                                    If you omit a value for step, GESTEP uses zero.
+     *
      * @return    int
      */
     public static function GESTEP( $number, $step = 0 )
@@ -2853,9 +2900,10 @@ class PHPExcel_Calculation_Engineering
      *    Excel Function:
      *        ERF(lower[,upper])
      *
-     * @param    float $lower lower bound for integrating ERF
-     * @param    float $upper upper bound for integrating ERF.
+     * @param    float $lower         lower bound for integrating ERF
+     * @param    float $upper         upper bound for integrating ERF.
      *                                If omitted, ERF integrates between zero and lower_limit
+     *
      * @return    float
      */
     public static function ERF( $lower, $upper = NULL )
@@ -2925,6 +2973,7 @@ class PHPExcel_Calculation_Engineering
      *        ERFC(x)
      *
      * @param    float $x The lower bound for integrating ERFC
+     *
      * @return    float
      */
     public static function ERFC( $x )
@@ -2963,6 +3012,7 @@ class PHPExcel_Calculation_Engineering
      *    Returns an array of units of measure, for a specified conversion group, or for all groups
      *
      * @param    string $group The group whose units of measure you want to retrieve
+     *
      * @return    array
      */
     public static function getConversionGroupUnits( $group = NULL )
@@ -2983,6 +3033,7 @@ class PHPExcel_Calculation_Engineering
      *    getConversionGroupUnitDetails
      *
      * @param    string $group The group whose units of measure you want to retrieve
+     *
      * @return    array
      */
     public static function getConversionGroupUnitDetails( $group = NULL )
@@ -3025,9 +3076,9 @@ class PHPExcel_Calculation_Engineering
      *    Excel Function:
      *        CONVERT(value,fromUOM,toUOM)
      *
-     * @param    float  $value The value in fromUOM to convert.
+     * @param    float  $value   The value in fromUOM to convert.
      * @param    string $fromUOM The units for value.
-     * @param    string $toUOM The units for the result.
+     * @param    string $toUOM   The units for the result.
      *
      * @return    float
      */

@@ -38,6 +38,7 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
     
     /**
      * Map of Major fonts to write
+     *
      * @static    array of string
      *
      */
@@ -76,6 +77,7 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
     
     /**
      * Map of Minor fonts to write
+     *
      * @static    array of string
      *
      */
@@ -114,6 +116,7 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
     
     /**
      * Map of core colours
+     *
      * @static    array of string
      *
      */
@@ -134,6 +137,7 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
      * Write theme to XML format
      *
      * @param    PHPExcel $pPHPExcel
+     *
      * @return    string        XML Output
      * @throws    PHPExcel_Writer_Exception
      */
@@ -146,8 +150,7 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
         ) {
             $objWriter = new PHPExcel_Shared_XMLWriter( PHPExcel_Shared_XMLWriter::STORAGE_DISK,
                                                         $this->getParentWriter()
-                                                             ->getDiskCachingDirectory()
-            );
+                                                             ->getDiskCachingDirectory() );
         } else {
             $objWriter = new PHPExcel_Shared_XMLWriter( PHPExcel_Shared_XMLWriter::STORAGE_MEMORY );
         }
@@ -824,6 +827,7 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
      * @param    PHPExcel_Shared_XMLWriter $objWriter
      * @param    string                    $latinFont
      * @param                              array of string                $fontSet
+     *
      * @return    string                        XML Output
      * @throws    PHPExcel_Writer_Exception
      */
@@ -856,6 +860,7 @@ class PHPExcel_Writer_Excel2007_Theme extends PHPExcel_Writer_Excel2007_WriterPa
      * Write colour scheme to XML format
      *
      * @param    PHPExcel_Shared_XMLWriter $objWriter
+     *
      * @return    string                        XML Output
      * @throws    PHPExcel_Writer_Exception
      */

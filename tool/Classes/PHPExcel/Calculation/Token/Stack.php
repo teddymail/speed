@@ -29,9 +29,9 @@
 /**
  * PHPExcel_Calculation_Token_Stack
  *
- * @category    PHPExcel_Calculation_Token_Stack
+ * @category       PHPExcel_Calculation_Token_Stack
  * @package        PHPExcel_Calculation
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Calculation_Token_Stack
 {
@@ -106,6 +106,7 @@ class PHPExcel_Calculation_Token_Stack
      * Return an entry from the stack without removing it
      *
      * @param   integer $n number indicating how far back in the stack we want to look
+     *
      * @return  mixed
      */
     public function last( $n = 1 )

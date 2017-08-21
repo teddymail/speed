@@ -112,7 +112,7 @@ interface QueryInterface
     function delete( $deleteSql, $bindValues );
     
     /**
-     * @param string $insertTable The Table which you want insert data into
+     * @param string $insertTable  The Table which you want insert data into
      * @param array  $insertFields The data fields
      * @param array  $insertArrays The corresponding value with the data fields
      *

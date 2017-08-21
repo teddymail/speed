@@ -19,9 +19,9 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Chart_Renderer
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license        http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
  * @version        1.8.0, 2014-03-02
  */
@@ -30,9 +30,9 @@ require_once( PHPExcel_Settings::getChartRendererPath() . '/jpgraph.php' );
 /**
  * PHPExcel_Chart_Renderer_jpgraph
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Chart_Renderer
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Chart_Renderer_jpgraph
 {
@@ -308,8 +308,7 @@ class PHPExcel_Chart_Renderer_jpgraph
         $labelCount = count( $this->_chart->getPlotArea()
                                           ->getPlotGroupByIndex( $groupID )
                                           ->getPlotValuesByIndex( 0 )
-                                          ->getPointCount()
-        );
+                                          ->getPointCount() );
         if ( $labelCount > 0 ) {
             $datasetLabels = $this->_chart->getPlotArea()
                                           ->getPlotGroupByIndex( $groupID )
@@ -400,8 +399,7 @@ class PHPExcel_Chart_Renderer_jpgraph
         $labelCount = count( $this->_chart->getPlotArea()
                                           ->getPlotGroupByIndex( $groupID )
                                           ->getPlotValuesByIndex( 0 )
-                                          ->getPointCount()
-        );
+                                          ->getPointCount() );
         if ( $labelCount > 0 ) {
             $datasetLabels = $this->_chart->getPlotArea()
                                           ->getPlotGroupByIndex( $groupID )
@@ -682,8 +680,7 @@ class PHPExcel_Chart_Renderer_jpgraph
         $labelCount = count( $this->_chart->getPlotArea()
                                           ->getPlotGroupByIndex( $groupID )
                                           ->getPlotValuesByIndex( 0 )
-                                          ->getPointCount()
-        );
+                                          ->getPointCount() );
         if ( $labelCount > 0 ) {
             $datasetLabels = $this->_chart->getPlotArea()
                                           ->getPlotGroupByIndex( $groupID )
@@ -789,8 +786,7 @@ class PHPExcel_Chart_Renderer_jpgraph
                 $labelCount = count( $this->_chart->getPlotArea()
                                                   ->getPlotGroupByIndex( $groupID )
                                                   ->getPlotValuesByIndex( 0 )
-                                                  ->getPointCount()
-                );
+                                                  ->getPointCount() );
                 if ( $labelCount > 0 ) {
                     $datasetLabels = $this->_chart->getPlotArea()
                                                   ->getPlotGroupByIndex( $groupID )

@@ -19,9 +19,9 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Calculation
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license        http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
  * @version        1.8.0, 2014-03-02
  */
@@ -37,9 +37,9 @@ if ( !defined( 'PHPEXCEL_ROOT' ) ) {
 /**
  * PHPExcel_Calculation_Database
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Calculation
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Calculation_Database
 {
@@ -50,15 +50,17 @@ class PHPExcel_Calculation_Database
      * Extracts the column ID to use for the data field.
      *
      * @access    private
-     * @param    mixed[] $database The range of cells that makes up the list or database.
+     *
+     * @param    mixed[] $database            The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    mixed   $field Indicates which column is used in the function. Enter the
+     * @param    mixed   $field               Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
+     *
      * @return    string|NULL
      *
      */
@@ -84,15 +86,17 @@ class PHPExcel_Calculation_Database
      * returns that subset of rows.
      *
      * @access    private
-     * @param    mixed[] $database The range of cells that makes up the list or database.
+     *
+     * @param    mixed[] $database            The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    mixed[] $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[] $criteria            The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    array of mixed
      *
      */
@@ -164,21 +168,23 @@ class PHPExcel_Calculation_Database
      *        DAVERAGE(database,field,criteria)
      *
      * @access    public
-     * @category Database Functions
-     * @param    mixed[]        $database The range of cells that makes up the list or database.
+     * @category  Database Functions
+     *
+     * @param    mixed[]        $database     The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    string|integer $field Indicates which column is used in the function. Enter the
+     * @param    string|integer $field        Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
-     * @param    mixed[]        $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[]        $criteria     The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    float
      *
      */
@@ -215,24 +221,26 @@ class PHPExcel_Calculation_Database
      *        DAVERAGE(database,field,criteria)
      *
      * @access    public
-     * @category Database Functions
-     * @param    mixed[]        $database The range of cells that makes up the list or database.
+     * @category  Database Functions
+     *
+     * @param    mixed[]        $database     The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    string|integer $field Indicates which column is used in the function. Enter the
+     * @param    string|integer $field        Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
-     * @param    mixed[]        $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[]        $criteria     The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    integer
      *
-     * @TODO    The field argument is optional. If field is omitted, DCOUNT counts all records in the
+     * @TODO      The field argument is optional. If field is omitted, DCOUNT counts all records in the
      *            database that match the criteria.
      *
      */
@@ -266,24 +274,26 @@ class PHPExcel_Calculation_Database
      *        DCOUNTA(database,[field],criteria)
      *
      * @access    public
-     * @category Database Functions
-     * @param    mixed[]        $database The range of cells that makes up the list or database.
+     * @category  Database Functions
+     *
+     * @param    mixed[]        $database     The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    string|integer $field Indicates which column is used in the function. Enter the
+     * @param    string|integer $field        Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
-     * @param    mixed[]        $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[]        $criteria     The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    integer
      *
-     * @TODO    The field argument is optional. If field is omitted, DCOUNTA counts all records in the
+     * @TODO      The field argument is optional. If field is omitted, DCOUNTA counts all records in the
      *            database that match the criteria.
      *
      */
@@ -318,21 +328,23 @@ class PHPExcel_Calculation_Database
      *        DGET(database,field,criteria)
      *
      * @access    public
-     * @category Database Functions
-     * @param    mixed[]        $database The range of cells that makes up the list or database.
+     * @category  Database Functions
+     *
+     * @param    mixed[]        $database     The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    string|integer $field Indicates which column is used in the function. Enter the
+     * @param    string|integer $field        Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
-     * @param    mixed[]        $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[]        $criteria     The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    mixed
      *
      */
@@ -371,21 +383,23 @@ class PHPExcel_Calculation_Database
      *        DMAX(database,field,criteria)
      *
      * @access    public
-     * @category Database Functions
-     * @param    mixed[]        $database The range of cells that makes up the list or database.
+     * @category  Database Functions
+     *
+     * @param    mixed[]        $database     The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    string|integer $field Indicates which column is used in the function. Enter the
+     * @param    string|integer $field        Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
-     * @param    mixed[]        $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[]        $criteria     The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    float
      *
      */
@@ -420,21 +434,23 @@ class PHPExcel_Calculation_Database
      *        DMIN(database,field,criteria)
      *
      * @access    public
-     * @category Database Functions
-     * @param    mixed[]        $database The range of cells that makes up the list or database.
+     * @category  Database Functions
+     *
+     * @param    mixed[]        $database     The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    string|integer $field Indicates which column is used in the function. Enter the
+     * @param    string|integer $field        Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
-     * @param    mixed[]        $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[]        $criteria     The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    float
      *
      */
@@ -468,21 +484,23 @@ class PHPExcel_Calculation_Database
      *        DPRODUCT(database,field,criteria)
      *
      * @access    public
-     * @category Database Functions
-     * @param    mixed[]        $database The range of cells that makes up the list or database.
+     * @category  Database Functions
+     *
+     * @param    mixed[]        $database     The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    string|integer $field Indicates which column is used in the function. Enter the
+     * @param    string|integer $field        Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
-     * @param    mixed[]        $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[]        $criteria     The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    float
      *
      */
@@ -517,21 +535,23 @@ class PHPExcel_Calculation_Database
      *        DSTDEV(database,field,criteria)
      *
      * @access    public
-     * @category Database Functions
-     * @param    mixed[]        $database The range of cells that makes up the list or database.
+     * @category  Database Functions
+     *
+     * @param    mixed[]        $database     The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    string|integer $field Indicates which column is used in the function. Enter the
+     * @param    string|integer $field        Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
-     * @param    mixed[]        $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[]        $criteria     The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    float
      *
      */
@@ -566,21 +586,23 @@ class PHPExcel_Calculation_Database
      *        DSTDEVP(database,field,criteria)
      *
      * @access    public
-     * @category Database Functions
-     * @param    mixed[]        $database The range of cells that makes up the list or database.
+     * @category  Database Functions
+     *
+     * @param    mixed[]        $database     The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    string|integer $field Indicates which column is used in the function. Enter the
+     * @param    string|integer $field        Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
-     * @param    mixed[]        $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[]        $criteria     The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    float
      *
      */
@@ -614,21 +636,23 @@ class PHPExcel_Calculation_Database
      *        DSUM(database,field,criteria)
      *
      * @access    public
-     * @category Database Functions
-     * @param    mixed[]        $database The range of cells that makes up the list or database.
+     * @category  Database Functions
+     *
+     * @param    mixed[]        $database     The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    string|integer $field Indicates which column is used in the function. Enter the
+     * @param    string|integer $field        Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
-     * @param    mixed[]        $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[]        $criteria     The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    float
      *
      */
@@ -663,21 +687,23 @@ class PHPExcel_Calculation_Database
      *        DVAR(database,field,criteria)
      *
      * @access    public
-     * @category Database Functions
-     * @param    mixed[]        $database The range of cells that makes up the list or database.
+     * @category  Database Functions
+     *
+     * @param    mixed[]        $database     The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    string|integer $field Indicates which column is used in the function. Enter the
+     * @param    string|integer $field        Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
-     * @param    mixed[]        $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[]        $criteria     The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    float
      *
      */
@@ -712,21 +738,23 @@ class PHPExcel_Calculation_Database
      *        DVARP(database,field,criteria)
      *
      * @access    public
-     * @category Database Functions
-     * @param    mixed[]        $database The range of cells that makes up the list or database.
+     * @category  Database Functions
+     *
+     * @param    mixed[]        $database     The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param    string|integer $field Indicates which column is used in the function. Enter the
+     * @param    string|integer $field        Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
      *                                        the first column, 2 for the second column, and so on.
-     * @param    mixed[]        $criteria The range of cells that contains the conditions you specify.
+     * @param    mixed[]        $criteria     The range of cells that contains the conditions you specify.
      *                                        You can use any range for the criteria argument, as long as it
      *                                        includes at least one column label and at least one cell below
      *                                        the column label in which you specify a condition for the
      *                                        column.
+     *
      * @return    float
      *
      */

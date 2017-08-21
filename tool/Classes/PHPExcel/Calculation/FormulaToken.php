@@ -57,6 +57,7 @@
  */
 class PHPExcel_Calculation_FormulaToken
 {
+    
     /* Token types */
     
     const TOKEN_TYPE_NOOP            = 'Noop';
@@ -109,10 +110,11 @@ class PHPExcel_Calculation_FormulaToken
      * Create a new PHPExcel_Calculation_FormulaToken
      *
      * @param string $pValue
-     * @param string $pTokenType Token type (represented by TOKEN_TYPE_*)
+     * @param string $pTokenType    Token type (represented by TOKEN_TYPE_*)
      * @param string $pTokenSubType Token Subtype (represented by TOKEN_SUBTYPE_*)
      */
-    public function __construct( $pValue, $pTokenType = PHPExcel_Calculation_FormulaToken::TOKEN_TYPE_UNKNOWN, $pTokenSubType = PHPExcel_Calculation_FormulaToken::TOKEN_SUBTYPE_NOTHING )
+    public function __construct( $pValue, $pTokenType = PHPExcel_Calculation_FormulaToken::TOKEN_TYPE_UNKNOWN,
+        $pTokenSubType = PHPExcel_Calculation_FormulaToken::TOKEN_SUBTYPE_NOTHING )
     {
         // Initialise values
         $this->_value = $pValue;

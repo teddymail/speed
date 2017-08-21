@@ -14,11 +14,19 @@ use supjos\exception\NotFoundException;
 
 class Config extends Object
 {
+    
     /**
      * @var string $configFullName The config file's full path
      */
     private $configFullName;
     
+    /**
+     * Config constructor.
+     *
+     * @param string $configFile Which config file you want to load, and to get the config value
+     *
+     * @throws \supjos\exception\NotFoundException
+     */
     public function __construct( $configFile = '' )
     {
         if ( !empty( $configFile ) ) {

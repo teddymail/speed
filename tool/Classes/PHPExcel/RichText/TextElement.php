@@ -66,6 +66,7 @@ class PHPExcel_RichText_TextElement implements PHPExcel_RichText_ITextElement
      * Set text
      *
      * @param    $pText string    Text
+     *
      * @return PHPExcel_RichText_ITextElement
      */
     public function setText( $pText = '' )
@@ -92,8 +93,7 @@ class PHPExcel_RichText_TextElement implements PHPExcel_RichText_ITextElement
      */
     public function getHashCode()
     {
-        return md5( $this->_text . __CLASS__
-        );
+        return md5( $this->_text . __CLASS__ );
     }
     
     /**

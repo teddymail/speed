@@ -79,9 +79,11 @@ class PHPExcel_NamedRange
      * @param string                  $pRange
      * @param bool                    $pLocalOnly
      * @param PHPExcel_Worksheet|null $pScope Scope. Only applies when $pLocalOnly = true. Null for global scope.
+     *
      * @throws PHPExcel_Exception
      */
-    public function __construct( $pName = NULL, PHPExcel_Worksheet $pWorksheet, $pRange = 'A1', $pLocalOnly = FALSE, $pScope = NULL )
+    public function __construct( $pName = NULL, PHPExcel_Worksheet $pWorksheet, $pRange = 'A1', $pLocalOnly = FALSE,
+        $pScope = NULL )
     {
         // Validate data
         if ( ( $pName === NULL ) || ( $pWorksheet === NULL ) || ( $pRange === NULL ) ) {
@@ -110,6 +112,7 @@ class PHPExcel_NamedRange
      * Set name
      *
      * @param string $value
+     *
      * @return PHPExcel_NamedRange
      */
     public function setName( $value = NULL )
@@ -133,8 +136,7 @@ class PHPExcel_NamedRange
             // New title
             $newTitle = $this->_name;
             PHPExcel_ReferenceHelper::getInstance()
-                                    ->updateNamedFormulas( $this->_worksheet->getParent(), $oldTitle, $newTitle
-                                    );
+                                    ->updateNamedFormulas( $this->_worksheet->getParent(), $oldTitle, $newTitle );
         }
         
         return $this;
@@ -154,6 +156,7 @@ class PHPExcel_NamedRange
      * Set worksheet
      *
      * @param PHPExcel_Worksheet $value
+     *
      * @return PHPExcel_NamedRange
      */
     public function setWorksheet( PHPExcel_Worksheet $value = NULL )
@@ -179,6 +182,7 @@ class PHPExcel_NamedRange
      * Set range
      *
      * @param string $value
+     *
      * @return PHPExcel_NamedRange
      */
     public function setRange( $value = NULL )
@@ -204,6 +208,7 @@ class PHPExcel_NamedRange
      * Set localOnly
      *
      * @param bool $value
+     *
      * @return PHPExcel_NamedRange
      */
     public function setLocalOnly( $value = FALSE )
@@ -228,6 +233,7 @@ class PHPExcel_NamedRange
      * Set scope
      *
      * @param PHPExcel_Worksheet|null $value
+     *
      * @return PHPExcel_NamedRange
      */
     public function setScope( PHPExcel_Worksheet $value = NULL )
@@ -242,7 +248,8 @@ class PHPExcel_NamedRange
      * Resolve a named range to a regular cell range
      *
      * @param string                  $pNamedRange Named range
-     * @param PHPExcel_Worksheet|null $pSheet Scope. Use null for global scope
+     * @param PHPExcel_Worksheet|null $pSheet      Scope. Use null for global scope
+     *
      * @return PHPExcel_NamedRange
      */
     public static function resolveRange( $pNamedRange = '', PHPExcel_Worksheet $pSheet )

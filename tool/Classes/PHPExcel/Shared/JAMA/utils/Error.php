@@ -4,7 +4,7 @@
  * @package JAMA
  *
  *    Error handling
- * @author Michael Bommarito
+ * @author  Michael Bommarito
  * @version 01292005
  */
 //Language constant
@@ -66,6 +66,7 @@ $error[ 'EN' ][ RowLengthException ] = "All rows must have the same length.";
 
 /**
  *    Custom error handler
+ *
  * @param int $num Error number
  */
 function JAMAError( $errorNumber = NULL )

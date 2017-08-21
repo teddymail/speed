@@ -57,6 +57,7 @@ class PHPExcel_Writer_PDF_mPDF extends PHPExcel_Writer_PDF_Core implements PHPEx
      *  Save PHPExcel to file
      *
      * @param     string $pFilename Name of the file to save as
+     *
      * @throws    PHPExcel_Writer_Exception
      */
     public function save( $pFilename = NULL )
@@ -114,23 +115,18 @@ class PHPExcel_Writer_PDF_mPDF extends PHPExcel_Writer_PDF_Core implements PHPEx
         
         //  Document info
         $pdf->SetTitle( $this->_phpExcel->getProperties()
-                                        ->getTitle()
-        );
+                                        ->getTitle() );
         $pdf->SetAuthor( $this->_phpExcel->getProperties()
-                                         ->getCreator()
-        );
+                                         ->getCreator() );
         $pdf->SetSubject( $this->_phpExcel->getProperties()
-                                          ->getSubject()
-        );
+                                          ->getSubject() );
         $pdf->SetKeywords( $this->_phpExcel->getProperties()
-                                           ->getKeywords()
-        );
+                                           ->getKeywords() );
         $pdf->SetCreator( $this->_phpExcel->getProperties()
-                                          ->getCreator()
-        );
+                                          ->getCreator() );
         
-        $pdf->WriteHTML( $this->generateHTMLHeader( FALSE ) . $this->generateSheetData() . $this->generateHTMLFooter()
-        );
+        $pdf->WriteHTML( $this->generateHTMLHeader( FALSE ) . $this->generateSheetData() .
+                         $this->generateHTMLFooter() );
         
         //  Write to file
         fwrite( $fileHandle, $pdf->Output( '', 'S' ) );

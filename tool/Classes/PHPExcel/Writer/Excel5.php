@@ -115,6 +115,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
      * Save PHPExcel to file
      *
      * @param    string $pFilename
+     *
      * @throws    PHPExcel_Writer_Exception
      */
     public function save( $pFilename = NULL )
@@ -138,8 +139,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
         // Initialise workbook writer
         $this->_writerWorkbook =
             new PHPExcel_Writer_Excel5_Workbook( $this->_phpExcel, $this->_str_total, $this->_str_unique,
-                                                 $this->_str_table, $this->_colors, $this->_parser
-            );
+                                                 $this->_str_table, $this->_colors, $this->_parser );
         
         // Initialise worksheet writers
         $countSheets = $this->_phpExcel->getSheetCount();
@@ -147,8 +147,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
             $this->_writerWorksheets[ $i ] =
                 new PHPExcel_Writer_Excel5_Worksheet( $this->_str_total, $this->_str_unique, $this->_str_table,
                                                       $this->_colors, $this->_parser, $this->_preCalculateFormulas,
-                                                      $this->_phpExcel->getSheet( $i )
-                );
+                                                      $this->_phpExcel->getSheet( $i ) );
         }
         
         // build Escher objects. Escher objects for workbooks needs to be build before Escher object for workbook.
@@ -208,10 +207,8 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
         $this->_documentSummaryInformation = $this->_writeDocumentSummaryInformation();
         // initialize OLE Document Summary Information
         if ( isset( $this->_documentSummaryInformation ) && !empty( $this->_documentSummaryInformation ) ) {
-            $OLE_DocumentSummaryInformation =
-                new PHPExcel_Shared_OLE_PPS_File( PHPExcel_Shared_OLE::Asc2Ucs( chr( 5 ) . 'DocumentSummaryInformation'
-                )
-                );
+            $OLE_DocumentSummaryInformation = new PHPExcel_Shared_OLE_PPS_File( PHPExcel_Shared_OLE::Asc2Ucs( chr( 5 ) .
+                                                                                                              'DocumentSummaryInformation' ) );
             $OLE_DocumentSummaryInformation->append( $this->_documentSummaryInformation );
         }
         
@@ -248,7 +245,9 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
      * Set temporary storage directory
      *
      * @deprecated
+     *
      * @param    string $pValue Temporary storage directory
+     *
      * @throws    PHPExcel_Writer_Exception    when directory does not exist
      * @return PHPExcel_Writer_Excel5
      */
@@ -303,8 +302,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
             $spContainer->setSpgr( TRUE );
             $spContainer->setSpType( 0 );
             $spContainer->setSpId( ( $sheet->getParent()
-                                           ->getIndex( $sheet ) + 1 ) << 10
-            );
+                                           ->getIndex( $sheet ) + 1 ) << 10 );
             $spgrContainer->addChild( $spContainer );
             
             // add the shapes
@@ -348,8 +346,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
                 
                 $twoAnchor =
                     PHPExcel_Shared_Excel5::oneAnchor2twoAnchor( $sheet, $coordinates, $offsetX, $offsetY, $width,
-                                                                 $height
-                    );
+                                                                 $height );
                 
                 $spContainer->setStartCoordinates( $twoAnchor[ 'startCoordinates' ] );
                 $spContainer->setStartOffsetX( $twoAnchor[ 'startOffsetX' ] );
@@ -484,8 +481,8 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
         
         $dggContainer->setSpIdMax( $spIdMax + 1 );
         $dggContainer->setCDgSaved( $countDrawings );
-        $dggContainer->setCSpSaved( $totalCountShapes + $countDrawings
-        ); // total number of shapes incl. one group shapes per drawing
+        $dggContainer->setCSpSaved( $totalCountShapes +
+                                    $countDrawings ); // total number of shapes incl. one group shapes per drawing
         // bstoreContainer
         $bstoreContainer = new PHPExcel_Shared_Escher_DggContainer_BstoreContainer();
         $dggContainer->setBstoreContainer( $bstoreContainer );
@@ -579,6 +576,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
     
     /**
      * Build the OLE Part for DocumentSummary Information
+     *
      * @return string
      */
     private function _writeDocumentSummaryInformation()
@@ -870,6 +868,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
     
     /**
      * Build the OLE Part for Summary Information
+     *
      * @return string
      */
     private function _writeSummaryInformation()

@@ -336,8 +336,7 @@ class PHPExcel_Reader_Excel5_Escher
         if ( in_array( $recInstance, [
                                        0x046B,
                                        0x06E3
-                                   ]
-        ) ) {
+                                   ] ) ) {
             $rgbUid2 = substr( $recordData, 16, 16 );
             $pos += 16;
         }
@@ -633,7 +632,7 @@ class PHPExcel_Reader_Excel5_Escher
      * Read OfficeArtRGFOPTE table of property-value pairs
      *
      * @param string $data Binary data
-     * @param int    $n Number of properties
+     * @param int    $n    Number of properties
      */
     private function _readOfficeArtRGFOPTE( $data, $n )
     {

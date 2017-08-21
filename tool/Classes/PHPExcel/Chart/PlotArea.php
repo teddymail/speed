@@ -19,9 +19,9 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Chart
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license        http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
  * @version        1.8.0, 2014-03-02
  */
@@ -29,9 +29,9 @@
 /**
  * PHPExcel_Chart_PlotArea
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Chart
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Chart_PlotArea
 {
@@ -118,6 +118,7 @@ class PHPExcel_Chart_PlotArea
      * Set Plot Series
      *
      * @param [PHPExcel_Chart_DataSeries]
+     *
      * @return PHPExcel_Chart_PlotArea
      */
     public function setPlotSeries( $plotSeries = [] )

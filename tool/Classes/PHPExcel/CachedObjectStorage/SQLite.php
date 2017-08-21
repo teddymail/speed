@@ -33,7 +33,8 @@
  * @package    PHPExcel_CachedObjectStorage
  * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
-class PHPExcel_CachedObjectStorage_SQLite extends PHPExcel_CachedObjectStorage_CacheBase implements PHPExcel_CachedObjectStorage_ICache
+class PHPExcel_CachedObjectStorage_SQLite extends PHPExcel_CachedObjectStorage_CacheBase implements
+    PHPExcel_CachedObjectStorage_ICache
 {
     
     /**
@@ -64,8 +65,7 @@ class PHPExcel_CachedObjectStorage_SQLite extends PHPExcel_CachedObjectStorage_C
             
             if ( !$this->_DBHandle->queryExec( "INSERT OR REPLACE INTO kvp_" . $this->_TableName . " VALUES('" .
                                                $this->_currentObjectID . "','" .
-                                               sqlite_escape_string( serialize( $this->_currentObject ) ) . "')"
-            )
+                                               sqlite_escape_string( serialize( $this->_currentObject ) ) . "')" )
             ) {
                 throw new PHPExcel_Exception( sqlite_error_string( $this->_DBHandle->lastError() ) );
             }
@@ -80,7 +80,8 @@ class PHPExcel_CachedObjectStorage_SQLite extends PHPExcel_CachedObjectStorage_C
      * Add or Update a cell in cache identified by coordinate address
      *
      * @param    string        $pCoord Coordinate address of the cell to update
-     * @param    PHPExcel_Cell $cell Cell to update
+     * @param    PHPExcel_Cell $cell   Cell to update
+     *
      * @return    void
      * @throws    PHPExcel_Exception
      */
@@ -103,6 +104,7 @@ class PHPExcel_CachedObjectStorage_SQLite extends PHPExcel_CachedObjectStorage_C
      * Get cell at a specific coordinate
      *
      * @param    string $pCoord Coordinate of the cell
+     *
      * @throws    PHPExcel_Exception
      * @return    PHPExcel_Cell    Cell that was found, or null if not found
      */
@@ -140,6 +142,7 @@ class PHPExcel_CachedObjectStorage_SQLite extends PHPExcel_CachedObjectStorage_C
      * Is a value set for an indexed cell?
      *
      * @param    string $pCoord Coordinate address of the cell to check
+     *
      * @return    boolean
      */
     public function isDataSet( $pCoord )
@@ -167,6 +170,7 @@ class PHPExcel_CachedObjectStorage_SQLite extends PHPExcel_CachedObjectStorage_C
      * Delete a cell in cache identified by coordinate address
      *
      * @param    string $pCoord Coordinate address of the cell to delete
+     *
      * @throws    PHPExcel_Exception
      */
     public function deleteCacheData( $pCoord )
@@ -191,7 +195,8 @@ class PHPExcel_CachedObjectStorage_SQLite extends PHPExcel_CachedObjectStorage_C
      * Move a cell object from one address to another
      *
      * @param    string $fromAddress Current address of the cell to move
-     * @param    string $toAddress Destination address of the cell to move
+     * @param    string $toAddress   Destination address of the cell to move
+     *
      * @return    boolean
      */
     public function moveCell( $fromAddress, $toAddress )
@@ -248,6 +253,7 @@ class PHPExcel_CachedObjectStorage_SQLite extends PHPExcel_CachedObjectStorage_C
      * Clone the cell collection
      *
      * @param    PHPExcel_Worksheet $parent The new worksheet
+     *
      * @return    void
      */
     public function copyCellCollection( PHPExcel_Worksheet $parent )
@@ -258,8 +264,7 @@ class PHPExcel_CachedObjectStorage_SQLite extends PHPExcel_CachedObjectStorage_C
         //	Get a new id for the new table name
         $tableName = str_replace( '.', '_', $this->_getUniqueID() );
         if ( !$this->_DBHandle->queryExec( 'CREATE TABLE kvp_' . $tableName . ' (id VARCHAR(12) PRIMARY KEY, value BLOB)
-													AS SELECT * FROM kvp_' . $this->_TableName
-        )
+													AS SELECT * FROM kvp_' . $this->_TableName )
         ) {
             throw new PHPExcel_Exception( sqlite_error_string( $this->_DBHandle->lastError() ) );
         }
@@ -307,8 +312,7 @@ class PHPExcel_CachedObjectStorage_SQLite extends PHPExcel_CachedObjectStorage_C
                 throw new PHPExcel_Exception( sqlite_error_string( $this->_DBHandle->lastError() ) );
             }
             if ( !$this->_DBHandle->queryExec( 'CREATE TABLE kvp_' . $this->_TableName .
-                                               ' (id VARCHAR(12) PRIMARY KEY, value BLOB)'
-            )
+                                               ' (id VARCHAR(12) PRIMARY KEY, value BLOB)' )
             ) {
                 throw new PHPExcel_Exception( sqlite_error_string( $this->_DBHandle->lastError() ) );
             }

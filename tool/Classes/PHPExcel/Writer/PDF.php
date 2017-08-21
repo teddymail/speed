@@ -47,6 +47,7 @@ class PHPExcel_Writer_PDF
      *  Instantiate a new renderer of the configured type within this container class
      *
      * @param  PHPExcel $phpExcel PHPExcel object
+     *
      * @throws PHPExcel_Writer_Exception    when PDF library is not configured
      */
     public function __construct( PHPExcel $phpExcel )
@@ -73,8 +74,9 @@ class PHPExcel_Writer_PDF
     /**
      *  Magic method to handle direct calls to the configured PDF renderer wrapper class.
      *
-     * @param   string  $name Renderer library method name
+     * @param   string  $name      Renderer library method name
      * @param   mixed[] $arguments Array of arguments to pass to the renderer method
+     *
      * @return  mixed    Returned data from the PDF renderer wrapper method
      */
     public function __call( $name, $arguments )
@@ -86,8 +88,7 @@ class PHPExcel_Writer_PDF
         return call_user_func_array( [
                                          $this->_renderer,
                                          $name
-                                     ], $arguments
-        );
+                                     ], $arguments );
     }
     
 }

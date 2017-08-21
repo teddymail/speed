@@ -131,6 +131,7 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
      * Return worksheet info (Name, Last Column Letter, Last Column Index, Total Rows, Total Columns)
      *
      * @param   string $pFilename
+     *
      * @throws   PHPExcel_Reader_Exception
      */
     public function listWorksheetInfo( $pFilename )
@@ -164,10 +165,8 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
             
             // explode each row at semicolons while taking into account that literal semicolon (;)
             // is escaped like this (;;)
-            $rowData = explode( "\t", str_replace( '¤', ';',
-                                                   str_replace( ';', "\t", str_replace( ';;', '¤', rtrim( $rowData ) ) )
-                                    )
-            );
+            $rowData = explode( "\t", str_replace( '¤', ';', str_replace( ';', "\t", str_replace( ';;', '¤',
+                                                                                                  rtrim( $rowData ) ) ) ) );
             
             $dataType = array_shift( $rowData );
             if ( $dataType == 'C' ) {
@@ -205,6 +204,7 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
      * Loads PHPExcel from file
      *
      * @param    string $pFilename
+     *
      * @return    PHPExcel
      * @throws    PHPExcel_Reader_Exception
      */
@@ -222,6 +222,7 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
      *
      * @param    string   $pFilename
      * @param    PHPExcel $objPHPExcel
+     *
      * @return    PHPExcel
      * @throws    PHPExcel_Reader_Exception
      */
@@ -263,10 +264,8 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
             
             // explode each row at semicolons while taking into account that literal semicolon (;)
             // is escaped like this (;;)
-            $rowData = explode( "\t", str_replace( '¤', ';',
-                                                   str_replace( ';', "\t", str_replace( ';;', '¤', rtrim( $rowData ) ) )
-                                    )
-            );
+            $rowData = explode( "\t", str_replace( '¤', ';', str_replace( ';', "\t", str_replace( ';;', '¤',
+                                                                                                  rtrim( $rowData ) ) ) ) );
             
             $dataType = array_shift( $rowData );
             //	Read shared styles
@@ -343,8 +342,7 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
                                 //	Only count/replace in alternate array entries
                                 if ( $key = !$key ) {
                                     preg_match_all( '/(R(\[?-?\d*\]?))(C(\[?-?\d*\]?))/', $value, $cellReferences,
-                                                    PREG_SET_ORDER + PREG_OFFSET_CAPTURE
-                                    );
+                                                    PREG_SET_ORDER + PREG_OFFSET_CAPTURE );
                                     //	Reverse the matches array, otherwise all our offsets will become incorrect if we modify our way
                                     //		through the formula from left to right. Reversing means that we work right to left.through
                                     //		the formula
@@ -375,8 +373,7 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
                                             $rowReference;
                                         
                                         $value = substr_replace( $value, $A1CellReference, $cellReference[ 0 ][ 1 ],
-                                                                 strlen( $cellReference[ 0 ][ 0 ] )
-                                        );
+                                                                 strlen( $cellReference[ 0 ][ 0 ] ) );
                                     }
                                 }
                             }
@@ -393,8 +390,7 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
                 // Set cell value
                 $objPHPExcel->getActiveSheet()
                             ->getCell( $columnLetter . $row )
-                            ->setValue( ( $hasCalculatedValue ) ? $cellDataFormula : $cellData
-                            );
+                            ->setValue( ( $hasCalculatedValue ) ? $cellDataFormula : $cellData );
                 if ( $hasCalculatedValue ) {
                     $cellData = PHPExcel_Calculation::_unwrapResult( $cellData );
                     $objPHPExcel->getActiveSheet()
@@ -522,6 +518,7 @@ class PHPExcel_Reader_SYLK extends PHPExcel_Reader_Abstract implements PHPExcel_
      * Set sheet index
      *
      * @param    int $pValue Sheet index
+     *
      * @return PHPExcel_Reader_SYLK
      */
     public function setSheetIndex( $pValue = 0 )

@@ -19,10 +19,10 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Writer_Excel2007
- * @copyright  Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
+ * @category    PHPExcel
+ * @package     PHPExcel_Writer_Excel2007
+ * @copyright   Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @license     http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
  * @version     1.8.0, 2014-03-02
  */
 
@@ -40,6 +40,7 @@ class PHPExcel_Writer_Excel2007_RelsVBA extends PHPExcel_Writer_Excel2007_Writer
      * Write relationships for a signed VBA Project
      *
      * @param    PHPExcel $pPHPExcel
+     *
      * @return    string        XML Output
      * @throws    PHPExcel_Writer_Exception
      */
@@ -52,8 +53,7 @@ class PHPExcel_Writer_Excel2007_RelsVBA extends PHPExcel_Writer_Excel2007_Writer
         ) {
             $objWriter = new PHPExcel_Shared_XMLWriter( PHPExcel_Shared_XMLWriter::STORAGE_DISK,
                                                         $this->getParentWriter()
-                                                             ->getDiskCachingDirectory()
-            );
+                                                             ->getDiskCachingDirectory() );
         } else {
             $objWriter = new PHPExcel_Shared_XMLWriter( PHPExcel_Shared_XMLWriter::STORAGE_MEMORY );
         }
@@ -66,8 +66,8 @@ class PHPExcel_Writer_Excel2007_RelsVBA extends PHPExcel_Writer_Excel2007_Writer
         $objWriter->writeAttribute( 'xmlns', 'http://schemas.openxmlformats.org/package/2006/relationships' );
         $objWriter->startElement( 'Relationship' );
         $objWriter->writeAttribute( 'Id', 'rId1' );
-        $objWriter->writeAttribute( 'Type', 'http://schemas.microsoft.com/office/2006/relationships/vbaProjectSignature'
-        );
+        $objWriter->writeAttribute( 'Type',
+                                    'http://schemas.microsoft.com/office/2006/relationships/vbaProjectSignature' );
         $objWriter->writeAttribute( 'Target', 'vbaProjectSignature.bin' );
         $objWriter->endElement(); //Relationship
         $objWriter->endElement(); //Relationships

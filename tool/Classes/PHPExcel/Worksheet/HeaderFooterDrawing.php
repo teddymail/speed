@@ -114,6 +114,7 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
      * Set Name
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setName( $pValue = '' )
@@ -137,6 +138,7 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
      * Set OffsetX
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setOffsetX( $pValue = 0 )
@@ -160,6 +162,7 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
      * Set OffsetY
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setOffsetY( $pValue = 0 )
@@ -183,6 +186,7 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
      * Set Width
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setWidth( $pValue = 0 )
@@ -213,6 +217,7 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
      * Set Height
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setHeight( $pValue = 0 )
@@ -238,8 +243,10 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
      * </code>
      *
      * @author Vincent@luo MSN:kele_100@hotmail.com
+     *
      * @param int $width
      * @param int $height
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setWidthAndHeight( $width = 0, $height = 0 )
@@ -273,6 +280,7 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
      * Set ResizeProportional
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setResizeProportional( $pValue = TRUE )
@@ -317,8 +325,9 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
     /**
      * Set Path
      *
-     * @param    string  $pValue File path
+     * @param    string  $pValue      File path
      * @param    boolean $pVerifyFile Verify file
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
@@ -350,8 +359,7 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
     public function getHashCode()
     {
         return md5( $this->_path . $this->_name . $this->_offsetX . $this->_offsetY . $this->_width . $this->_height .
-                    __CLASS__
-        );
+                    __CLASS__ );
     }
     
     /**

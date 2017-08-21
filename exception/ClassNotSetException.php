@@ -19,6 +19,7 @@ use Exception;
 
 class ClassNotSetException extends BaseException
 {
+    
     public function __construct( $message, $code = 404, Exception $previous = NULL )
     {
         parent::__construct( $message, $code, $previous );

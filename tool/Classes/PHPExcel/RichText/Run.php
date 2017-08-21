@@ -67,6 +67,7 @@ class PHPExcel_RichText_Run extends PHPExcel_RichText_TextElement implements PHP
      * Set font
      *
      * @param    PHPExcel_Style_Font $pFont Font
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_RichText_ITextElement
      */
@@ -84,8 +85,7 @@ class PHPExcel_RichText_Run extends PHPExcel_RichText_TextElement implements PHP
      */
     public function getHashCode()
     {
-        return md5( $this->getText() . $this->_font->getHashCode() . __CLASS__
-        );
+        return md5( $this->getText() . $this->_font->getHashCode() . __CLASS__ );
     }
     
     /**

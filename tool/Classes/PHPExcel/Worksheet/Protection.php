@@ -190,6 +190,7 @@ class PHPExcel_Worksheet_Protection
      * Set Sheet
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setSheet( $pValue = FALSE )
@@ -213,6 +214,7 @@ class PHPExcel_Worksheet_Protection
      * Set Objects
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setObjects( $pValue = FALSE )
@@ -236,6 +238,7 @@ class PHPExcel_Worksheet_Protection
      * Set Scenarios
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setScenarios( $pValue = FALSE )
@@ -259,6 +262,7 @@ class PHPExcel_Worksheet_Protection
      * Set FormatCells
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setFormatCells( $pValue = FALSE )
@@ -282,6 +286,7 @@ class PHPExcel_Worksheet_Protection
      * Set FormatColumns
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setFormatColumns( $pValue = FALSE )
@@ -305,6 +310,7 @@ class PHPExcel_Worksheet_Protection
      * Set FormatRows
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setFormatRows( $pValue = FALSE )
@@ -328,6 +334,7 @@ class PHPExcel_Worksheet_Protection
      * Set InsertColumns
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setInsertColumns( $pValue = FALSE )
@@ -351,6 +358,7 @@ class PHPExcel_Worksheet_Protection
      * Set InsertRows
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setInsertRows( $pValue = FALSE )
@@ -374,6 +382,7 @@ class PHPExcel_Worksheet_Protection
      * Set InsertHyperlinks
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setInsertHyperlinks( $pValue = FALSE )
@@ -397,6 +406,7 @@ class PHPExcel_Worksheet_Protection
      * Set DeleteColumns
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setDeleteColumns( $pValue = FALSE )
@@ -420,6 +430,7 @@ class PHPExcel_Worksheet_Protection
      * Set DeleteRows
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setDeleteRows( $pValue = FALSE )
@@ -443,6 +454,7 @@ class PHPExcel_Worksheet_Protection
      * Set SelectLockedCells
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setSelectLockedCells( $pValue = FALSE )
@@ -466,6 +478,7 @@ class PHPExcel_Worksheet_Protection
      * Set Sort
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setSort( $pValue = FALSE )
@@ -489,6 +502,7 @@ class PHPExcel_Worksheet_Protection
      * Set AutoFilter
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setAutoFilter( $pValue = FALSE )
@@ -512,6 +526,7 @@ class PHPExcel_Worksheet_Protection
      * Set PivotTables
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setPivotTables( $pValue = FALSE )
@@ -535,6 +550,7 @@ class PHPExcel_Worksheet_Protection
      * Set SelectUnlockedCells
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setSelectUnlockedCells( $pValue = FALSE )
@@ -559,6 +575,7 @@ class PHPExcel_Worksheet_Protection
      *
      * @param string  $pValue
      * @param boolean $pAlreadyHashed If the password has already been hashed, set this to true
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     function setPassword( $pValue = '', $pAlreadyHashed = FALSE )

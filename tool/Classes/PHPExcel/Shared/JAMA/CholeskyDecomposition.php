@@ -12,8 +12,8 @@
  *    returns a partial decomposition and sets an internal flag that may
  *    be queried by the isSPD() method.
  *
- * @author Paul Meagher
- * @author Michael Bommarito
+ * @author  Paul Meagher
+ * @author  Michael Bommarito
  * @version 1.2
  */
 class CholeskyDecomposition
@@ -21,6 +21,7 @@ class CholeskyDecomposition
     
     /**
      *    Decomposition storage
+     *
      * @var array
      * @access private
      */
@@ -28,6 +29,7 @@ class CholeskyDecomposition
     
     /**
      *    Matrix row and column dimension
+     *
      * @var int
      * @access private
      */
@@ -35,6 +37,7 @@ class CholeskyDecomposition
     
     /**
      *    Symmetric positive definite flag
+     *
      * @var boolean
      * @access private
      */
@@ -44,6 +47,7 @@ class CholeskyDecomposition
      *    CholeskyDecomposition
      *
      *    Class constructor - decomposes symmetric positive definite matrix
+     *
      * @param mixed Matrix square symmetric positive definite matrix
      */
     public function __construct( $A = NULL )
@@ -97,6 +101,7 @@ class CholeskyDecomposition
      *    getL
      *
      *    Return triangular factor.
+     *
      * @return Matrix Lower triangular matrix
      */
     public function getL()
@@ -110,6 +115,7 @@ class CholeskyDecomposition
      *    Solve A*X = B
      *
      * @param $B Row-equal matrix
+     *
      * @return Matrix L * L' * X = B
      */
     public function solve( $B = NULL )

@@ -90,7 +90,7 @@ class Excel
     }
     
     /**
-     * @param string $author The author of the Excel
+     * @param string $author   The author of the Excel
      * @param string $modifier The modifier of the Excel
      */
     public function setInfo( $author, $modifier )
@@ -100,7 +100,7 @@ class Excel
     }
     
     /**
-     * @param string       $title The title of the title
+     * @param string       $title     The title of the title
      * @param boolean      $boldTitle Render a bold title or not
      * @param float|string $rowHeight Each row height of the excel, default 20.00
      */
@@ -240,7 +240,7 @@ class Excel
     /**
      * To extend the excel row with 26 rows
      *
-     * @param number    $excel_row The start extend row with default value 0
+     * @param number    $excel_row       The start extend row with default value 0
      * @param array|int $begin_index_row The excel row in the system
      *
      * @return int The next begin_index_row The system must save it for the next need
@@ -403,7 +403,7 @@ class Excel
     }
     
     /**
-     * @param array   $body Setting the excel body data
+     * @param array   $body       Setting the excel body data
      * @param boolean $centerCell Setting the excel's body cell's alignment, default center each cell of the excel
      */
     public function setBody( $body, $centerCell = TRUE )

@@ -85,6 +85,7 @@ abstract class PHPExcel_Writer_Abstract implements PHPExcel_Writer_IWriter
      *        Set to false (the default) to ignore charts.
      *
      * @param    boolean $pValue
+     *
      * @return    PHPExcel_Writer_IWriter
      */
     public function setIncludeCharts( $pValue = FALSE )
@@ -115,6 +116,7 @@ abstract class PHPExcel_Writer_Abstract implements PHPExcel_Writer_IWriter
      *        Set to false to prevent precalculation of formulae on save.
      *
      * @param boolean $pValue Pre-Calculate Formulas?
+     *
      * @return    PHPExcel_Writer_IWriter
      */
     public function setPreCalculateFormulas( $pValue = TRUE )
@@ -139,6 +141,7 @@ abstract class PHPExcel_Writer_Abstract implements PHPExcel_Writer_IWriter
      *
      * @param    boolean $pValue
      * @param    string  $pDirectory Disk caching directory
+     *
      * @throws    PHPExcel_Writer_Exception    when directory does not exist
      * @return PHPExcel_Writer_Excel2007
      */

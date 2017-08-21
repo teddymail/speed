@@ -29,9 +29,9 @@
 /**
  * PHPExcel_CalcEngine_CyclicReferenceStack
  *
- * @category    PHPExcel_CalcEngine_CyclicReferenceStack
+ * @category       PHPExcel_CalcEngine_CyclicReferenceStack
  * @package        PHPExcel_Calculation
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_CalcEngine_CyclicReferenceStack
 {

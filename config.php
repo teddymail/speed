@@ -21,11 +21,15 @@
  * @since 0.0.2
  */
 return [
-    'db' => [
+    'db'    => [
         'dsn'      => 'mysql:host=localhost;dbname=supjos',
         'username' => 'root',
         'password' => 'Root@localhost',
         'charset'  => 'utf8',
         'prefix'   => 'www_'
+    ],
+    'redis' => [
+        'host' => '127.0.0.1',
+        'port' => '6379'
     ]
 ];

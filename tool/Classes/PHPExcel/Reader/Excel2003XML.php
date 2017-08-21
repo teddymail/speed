@@ -70,6 +70,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
      * Can the current PHPExcel_Reader_IReader read the file?
      *
      * @param    string $pFilename
+     *
      * @return    boolean
      * @throws PHPExcel_Reader_Exception
      */
@@ -122,14 +123,15 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
      * Reads names of the worksheets from a file, without parsing the whole file to a PHPExcel object
      *
      * @param    string $pFilename
+     *
      * @throws    PHPExcel_Reader_Exception
      */
     public function listWorksheetNames( $pFilename )
     {
         // Check if file exists
         if ( !file_exists( $pFilename ) ) {
-            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! File does not exist."
-            );
+            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename .
+                                                 " for reading! File does not exist." );
         }
         if ( !$this->canRead( $pFilename ) ) {
             throw new PHPExcel_Reader_Exception( $pFilename . " is an Invalid Spreadsheet file." );
@@ -153,14 +155,15 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
      * Return worksheet info (Name, Last Column Letter, Last Column Index, Total Rows, Total Columns)
      *
      * @param   string $pFilename
+     *
      * @throws   PHPExcel_Reader_Exception
      */
     public function listWorksheetInfo( $pFilename )
     {
         // Check if file exists
         if ( !file_exists( $pFilename ) ) {
-            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! File does not exist."
-            );
+            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename .
+                                                 " for reading! File does not exist." );
         }
         
         $worksheetInfo = [];
@@ -224,6 +227,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
      * Loads PHPExcel from file
      *
      * @param    string $pFilename
+     *
      * @return    PHPExcel
      * @throws    PHPExcel_Reader_Exception
      */
@@ -252,7 +256,9 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
     
     /**
      * pixel units to excel width units(units of 1/256th of a character width)
+     *
      * @param pxs
+     *
      * @return
      */
     private static function _pixel2WidthUnits( $pxs )
@@ -275,7 +281,9 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
     
     /**
      * excel width units(units of 1/256th of a character width) to pixel units
+     *
      * @param widthUnits
+     *
      * @return
      */
     private static function _widthUnits2Pixel( $widthUnits )
@@ -297,6 +305,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
      *
      * @param    string   $pFilename
      * @param    PHPExcel $objPHPExcel
+     *
      * @return    PHPExcel
      * @throws    PHPExcel_Reader_Exception
      */
@@ -339,8 +348,8 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
         
         // Check if file exists
         if ( !file_exists( $pFilename ) ) {
-            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! File does not exist."
-            );
+            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename .
+                                                 " for reading! File does not exist." );
         }
         
         if ( !$this->canRead( $pFilename ) ) {
@@ -395,9 +404,8 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
         if ( isset( $xml->CustomDocumentProperties ) ) {
             foreach ( $xml->CustomDocumentProperties[ 0 ] as $propertyName => $propertyValue ) {
                 $propertyAttributes = $propertyValue->attributes( $namespaces[ 'dt' ] );
-                $propertyName =
-                    preg_replace_callback( '/_x([0-9a-z]{4})_/', 'PHPExcel_Reader_Excel2003XML::_hex2str', $propertyName
-                    );
+                $propertyName = preg_replace_callback( '/_x([0-9a-z]{4})_/', 'PHPExcel_Reader_Excel2003XML::_hex2str',
+                                                       $propertyName );
                 $propertyType = PHPExcel_DocumentProperties::PROPERTY_TYPE_UNKNOWN;
                 switch ( ( string )$propertyAttributes ) {
                     case 'string' :
@@ -444,15 +452,15 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                             $styleAttributeValue = ( string )$styleAttributeValue;
                             switch ( $styleAttributeKey ) {
                                 case 'Vertical' :
-                                    if ( self::identifyFixedStyleValue( $verticalAlignmentStyles, $styleAttributeValue
-                                    )
+                                    if ( self::identifyFixedStyleValue( $verticalAlignmentStyles,
+                                                                        $styleAttributeValue )
                                     ) {
                                         $this->_styles[ $styleID ][ 'alignment' ][ 'vertical' ] = $styleAttributeValue;
                                     }
                                     break;
                                 case 'Horizontal' :
-                                    if ( self::identifyFixedStyleValue( $horizontalAlignmentStyles, $styleAttributeValue
-                                    )
+                                    if ( self::identifyFixedStyleValue( $horizontalAlignmentStyles,
+                                                                        $styleAttributeValue )
                                     ) {
                                         $this->_styles[ $styleID ][ 'alignment' ][ 'horizontal' ] =
                                             $styleAttributeValue;
@@ -637,9 +645,8 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                             $columnTo = $columnID;
                             if ( isset( $cell_ss[ 'MergeAcross' ] ) ) {
                                 $columnTo =
-                                    PHPExcel_Cell::stringFromColumnIndex( PHPExcel_Cell::columnIndexFromString( $columnID
-                                                                          ) + $cell_ss[ 'MergeAcross' ] - 1
-                                    );
+                                    PHPExcel_Cell::stringFromColumnIndex( PHPExcel_Cell::columnIndexFromString( $columnID ) +
+                                                                          $cell_ss[ 'MergeAcross' ] - 1 );
                             }
                             $rowTo = $rowID;
                             if ( isset( $cell_ss[ 'MergeDown' ] ) ) {
@@ -718,8 +725,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                                                                       '[.',
                                                                       '.',
                                                                       ']'
-                                                                  ], '', $value
-                                            );
+                                                                  ], '', $value );
                                         }
                                     }
                                 } else {
@@ -731,8 +737,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                                         //	Only replace in alternate array entries (i.e. non-quoted blocks)
                                         if ( $key = !$key ) {
                                             preg_match_all( '/(R(\[?-?\d*\]?))(C(\[?-?\d*\]?))/', $value,
-                                                            $cellReferences, PREG_SET_ORDER + PREG_OFFSET_CAPTURE
-                                            );
+                                                            $cellReferences, PREG_SET_ORDER + PREG_OFFSET_CAPTURE );
                                             //	Reverse the matches array, otherwise all our offsets will become incorrect if we modify our way
                                             //		through the formula from left to right. Reversing means that we work right to left.through
                                             //		the formula
@@ -763,8 +768,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                                                     $rowReference;
                                                 $value =
                                                     substr_replace( $value, $A1CellReference, $cellReference[ 0 ][ 1 ],
-                                                                    strlen( $cellReference[ 0 ][ 0 ] )
-                                                    );
+                                                                    strlen( $cellReference[ 0 ][ 0 ] ) );
                                             }
                                         }
                                     }
@@ -780,8 +784,7 @@ class PHPExcel_Reader_Excel2003XML extends PHPExcel_Reader_Abstract implements P
                             $objPHPExcel->getActiveSheet()
                                         ->getCell( $columnID . $rowID )
                                         ->setValueExplicit( ( ( $hasCalculatedValue ) ? $cellDataFormula : $cellValue ),
-                                            $type
-                                        );
+                                            $type );
                             if ( $hasCalculatedValue ) {
                                 //								echo 'Formula result is '.$cellValue.'<br />';
                                 $objPHPExcel->getActiveSheet()

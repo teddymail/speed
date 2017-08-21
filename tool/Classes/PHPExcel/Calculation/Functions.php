@@ -19,9 +19,9 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Calculation
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license        http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
  * @version        1.8.0, 2014-03-02
  */
@@ -50,9 +50,9 @@ define( 'PRECISION', 8.88E-016 );
 /**
  * PHPExcel_Calculation_Functions
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Calculation
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Calculation_Functions
 {
@@ -102,12 +102,17 @@ class PHPExcel_Calculation_Functions
      * Set the Compatibility Mode
      *
      * @access    public
-     * @category Function Configuration
-     * @param     string $compatibilityMode Compatibility Mode
-     *                                                Permitted values are:
-     *                                                    PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL            'Excel'
-     *                                                    PHPExcel_Calculation_Functions::COMPATIBILITY_GNUMERIC        'Gnumeric'
-     *                                                    PHPExcel_Calculation_Functions::COMPATIBILITY_OPENOFFICE    'OpenOfficeCalc'
+     * @category  Function Configuration
+     *
+     * @param     string $compatibilityMode               Compatibility Mode
+     *                                                    Permitted values are:
+     *                                                    PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL
+     *                                                     'Excel'
+     *                                                     PHPExcel_Calculation_Functions::COMPATIBILITY_GNUMERIC
+     *                                                      'Gnumeric'
+     *                                                      PHPExcel_Calculation_Functions::COMPATIBILITY_OPENOFFICE
+     *                                                      'OpenOfficeCalc'
+     *
      * @return     boolean    (Success or Failure)
      */
     public static function setCompatibilityMode( $compatibilityMode )
@@ -130,7 +135,7 @@ class PHPExcel_Calculation_Functions
      * Return the current Compatibility Mode
      *
      * @access    public
-     * @category Function Configuration
+     * @category  Function Configuration
      * @return     string        Compatibility Mode
      *                            Possible Return values are:
      *                                PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL            'Excel'
@@ -145,15 +150,19 @@ class PHPExcel_Calculation_Functions
     //	function getCompatibilityMode()
     
     /**
-     * Set the Return Date Format used by functions that return a date/time (Excel, PHP Serialized Numeric or PHP Object)
+     * Set the Return Date Format used by functions that return a date/time (Excel, PHP Serialized Numeric or PHP
+     * Object)
      *
      * @access    public
-     * @category Function Configuration
-     * @param     string $returnDateType Return Date Format
-     *                                                Permitted values are:
-     *                                                    PHPExcel_Calculation_Functions::RETURNDATE_PHP_NUMERIC        'P'
-     *                                                    PHPExcel_Calculation_Functions::RETURNDATE_PHP_OBJECT        'O'
-     *                                                    PHPExcel_Calculation_Functions::RETURNDATE_EXCEL            'E'
+     * @category  Function Configuration
+     *
+     * @param     string $returnDateType                  Return Date Format
+     *                                                    Permitted values are:
+     *                                                    PHPExcel_Calculation_Functions::RETURNDATE_PHP_NUMERIC
+     *                                                    'P' PHPExcel_Calculation_Functions::RETURNDATE_PHP_OBJECT
+     *                                                       'O' PHPExcel_Calculation_Functions::RETURNDATE_EXCEL
+     *                                                            'E'
+     *
      * @return     boolean                            Success or failure
      */
     public static function setReturnDateType( $returnDateType )
@@ -172,10 +181,11 @@ class PHPExcel_Calculation_Functions
     //	function setReturnDateType()
     
     /**
-     * Return the current Return Date Format for functions that return a date/time (Excel, PHP Serialized Numeric or PHP Object)
+     * Return the current Return Date Format for functions that return a date/time (Excel, PHP Serialized Numeric or
+     * PHP Object)
      *
      * @access    public
-     * @category Function Configuration
+     * @category  Function Configuration
      * @return     string        Return Date Format
      *                            Possible Return values are:
      *                                PHPExcel_Calculation_Functions::RETURNDATE_PHP_NUMERIC        'P'
@@ -193,7 +203,7 @@ class PHPExcel_Calculation_Functions
      * DUMMY
      *
      * @access    public
-     * @category Error Returns
+     * @category  Error Returns
      * @return    string    #Not Yet Implemented
      */
     public static function DUMMY()
@@ -207,7 +217,7 @@ class PHPExcel_Calculation_Functions
      * DIV0
      *
      * @access    public
-     * @category Error Returns
+     * @category  Error Returns
      * @return    string    #Not Yet Implemented
      */
     public static function DIV0()
@@ -227,7 +237,7 @@ class PHPExcel_Calculation_Functions
      *        #N/A is the error value that means "no value is available."
      *
      * @access    public
-     * @category Logical Functions
+     * @category  Logical Functions
      * @return    string    #N/A!
      */
     public static function NA()
@@ -243,7 +253,7 @@ class PHPExcel_Calculation_Functions
      * Returns the error value #NUM!
      *
      * @access    public
-     * @category Error Returns
+     * @category  Error Returns
      * @return    string    #NUM!
      */
     public static function NaN()
@@ -259,7 +269,7 @@ class PHPExcel_Calculation_Functions
      * Returns the error value #NAME?
      *
      * @access    public
-     * @category Error Returns
+     * @category  Error Returns
      * @return    string    #NAME?
      */
     public static function NAME()
@@ -275,7 +285,7 @@ class PHPExcel_Calculation_Functions
      * Returns the error value #REF!
      *
      * @access    public
-     * @category Error Returns
+     * @category  Error Returns
      * @return    string    #REF!
      */
     public static function REF()
@@ -291,7 +301,7 @@ class PHPExcel_Calculation_Functions
      * Returns the error value #NULL!
      *
      * @access    public
-     * @category Error Returns
+     * @category  Error Returns
      * @return    string    #NULL!
      */
     public static function NULL()
@@ -306,7 +316,7 @@ class PHPExcel_Calculation_Functions
      * Returns the error value #VALUE!
      *
      * @access    public
-     * @category Error Returns
+     * @category  Error Returns
      * @return    string    #VALUE!
      */
     public static function
@@ -346,8 +356,7 @@ class PHPExcel_Calculation_Functions
                                          '>',
                                          '<',
                                          '='
-                                     ]
-        )
+                                     ] )
         ) {
             if ( !is_numeric( $condition ) ) {
                 $condition = PHPExcel_Calculation::_wrapResult( strtoupper( $condition ) );
@@ -373,6 +382,7 @@ class PHPExcel_Calculation_Functions
      * ERROR_TYPE
      *
      * @param    mixed $value Value to check
+     *
      * @return    boolean
      */
     public static function ERROR_TYPE( $value = '' )
@@ -396,6 +406,7 @@ class PHPExcel_Calculation_Functions
      * IS_BLANK
      *
      * @param    mixed $value Value to check
+     *
      * @return    boolean
      */
     public static function IS_BLANK( $value = NULL )
@@ -413,6 +424,7 @@ class PHPExcel_Calculation_Functions
      * IS_ERR
      *
      * @param    mixed $value Value to check
+     *
      * @return    boolean
      */
     public static function IS_ERR( $value = '' )
@@ -428,6 +440,7 @@ class PHPExcel_Calculation_Functions
      * IS_ERROR
      *
      * @param    mixed $value Value to check
+     *
      * @return    boolean
      */
     public static function IS_ERROR( $value = '' )
@@ -447,6 +460,7 @@ class PHPExcel_Calculation_Functions
      * IS_NA
      *
      * @param    mixed $value Value to check
+     *
      * @return    boolean
      */
     public static function IS_NA( $value = '' )
@@ -462,6 +476,7 @@ class PHPExcel_Calculation_Functions
      * IS_EVEN
      *
      * @param    mixed $value Value to check
+     *
      * @return    boolean
      */
     public static function IS_EVEN( $value = NULL )
@@ -484,6 +499,7 @@ class PHPExcel_Calculation_Functions
      * IS_ODD
      *
      * @param    mixed $value Value to check
+     *
      * @return    boolean
      */
     public static function IS_ODD( $value = NULL )
@@ -506,6 +522,7 @@ class PHPExcel_Calculation_Functions
      * IS_NUMBER
      *
      * @param    mixed $value Value to check
+     *
      * @return    boolean
      */
     public static function IS_NUMBER( $value = NULL )
@@ -525,6 +542,7 @@ class PHPExcel_Calculation_Functions
      * IS_LOGICAL
      *
      * @param    mixed $value Value to check
+     *
      * @return    boolean
      */
     public static function IS_LOGICAL( $value = NULL )
@@ -540,6 +558,7 @@ class PHPExcel_Calculation_Functions
      * IS_TEXT
      *
      * @param    mixed $value Value to check
+     *
      * @return    boolean
      */
     public static function IS_TEXT( $value = NULL )
@@ -555,6 +574,7 @@ class PHPExcel_Calculation_Functions
      * IS_NONTEXT
      *
      * @param    mixed $value Value to check
+     *
      * @return    boolean
      */
     public static function IS_NONTEXT( $value = NULL )
@@ -582,6 +602,7 @@ class PHPExcel_Calculation_Functions
      * Returns a value converted to a number
      *
      * @param    value        The value you want converted
+     *
      * @return    number        N converts values listed in the following table
      *        If value is or refers to N returns
      *        A number            That number
@@ -625,6 +646,7 @@ class PHPExcel_Calculation_Functions
      * Returns a number that identifies the type of a value
      *
      * @param    value        The value you want tested
+     *
      * @return    number        N converts values listed in the following table
      *        If value is or refers to N returns
      *        A number            1
@@ -677,6 +699,7 @@ class PHPExcel_Calculation_Functions
      * Convert a multi-dimensional array to a simple 1-dimensional array
      *
      * @param    array $array Array to be flattened
+     *
      * @return    array    Flattened array
      */
     public static function flattenArray( $array )
@@ -711,6 +734,7 @@ class PHPExcel_Calculation_Functions
      * Convert a multi-dimensional array to a simple 1-dimensional array, but retain an element of indexing
      *
      * @param    array $array Array to be flattened
+     *
      * @return    array    Flattened array
      */
     public static function flattenArrayIndexed( $array )
@@ -745,6 +769,7 @@ class PHPExcel_Calculation_Functions
      * Convert an array to a single scalar value by extracting the first element
      *
      * @param    mixed $value Array or scalar value
+     *
      * @return    mixed
      */
     public static function flattenSingleValue( $value = '' )

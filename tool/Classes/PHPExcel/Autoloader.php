@@ -60,8 +60,7 @@ class PHPExcel_Autoloader
         return spl_autoload_register( [
                                           'PHPExcel_Autoloader',
                                           'Load'
-                                      ]
-        );
+                                      ] );
     }
     
     //    function Register()

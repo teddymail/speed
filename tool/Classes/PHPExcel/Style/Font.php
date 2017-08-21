@@ -35,6 +35,7 @@
  */
 class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_IComparable
 {
+    
     /* Underline types */
     
     const UNDERLINE_NONE             = 'none';
@@ -109,11 +110,11 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
     /**
      * Create a new PHPExcel_Style_Font
      *
-     * @param    boolean $isSupervisor Flag indicating if this is a supervisor or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isSupervisor        Flag indicating if this is a supervisor or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
-     * @param    boolean $isConditional Flag indicating if this is a conditional style or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isConditional       Flag indicating if this is a conditional style or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
      */
     public function __construct( $isSupervisor = FALSE, $isConditional = FALSE )
@@ -158,6 +159,7 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Build style array from subcomponents
      *
      * @param array $array
+     *
      * @return array
      */
     public function getStyleArray( $array )
@@ -184,6 +186,7 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
      * </code>
      *
      * @param    array $pStyles Array containing style information
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Style_Font
      */
@@ -250,6 +253,7 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Set Name
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Style_Font
      */
     public function setName( $pValue = 'Calibri' )
@@ -288,6 +292,7 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Set Size
      *
      * @param double $pValue
+     *
      * @return PHPExcel_Style_Font
      */
     public function setSize( $pValue = 10 )
@@ -326,6 +331,7 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Set Bold
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Style_Font
      */
     public function setBold( $pValue = FALSE )
@@ -364,6 +370,7 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Set Italic
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Style_Font
      */
     public function setItalic( $pValue = FALSE )
@@ -402,6 +409,7 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Set SuperScript
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Style_Font
      */
     public function setSuperScript( $pValue = FALSE )
@@ -441,6 +449,7 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Set SubScript
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Style_Font
      */
     public function setSubScript( $pValue = FALSE )
@@ -479,9 +488,10 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
     /**
      * Set Underline
      *
-     * @param string|boolean $pValue PHPExcel_Style_Font underline type
-     *                                    If a boolean is passed, then TRUE equates to UNDERLINE_SINGLE,
+     * @param string|boolean $pValue          PHPExcel_Style_Font underline type
+     *                                        If a boolean is passed, then TRUE equates to UNDERLINE_SINGLE,
      *                                        false equates to UNDERLINE_NONE
+     *
      * @return PHPExcel_Style_Font
      */
     public function setUnderline( $pValue = self::UNDERLINE_NONE )
@@ -522,6 +532,7 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Set Strikethrough
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Style_Font
      */
     public function setStrikethrough( $pValue = FALSE )
@@ -555,6 +566,7 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
      * Set Color
      *
      * @param    PHPExcel_Style_Color $pValue
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Style_Font
      */
@@ -590,8 +602,7 @@ class PHPExcel_Style_Font extends PHPExcel_Style_Supervisor implements PHPExcel_
         
         return md5( $this->_name . $this->_size . ( $this->_bold ? 't' : 'f' ) . ( $this->_italic ? 't' : 'f' ) .
                     ( $this->_superScript ? 't' : 'f' ) . ( $this->_subScript ? 't' : 'f' ) . $this->_underline .
-                    ( $this->_strikethrough ? 't' : 'f' ) . $this->_color->getHashCode() . __CLASS__
-        );
+                    ( $this->_strikethrough ? 't' : 'f' ) . $this->_color->getHashCode() . __CLASS__ );
     }
     
 }

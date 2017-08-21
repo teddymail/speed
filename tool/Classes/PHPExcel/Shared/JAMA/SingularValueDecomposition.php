@@ -23,30 +23,35 @@ class SingularValueDecomposition
     
     /**
      *    Internal storage of U.
+     *
      * @var array
      */
     private $U = [];
     
     /**
      *    Internal storage of V.
+     *
      * @var array
      */
     private $V = [];
     
     /**
      *    Internal storage of singular values.
+     *
      * @var array
      */
     private $s = [];
     
     /**
      *    Row dimension.
+     *
      * @var int
      */
     private $m;
     
     /**
      *    Column dimension.
+     *
      * @var int
      */
     private $n;
@@ -57,6 +62,7 @@ class SingularValueDecomposition
      *    Derived from LINPACK code.
      *
      * @param $A Rectangular matrix
+     *
      * @return Structure to access U, S and V.
      */
     public function __construct( $Arg )
@@ -333,11 +339,8 @@ class SingularValueDecomposition
                 // Perform one qr step.
                 case 3:
                     // Calculate the shift.
-                    $scale =
-                        max( max( max( max( abs( $this->s[ $p - 1 ] ), abs( $this->s[ $p - 2 ] ) ), abs( $e[ $p - 2 ] )
-                                  ), abs( $this->s[ $k ] )
-                             ), abs( $e[ $k ] )
-                        );
+                    $scale = max( max( max( max( abs( $this->s[ $p - 1 ] ), abs( $this->s[ $p - 2 ] ) ),
+                                            abs( $e[ $p - 2 ] ) ), abs( $this->s[ $k ] ) ), abs( $e[ $k ] ) );
                     $sp = $this->s[ $p - 1 ] / $scale;
                     $spm1 = $this->s[ $p - 2 ] / $scale;
                     $epm1 = $e[ $p - 2 ] / $scale;

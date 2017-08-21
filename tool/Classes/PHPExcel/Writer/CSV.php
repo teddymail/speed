@@ -99,6 +99,7 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
      * Save PHPExcel to file
      *
      * @param    string $pFilename
+     *
      * @throws    PHPExcel_Writer_Exception
      */
     public function save( $pFilename = NULL )
@@ -167,6 +168,7 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
      * Set delimiter
      *
      * @param    string $pValue Delimiter, defaults to ,
+     *
      * @return PHPExcel_Writer_CSV
      */
     public function setDelimiter( $pValue = ',' )
@@ -190,6 +192,7 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
      * Set enclosure
      *
      * @param    string $pValue Enclosure, defaults to "
+     *
      * @return PHPExcel_Writer_CSV
      */
     public function setEnclosure( $pValue = '"' )
@@ -216,6 +219,7 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
      * Set line ending
      *
      * @param    string $pValue Line ending, defaults to OS line ending (PHP_EOL)
+     *
      * @return PHPExcel_Writer_CSV
      */
     public function setLineEnding( $pValue = PHP_EOL )
@@ -239,6 +243,7 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
      * Set whether BOM should be used
      *
      * @param    boolean $pValue Use UTF-8 byte-order mark? Defaults to false
+     *
      * @return PHPExcel_Writer_CSV
      */
     public function setUseBOM( $pValue = FALSE )
@@ -261,8 +266,9 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
     /**
      * Set whether the file should be saved with full Excel Compatibility
      *
-     * @param    boolean $pValue Set the file to be written as a fully Excel compatible csv file
+     * @param    boolean $pValue      Set the file to be written as a fully Excel compatible csv file
      *                                Note that this overrides other settings such as useBOM, enclosure and delimiter
+     *
      * @return PHPExcel_Writer_CSV
      */
     public function setExcelCompatibility( $pValue = FALSE )
@@ -286,6 +292,7 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
      * Set sheet index
      *
      * @param    int $pValue Sheet index
+     *
      * @return PHPExcel_Writer_CSV
      */
     public function setSheetIndex( $pValue = 0 )
@@ -299,7 +306,8 @@ class PHPExcel_Writer_CSV extends PHPExcel_Writer_Abstract implements PHPExcel_W
      * Write line to CSV file
      *
      * @param    mixed $pFileHandle PHP filehandle
-     * @param    array $pValues Array containing values in a row
+     * @param    array $pValues     Array containing values in a row
+     *
      * @throws    PHPExcel_Writer_Exception
      */
     private function _writeLine( $pFileHandle = NULL, $pValues = NULL )

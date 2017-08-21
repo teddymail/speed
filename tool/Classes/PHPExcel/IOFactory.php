@@ -109,7 +109,9 @@ class PHPExcel_IOFactory
      *
      * @static
      * @access    public
+     *
      * @param    array $value
+     *
      * @throws    PHPExcel_Reader_Exception
      */
     public static function setSearchLocations( $value )
@@ -128,8 +130,9 @@ class PHPExcel_IOFactory
      *
      * @static
      * @access    public
-     * @param    string $type Example: IWriter
-     * @param    string $location Example: PHPExcel/Writer/{0}.php
+     *
+     * @param    string $type      Example: IWriter
+     * @param    string $location  Example: PHPExcel/Writer/{0}.php
      * @param    string $classname Example: PHPExcel_Writer_{0}
      */
     public static function addSearchLocation( $type = '', $location = '', $classname = '' )
@@ -148,8 +151,10 @@ class PHPExcel_IOFactory
      *
      * @static
      * @access    public
+     *
      * @param    PHPExcel $phpExcel
      * @param    string   $writerType Example: Excel2007
+     *
      * @return    PHPExcel_Writer_IWriter
      * @throws    PHPExcel_Reader_Exception
      */
@@ -181,7 +186,9 @@ class PHPExcel_IOFactory
      *
      * @static
      * @access    public
+     *
      * @param    string $readerType Example: Excel2007
+     *
      * @return    PHPExcel_Reader_IReader
      * @throws    PHPExcel_Reader_Exception
      */
@@ -213,7 +220,9 @@ class PHPExcel_IOFactory
      *
      * @static
      * @access public
+     *
      * @param    string $pFilename The name of the spreadsheet file
+     *
      * @return    PHPExcel
      * @throws    PHPExcel_Reader_Exception
      */
@@ -231,7 +240,9 @@ class PHPExcel_IOFactory
      *
      * @static
      * @access public
+     *
      * @param    string $pFilename The name of the spreadsheet file to identify
+     *
      * @return    string
      * @throws    PHPExcel_Reader_Exception
      */
@@ -252,7 +263,9 @@ class PHPExcel_IOFactory
      *
      * @static
      * @access    public
+     *
      * @param    string $pFilename The name of the spreadsheet file
+     *
      * @return    PHPExcel_Reader_IReader
      * @throws    PHPExcel_Reader_Exception
      */

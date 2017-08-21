@@ -2,6 +2,8 @@
 
 namespace supjos\tool;
 
+use Object;
+
 /**
  * This is the Zip tool class of the Speed
  * The ZipClass which the PHPer can easily create the ZIP document and extract the zip archive
@@ -10,8 +12,7 @@ namespace supjos\tool;
  *
  * @author Josin <774542602@qq.com | www.supjos.cn>
  */
-
-class Zip
+class Zip extends Object
 {
     
     /**
@@ -45,8 +46,7 @@ class Zip
                                 \ZIPARCHIVE::OVERWRITE,
                                 \ZIPARCHIVE::EXCL,
                                 \ZIPARCHIVE::CHECKCONS
-                            ]
-        ) ) {
+                            ] ) ) {
             $this->_overwrite = $mode;
         }
     }
@@ -148,7 +148,7 @@ class Zip
     }
     
     /**
-     * @param string $zipFile The path for the user to store the files from the zip archive
+     * @param string $zipFile     The path for the user to store the files from the zip archive
      * @param string $extractPath The zip archive need to be extracted.
      *
      * @return bool

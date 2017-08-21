@@ -23,7 +23,7 @@
  * @package    PHPExcel_Shared_OLE
  * @copyright  Copyright (c) 2006 - 2007 Christian Schmidt
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
- * @version 1.8.0, 2014-03-02
+ * @version    1.8.0, 2014-03-02
  */
 
 /**
@@ -41,24 +41,28 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
     
     /**
      * The OLE container of the file that is being read.
+     *
      * @var OLE
      */
     public $ole;
     
     /**
      * Parameters specified by fopen().
+     *
      * @var array
      */
     public $params;
     
     /**
      * The binary data of the file.
+     *
      * @var  string
      */
     public $data;
     
     /**
      * The file pointer.
+     *
      * @var  int  byte offset
      */
     public $pos;
@@ -67,11 +71,12 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
      * Implements support for fopen().
      * For creating streams using this wrapper, use OLE_PPS_File::getStream().
      *
-     * @param    string $path resource name including scheme, e.g.
+     * @param    string $path             resource name including scheme, e.g.
      *                                    ole-chainedblockstream://oleInstanceId=1
-     * @param    string $mode only "r" is supported
-     * @param    int    $options mask of STREAM_REPORT_ERRORS and STREAM_USE_PATH
-     * @param    string &$openedPath absolute path of the opened stream (out parameter)
+     * @param    string $mode             only "r" is supported
+     * @param    int    $options          mask of STREAM_REPORT_ERRORS and STREAM_USE_PATH
+     * @param    string &$openedPath      absolute path of the opened stream (out parameter)
+     *
      * @return    bool    true on success
      */
     public function stream_open( $path, $mode, $options, &$openedPath )
@@ -144,6 +149,7 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
      * Implements support for fread(), fgets() etc.
      *
      * @param   int $count maximum number of bytes to read
+     *
      * @return  string
      */
     public function stream_read( $count )
@@ -191,6 +197,7 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
      *
      * @param    int $offset byte offset
      * @param    int $whence SEEK_SET, SEEK_CUR or SEEK_END
+     *
      * @return    bool
      */
     public function stream_seek( $offset, $whence )
@@ -211,6 +218,7 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
     /**
      * Implements support for fstat(). Currently the only supported field is
      * "size".
+     *
      * @return  array
      */
     public function stream_stat()

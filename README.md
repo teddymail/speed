@@ -1,177 +1,224 @@
-# Hello Everyone using the Speed Framework, There some ideas for you to use the Speed framework easily
+# Speed #
+			Most popular and slim PHP framework																						Josin <www.supjos.com|774542602@qq.com>
 
-### First:```Speed``` PHP framework made from Composer and use the composer to manage it.
+## Simple Example ##
 
-So everyone who want to use the ```Speed``` and want to have a try, run the command: [Suppose you have installed the
-**composer** in you computer, like Linux|Unix|Mac OS X|Windows ]:
-
-```composer require supjos/speed```
-
-After the composer installed the **Speed** framework, what the thing you want to to is only require the composer's autoload
-file like below:
-```` require('vendor/autoload.php')````
-
-After doing the require job. You can enjoy you Speed programming experience.
-
-In each class other than App, You can use the \App to access the Global class \App or simply use the 
+	use App;
 	
-	use App
-	
-command
-
-In the template file, or in the rendering view file, You can use App directly.
-
-An simple example for Speed framework like below:
-
 	$app = new App();
-
-The first parameter means the routes, which the closure will deal with the request, support the PCRE-Regex, like
-
-	$app->get('/a[cde]', function($request, $response){ });
 	
-	// You can use the following function to replace the before one
-	$app->get('/a[cde|cd]|ver*', function($request, $response){ });
+	$app->get('/', function($req, $res){
 	
-	// '/' : Means to accept any routes in the current request.
+		if ($req->getPathInfo() == '/name') {
+			$res->end("Josin");
+		} else if ($req->getPathInfo() == '/age') {
+			$res->end(29);
+		} else {
+			$res->end("<div style='width: 280px;margin:0 auto;font-size: 30px;'><strong>Speed</strong> Framework &nbsp; <sub style='font-size: 12px;'>v". App::getVersion() ."</sub></div>");
+		}
+	});
+
+
+## Features ##
+
+### IOC ###
+
+The IOC was implemented by a components class named [[ Reflex ]], User can use the IOC class to use the Object-Create process more convinent.
+
+For example:
+	
+	use supjos\reflection\Reflex;
+	
+	// Get a IOC containers
+	$container = App::createObject(Reflex::getClass());
+	
+	// The example class named [[ Base ]]
+	class Base
+	{
+		// Has a property named version
+		private $version;
+	}
+	
+	// The other class named [[ A ]]
+	class A
+	{
+		// One property
+		private $features;
+		
+		// The Base object injected into A class instance
+		private $base;
+		
+		public function __construct(Base $base)
+		{
+			$this->base = $base;
+		}
+	}
+		
+	// The other class named [[ B ]]
+	class B
+	{
+		// One property
+		private $codes;
+		
+		// The Base object injected into A class instance
+		private $a;
+		
+		public function __construct(A $a)
+		{
+			$this->a = $a;
+		}
+	}
+	
+	// If you want to get the Class B's instance, or A's instance from IOC container, you must set it into the container, using the $container->set() method:
+	
+	// Set the Class with the properties
+	$container->set('Base', ['version'=>'1.0.2']);
+	
+	$container->set('A', ['features'=>'180/82A']);
+	
+	$container->set('B', ['codes'=>'C,C++,PHP,Redis,MySQl, Linux'];
+	
+	After set the class into the container,you can get the each class object which in the container:
+	
+	$a = $container->get('A')
+	
+	// or The B's instance
+	$b = $container->get('B')
+	
+	// or the Base class object
+	$base = $container->get('Base');
+	
+### Universal ```Object-Create``` Process ###
+	
+Each class in the** Speed **Framework can be created by the static method: App::createObject(), for example:
+
+	use App;
+	
+	$object = App::createObject('Object');
+	
+	// Or if you want to attach some owner properties on the created object, pass the second paramenter with an array:
+	
+	$object = App::createOjbect('Object', ['a'=>'aa', 'b'=>'bb']);
+	
+	// Or if the class has the constructor parameter, change the first parameter into an array, container a ```class``` key, the class key value equal to the Class name you want to create, and the left values, will be passed to the constructor:
+	
+	class Base
+	{
+		public $name;
+		public $version;
+		
+		public function __constructor($name, $version)
+		{
+			$this->name  = $name;
+			$this->version = $version;
+		}
+	}
+	
+	// if you have the class like the before class named [[ Base ]], you can use the App::createObject to create the object for the Base class:
+	
+	$base = App::createObject(['class'=>'Base', 'Speed', '1.1.8']);
+	
+	// Then the created object ```$base``` has two properties and it's value like this:
+	
+	$base->$name = 'Speed';
+	$base->version = '1.1.8';
+	
+### API ###
+
+The** Speed ** framework was designed to the api projects, also for the WEB applications.
+
+If you want to create a application, which want a better and more easy using, deal the** GET ** and** POST ** request, if you using the** Speed **, you can writing the code like below:
+
+For example:
+
+	use App;
+	
+	$app = new App();
+	
+	// The following two method, will catch all the GET & POST  request
+	
+	// [[ NOTICE]] : The first parameter can accept the PCRE-Regex pattern string, such as below:
+	// The method means is accept the method url begin with the string "ver" and end with "dd"
+	// $app->get('/ver(.*)dd$', function($req, $res){  });
+	
+	
 	$app->get('/', function($request, $response){
+	
+		/**
+		 * In this method, you can deal with the logic thing as so easy.
+		 * As each GET request will be passed into this method
+		 */
+		 
+		 $response->end('Hello, Speed Framework');
+	});
+	
+	$app->post('/', function($request, $response){
+	
+		/**
+		 * Each POST request will be arrived at this method, do the logic thing and return the 
+		 * necessary data, with the correct format, such as 'JSON' or 'XML'
+		 */
+		 
+		 // You should know that the three method only the first one will be functioned.
+		 
+		 // Only return the raw string data
+		 $response->end('Hello, Speed Framework");
+		 
+		 // Return the JSON data
+		 $response->asJson(['name'=>'Josin', 'age'=>25]);
+		 
+		 // Return the XML data
+		 $response->asXml(['name'=>'Josin', 'age'=>25]);
+		 
+	});
+	
+### WEB Applications ###
 
-	// $request ===> The instance of the class [[supjos\net\Request]]
-	$pathInfo = $request->getPathInfo();
+Also the** Speed ** framework can be used to develop the WEB applications, as the** Response ** class provide some method to redering the template.
 
-	// $response ===> The instance of the class [[supjos\net\Response]]
-	if ($pathInfo == '/version') {
-		$response->end('1.1.2');                // Return the string to the browser or client directly
-	} else if($pathInfo == '/goods') {
-		$response->asJson(['Apple', 'Pear']);   // Return the JSON string to the browser or client directly
-	} else if($pathInfo == '/cloth') {
-		$response->asXml(['Shorts', 'T-Shirts]);// Return the XML data to the client who request
-	}
+For example:
 
-As you see before, In this closure, you can handle any routes, which were ```GET``` request
-There are other method, such as
-
-         $app->post('/update', function($req, $res){});
-         $app->delete('/delete/1', function($req, $res){});
-         $app->options('/options', function($req, $res){});
-         
- and so on...
-
-
-Now the **Speed** supported much features, such as **Zip|Reflex(IOC)|Excel|Query(PDO),** below is the summary of these components:
-
-#### supjos\database\Query
- 
-         $query = \supjos\database\Query::getQuery();
-         $query->update('UPDATE {{%product}} SET [[o]]=:o WHERE [[id]]=:id', [':o'=>15, ':id'=>1]);
-         $query->delete( 'DELETE FROM {{%product}} WHERE [[id]] = :id', [ ':id' => 1 ] );
-         $query->insert( 'ord', ['oid', 'gid', 'much'], [[3, 33, 333], [4, 55, 555], [5, 77, 777], [6, 99, 999]] );
-         $query->select('*')->from( '{{%product}}' )->orderBy( ['id' => SORT_DESC] )->limit( 5 )->all();
-
-#### supjos\tool\Zip
-
-         $zip = App::createObject(Zip::getClass());  // Use the universal object-create method to create instance
-         $zip->addFile(['b.txt', 'c.xlxs', 'd.php', 'e.java']);
-         $zip->createZip('all.zip');
-
-#### supjos\tool\Excel
-
-         $excel = Excel::getInstance();
-         $excel->setHeader(['name', 'age', 'score']);
-         $excel->setBody([['Josin', 25, 99],['Liming', '23', '88]]);
-         $excel->exportFile('score');
-
-More features waiting you to join us.
-
-** License: MIT
-Author: Josin 774542602@qq.com
-Copyright 2017-2020 www.supjos.cn All Rights Reserved. **
- 
-#### Below were some example for the Speed using:
- 
-	require( 'vendor/autoload.php' );
-
-	$app = new App();
-
-	// Before using the Sql Query Class you must setting the SQL config in the file [[config.php]]
+	use App;
 	use supjos\database\Query;
-
-	// Get the Query Object, The inherit object is PDO
-	$query = Query::getQuery();
-
-	// print_r($query->createCommand('SELECT * FROM user')->queryAll());
-
-	$data = [];
-	$result = [];
-	for ( $index = 1; $index <= 1000; $index++ ) {
-		// You can use the createCommand to buildQueryRaw Sql and run the queryOne()|queryAll()|execute() and so on.
-	    // $row = $query->createCommand( 'INSERT INTO www_product ([[id]], [[t]], [[o]], [[r]]) VALUES (:id, :t, :o, :r)', [
-	    //     ':id' => $index,
-	    //     ':t'  => 222 + $index,
-	    //     ':o'  => 2222 + $index,
-	    //     ':r'  => 22222 + $index
-	    // ] )->execute();
-	    $data[] = [
-			':t' => 1 + $index,
-			':o' => 2 + $index,
-			':r' => 3 + $index
-	    ];
-	    if ( ( $index % 500 == 0 ) ) {
-		$rowCount = $query->insert( '{{%product}}', [
-		    't',
-		    'o',
-		    'r'
-		], $data );
+	
+	$app = new App();
+	
+	$app->get('/goods', function($req, $res){
+	
+		// Before using the Query class, you must config the [[ config.php ]] 
+		$query = Query::getQuery();
 		
-		$data = [];
-		
-		$result[ $rowCount ] = $query->getPreviousInsertId();
-	    }
-	}
-	// Use the update command to update the data int database's table named xx_product
-	// echo $query->update('UPDATE {{%product}} SET [[o]]=:o WHERE [[id]]=:id', [':o'=>15, ':id'=>1]);
-
-	// To delete the data-row-set where id = 1
-	// echo $query->delete( 'DELETE FROM {{%product}} WHERE [[id]] = :id', [ ':id' => 1 ] );
-
-	// $query->beginTransaction();
-	// echo $query->insert( 'ord', ['oid', 'gid', 'much'], [[3, 33, 333], [4, 55, 555], [5, 77, 777], [6, 99, 999]] );
-	// $query->commit();
-
-	$app->get( '/ver(.*)', function ( $request, $response ) {
-	    $query = Query::getQuery();
-	    
-	    $data = $query->select( '*' )
-		          ->from( '{{%product}}' )
-		          ->orderBy( ['id' => SORT_DESC] )
-		          ->limit( 5 )
-		          ->all();
-	    $userData = $query->select( [
-		                            'id',
-		                            'username',
-		                            'email',
-		                            'updated_at'
-		                        ] )
-		              ->from( 'user' )
-		              ->all();
-	    $response->asJson( $userData );
-	} );
-
-
-To handle the ** Post ** request with the URL** path-info ** equal to ** '/name' **
-
-	$app->post( '/name', function ( $request, $response ) {
-	    
-	    // Get the PDO Object
-	    $query = Query::getQuery();
-	    
-	    // Get the row-sets which you want to search from the database
-	    $data = $query->select( '*' )
-		          ->from( '{{%product}}' )
-		          ->orderBy( ['id' => SORT_DESC] )
-		          ->limit( 3 )
-		          ->all();
-	    
-	    // Return the JSON format for the client
-	    $response->asJson( $data );
-	} );
-
+		$goodLists = $query->select(['id', 'good_name', 'good_price'])
+					     ->from("{{%good}}")
+					     ->where(['uid'=>$req->get('uid')])
+					     ->orderBy(['good_price'=>SORT_ASC])
+					     ->all();
+		// Rendering the index template, and pass the goodsinfo, so you can
+		// In the index.php file, do some turning.
+		$res->render('@webRoot/goods/index', ['goods'=>$goodLists]);
+	});
+	
+### More features waiting you to join us, So let participating the Speed projects. ###
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

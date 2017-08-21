@@ -40,12 +40,10 @@ if ( !defined( 'CALCULATION_REGEXP_CELLREF' ) ) {
     if ( defined( 'PREG_BAD_UTF8_ERROR' ) ) {
         //	Cell reference (cell or range of cells, with or without a sheet reference)
         define( 'CALCULATION_REGEXP_CELLREF',
-                '((([^\s,!&%^\/\*\+<>=-]*)|(\'[^\']*\')|(\"[^\"]*\"))!)?\$?([a-z]{1,3})\$?(\d{1,7})'
-        );
+                '((([^\s,!&%^\/\*\+<>=-]*)|(\'[^\']*\')|(\"[^\"]*\"))!)?\$?([a-z]{1,3})\$?(\d{1,7})' );
         //	Named Range of cells
         define( 'CALCULATION_REGEXP_NAMEDRANGE',
-                '((([^\s,!&%^\/\*\+<>=-]*)|(\'[^\']*\')|(\"[^\"]*\"))!)?([_A-Z][_A-Z0-9\.]*)'
-        );
+                '((([^\s,!&%^\/\*\+<>=-]*)|(\'[^\']*\')|(\"[^\"]*\"))!)?([_A-Z][_A-Z0-9\.]*)' );
     } else {
         //	Cell reference (cell or range of cells, with or without a sheet reference)
         define( 'CALCULATION_REGEXP_CELLREF', '(((\w*)|(\'[^\']*\')|(\"[^\"]*\"))!)?\$?([a-z]{1,3})\$?(\d+)' );
@@ -57,12 +55,13 @@ if ( !defined( 'CALCULATION_REGEXP_CELLREF' ) ) {
 /**
  * PHPExcel_Calculation (Multiton)
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Calculation
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Calculation
 {
+    
     /** Constants                 */
     
     /** Regular Expressions         */
@@ -297,1792 +296,1792 @@ class PHPExcel_Calculation
     ];
     //	PHPExcel functions
     private static $_PHPExcelFunctions = [ // PHPExcel functions
-                                           'ABS'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'abs',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ACCRINT'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::ACCRINT',
-                                               'argumentCount' => '4-7'
-                                           ],
-                                           'ACCRINTM'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::ACCRINTM',
-                                               'argumentCount' => '3-5'
-                                           ],
-                                           'ACOS'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'acos',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ACOSH'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'acosh',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ADDRESS'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_LookupRef::CELL_ADDRESS',
-                                               'argumentCount' => '2-5'
-                                           ],
-                                           'AMORDEGRC'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::AMORDEGRC',
-                                               'argumentCount' => '6,7'
-                                           ],
-                                           'AMORLINC'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::AMORLINC',
-                                               'argumentCount' => '6,7'
-                                           ],
-                                           'AND'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Logical::LOGICAL_AND',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'AREAS'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ASC'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ASIN'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'asin',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ASINH'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'asinh',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ATAN'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'atan',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ATAN2'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::ATAN2',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'ATANH'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'atanh',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'AVEDEV'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::AVEDEV',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'AVERAGE'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::AVERAGE',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'AVERAGEA'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::AVERAGEA',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'AVERAGEIF'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::AVERAGEIF',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'AVERAGEIFS'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '3+'
-                                           ],
-                                           'BAHTTEXT'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'BESSELI'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::BESSELI',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'BESSELJ'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::BESSELJ',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'BESSELK'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::BESSELK',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'BESSELY'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::BESSELY',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'BETADIST'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::BETADIST',
-                                               'argumentCount' => '3-5'
-                                           ],
-                                           'BETAINV'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::BETAINV',
-                                               'argumentCount' => '3-5'
-                                           ],
-                                           'BIN2DEC'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::BINTODEC',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'BIN2HEX'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::BINTOHEX',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'BIN2OCT'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::BINTOOCT',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'BINOMDIST'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::BINOMDIST',
-                                               'argumentCount' => '4'
-                                           ],
-                                           'CEILING'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::CEILING',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'CELL'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'CHAR'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::CHARACTER',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'CHIDIST'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::CHIDIST',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'CHIINV'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::CHIINV',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'CHITEST'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'CHOOSE'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_LookupRef::CHOOSE',
-                                               'argumentCount' => '2+'
-                                           ],
-                                           'CLEAN'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::TRIMNONPRINTABLE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'CODE'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::ASCIICODE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'COLUMN'             => [
-                                               'category'        => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'    => 'PHPExcel_Calculation_LookupRef::COLUMN',
-                                               'argumentCount'   => '-1',
-                                               'passByReference' => [TRUE]
-                                           ],
-                                           'COLUMNS'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_LookupRef::COLUMNS',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'COMBIN'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::COMBIN',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'COMPLEX'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::COMPLEX',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'CONCATENATE'        => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::CONCATENATE',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'CONFIDENCE'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::CONFIDENCE',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'CONVERT'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::CONVERTUOM',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'CORREL'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::CORREL',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'COS'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'cos',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'COSH'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'cosh',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'COUNT'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::COUNT',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'COUNTA'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::COUNTA',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'COUNTBLANK'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::COUNTBLANK',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'COUNTIF'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::COUNTIF',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'COUNTIFS'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'COUPDAYBS'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::COUPDAYBS',
-                                               'argumentCount' => '3,4'
-                                           ],
-                                           'COUPDAYS'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::COUPDAYS',
-                                               'argumentCount' => '3,4'
-                                           ],
-                                           'COUPDAYSNC'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::COUPDAYSNC',
-                                               'argumentCount' => '3,4'
-                                           ],
-                                           'COUPNCD'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::COUPNCD',
-                                               'argumentCount' => '3,4'
-                                           ],
-                                           'COUPNUM'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::COUPNUM',
-                                               'argumentCount' => '3,4'
-                                           ],
-                                           'COUPPCD'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::COUPPCD',
-                                               'argumentCount' => '3,4'
-                                           ],
-                                           'COVAR'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::COVAR',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'CRITBINOM'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::CRITBINOM',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'CUBEKPIMEMBER'      => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '?'
-                                           ],
-                                           'CUBEMEMBER'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '?'
-                                           ],
-                                           'CUBEMEMBERPROPERTY' => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '?'
-                                           ],
-                                           'CUBERANKEDMEMBER'   => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '?'
-                                           ],
-                                           'CUBESET'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '?'
-                                           ],
-                                           'CUBESETCOUNT'       => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '?'
-                                           ],
-                                           'CUBEVALUE'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '?'
-                                           ],
-                                           'CUMIPMT'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::CUMIPMT',
-                                               'argumentCount' => '6'
-                                           ],
-                                           'CUMPRINC'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::CUMPRINC',
-                                               'argumentCount' => '6'
-                                           ],
-                                           'DATE'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::DATE',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'DATEDIF'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::DATEDIF',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'DATEVALUE'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::DATEVALUE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'DAVERAGE'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Database::DAVERAGE',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'DAY'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::DAYOFMONTH',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'DAYS360'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::DAYS360',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'DB'                 => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::DB',
-                                               'argumentCount' => '4,5'
-                                           ],
-                                           'DCOUNT'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Database::DCOUNT',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'DCOUNTA'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Database::DCOUNTA',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'DDB'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::DDB',
-                                               'argumentCount' => '4,5'
-                                           ],
-                                           'DEC2BIN'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::DECTOBIN',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'DEC2HEX'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::DECTOHEX',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'DEC2OCT'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::DECTOOCT',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'DEGREES'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'rad2deg',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'DELTA'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::DELTA',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'DEVSQ'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::DEVSQ',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'DGET'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Database::DGET',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'DISC'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::DISC',
-                                               'argumentCount' => '4,5'
-                                           ],
-                                           'DMAX'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Database::DMAX',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'DMIN'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Database::DMIN',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'DOLLAR'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::DOLLAR',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'DOLLARDE'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::DOLLARDE',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'DOLLARFR'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::DOLLARFR',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'DPRODUCT'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Database::DPRODUCT',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'DSTDEV'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Database::DSTDEV',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'DSTDEVP'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Database::DSTDEVP',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'DSUM'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Database::DSUM',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'DURATION'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '5,6'
-                                           ],
-                                           'DVAR'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Database::DVAR',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'DVARP'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Database::DVARP',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'EDATE'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::EDATE',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'EFFECT'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::EFFECT',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'EOMONTH'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::EOMONTH',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'ERF'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::ERF',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'ERFC'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::ERFC',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ERROR.TYPE'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::ERROR_TYPE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'EVEN'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::EVEN',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'EXACT'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'EXP'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'exp',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'EXPONDIST'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::EXPONDIST',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'FACT'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::FACT',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'FACTDOUBLE'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::FACTDOUBLE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'FALSE'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Logical::FALSE',
-                                               'argumentCount' => '0'
-                                           ],
-                                           'FDIST'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'FIND'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::SEARCHSENSITIVE',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'FINDB'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::SEARCHSENSITIVE',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'FINV'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'FISHER'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::FISHER',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'FISHERINV'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::FISHERINV',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'FIXED'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::FIXEDFORMAT',
-                                               'argumentCount' => '1-3'
-                                           ],
-                                           'FLOOR'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::FLOOR',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'FORECAST'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::FORECAST',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'FREQUENCY'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'FTEST'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'FV'                 => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::FV',
-                                               'argumentCount' => '3-5'
-                                           ],
-                                           'FVSCHEDULE'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::FVSCHEDULE',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'GAMMADIST'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::GAMMADIST',
-                                               'argumentCount' => '4'
-                                           ],
-                                           'GAMMAINV'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::GAMMAINV',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'GAMMALN'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::GAMMALN',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'GCD'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::GCD',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'GEOMEAN'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::GEOMEAN',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'GESTEP'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::GESTEP',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'GETPIVOTDATA'       => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '2+'
-                                           ],
-                                           'GROWTH'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::GROWTH',
-                                               'argumentCount' => '1-4'
-                                           ],
-                                           'HARMEAN'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::HARMEAN',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'HEX2BIN'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::HEXTOBIN',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'HEX2DEC'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::HEXTODEC',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'HEX2OCT'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::HEXTOOCT',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'HLOOKUP'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_LookupRef::HLOOKUP',
-                                               'argumentCount' => '3,4'
-                                           ],
-                                           'HOUR'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::HOUROFDAY',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'HYPERLINK'          => [
-                                               'category'          => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'      => 'PHPExcel_Calculation_LookupRef::HYPERLINK',
-                                               'argumentCount'     => '1,2',
-                                               'passCellReference' => TRUE
-                                           ],
-                                           'HYPGEOMDIST'        => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::HYPGEOMDIST',
-                                               'argumentCount' => '4'
-                                           ],
-                                           'IF'                 => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Logical::STATEMENT_IF',
-                                               'argumentCount' => '1-3'
-                                           ],
-                                           'IFERROR'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Logical::IFERROR',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'IMABS'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMABS',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'IMAGINARY'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMAGINARY',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'IMARGUMENT'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMARGUMENT',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'IMCONJUGATE'        => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMCONJUGATE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'IMCOS'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMCOS',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'IMDIV'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMDIV',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'IMEXP'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMEXP',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'IMLN'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMLN',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'IMLOG10'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMLOG10',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'IMLOG2'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMLOG2',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'IMPOWER'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMPOWER',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'IMPRODUCT'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMPRODUCT',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'IMREAL'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMREAL',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'IMSIN'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMSIN',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'IMSQRT'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMSQRT',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'IMSUB'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMSUB',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'IMSUM'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::IMSUM',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'INDEX'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_LookupRef::INDEX',
-                                               'argumentCount' => '1-4'
-                                           ],
-                                           'INDIRECT'           => [
-                                               'category'          => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'      => 'PHPExcel_Calculation_LookupRef::INDIRECT',
-                                               'argumentCount'     => '1,2',
-                                               'passCellReference' => TRUE
-                                           ],
-                                           'INFO'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'INT'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::INT',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'INTERCEPT'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::INTERCEPT',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'INTRATE'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::INTRATE',
-                                               'argumentCount' => '4,5'
-                                           ],
-                                           'IPMT'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::IPMT',
-                                               'argumentCount' => '4-6'
-                                           ],
-                                           'IRR'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::IRR',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'ISBLANK'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::IS_BLANK',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ISERR'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::IS_ERR',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ISERROR'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::IS_ERROR',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ISEVEN'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::IS_EVEN',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ISLOGICAL'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::IS_LOGICAL',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ISNA'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::IS_NA',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ISNONTEXT'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::IS_NONTEXT',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ISNUMBER'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::IS_NUMBER',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ISODD'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::IS_ODD',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ISPMT'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::ISPMT',
-                                               'argumentCount' => '4'
-                                           ],
-                                           'ISREF'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ISTEXT'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::IS_TEXT',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'JIS'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'KURT'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::KURT',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'LARGE'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::LARGE',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'LCM'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::LCM',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'LEFT'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::LEFT',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'LEFTB'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::LEFT',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'LEN'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::STRINGLENGTH',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'LENB'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::STRINGLENGTH',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'LINEST'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::LINEST',
-                                               'argumentCount' => '1-4'
-                                           ],
-                                           'LN'                 => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'log',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'LOG'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::LOG_BASE',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'LOG10'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'log10',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'LOGEST'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::LOGEST',
-                                               'argumentCount' => '1-4'
-                                           ],
-                                           'LOGINV'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::LOGINV',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'LOGNORMDIST'        => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::LOGNORMDIST',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'LOOKUP'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_LookupRef::LOOKUP',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'LOWER'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::LOWERCASE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'MATCH'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_LookupRef::MATCH',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'MAX'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::MAX',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'MAXA'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::MAXA',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'MAXIF'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::MAXIF',
-                                               'argumentCount' => '2+'
-                                           ],
-                                           'MDETERM'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::MDETERM',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'MDURATION'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '5,6'
-                                           ],
-                                           'MEDIAN'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::MEDIAN',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'MEDIANIF'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '2+'
-                                           ],
-                                           'MID'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::MID',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'MIDB'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::MID',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'MIN'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::MIN',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'MINA'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::MINA',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'MINIF'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::MINIF',
-                                               'argumentCount' => '2+'
-                                           ],
-                                           'MINUTE'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::MINUTEOFHOUR',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'MINVERSE'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::MINVERSE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'MIRR'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::MIRR',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'MMULT'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::MMULT',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'MOD'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::MOD',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'MODE'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::MODE',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'MONTH'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::MONTHOFYEAR',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'MROUND'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::MROUND',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'MULTINOMIAL'        => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::MULTINOMIAL',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'N'                  => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::N',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'NA'                 => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::NA',
-                                               'argumentCount' => '0'
-                                           ],
-                                           'NEGBINOMDIST'       => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::NEGBINOMDIST',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'NETWORKDAYS'        => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::NETWORKDAYS',
-                                               'argumentCount' => '2+'
-                                           ],
-                                           'NOMINAL'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::NOMINAL',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'NORMDIST'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::NORMDIST',
-                                               'argumentCount' => '4'
-                                           ],
-                                           'NORMINV'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::NORMINV',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'NORMSDIST'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::NORMSDIST',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'NORMSINV'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::NORMSINV',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'NOT'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Logical::NOT',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'NOW'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::DATETIMENOW',
-                                               'argumentCount' => '0'
-                                           ],
-                                           'NPER'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::NPER',
-                                               'argumentCount' => '3-5'
-                                           ],
-                                           'NPV'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::NPV',
-                                               'argumentCount' => '2+'
-                                           ],
-                                           'OCT2BIN'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::OCTTOBIN',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'OCT2DEC'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::OCTTODEC',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'OCT2HEX'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
-                                               'functionCall'  => 'PHPExcel_Calculation_Engineering::OCTTOHEX',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'ODD'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::ODD',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'ODDFPRICE'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '8,9'
-                                           ],
-                                           'ODDFYIELD'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '8,9'
-                                           ],
-                                           'ODDLPRICE'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '7,8'
-                                           ],
-                                           'ODDLYIELD'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '7,8'
-                                           ],
-                                           'OFFSET'             => [
-                                               'category'          => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'      => 'PHPExcel_Calculation_LookupRef::OFFSET',
-                                               'argumentCount'     => '3,5',
-                                               'passCellReference' => TRUE,
-                                               'passByReference'   => [TRUE]
-                                           ],
-                                           'OR'                 => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Logical::LOGICAL_OR',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'PEARSON'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::CORREL',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'PERCENTILE'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::PERCENTILE',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'PERCENTRANK'        => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::PERCENTRANK',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'PERMUT'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::PERMUT',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'PHONETIC'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'PI'                 => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'pi',
-                                               'argumentCount' => '0'
-                                           ],
-                                           'PMT'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::PMT',
-                                               'argumentCount' => '3-5'
-                                           ],
-                                           'POISSON'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::POISSON',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'POWER'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::POWER',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'PPMT'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::PPMT',
-                                               'argumentCount' => '4-6'
-                                           ],
-                                           'PRICE'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::PRICE',
-                                               'argumentCount' => '6,7'
-                                           ],
-                                           'PRICEDISC'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::PRICEDISC',
-                                               'argumentCount' => '4,5'
-                                           ],
-                                           'PRICEMAT'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::PRICEMAT',
-                                               'argumentCount' => '5,6'
-                                           ],
-                                           'PROB'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '3,4'
-                                           ],
-                                           'PRODUCT'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::PRODUCT',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'PROPER'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::PROPERCASE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'PV'                 => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::PV',
-                                               'argumentCount' => '3-5'
-                                           ],
-                                           'QUARTILE'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::QUARTILE',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'QUOTIENT'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::QUOTIENT',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'RADIANS'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'deg2rad',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'RAND'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::RAND',
-                                               'argumentCount' => '0'
-                                           ],
-                                           'RANDBETWEEN'        => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::RAND',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'RANK'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::RANK',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'RATE'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::RATE',
-                                               'argumentCount' => '3-6'
-                                           ],
-                                           'RECEIVED'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::RECEIVED',
-                                               'argumentCount' => '4-5'
-                                           ],
-                                           'REPLACE'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::REPLACE',
-                                               'argumentCount' => '4'
-                                           ],
-                                           'REPLACEB'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::REPLACE',
-                                               'argumentCount' => '4'
-                                           ],
-                                           'REPT'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'str_repeat',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'RIGHT'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::RIGHT',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'RIGHTB'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::RIGHT',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'ROMAN'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::ROMAN',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'ROUND'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'round',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'ROUNDDOWN'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::ROUNDDOWN',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'ROUNDUP'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::ROUNDUP',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'ROW'                => [
-                                               'category'        => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'    => 'PHPExcel_Calculation_LookupRef::ROW',
-                                               'argumentCount'   => '-1',
-                                               'passByReference' => [TRUE]
-                                           ],
-                                           'ROWS'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_LookupRef::ROWS',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'RSQ'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::RSQ',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'RTD'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'SEARCH'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::SEARCHINSENSITIVE',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'SEARCHB'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::SEARCHINSENSITIVE',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'SECOND'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::SECONDOFMINUTE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'SERIESSUM'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::SERIESSUM',
-                                               'argumentCount' => '4'
-                                           ],
-                                           'SIGN'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::SIGN',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'SIN'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'sin',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'SINH'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'sinh',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'SKEW'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::SKEW',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'SLN'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::SLN',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'SLOPE'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::SLOPE',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'SMALL'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::SMALL',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'SQRT'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'sqrt',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'SQRTPI'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::SQRTPI',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'STANDARDIZE'        => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::STANDARDIZE',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'STDEV'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::STDEV',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'STDEVA'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::STDEVA',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'STDEVP'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::STDEVP',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'STDEVPA'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::STDEVPA',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'STEYX'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::STEYX',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'SUBSTITUTE'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::SUBSTITUTE',
-                                               'argumentCount' => '3,4'
-                                           ],
-                                           'SUBTOTAL'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUBTOTAL',
-                                               'argumentCount' => '2+'
-                                           ],
-                                           'SUM'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUM',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'SUMIF'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUMIF',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'SUMIFS'             => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '?'
-                                           ],
-                                           'SUMPRODUCT'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUMPRODUCT',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'SUMSQ'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUMSQ',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'SUMX2MY2'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUMX2MY2',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'SUMX2PY2'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUMX2PY2',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'SUMXMY2'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUMXMY2',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'SYD'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::SYD',
-                                               'argumentCount' => '4'
-                                           ],
-                                           'T'                  => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::RETURNSTRING',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'TAN'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'tan',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'TANH'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'tanh',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'TBILLEQ'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::TBILLEQ',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'TBILLPRICE'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::TBILLPRICE',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'TBILLYIELD'         => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::TBILLYIELD',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'TDIST'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::TDIST',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'TEXT'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::TEXTFORMAT',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'TIME'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::TIME',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'TIMEVALUE'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::TIMEVALUE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'TINV'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::TINV',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'TODAY'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::DATENOW',
-                                               'argumentCount' => '0'
-                                           ],
-                                           'TRANSPOSE'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_LookupRef::TRANSPOSE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'TREND'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::TREND',
-                                               'argumentCount' => '1-4'
-                                           ],
-                                           'TRIM'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::TRIMSPACES',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'TRIMMEAN'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::TRIMMEAN',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'TRUE'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Logical::TRUE',
-                                               'argumentCount' => '0'
-                                           ],
-                                           'TRUNC'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
-                                               'functionCall'  => 'PHPExcel_Calculation_MathTrig::TRUNC',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'TTEST'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '4'
-                                           ],
-                                           'TYPE'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::TYPE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'UPPER'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_TextData::UPPERCASE',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'USDOLLAR'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '2'
-                                           ],
-                                           'VALUE'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'VAR'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::VARFunc',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'VARA'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::VARA',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'VARP'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::VARP',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'VARPA'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::VARPA',
-                                               'argumentCount' => '1+'
-                                           ],
-                                           'VDB'                => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '5-7'
-                                           ],
-                                           'VERSION'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::VERSION',
-                                               'argumentCount' => '0'
-                                           ],
-                                           'VLOOKUP'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
-                                               'functionCall'  => 'PHPExcel_Calculation_LookupRef::VLOOKUP',
-                                               'argumentCount' => '3,4'
-                                           ],
-                                           'WEEKDAY'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::DAYOFWEEK',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'WEEKNUM'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::WEEKOFYEAR',
-                                               'argumentCount' => '1,2'
-                                           ],
-                                           'WEIBULL'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::WEIBULL',
-                                               'argumentCount' => '4'
-                                           ],
-                                           'WORKDAY'            => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::WORKDAY',
-                                               'argumentCount' => '2+'
-                                           ],
-                                           'XIRR'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::XIRR',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'XNPV'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::XNPV',
-                                               'argumentCount' => '3'
-                                           ],
-                                           'YEAR'               => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::YEAR',
-                                               'argumentCount' => '1'
-                                           ],
-                                           'YEARFRAC'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
-                                               'functionCall'  => 'PHPExcel_Calculation_DateTime::YEARFRAC',
-                                               'argumentCount' => '2,3'
-                                           ],
-                                           'YIELD'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
-                                               'argumentCount' => '6,7'
-                                           ],
-                                           'YIELDDISC'          => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::YIELDDISC',
-                                               'argumentCount' => '4,5'
-                                           ],
-                                           'YIELDMAT'           => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Financial::YIELDMAT',
-                                               'argumentCount' => '5,6'
-                                           ],
-                                           'ZTEST'              => [
-                                               'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
-                                               'functionCall'  => 'PHPExcel_Calculation_Statistical::ZTEST',
-                                               'argumentCount' => '2-3'
-                                           ]
+        'ABS'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'abs',
+            'argumentCount' => '1'
+        ],
+        'ACCRINT'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::ACCRINT',
+            'argumentCount' => '4-7'
+        ],
+        'ACCRINTM'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::ACCRINTM',
+            'argumentCount' => '3-5'
+        ],
+        'ACOS'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'acos',
+            'argumentCount' => '1'
+        ],
+        'ACOSH'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'acosh',
+            'argumentCount' => '1'
+        ],
+        'ADDRESS'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_LookupRef::CELL_ADDRESS',
+            'argumentCount' => '2-5'
+        ],
+        'AMORDEGRC'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::AMORDEGRC',
+            'argumentCount' => '6,7'
+        ],
+        'AMORLINC'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::AMORLINC',
+            'argumentCount' => '6,7'
+        ],
+        'AND'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Logical::LOGICAL_AND',
+            'argumentCount' => '1+'
+        ],
+        'AREAS'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '1'
+        ],
+        'ASC'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '1'
+        ],
+        'ASIN'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'asin',
+            'argumentCount' => '1'
+        ],
+        'ASINH'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'asinh',
+            'argumentCount' => '1'
+        ],
+        'ATAN'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'atan',
+            'argumentCount' => '1'
+        ],
+        'ATAN2'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::ATAN2',
+            'argumentCount' => '2'
+        ],
+        'ATANH'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'atanh',
+            'argumentCount' => '1'
+        ],
+        'AVEDEV'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::AVEDEV',
+            'argumentCount' => '1+'
+        ],
+        'AVERAGE'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::AVERAGE',
+            'argumentCount' => '1+'
+        ],
+        'AVERAGEA'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::AVERAGEA',
+            'argumentCount' => '1+'
+        ],
+        'AVERAGEIF'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::AVERAGEIF',
+            'argumentCount' => '2,3'
+        ],
+        'AVERAGEIFS'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '3+'
+        ],
+        'BAHTTEXT'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '1'
+        ],
+        'BESSELI'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::BESSELI',
+            'argumentCount' => '2'
+        ],
+        'BESSELJ'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::BESSELJ',
+            'argumentCount' => '2'
+        ],
+        'BESSELK'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::BESSELK',
+            'argumentCount' => '2'
+        ],
+        'BESSELY'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::BESSELY',
+            'argumentCount' => '2'
+        ],
+        'BETADIST'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::BETADIST',
+            'argumentCount' => '3-5'
+        ],
+        'BETAINV'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::BETAINV',
+            'argumentCount' => '3-5'
+        ],
+        'BIN2DEC'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::BINTODEC',
+            'argumentCount' => '1'
+        ],
+        'BIN2HEX'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::BINTOHEX',
+            'argumentCount' => '1,2'
+        ],
+        'BIN2OCT'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::BINTOOCT',
+            'argumentCount' => '1,2'
+        ],
+        'BINOMDIST'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::BINOMDIST',
+            'argumentCount' => '4'
+        ],
+        'CEILING'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::CEILING',
+            'argumentCount' => '2'
+        ],
+        'CELL'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '1,2'
+        ],
+        'CHAR'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::CHARACTER',
+            'argumentCount' => '1'
+        ],
+        'CHIDIST'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::CHIDIST',
+            'argumentCount' => '2'
+        ],
+        'CHIINV'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::CHIINV',
+            'argumentCount' => '2'
+        ],
+        'CHITEST'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '2'
+        ],
+        'CHOOSE'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_LookupRef::CHOOSE',
+            'argumentCount' => '2+'
+        ],
+        'CLEAN'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::TRIMNONPRINTABLE',
+            'argumentCount' => '1'
+        ],
+        'CODE'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::ASCIICODE',
+            'argumentCount' => '1'
+        ],
+        'COLUMN'             => [
+            'category'        => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'    => 'PHPExcel_Calculation_LookupRef::COLUMN',
+            'argumentCount'   => '-1',
+            'passByReference' => [TRUE]
+        ],
+        'COLUMNS'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_LookupRef::COLUMNS',
+            'argumentCount' => '1'
+        ],
+        'COMBIN'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::COMBIN',
+            'argumentCount' => '2'
+        ],
+        'COMPLEX'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::COMPLEX',
+            'argumentCount' => '2,3'
+        ],
+        'CONCATENATE'        => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::CONCATENATE',
+            'argumentCount' => '1+'
+        ],
+        'CONFIDENCE'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::CONFIDENCE',
+            'argumentCount' => '3'
+        ],
+        'CONVERT'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::CONVERTUOM',
+            'argumentCount' => '3'
+        ],
+        'CORREL'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::CORREL',
+            'argumentCount' => '2'
+        ],
+        'COS'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'cos',
+            'argumentCount' => '1'
+        ],
+        'COSH'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'cosh',
+            'argumentCount' => '1'
+        ],
+        'COUNT'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::COUNT',
+            'argumentCount' => '1+'
+        ],
+        'COUNTA'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::COUNTA',
+            'argumentCount' => '1+'
+        ],
+        'COUNTBLANK'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::COUNTBLANK',
+            'argumentCount' => '1'
+        ],
+        'COUNTIF'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::COUNTIF',
+            'argumentCount' => '2'
+        ],
+        'COUNTIFS'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '2'
+        ],
+        'COUPDAYBS'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::COUPDAYBS',
+            'argumentCount' => '3,4'
+        ],
+        'COUPDAYS'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::COUPDAYS',
+            'argumentCount' => '3,4'
+        ],
+        'COUPDAYSNC'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::COUPDAYSNC',
+            'argumentCount' => '3,4'
+        ],
+        'COUPNCD'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::COUPNCD',
+            'argumentCount' => '3,4'
+        ],
+        'COUPNUM'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::COUPNUM',
+            'argumentCount' => '3,4'
+        ],
+        'COUPPCD'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::COUPPCD',
+            'argumentCount' => '3,4'
+        ],
+        'COVAR'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::COVAR',
+            'argumentCount' => '2'
+        ],
+        'CRITBINOM'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::CRITBINOM',
+            'argumentCount' => '3'
+        ],
+        'CUBEKPIMEMBER'      => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '?'
+        ],
+        'CUBEMEMBER'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '?'
+        ],
+        'CUBEMEMBERPROPERTY' => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '?'
+        ],
+        'CUBERANKEDMEMBER'   => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '?'
+        ],
+        'CUBESET'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '?'
+        ],
+        'CUBESETCOUNT'       => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '?'
+        ],
+        'CUBEVALUE'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_CUBE,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '?'
+        ],
+        'CUMIPMT'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::CUMIPMT',
+            'argumentCount' => '6'
+        ],
+        'CUMPRINC'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::CUMPRINC',
+            'argumentCount' => '6'
+        ],
+        'DATE'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::DATE',
+            'argumentCount' => '3'
+        ],
+        'DATEDIF'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::DATEDIF',
+            'argumentCount' => '2,3'
+        ],
+        'DATEVALUE'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::DATEVALUE',
+            'argumentCount' => '1'
+        ],
+        'DAVERAGE'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
+            'functionCall'  => 'PHPExcel_Calculation_Database::DAVERAGE',
+            'argumentCount' => '3'
+        ],
+        'DAY'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::DAYOFMONTH',
+            'argumentCount' => '1'
+        ],
+        'DAYS360'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::DAYS360',
+            'argumentCount' => '2,3'
+        ],
+        'DB'                 => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::DB',
+            'argumentCount' => '4,5'
+        ],
+        'DCOUNT'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
+            'functionCall'  => 'PHPExcel_Calculation_Database::DCOUNT',
+            'argumentCount' => '3'
+        ],
+        'DCOUNTA'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
+            'functionCall'  => 'PHPExcel_Calculation_Database::DCOUNTA',
+            'argumentCount' => '3'
+        ],
+        'DDB'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::DDB',
+            'argumentCount' => '4,5'
+        ],
+        'DEC2BIN'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::DECTOBIN',
+            'argumentCount' => '1,2'
+        ],
+        'DEC2HEX'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::DECTOHEX',
+            'argumentCount' => '1,2'
+        ],
+        'DEC2OCT'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::DECTOOCT',
+            'argumentCount' => '1,2'
+        ],
+        'DEGREES'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'rad2deg',
+            'argumentCount' => '1'
+        ],
+        'DELTA'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::DELTA',
+            'argumentCount' => '1,2'
+        ],
+        'DEVSQ'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::DEVSQ',
+            'argumentCount' => '1+'
+        ],
+        'DGET'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
+            'functionCall'  => 'PHPExcel_Calculation_Database::DGET',
+            'argumentCount' => '3'
+        ],
+        'DISC'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::DISC',
+            'argumentCount' => '4,5'
+        ],
+        'DMAX'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
+            'functionCall'  => 'PHPExcel_Calculation_Database::DMAX',
+            'argumentCount' => '3'
+        ],
+        'DMIN'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
+            'functionCall'  => 'PHPExcel_Calculation_Database::DMIN',
+            'argumentCount' => '3'
+        ],
+        'DOLLAR'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::DOLLAR',
+            'argumentCount' => '1,2'
+        ],
+        'DOLLARDE'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::DOLLARDE',
+            'argumentCount' => '2'
+        ],
+        'DOLLARFR'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::DOLLARFR',
+            'argumentCount' => '2'
+        ],
+        'DPRODUCT'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
+            'functionCall'  => 'PHPExcel_Calculation_Database::DPRODUCT',
+            'argumentCount' => '3'
+        ],
+        'DSTDEV'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
+            'functionCall'  => 'PHPExcel_Calculation_Database::DSTDEV',
+            'argumentCount' => '3'
+        ],
+        'DSTDEVP'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
+            'functionCall'  => 'PHPExcel_Calculation_Database::DSTDEVP',
+            'argumentCount' => '3'
+        ],
+        'DSUM'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
+            'functionCall'  => 'PHPExcel_Calculation_Database::DSUM',
+            'argumentCount' => '3'
+        ],
+        'DURATION'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '5,6'
+        ],
+        'DVAR'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
+            'functionCall'  => 'PHPExcel_Calculation_Database::DVAR',
+            'argumentCount' => '3'
+        ],
+        'DVARP'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATABASE,
+            'functionCall'  => 'PHPExcel_Calculation_Database::DVARP',
+            'argumentCount' => '3'
+        ],
+        'EDATE'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::EDATE',
+            'argumentCount' => '2'
+        ],
+        'EFFECT'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::EFFECT',
+            'argumentCount' => '2'
+        ],
+        'EOMONTH'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::EOMONTH',
+            'argumentCount' => '2'
+        ],
+        'ERF'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::ERF',
+            'argumentCount' => '1,2'
+        ],
+        'ERFC'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::ERFC',
+            'argumentCount' => '1'
+        ],
+        'ERROR.TYPE'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::ERROR_TYPE',
+            'argumentCount' => '1'
+        ],
+        'EVEN'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::EVEN',
+            'argumentCount' => '1'
+        ],
+        'EXACT'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '2'
+        ],
+        'EXP'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'exp',
+            'argumentCount' => '1'
+        ],
+        'EXPONDIST'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::EXPONDIST',
+            'argumentCount' => '3'
+        ],
+        'FACT'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::FACT',
+            'argumentCount' => '1'
+        ],
+        'FACTDOUBLE'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::FACTDOUBLE',
+            'argumentCount' => '1'
+        ],
+        'FALSE'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Logical::FALSE',
+            'argumentCount' => '0'
+        ],
+        'FDIST'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '3'
+        ],
+        'FIND'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::SEARCHSENSITIVE',
+            'argumentCount' => '2,3'
+        ],
+        'FINDB'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::SEARCHSENSITIVE',
+            'argumentCount' => '2,3'
+        ],
+        'FINV'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '3'
+        ],
+        'FISHER'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::FISHER',
+            'argumentCount' => '1'
+        ],
+        'FISHERINV'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::FISHERINV',
+            'argumentCount' => '1'
+        ],
+        'FIXED'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::FIXEDFORMAT',
+            'argumentCount' => '1-3'
+        ],
+        'FLOOR'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::FLOOR',
+            'argumentCount' => '2'
+        ],
+        'FORECAST'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::FORECAST',
+            'argumentCount' => '3'
+        ],
+        'FREQUENCY'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '2'
+        ],
+        'FTEST'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '2'
+        ],
+        'FV'                 => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::FV',
+            'argumentCount' => '3-5'
+        ],
+        'FVSCHEDULE'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::FVSCHEDULE',
+            'argumentCount' => '2'
+        ],
+        'GAMMADIST'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::GAMMADIST',
+            'argumentCount' => '4'
+        ],
+        'GAMMAINV'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::GAMMAINV',
+            'argumentCount' => '3'
+        ],
+        'GAMMALN'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::GAMMALN',
+            'argumentCount' => '1'
+        ],
+        'GCD'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::GCD',
+            'argumentCount' => '1+'
+        ],
+        'GEOMEAN'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::GEOMEAN',
+            'argumentCount' => '1+'
+        ],
+        'GESTEP'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::GESTEP',
+            'argumentCount' => '1,2'
+        ],
+        'GETPIVOTDATA'       => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '2+'
+        ],
+        'GROWTH'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::GROWTH',
+            'argumentCount' => '1-4'
+        ],
+        'HARMEAN'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::HARMEAN',
+            'argumentCount' => '1+'
+        ],
+        'HEX2BIN'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::HEXTOBIN',
+            'argumentCount' => '1,2'
+        ],
+        'HEX2DEC'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::HEXTODEC',
+            'argumentCount' => '1'
+        ],
+        'HEX2OCT'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::HEXTOOCT',
+            'argumentCount' => '1,2'
+        ],
+        'HLOOKUP'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_LookupRef::HLOOKUP',
+            'argumentCount' => '3,4'
+        ],
+        'HOUR'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::HOUROFDAY',
+            'argumentCount' => '1'
+        ],
+        'HYPERLINK'          => [
+            'category'          => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'      => 'PHPExcel_Calculation_LookupRef::HYPERLINK',
+            'argumentCount'     => '1,2',
+            'passCellReference' => TRUE
+        ],
+        'HYPGEOMDIST'        => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::HYPGEOMDIST',
+            'argumentCount' => '4'
+        ],
+        'IF'                 => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Logical::STATEMENT_IF',
+            'argumentCount' => '1-3'
+        ],
+        'IFERROR'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Logical::IFERROR',
+            'argumentCount' => '2'
+        ],
+        'IMABS'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMABS',
+            'argumentCount' => '1'
+        ],
+        'IMAGINARY'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMAGINARY',
+            'argumentCount' => '1'
+        ],
+        'IMARGUMENT'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMARGUMENT',
+            'argumentCount' => '1'
+        ],
+        'IMCONJUGATE'        => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMCONJUGATE',
+            'argumentCount' => '1'
+        ],
+        'IMCOS'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMCOS',
+            'argumentCount' => '1'
+        ],
+        'IMDIV'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMDIV',
+            'argumentCount' => '2'
+        ],
+        'IMEXP'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMEXP',
+            'argumentCount' => '1'
+        ],
+        'IMLN'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMLN',
+            'argumentCount' => '1'
+        ],
+        'IMLOG10'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMLOG10',
+            'argumentCount' => '1'
+        ],
+        'IMLOG2'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMLOG2',
+            'argumentCount' => '1'
+        ],
+        'IMPOWER'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMPOWER',
+            'argumentCount' => '2'
+        ],
+        'IMPRODUCT'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMPRODUCT',
+            'argumentCount' => '1+'
+        ],
+        'IMREAL'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMREAL',
+            'argumentCount' => '1'
+        ],
+        'IMSIN'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMSIN',
+            'argumentCount' => '1'
+        ],
+        'IMSQRT'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMSQRT',
+            'argumentCount' => '1'
+        ],
+        'IMSUB'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMSUB',
+            'argumentCount' => '2'
+        ],
+        'IMSUM'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::IMSUM',
+            'argumentCount' => '1+'
+        ],
+        'INDEX'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_LookupRef::INDEX',
+            'argumentCount' => '1-4'
+        ],
+        'INDIRECT'           => [
+            'category'          => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'      => 'PHPExcel_Calculation_LookupRef::INDIRECT',
+            'argumentCount'     => '1,2',
+            'passCellReference' => TRUE
+        ],
+        'INFO'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '1'
+        ],
+        'INT'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::INT',
+            'argumentCount' => '1'
+        ],
+        'INTERCEPT'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::INTERCEPT',
+            'argumentCount' => '2'
+        ],
+        'INTRATE'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::INTRATE',
+            'argumentCount' => '4,5'
+        ],
+        'IPMT'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::IPMT',
+            'argumentCount' => '4-6'
+        ],
+        'IRR'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::IRR',
+            'argumentCount' => '1,2'
+        ],
+        'ISBLANK'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::IS_BLANK',
+            'argumentCount' => '1'
+        ],
+        'ISERR'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::IS_ERR',
+            'argumentCount' => '1'
+        ],
+        'ISERROR'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::IS_ERROR',
+            'argumentCount' => '1'
+        ],
+        'ISEVEN'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::IS_EVEN',
+            'argumentCount' => '1'
+        ],
+        'ISLOGICAL'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::IS_LOGICAL',
+            'argumentCount' => '1'
+        ],
+        'ISNA'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::IS_NA',
+            'argumentCount' => '1'
+        ],
+        'ISNONTEXT'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::IS_NONTEXT',
+            'argumentCount' => '1'
+        ],
+        'ISNUMBER'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::IS_NUMBER',
+            'argumentCount' => '1'
+        ],
+        'ISODD'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::IS_ODD',
+            'argumentCount' => '1'
+        ],
+        'ISPMT'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::ISPMT',
+            'argumentCount' => '4'
+        ],
+        'ISREF'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '1'
+        ],
+        'ISTEXT'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::IS_TEXT',
+            'argumentCount' => '1'
+        ],
+        'JIS'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '1'
+        ],
+        'KURT'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::KURT',
+            'argumentCount' => '1+'
+        ],
+        'LARGE'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::LARGE',
+            'argumentCount' => '2'
+        ],
+        'LCM'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::LCM',
+            'argumentCount' => '1+'
+        ],
+        'LEFT'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::LEFT',
+            'argumentCount' => '1,2'
+        ],
+        'LEFTB'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::LEFT',
+            'argumentCount' => '1,2'
+        ],
+        'LEN'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::STRINGLENGTH',
+            'argumentCount' => '1'
+        ],
+        'LENB'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::STRINGLENGTH',
+            'argumentCount' => '1'
+        ],
+        'LINEST'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::LINEST',
+            'argumentCount' => '1-4'
+        ],
+        'LN'                 => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'log',
+            'argumentCount' => '1'
+        ],
+        'LOG'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::LOG_BASE',
+            'argumentCount' => '1,2'
+        ],
+        'LOG10'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'log10',
+            'argumentCount' => '1'
+        ],
+        'LOGEST'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::LOGEST',
+            'argumentCount' => '1-4'
+        ],
+        'LOGINV'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::LOGINV',
+            'argumentCount' => '3'
+        ],
+        'LOGNORMDIST'        => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::LOGNORMDIST',
+            'argumentCount' => '3'
+        ],
+        'LOOKUP'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_LookupRef::LOOKUP',
+            'argumentCount' => '2,3'
+        ],
+        'LOWER'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::LOWERCASE',
+            'argumentCount' => '1'
+        ],
+        'MATCH'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_LookupRef::MATCH',
+            'argumentCount' => '2,3'
+        ],
+        'MAX'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::MAX',
+            'argumentCount' => '1+'
+        ],
+        'MAXA'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::MAXA',
+            'argumentCount' => '1+'
+        ],
+        'MAXIF'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::MAXIF',
+            'argumentCount' => '2+'
+        ],
+        'MDETERM'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::MDETERM',
+            'argumentCount' => '1'
+        ],
+        'MDURATION'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '5,6'
+        ],
+        'MEDIAN'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::MEDIAN',
+            'argumentCount' => '1+'
+        ],
+        'MEDIANIF'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '2+'
+        ],
+        'MID'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::MID',
+            'argumentCount' => '3'
+        ],
+        'MIDB'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::MID',
+            'argumentCount' => '3'
+        ],
+        'MIN'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::MIN',
+            'argumentCount' => '1+'
+        ],
+        'MINA'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::MINA',
+            'argumentCount' => '1+'
+        ],
+        'MINIF'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::MINIF',
+            'argumentCount' => '2+'
+        ],
+        'MINUTE'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::MINUTEOFHOUR',
+            'argumentCount' => '1'
+        ],
+        'MINVERSE'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::MINVERSE',
+            'argumentCount' => '1'
+        ],
+        'MIRR'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::MIRR',
+            'argumentCount' => '3'
+        ],
+        'MMULT'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::MMULT',
+            'argumentCount' => '2'
+        ],
+        'MOD'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::MOD',
+            'argumentCount' => '2'
+        ],
+        'MODE'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::MODE',
+            'argumentCount' => '1+'
+        ],
+        'MONTH'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::MONTHOFYEAR',
+            'argumentCount' => '1'
+        ],
+        'MROUND'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::MROUND',
+            'argumentCount' => '2'
+        ],
+        'MULTINOMIAL'        => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::MULTINOMIAL',
+            'argumentCount' => '1+'
+        ],
+        'N'                  => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::N',
+            'argumentCount' => '1'
+        ],
+        'NA'                 => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::NA',
+            'argumentCount' => '0'
+        ],
+        'NEGBINOMDIST'       => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::NEGBINOMDIST',
+            'argumentCount' => '3'
+        ],
+        'NETWORKDAYS'        => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::NETWORKDAYS',
+            'argumentCount' => '2+'
+        ],
+        'NOMINAL'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::NOMINAL',
+            'argumentCount' => '2'
+        ],
+        'NORMDIST'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::NORMDIST',
+            'argumentCount' => '4'
+        ],
+        'NORMINV'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::NORMINV',
+            'argumentCount' => '3'
+        ],
+        'NORMSDIST'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::NORMSDIST',
+            'argumentCount' => '1'
+        ],
+        'NORMSINV'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::NORMSINV',
+            'argumentCount' => '1'
+        ],
+        'NOT'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Logical::NOT',
+            'argumentCount' => '1'
+        ],
+        'NOW'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::DATETIMENOW',
+            'argumentCount' => '0'
+        ],
+        'NPER'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::NPER',
+            'argumentCount' => '3-5'
+        ],
+        'NPV'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::NPV',
+            'argumentCount' => '2+'
+        ],
+        'OCT2BIN'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::OCTTOBIN',
+            'argumentCount' => '1,2'
+        ],
+        'OCT2DEC'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::OCTTODEC',
+            'argumentCount' => '1'
+        ],
+        'OCT2HEX'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_ENGINEERING,
+            'functionCall'  => 'PHPExcel_Calculation_Engineering::OCTTOHEX',
+            'argumentCount' => '1,2'
+        ],
+        'ODD'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::ODD',
+            'argumentCount' => '1'
+        ],
+        'ODDFPRICE'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '8,9'
+        ],
+        'ODDFYIELD'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '8,9'
+        ],
+        'ODDLPRICE'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '7,8'
+        ],
+        'ODDLYIELD'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '7,8'
+        ],
+        'OFFSET'             => [
+            'category'          => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'      => 'PHPExcel_Calculation_LookupRef::OFFSET',
+            'argumentCount'     => '3,5',
+            'passCellReference' => TRUE,
+            'passByReference'   => [TRUE]
+        ],
+        'OR'                 => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Logical::LOGICAL_OR',
+            'argumentCount' => '1+'
+        ],
+        'PEARSON'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::CORREL',
+            'argumentCount' => '2'
+        ],
+        'PERCENTILE'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::PERCENTILE',
+            'argumentCount' => '2'
+        ],
+        'PERCENTRANK'        => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::PERCENTRANK',
+            'argumentCount' => '2,3'
+        ],
+        'PERMUT'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::PERMUT',
+            'argumentCount' => '2'
+        ],
+        'PHONETIC'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '1'
+        ],
+        'PI'                 => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'pi',
+            'argumentCount' => '0'
+        ],
+        'PMT'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::PMT',
+            'argumentCount' => '3-5'
+        ],
+        'POISSON'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::POISSON',
+            'argumentCount' => '3'
+        ],
+        'POWER'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::POWER',
+            'argumentCount' => '2'
+        ],
+        'PPMT'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::PPMT',
+            'argumentCount' => '4-6'
+        ],
+        'PRICE'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::PRICE',
+            'argumentCount' => '6,7'
+        ],
+        'PRICEDISC'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::PRICEDISC',
+            'argumentCount' => '4,5'
+        ],
+        'PRICEMAT'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::PRICEMAT',
+            'argumentCount' => '5,6'
+        ],
+        'PROB'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '3,4'
+        ],
+        'PRODUCT'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::PRODUCT',
+            'argumentCount' => '1+'
+        ],
+        'PROPER'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::PROPERCASE',
+            'argumentCount' => '1'
+        ],
+        'PV'                 => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::PV',
+            'argumentCount' => '3-5'
+        ],
+        'QUARTILE'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::QUARTILE',
+            'argumentCount' => '2'
+        ],
+        'QUOTIENT'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::QUOTIENT',
+            'argumentCount' => '2'
+        ],
+        'RADIANS'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'deg2rad',
+            'argumentCount' => '1'
+        ],
+        'RAND'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::RAND',
+            'argumentCount' => '0'
+        ],
+        'RANDBETWEEN'        => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::RAND',
+            'argumentCount' => '2'
+        ],
+        'RANK'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::RANK',
+            'argumentCount' => '2,3'
+        ],
+        'RATE'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::RATE',
+            'argumentCount' => '3-6'
+        ],
+        'RECEIVED'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::RECEIVED',
+            'argumentCount' => '4-5'
+        ],
+        'REPLACE'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::REPLACE',
+            'argumentCount' => '4'
+        ],
+        'REPLACEB'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::REPLACE',
+            'argumentCount' => '4'
+        ],
+        'REPT'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'str_repeat',
+            'argumentCount' => '2'
+        ],
+        'RIGHT'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::RIGHT',
+            'argumentCount' => '1,2'
+        ],
+        'RIGHTB'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::RIGHT',
+            'argumentCount' => '1,2'
+        ],
+        'ROMAN'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::ROMAN',
+            'argumentCount' => '1,2'
+        ],
+        'ROUND'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'round',
+            'argumentCount' => '2'
+        ],
+        'ROUNDDOWN'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::ROUNDDOWN',
+            'argumentCount' => '2'
+        ],
+        'ROUNDUP'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::ROUNDUP',
+            'argumentCount' => '2'
+        ],
+        'ROW'                => [
+            'category'        => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'    => 'PHPExcel_Calculation_LookupRef::ROW',
+            'argumentCount'   => '-1',
+            'passByReference' => [TRUE]
+        ],
+        'ROWS'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_LookupRef::ROWS',
+            'argumentCount' => '1'
+        ],
+        'RSQ'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::RSQ',
+            'argumentCount' => '2'
+        ],
+        'RTD'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '1+'
+        ],
+        'SEARCH'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::SEARCHINSENSITIVE',
+            'argumentCount' => '2,3'
+        ],
+        'SEARCHB'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::SEARCHINSENSITIVE',
+            'argumentCount' => '2,3'
+        ],
+        'SECOND'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::SECONDOFMINUTE',
+            'argumentCount' => '1'
+        ],
+        'SERIESSUM'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::SERIESSUM',
+            'argumentCount' => '4'
+        ],
+        'SIGN'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::SIGN',
+            'argumentCount' => '1'
+        ],
+        'SIN'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'sin',
+            'argumentCount' => '1'
+        ],
+        'SINH'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'sinh',
+            'argumentCount' => '1'
+        ],
+        'SKEW'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::SKEW',
+            'argumentCount' => '1+'
+        ],
+        'SLN'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::SLN',
+            'argumentCount' => '3'
+        ],
+        'SLOPE'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::SLOPE',
+            'argumentCount' => '2'
+        ],
+        'SMALL'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::SMALL',
+            'argumentCount' => '2'
+        ],
+        'SQRT'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'sqrt',
+            'argumentCount' => '1'
+        ],
+        'SQRTPI'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::SQRTPI',
+            'argumentCount' => '1'
+        ],
+        'STANDARDIZE'        => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::STANDARDIZE',
+            'argumentCount' => '3'
+        ],
+        'STDEV'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::STDEV',
+            'argumentCount' => '1+'
+        ],
+        'STDEVA'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::STDEVA',
+            'argumentCount' => '1+'
+        ],
+        'STDEVP'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::STDEVP',
+            'argumentCount' => '1+'
+        ],
+        'STDEVPA'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::STDEVPA',
+            'argumentCount' => '1+'
+        ],
+        'STEYX'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::STEYX',
+            'argumentCount' => '2'
+        ],
+        'SUBSTITUTE'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::SUBSTITUTE',
+            'argumentCount' => '3,4'
+        ],
+        'SUBTOTAL'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUBTOTAL',
+            'argumentCount' => '2+'
+        ],
+        'SUM'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUM',
+            'argumentCount' => '1+'
+        ],
+        'SUMIF'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUMIF',
+            'argumentCount' => '2,3'
+        ],
+        'SUMIFS'             => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '?'
+        ],
+        'SUMPRODUCT'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUMPRODUCT',
+            'argumentCount' => '1+'
+        ],
+        'SUMSQ'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUMSQ',
+            'argumentCount' => '1+'
+        ],
+        'SUMX2MY2'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUMX2MY2',
+            'argumentCount' => '2'
+        ],
+        'SUMX2PY2'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUMX2PY2',
+            'argumentCount' => '2'
+        ],
+        'SUMXMY2'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::SUMXMY2',
+            'argumentCount' => '2'
+        ],
+        'SYD'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::SYD',
+            'argumentCount' => '4'
+        ],
+        'T'                  => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::RETURNSTRING',
+            'argumentCount' => '1'
+        ],
+        'TAN'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'tan',
+            'argumentCount' => '1'
+        ],
+        'TANH'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'tanh',
+            'argumentCount' => '1'
+        ],
+        'TBILLEQ'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::TBILLEQ',
+            'argumentCount' => '3'
+        ],
+        'TBILLPRICE'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::TBILLPRICE',
+            'argumentCount' => '3'
+        ],
+        'TBILLYIELD'         => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::TBILLYIELD',
+            'argumentCount' => '3'
+        ],
+        'TDIST'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::TDIST',
+            'argumentCount' => '3'
+        ],
+        'TEXT'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::TEXTFORMAT',
+            'argumentCount' => '2'
+        ],
+        'TIME'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::TIME',
+            'argumentCount' => '3'
+        ],
+        'TIMEVALUE'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::TIMEVALUE',
+            'argumentCount' => '1'
+        ],
+        'TINV'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::TINV',
+            'argumentCount' => '2'
+        ],
+        'TODAY'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::DATENOW',
+            'argumentCount' => '0'
+        ],
+        'TRANSPOSE'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_LookupRef::TRANSPOSE',
+            'argumentCount' => '1'
+        ],
+        'TREND'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::TREND',
+            'argumentCount' => '1-4'
+        ],
+        'TRIM'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::TRIMSPACES',
+            'argumentCount' => '1'
+        ],
+        'TRIMMEAN'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::TRIMMEAN',
+            'argumentCount' => '2'
+        ],
+        'TRUE'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOGICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Logical::TRUE',
+            'argumentCount' => '0'
+        ],
+        'TRUNC'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_MATH_AND_TRIG,
+            'functionCall'  => 'PHPExcel_Calculation_MathTrig::TRUNC',
+            'argumentCount' => '1,2'
+        ],
+        'TTEST'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '4'
+        ],
+        'TYPE'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::TYPE',
+            'argumentCount' => '1'
+        ],
+        'UPPER'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_TextData::UPPERCASE',
+            'argumentCount' => '1'
+        ],
+        'USDOLLAR'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '2'
+        ],
+        'VALUE'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_TEXT_AND_DATA,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '1'
+        ],
+        'VAR'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::VARFunc',
+            'argumentCount' => '1+'
+        ],
+        'VARA'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::VARA',
+            'argumentCount' => '1+'
+        ],
+        'VARP'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::VARP',
+            'argumentCount' => '1+'
+        ],
+        'VARPA'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::VARPA',
+            'argumentCount' => '1+'
+        ],
+        'VDB'                => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '5-7'
+        ],
+        'VERSION'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_INFORMATION,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::VERSION',
+            'argumentCount' => '0'
+        ],
+        'VLOOKUP'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_LOOKUP_AND_REFERENCE,
+            'functionCall'  => 'PHPExcel_Calculation_LookupRef::VLOOKUP',
+            'argumentCount' => '3,4'
+        ],
+        'WEEKDAY'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::DAYOFWEEK',
+            'argumentCount' => '1,2'
+        ],
+        'WEEKNUM'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::WEEKOFYEAR',
+            'argumentCount' => '1,2'
+        ],
+        'WEIBULL'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::WEIBULL',
+            'argumentCount' => '4'
+        ],
+        'WORKDAY'            => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::WORKDAY',
+            'argumentCount' => '2+'
+        ],
+        'XIRR'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::XIRR',
+            'argumentCount' => '2,3'
+        ],
+        'XNPV'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::XNPV',
+            'argumentCount' => '3'
+        ],
+        'YEAR'               => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::YEAR',
+            'argumentCount' => '1'
+        ],
+        'YEARFRAC'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_DATE_AND_TIME,
+            'functionCall'  => 'PHPExcel_Calculation_DateTime::YEARFRAC',
+            'argumentCount' => '2,3'
+        ],
+        'YIELD'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Functions::DUMMY',
+            'argumentCount' => '6,7'
+        ],
+        'YIELDDISC'          => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::YIELDDISC',
+            'argumentCount' => '4,5'
+        ],
+        'YIELDMAT'           => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_FINANCIAL,
+            'functionCall'  => 'PHPExcel_Calculation_Financial::YIELDMAT',
+            'argumentCount' => '5,6'
+        ],
+        'ZTEST'              => [
+            'category'      => PHPExcel_Calculation_Function::CATEGORY_STATISTICAL,
+            'functionCall'  => 'PHPExcel_Calculation_Statistical::ZTEST',
+            'argumentCount' => '2-3'
+        ]
     ];
     //	Internal functions used for special control purposes
     private static $_controlFunctions = [
@@ -2133,8 +2132,10 @@ class PHPExcel_Calculation
      * Get an instance of this class
      *
      * @access    public
-     * @param   PHPExcel $workbook Injected workbook for working with a PHPExcel object,
+     *
+     * @param   PHPExcel $workbook        Injected workbook for working with a PHPExcel object,
      *                                    or NULL to create a standalone claculation engine
+     *
      * @return PHPExcel_Calculation
      */
     public static function getInstance( PHPExcel $workbook = NULL )
@@ -2160,6 +2161,7 @@ class PHPExcel_Calculation
      * Unset an instance of this class
      *
      * @access    public
+     *
      * @param   PHPExcel $workbook Injected workbook identifying the instance to unset
      */
     public static function unsetInstance( PHPExcel $workbook = NULL )
@@ -2235,7 +2237,9 @@ class PHPExcel_Calculation
      * Set the Array Return Type (Array or Value of first element in the array)
      *
      * @access    public
+     *
      * @param     string $returnType Array return type
+     *
      * @return     boolean                    Success or failure
      */
     public static function setArrayReturnType( $returnType )
@@ -2283,6 +2287,7 @@ class PHPExcel_Calculation
      * Enable/disable calculation cache
      *
      * @access    public
+     *
      * @param boolean $pValue
      */
     public function setCalculationCacheEnabled( $pValue = TRUE )
@@ -2369,6 +2374,7 @@ class PHPExcel_Calculation
      * Set the locale code
      *
      * @param string $locale The locale to use for formula translation
+     *
      * @return boolean
      */
     public function setLocale( $locale = 'en_us' )
@@ -2546,8 +2552,7 @@ class PHPExcel_Calculation
         }
         
         return self::_translateFormula( self::$functionReplaceFromExcel, self::$functionReplaceToLocale, $formula, ',',
-                                        self::$_localeArgumentSeparator
-        );
+                                        self::$_localeArgumentSeparator );
     }
     
     //	function _translateFormulaToLocale()
@@ -2579,8 +2584,7 @@ class PHPExcel_Calculation
         }
         
         return self::_translateFormula( self::$functionReplaceFromLocale, self::$functionReplaceToExcel, $formula,
-                                        self::$_localeArgumentSeparator, ','
-        );
+                                        self::$_localeArgumentSeparator, ',' );
     }
     
     //	function _translateFormulaToEnglish()
@@ -2605,6 +2609,7 @@ class PHPExcel_Calculation
      * Wrap string values in quotes
      *
      * @param mixed $value
+     *
      * @return mixed
      */
     public static function _wrapResult( $value )
@@ -2632,6 +2637,7 @@ class PHPExcel_Calculation
      * Remove quotes used as a wrapper to identify string values
      *
      * @param mixed $value
+     *
      * @return mixed
      */
     public static function _unwrapResult( $value )
@@ -2655,7 +2661,9 @@ class PHPExcel_Calculation
      * Retained for backward compatibility
      *
      * @access    public
+     *
      * @param    PHPExcel_Cell $pCell Cell to calculate
+     *
      * @return    mixed
      * @throws    PHPExcel_Calculation_Exception
      */
@@ -2674,8 +2682,10 @@ class PHPExcel_Calculation
      * Calculate the value of a cell formula
      *
      * @access    public
-     * @param    PHPExcel_Cell $pCell Cell to calculate
+     *
+     * @param    PHPExcel_Cell $pCell    Cell to calculate
      * @param    Boolean       $resetLog Flag indicating whether the debug log should be reset or not
+     *
      * @return    mixed
      * @throws    PHPExcel_Calculation_Exception
      */
@@ -2698,10 +2708,8 @@ class PHPExcel_Calculation
         
         //	Execute the calculation for the cell formula
         try {
-            $result =
-                self::_unwrapResult( $this->_calculateFormulaValue( $pCell->getValue(), $pCell->getCoordinate(), $pCell
-                )
-                );
+            $result = self::_unwrapResult( $this->_calculateFormulaValue( $pCell->getValue(), $pCell->getCoordinate(),
+                                                                          $pCell ) );
         } catch ( PHPExcel_Exception $e ) {
             throw new PHPExcel_Calculation_Exception( $e->getMessage() );
         }
@@ -2748,6 +2756,7 @@ class PHPExcel_Calculation
      * Validate and parse a formula string
      *
      * @param    string $formula Formula to parse
+     *
      * @return    array
      * @throws    PHPExcel_Calculation_Exception
      */
@@ -2774,8 +2783,9 @@ class PHPExcel_Calculation
      * Calculate the value of a formula
      *
      * @param    string        $formula Formula to parse
-     * @param    string        $cellID Address of the cell to calculate
-     * @param    PHPExcel_Cell $pCell Cell to calculate
+     * @param    string        $cellID  Address of the cell to calculate
+     * @param    PHPExcel_Cell $pCell   Cell to calculate
+     *
      * @return    mixed
      * @throws    PHPExcel_Calculation_Exception
      */
@@ -2815,8 +2825,8 @@ class PHPExcel_Calculation
              ( isset( $this->_calculationCache[ $worksheetName ][ $cellID ] ) )
         ) {
             //echo 'Retrieve from cache',PHP_EOL;
-            $this->_debugLog->writeDebugLog( 'Retrieving value for cell ', $worksheetName, '!', $cellID, ' from cache'
-            );
+            $this->_debugLog->writeDebugLog( 'Retrieving value for cell ', $worksheetName, '!', $cellID,
+                                             ' from cache' );
             // Return the cached result
             $cellValue = $this->_calculationCache[ $worksheetName ][ $cellID ];
             
@@ -2837,8 +2847,9 @@ class PHPExcel_Calculation
      * Parse a cell formula and calculate its value
      *
      * @param    string        $formula The formula to parse and calculate
-     * @param    string        $cellID The ID (e.g. A3) of the cell that we are calculating
-     * @param    PHPExcel_Cell $pCell Cell to calculate
+     * @param    string        $cellID  The ID (e.g. A3) of the cell that we are calculating
+     * @param    PHPExcel_Cell $pCell   Cell to calculate
+     *
      * @return    mixed
      * @throws    PHPExcel_Calculation_Exception
      */
@@ -2903,11 +2914,11 @@ class PHPExcel_Calculation
     /**
      * Ensure that paired matrix operands are both matrices and of the same size
      *
-     * @param    mixed   &$operand1 First matrix operand
-     * @param    mixed   &$operand2 Second matrix operand
-     * @param    integer $resize Flag indicating whether the matrices should be resized to match
-     *                                        and (if so), whether the smaller dimension should grow or the
-     *                                        larger should shrink.
+     * @param    mixed   &$operand1               First matrix operand
+     * @param    mixed   &$operand2               Second matrix operand
+     * @param    integer $resize                  Flag indicating whether the matrices should be resized to match
+     *                                            and (if so), whether the smaller dimension should grow or the
+     *                                            larger should shrink.
      *                                            0 = no resize
      *                                            1 = shrink to fit
      *                                            2 = extend to fit
@@ -2935,13 +2946,11 @@ class PHPExcel_Calculation
         if ( $resize == 2 ) {
             //	Given two matrices of (potentially) unequal size, convert the smaller in each dimension to match the larger
             self::_resizeMatricesExtend( $operand1, $operand2, $matrix1Rows, $matrix1Columns, $matrix2Rows,
-                                         $matrix2Columns
-            );
+                                         $matrix2Columns );
         } elseif ( $resize == 1 ) {
             //	Given two matrices of (potentially) unequal size, convert the larger in each dimension to match the smaller
             self::_resizeMatricesShrink( $operand1, $operand2, $matrix1Rows, $matrix1Columns, $matrix2Rows,
-                                         $matrix2Columns
-            );
+                                         $matrix2Columns );
         }
         
         return [
@@ -2958,6 +2967,7 @@ class PHPExcel_Calculation
      * Read the dimensions of a matrix, and re-index it with straight numeric keys starting from row 0, column 0
      *
      * @param    mixed &$matrix matrix operand
+     *
      * @return    array        An array comprising the number of rows, and number of columns
      */
     public static function _getMatrixDimensions( &$matrix )
@@ -2985,14 +2995,15 @@ class PHPExcel_Calculation
     /**
      * Ensure that paired matrix operands are both matrices of the same size
      *
-     * @param    mixed   &$matrix1 First matrix operand
-     * @param    mixed   &$matrix2 Second matrix operand
-     * @param    integer $matrix1Rows Row size of first matrix operand
+     * @param    mixed   &$matrix1       First matrix operand
+     * @param    mixed   &$matrix2       Second matrix operand
+     * @param    integer $matrix1Rows    Row size of first matrix operand
      * @param    integer $matrix1Columns Column size of first matrix operand
-     * @param    integer $matrix2Rows Row size of second matrix operand
+     * @param    integer $matrix2Rows    Row size of second matrix operand
      * @param    integer $matrix2Columns Column size of second matrix operand
      */
-    private static function _resizeMatricesShrink( &$matrix1, &$matrix2, $matrix1Rows, $matrix1Columns, $matrix2Rows, $matrix2Columns )
+    private static function _resizeMatricesShrink( &$matrix1, &$matrix2, $matrix1Rows, $matrix1Columns, $matrix2Rows,
+        $matrix2Columns )
     {
         if ( ( $matrix2Columns < $matrix1Columns ) || ( $matrix2Rows < $matrix1Rows ) ) {
             if ( $matrix2Rows < $matrix1Rows ) {
@@ -3030,14 +3041,15 @@ class PHPExcel_Calculation
     /**
      * Ensure that paired matrix operands are both matrices of the same size
      *
-     * @param    mixed   &$matrix1 First matrix operand
-     * @param    mixed   &$matrix2 Second matrix operand
-     * @param    integer $matrix1Rows Row size of first matrix operand
+     * @param    mixed   &$matrix1       First matrix operand
+     * @param    mixed   &$matrix2       Second matrix operand
+     * @param    integer $matrix1Rows    Row size of first matrix operand
      * @param    integer $matrix1Columns Column size of first matrix operand
-     * @param    integer $matrix2Rows Row size of second matrix operand
+     * @param    integer $matrix2Rows    Row size of second matrix operand
      * @param    integer $matrix2Columns Column size of second matrix operand
      */
-    private static function _resizeMatricesExtend( &$matrix1, &$matrix2, $matrix1Rows, $matrix1Columns, $matrix2Rows, $matrix2Columns )
+    private static function _resizeMatricesExtend( &$matrix1, &$matrix2, $matrix1Rows, $matrix1Columns, $matrix2Rows,
+        $matrix2Columns )
     {
         if ( ( $matrix2Columns < $matrix1Columns ) || ( $matrix2Rows < $matrix1Rows ) ) {
             if ( $matrix2Columns < $matrix1Columns ) {
@@ -3080,6 +3092,7 @@ class PHPExcel_Calculation
      * Format details of an operand for display in the log (based on operand type)
      *
      * @param    mixed $value First matrix operand
+     *
      * @return    mixed
      */
     private function _showValue( $value )
@@ -3098,9 +3111,7 @@ class PHPExcel_Calculation
                         $returnMatrix[] = implode( $pad, array_map( [
                                                                         $this,
                                                                         '_showValue'
-                                                                    ], $row
-                                                       )
-                        );
+                                                                    ], $row ) );
                         $rpad = '; ';
                     } else {
                         $returnMatrix[] = $this->_showValue( $row );
@@ -3124,6 +3135,7 @@ class PHPExcel_Calculation
      * Format type and details of an operand for display in the log (based on operand type)
      *
      * @param    mixed $value First matrix operand
+     *
      * @return    mixed
      */
     private function _showTypeDetails( $value )
@@ -3311,7 +3323,7 @@ class PHPExcel_Calculation
         
         //	Start with initialisation
         $index = 0;
-        $stack = new PHPExcel_Calculation_Token_Stack;
+        $stack = new PHPExcel_Calculation_Token_Stack();
         $output = [];
         $expectingOperator = FALSE;     //	We use this test in syntax-checking the expression to determine when a
         //		- is a negation or + is a positive operator rather than an operation
@@ -3352,8 +3364,7 @@ class PHPExcel_Calculation
             } elseif ( ( ( $opCharacter == '~' ) || ( $opCharacter == '|' ) ) &&
                        ( !$isOperandOrFunction )
             ) { //	We have to explicitly deny a tilde or pipe, because they are legal
-                return $this->_raiseFormulaError( "Formula Error: Illegal character '~'"
-                );    //		on the stack but not in the input expression
+                return $this->_raiseFormulaError( "Formula Error: Illegal character '~'" );    //		on the stack but not in the input expression
             } elseif ( ( isset( self::$_operators[ $opCharacter ] ) or $isOperandOrFunction ) &&
                        $expectingOperator
             ) { //	Are we putting an operator on the stack?
@@ -3364,8 +3375,8 @@ class PHPExcel_Calculation
                             self::$_operatorPrecedence[ $opCharacter ] < self::$_operatorPrecedence[ $o2[ 'value' ] ] :
                             self::$_operatorPrecedence[ $opCharacter ] <=
                             self::$_operatorPrecedence[ $o2[ 'value' ] ] ) ) {
-                    $output[] = $stack->pop(
-                    );        //	Swap operands and higher precedence operators from the stack to the output
+                    $output[] =
+                        $stack->pop();        //	Swap operands and higher precedence operators from the stack to the output
                 }
                 $stack->push( 'Binary Operator', $opCharacter ); //	Finally put our current operator onto the stack
                 ++$index;
@@ -3381,8 +3392,8 @@ class PHPExcel_Calculation
                     }
                 }
                 $d = $stack->last( 2 );
-                if ( preg_match( '/^' . self::CALCULATION_REGEXP_FUNCTION . '$/i', $d[ 'value' ], $matches
-                ) ) { //	Did this parenthesis just close a function?
+                if ( preg_match( '/^' . self::CALCULATION_REGEXP_FUNCTION . '$/i', $d[ 'value' ],
+                                 $matches ) ) { //	Did this parenthesis just close a function?
                     $functionName = $matches[ 1 ];          //	Get the function name
                     //echo 'Closed Function is '.$functionName,PHP_EOL;
                     $d = $stack->pop();
@@ -3452,8 +3463,7 @@ class PHPExcel_Calculation
                     }
                     if ( $argumentCountError ) {
                         return $this->_raiseFormulaError( "Formula Error: Wrong number of arguments for $functionName() function: $argumentCount given, " .
-                                                          $expectedArgumentCountString . " expected"
-                        );
+                                                          $expectedArgumentCountString . " expected" );
                     }
                 }
                 ++$index;
@@ -3665,8 +3675,8 @@ class PHPExcel_Calculation
                 //		Cell References) then we have an INTERSECTION operator
                 //				echo 'Possible Intersect Operator<br />';
                 if ( ( $expectingOperator ) &&
-                     ( preg_match( '/^' . self::CALCULATION_REGEXP_CELLREF . '.*/Ui', substr( $formula, $index ), $match
-                     ) ) && ( $output[ count( $output ) - 1 ][ 'type' ] == 'Cell Reference' )
+                     ( preg_match( '/^' . self::CALCULATION_REGEXP_CELLREF . '.*/Ui', substr( $formula, $index ),
+                                   $match ) ) && ( $output[ count( $output ) - 1 ][ 'type' ] == 'Cell Reference' )
                 ) {
                     //					echo 'Element is an Intersect Operator<br />';
                     while ( $stack->count() > 0 && ( $o2 = $stack->last() ) &&
@@ -3676,8 +3686,8 @@ class PHPExcel_Calculation
                                 self::$_operatorPrecedence[ $o2[ 'value' ] ] :
                                 self::$_operatorPrecedence[ $opCharacter ] <=
                                 self::$_operatorPrecedence[ $o2[ 'value' ] ] ) ) {
-                        $output[] = $stack->pop(
-                        );        //	Swap operands and higher precedence operators from the stack to the output
+                        $output[] =
+                            $stack->pop();        //	Swap operands and higher precedence operators from the stack to the output
                     }
                     $stack->push( 'Binary Operator', '|' ); //	Put an Intersect Operator on the stack
                     $expectingOperator = FALSE;
@@ -3724,7 +3734,7 @@ class PHPExcel_Calculation
         //		so we store the parent cell collection so that we can re-attach it when necessary
         $pCellWorksheet = ( $pCell !== NULL ) ? $pCell->getWorksheet() : NULL;
         $pCellParent = ( $pCell !== NULL ) ? $pCell->getParent() : NULL;
-        $stack = new PHPExcel_Calculation_Token_Stack;
+        $stack = new PHPExcel_Calculation_Token_Stack();
         
         //	Loop through each token in turn
         foreach ( $tokens as $tokenData ) {
@@ -3750,12 +3760,10 @@ class PHPExcel_Calculation
                 if ( $token == ':' ) {
                     $this->_debugLog->writeDebugLog( 'Evaluating Range ',
                                                      $this->_showValue( $operand1Data[ 'reference' ] ), ' ', $token,
-                                                     ' ', $this->_showValue( $operand2Data[ 'reference' ] )
-                    );
+                                                     ' ', $this->_showValue( $operand2Data[ 'reference' ] ) );
                 } else {
                     $this->_debugLog->writeDebugLog( 'Evaluating ', $this->_showValue( $operand1 ), ' ', $token, ' ',
-                                                     $this->_showValue( $operand2 )
-                    );
+                                                     $this->_showValue( $operand2 ) );
                 }
                 
                 //	Process the operation in the appropriate manner
@@ -3773,14 +3781,14 @@ class PHPExcel_Calculation
                     case ':' :   //	Range
                         $sheet1 = $sheet2 = '';
                         if ( strpos( $operand1Data[ 'reference' ], '!' ) !== FALSE ) {
-                            list( $sheet1, $operand1Data[ 'reference' ]
-                                ) = explode( '!', $operand1Data[ 'reference' ] );
+                            list( $sheet1, $operand1Data[ 'reference' ] ) =
+                                explode( '!', $operand1Data[ 'reference' ] );
                         } else {
                             $sheet1 = ( $pCellParent !== NULL ) ? $pCellWorksheet->getTitle() : '';
                         }
                         if ( strpos( $operand2Data[ 'reference' ], '!' ) !== FALSE ) {
-                            list( $sheet2, $operand2Data[ 'reference' ]
-                                ) = explode( '!', $operand2Data[ 'reference' ] );
+                            list( $sheet2, $operand2Data[ 'reference' ] ) =
+                                explode( '!', $operand2Data[ 'reference' ] );
                         } else {
                             $sheet2 = $sheet1;
                         }
@@ -3809,8 +3817,7 @@ class PHPExcel_Calculation
                             }
                             
                             $oData = array_merge( explode( ':', $operand1Data[ 'reference' ] ),
-                                                  explode( ':', $operand2Data[ 'reference' ] )
-                            );
+                                                  explode( ':', $operand2Data[ 'reference' ] ) );
                             $oCol = $oRow = [];
                             foreach ( $oData as $oDatum ) {
                                 $oCR = PHPExcel_Cell::coordinateFromString( $oDatum );
@@ -3822,8 +3829,7 @@ class PHPExcel_Calculation
                             if ( $pCellParent !== NULL ) {
                                 $cellValue =
                                     $this->extractCellRange( $cellRef, $this->_workbook->getSheetByName( $sheet1 ),
-                                                             FALSE
-                                    );
+                                                             FALSE );
                             } else {
                                 return $this->_raiseFormulaError( 'Unable to access Cell Reference' );
                             }
@@ -3835,23 +3841,19 @@ class PHPExcel_Calculation
                         break;
                     case '+' :   //	Addition
                         $this->_executeNumericBinaryOperation( $cellID, $operand1, $operand2, $token, 'plusEquals',
-                                                               $stack
-                        );
+                                                               $stack );
                         break;
                     case '-' :   //	Subtraction
                         $this->_executeNumericBinaryOperation( $cellID, $operand1, $operand2, $token, 'minusEquals',
-                                                               $stack
-                        );
+                                                               $stack );
                         break;
                     case '*' :   //	Multiplication
                         $this->_executeNumericBinaryOperation( $cellID, $operand1, $operand2, $token,
-                                                               'arrayTimesEquals', $stack
-                        );
+                                                               'arrayTimesEquals', $stack );
                         break;
                     case '/' :   //	Division
                         $this->_executeNumericBinaryOperation( $cellID, $operand1, $operand2, $token,
-                                                               'arrayRightDivide', $stack
-                        );
+                                                               'arrayRightDivide', $stack );
                         break;
                     case '^' :   //	Exponential
                         $this->_executeNumericBinaryOperation( $cellID, $operand1, $operand2, $token, 'power', $stack );
@@ -3883,8 +3885,7 @@ class PHPExcel_Calculation
                             }
                         } else {
                             $result = '"' . str_replace( '""', '"', self::_unwrapResult( $operand1, '"' ) .
-                                                                    self::_unwrapResult( $operand2, '"' )
-                                ) . '"';
+                                                                    self::_unwrapResult( $operand2, '"' ) ) . '"';
                         }
                         $this->_debugLog->writeDebugLog( 'Evaluation Result is ', $this->_showTypeDetails( $result ) );
                         $stack->push( 'Value', $result );
@@ -3902,8 +3903,7 @@ class PHPExcel_Calculation
                         $cellRef = PHPExcel_Cell::stringFromColumnIndex( min( $oCol ) ) . min( $oRow ) . ':' .
                                    PHPExcel_Cell::stringFromColumnIndex( max( $oCol ) ) . max( $oRow );
                         $this->_debugLog->writeDebugLog( 'Evaluation Result is ',
-                                                         $this->_showTypeDetails( $cellIntersect )
-                        );
+                                                         $this->_showTypeDetails( $cellIntersect ) );
                         $stack->push( 'Value', $cellIntersect, $cellRef );
                         break;
                 }
@@ -3937,8 +3937,8 @@ class PHPExcel_Calculation
                     $this->_debugLog->writeDebugLog( 'Evaluation Result is ', $this->_showTypeDetails( $result ) );
                     $stack->push( 'Value', $result );
                 } else {
-                    $this->_executeNumericBinaryOperation( $cellID, $multiplier, $arg, '*', 'arrayTimesEquals', $stack
-                    );
+                    $this->_executeNumericBinaryOperation( $cellID, $multiplier, $arg, '*', 'arrayTimesEquals',
+                                                           $stack );
                 }
             } elseif ( preg_match( '/^' . self::CALCULATION_REGEXP_CELLREF . '$/i', $token, $matches ) ) {
                 $cellRef = NULL;
@@ -3961,33 +3961,29 @@ class PHPExcel_Calculation
                             $matches[ 2 ] = trim( $matches[ 2 ], "\"'" );
                             //							echo '$cellRef='.$cellRef.' in worksheet '.$matches[2].'<br />';
                             $this->_debugLog->writeDebugLog( 'Evaluating Cell Range ', $cellRef, ' in worksheet ',
-                                                             $matches[ 2 ]
-                            );
+                                                             $matches[ 2 ] );
                             if ( $pCellParent !== NULL ) {
                                 $cellValue = $this->extractCellRange( $cellRef,
                                                                       $this->_workbook->getSheetByName( $matches[ 2 ] ),
-                                                                      FALSE
-                                );
+                                                                      FALSE );
                             } else {
                                 return $this->_raiseFormulaError( 'Unable to access Cell Reference' );
                             }
                             $this->_debugLog->writeDebugLog( 'Evaluation Result for cells ', $cellRef, ' in worksheet ',
                                                              $matches[ 2 ], ' is ',
-                                                             $this->_showTypeDetails( $cellValue )
-                            );
+                                                             $this->_showTypeDetails( $cellValue ) );
                             //							$cellRef = $matches[2].'!'.$cellRef;
                         } else {
                             //							echo '$cellRef='.$cellRef.' in current worksheet<br />';
-                            $this->_debugLog->writeDebugLog( 'Evaluating Cell Range ', $cellRef, ' in current worksheet'
-                            );
+                            $this->_debugLog->writeDebugLog( 'Evaluating Cell Range ', $cellRef,
+                                                             ' in current worksheet' );
                             if ( $pCellParent !== NULL ) {
                                 $cellValue = $this->extractCellRange( $cellRef, $pCellWorksheet, FALSE );
                             } else {
                                 return $this->_raiseFormulaError( 'Unable to access Cell Reference' );
                             }
                             $this->_debugLog->writeDebugLog( 'Evaluation Result for cells ', $cellRef, ' is ',
-                                                             $this->_showTypeDetails( $cellValue )
-                            );
+                                                             $this->_showTypeDetails( $cellValue ) );
                         }
                     }
                 } else {
@@ -4007,15 +4003,13 @@ class PHPExcel_Calculation
                             }
                             //							echo '$cellRef='.$cellRef.' in worksheet '.$matches[2].'<br />';
                             $this->_debugLog->writeDebugLog( 'Evaluating Cell ', $cellRef, ' in worksheet ',
-                                                             $matches[ 2 ]
-                            );
+                                                             $matches[ 2 ] );
                             if ( $pCellParent !== NULL ) {
                                 $cellSheet = $this->_workbook->getSheetByName( $matches[ 2 ] );
                                 if ( $cellSheet && $cellSheet->cellExists( $cellRef ) ) {
                                     $cellValue = $this->extractCellRange( $cellRef,
-                                                                          $this->_workbook->getSheetByName( $matches[ 2 ]
-                                                                          ), FALSE
-                                    );
+                                                                          $this->_workbook->getSheetByName( $matches[ 2 ] ),
+                                                                          FALSE );
                                     $pCell->attach( $pCellParent );
                                 } else {
                                     $cellValue = NULL;
@@ -4025,8 +4019,7 @@ class PHPExcel_Calculation
                             }
                             $this->_debugLog->writeDebugLog( 'Evaluation Result for cell ', $cellRef, ' in worksheet ',
                                                              $matches[ 2 ], ' is ',
-                                                             $this->_showTypeDetails( $cellValue )
-                            );
+                                                             $this->_showTypeDetails( $cellValue ) );
                             //							$cellRef = $matches[2].'!'.$cellRef;
                         } else {
                             //							echo '$cellRef='.$cellRef.' in current worksheet<br />';
@@ -4038,8 +4031,7 @@ class PHPExcel_Calculation
                                 $cellValue = NULL;
                             }
                             $this->_debugLog->writeDebugLog( 'Evaluation Result for cell ', $cellRef, ' is ',
-                                                             $this->_showTypeDetails( $cellValue )
-                            );
+                                                             $this->_showTypeDetails( $cellValue ) );
                         }
                     }
                 }
@@ -4054,8 +4046,7 @@ class PHPExcel_Calculation
                 if ( $functionName != 'MKMATRIX' ) {
                     $this->_debugLog->writeDebugLog( 'Evaluating Function ', self::_localeFunc( $functionName ),
                                                      '() with ', ( ( $argCount == 0 ) ? 'no' : $argCount ), ' argument',
-                        ( ( $argCount == 1 ) ? '' : 's' )
-                    );
+                        ( ( $argCount == 1 ) ? '' : 's' ) );
                 }
                 if ( ( isset( self::$_PHPExcelFunctions[ $functionName ] ) ) ||
                      ( isset( self::$_controlFunctions[ $functionName ] ) )
@@ -4111,10 +4102,8 @@ class PHPExcel_Calculation
                             krsort( $argArrayVals );
                             $this->_debugLog->writeDebugLog( 'Evaluating ', self::_localeFunc( $functionName ), '( ',
                                                              implode( self::$_localeArgumentSeparator . ' ',
-                                                                      PHPExcel_Calculation_Functions::flattenArray( $argArrayVals
-                                                                      )
-                                                             ), ' )'
-                            );
+                                                                      PHPExcel_Calculation_Functions::flattenArray( $argArrayVals ) ),
+                                                             ' )' );
                         }
                     }
                     //	Process each argument in turn, building the return value as an array
@@ -4156,8 +4145,7 @@ class PHPExcel_Calculation
                     //					}
                     if ( $functionName != 'MKMATRIX' ) {
                         $this->_debugLog->writeDebugLog( 'Evaluation Result for ', self::_localeFunc( $functionName ),
-                                                         '() function call is ', $this->_showTypeDetails( $result )
-                        );
+                                                         '() function call is ', $this->_showTypeDetails( $result ) );
                     }
                     $stack->push( 'Value', self::_wrapResult( $result ) );
                 }
@@ -4168,8 +4156,7 @@ class PHPExcel_Calculation
                     //					echo 'Token is a PHPExcel constant: '.$excelConstant.'<br />';
                     $stack->push( 'Constant Value', self::$_ExcelConstants[ $excelConstant ] );
                     $this->_debugLog->writeDebugLog( 'Evaluating Constant ', $excelConstant, ' as ',
-                                                     $this->_showTypeDetails( self::$_ExcelConstants[ $excelConstant ] )
-                    );
+                                                     $this->_showTypeDetails( self::$_ExcelConstants[ $excelConstant ] ) );
                 } elseif ( ( is_numeric( $token ) ) || ( $token === NULL ) || ( is_bool( $token ) ) ||
                            ( $token == '' ) || ( $token{0} == '"' ) || ( $token{0} == '#' )
                 ) {
@@ -4182,12 +4169,11 @@ class PHPExcel_Calculation
                     //					echo 'Named Range is '.$namedRange.'<br />';
                     $this->_debugLog->writeDebugLog( 'Evaluating Named Range ', $namedRange );
                     $cellValue =
-                        $this->extractNamedRange( $namedRange, ( ( NULL !== $pCell ) ? $pCellWorksheet : NULL ), FALSE
-                        );
+                        $this->extractNamedRange( $namedRange, ( ( NULL !== $pCell ) ? $pCellWorksheet : NULL ),
+                                                  FALSE );
                     $pCell->attach( $pCellParent );
                     $this->_debugLog->writeDebugLog( 'Evaluation Result for named range ', $namedRange, ' is ',
-                                                     $this->_showTypeDetails( $cellValue )
-                    );
+                                                     $this->_showTypeDetails( $cellValue ) );
                     $stack->push( 'Named Range', $cellValue, $namedRange );
                 } else {
                     return $this->_raiseFormulaError( "undefined variable '$token'" );
@@ -4249,7 +4235,8 @@ class PHPExcel_Calculation
     
     //	function _validateBinaryOperand()
     
-    private function _executeBinaryComparisonOperation( $cellID, $operand1, $operand2, $operation, &$stack, $recursingArrays = FALSE )
+    private function _executeBinaryComparisonOperation( $cellID, $operand1, $operand2, $operation, &$stack,
+        $recursingArrays = FALSE )
     {
         //	If we're dealing with matrix operations, we want a matrix result
         if ( ( is_array( $operand1 ) ) || ( is_array( $operand2 ) ) ) {
@@ -4257,8 +4244,7 @@ class PHPExcel_Calculation
             if ( ( is_array( $operand1 ) ) && ( !is_array( $operand2 ) ) ) {
                 foreach ( $operand1 as $x => $operandData ) {
                     $this->_debugLog->writeDebugLog( 'Evaluating Comparison ', $this->_showValue( $operandData ), ' ',
-                                                     $operation, ' ', $this->_showValue( $operand2 )
-                    );
+                                                     $operation, ' ', $this->_showValue( $operand2 ) );
                     $this->_executeBinaryComparisonOperation( $cellID, $operandData, $operand2, $operation, $stack );
                     $r = $stack->pop();
                     $result[ $x ] = $r[ 'value' ];
@@ -4266,8 +4252,7 @@ class PHPExcel_Calculation
             } elseif ( ( !is_array( $operand1 ) ) && ( is_array( $operand2 ) ) ) {
                 foreach ( $operand2 as $x => $operandData ) {
                     $this->_debugLog->writeDebugLog( 'Evaluating Comparison ', $this->_showValue( $operand1 ), ' ',
-                                                     $operation, ' ', $this->_showValue( $operandData )
-                    );
+                                                     $operation, ' ', $this->_showValue( $operandData ) );
                     $this->_executeBinaryComparisonOperation( $cellID, $operand1, $operandData, $operation, $stack );
                     $r = $stack->pop();
                     $result[ $x ] = $r[ 'value' ];
@@ -4278,11 +4263,9 @@ class PHPExcel_Calculation
                 }
                 foreach ( $operand1 as $x => $operandData ) {
                     $this->_debugLog->writeDebugLog( 'Evaluating Comparison ', $this->_showValue( $operandData ), ' ',
-                                                     $operation, ' ', $this->_showValue( $operand2[ $x ] )
-                    );
+                                                     $operation, ' ', $this->_showValue( $operand2[ $x ] ) );
                     $this->_executeBinaryComparisonOperation( $cellID, $operandData, $operand2[ $x ], $operation,
-                                                              $stack, TRUE
-                    );
+                                                              $stack, TRUE );
                     $r = $stack->pop();
                     $result[ $x ] = $r[ 'value' ];
                 }
@@ -4376,8 +4359,10 @@ class PHPExcel_Calculation
     
     /**
      * Compare two strings in the same way as strcmp() except that lowercase come before uppercase letters
+     *
      * @param string $str1
      * @param string $str2
+     *
      * @return integer
      */
     private function strcmpLowercaseFirst( $str1, $str2 )
@@ -4390,7 +4375,8 @@ class PHPExcel_Calculation
         return strcmp( $inversedStr1, $inversedStr2 );
     }
     
-    private function _executeNumericBinaryOperation( $cellID, $operand1, $operand2, $operation, $matrixFunction, &$stack )
+    private function _executeNumericBinaryOperation( $cellID, $operand1, $operand2, $operation, $matrixFunction,
+        &$stack )
     {
         //	Validate the two operands
         if ( !$this->_validateBinaryOperand( $cellID, $operand1, $stack ) ) {
@@ -4445,8 +4431,7 @@ class PHPExcel_Calculation
                             //	Trap for Divide by Zero error
                             $stack->push( 'Value', '#DIV/0!' );
                             $this->_debugLog->writeDebugLog( 'Evaluation Result is ',
-                                                             $this->_showTypeDetails( '#DIV/0!' )
-                            );
+                                                             $this->_showTypeDetails( '#DIV/0!' ) );
                             
                             return FALSE;
                         } else {
@@ -4486,10 +4471,12 @@ class PHPExcel_Calculation
     /**
      * Extract range values
      *
-     * @param    string             &$pRange String based range representation
-     * @param    PHPExcel_Worksheet $pSheet Worksheet
+     * @param    string             &$pRange  String based range representation
+     * @param    PHPExcel_Worksheet $pSheet   Worksheet
      * @param    boolean            $resetLog Flag indicating whether calculation log should be reset or not
-     * @return  mixed                Array of values in range if range contains more than one element. Otherwise, a single value is returned.
+     *
+     * @return  mixed                Array of values in range if range contains more than one element. Otherwise, a
+     *                               single value is returned.
      * @throws    PHPExcel_Calculation_Exception
      */
     public function extractCellRange( &$pRange = 'A1', PHPExcel_Worksheet $pSheet = NULL, $resetLog = TRUE )
@@ -4548,10 +4535,14 @@ class PHPExcel_Calculation
     /**
      * Extract range values
      *
-     * @param    string             &$pRange String based range representation
-     * @param    PHPExcel_Worksheet $pSheet Worksheet
-     * @return  mixed                Array of values in range if range contains more than one element. Otherwise, a single value is returned.
+     * @param    string             &$pRange  String based range representation
+     * @param    PHPExcel_Worksheet $pSheet   Worksheet
+     *
+     * @return  mixed                Array of values in range if range contains more than one element. Otherwise, a
+     *                               single value is returned.
+     *
      * @param    boolean            $resetLog Flag indicating whether calculation log should be reset or not
+     *
      * @throws    PHPExcel_Calculation_Exception
      */
     public function extractNamedRange( &$pRange = 'A1', PHPExcel_Worksheet $pSheet = NULL, $resetLog = TRUE )
@@ -4642,6 +4633,7 @@ class PHPExcel_Calculation
      * Is a specific function implemented?
      *
      * @param    string $pFunction Function Name
+     *
      * @return    boolean
      */
     public function isImplemented( $pFunction = '' )
@@ -4671,8 +4663,7 @@ class PHPExcel_Calculation
             if ( $function[ 'functionCall' ] != 'PHPExcel_Calculation_Functions::DUMMY' ) {
                 $returnValue[ $functionName ] =
                     new PHPExcel_Calculation_Function( $function[ 'category' ], $functionName,
-                                                       $function[ 'functionCall' ]
-                    );
+                                                       $function[ 'functionCall' ] );
             }
         }
         

@@ -37,9 +37,9 @@ if ( !defined( 'PHPEXCEL_ROOT' ) ) {
 /**
  * PHPExcel_Reader_OOCalc
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Reader
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExcel_Reader_IReader
 {
@@ -63,6 +63,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
      * Can the current PHPExcel_Reader_IReader read the file?
      *
      * @param    string $pFilename
+     *
      * @return    boolean
      * @throws PHPExcel_Reader_Exception
      */
@@ -70,8 +71,8 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
     {
         // Check if file exists
         if ( !file_exists( $pFilename ) ) {
-            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! File does not exist."
-            );
+            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename .
+                                                 " for reading! File does not exist." );
         }
         
         $zipClass = PHPExcel_Settings::getZipClass();
@@ -83,7 +84,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
         
         $mimeType = 'UNKNOWN';
         // Load file
-        $zip = new $zipClass;
+        $zip = new $zipClass();
         if ( $zip->open( $pFilename ) === TRUE ) {
             // check if it is an OOXML archive
             $stat = $zip->statName( 'mimetype' );
@@ -91,8 +92,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
                 $mimeType = $zip->getFromName( $stat[ 'name' ] );
             } elseif ( $stat = $zip->statName( 'META-INF/manifest.xml' ) ) {
                 $xml = simplexml_load_string( $zip->getFromName( 'META-INF/manifest.xml' ), 'SimpleXMLElement',
-                                              PHPExcel_Settings::getLibXmlLoaderOptions()
-                );
+                                              PHPExcel_Settings::getLibXmlLoaderOptions() );
                 $namespacesContent = $xml->getNamespaces( TRUE );
                 if ( isset( $namespacesContent[ 'manifest' ] ) ) {
                     $manifest = $xml->children( $namespacesContent[ 'manifest' ] );
@@ -118,19 +118,20 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
      * Reads names of the worksheets from a file, without parsing the whole file to a PHPExcel object
      *
      * @param    string $pFilename
+     *
      * @throws    PHPExcel_Reader_Exception
      */
     public function listWorksheetNames( $pFilename )
     {
         // Check if file exists
         if ( !file_exists( $pFilename ) ) {
-            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! File does not exist."
-            );
+            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename .
+                                                 " for reading! File does not exist." );
         }
         
         $zipClass = PHPExcel_Settings::getZipClass();
         
-        $zip = new $zipClass;
+        $zip = new $zipClass();
         if ( !$zip->open( $pFilename ) ) {
             throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! Error opening file." );
         }
@@ -139,8 +140,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
         
         $xml = new XMLReader();
         $res = $xml->open( 'zip://' . realpath( $pFilename ) . '#content.xml', NULL,
-                           PHPExcel_Settings::getLibXmlLoaderOptions()
-        );
+                           PHPExcel_Settings::getLibXmlLoaderOptions() );
         $xml->setParserProperty( 2, TRUE );
         
         //	Step into the first level of content of the XML
@@ -173,29 +173,29 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
      * Return worksheet info (Name, Last Column Letter, Last Column Index, Total Rows, Total Columns)
      *
      * @param   string $pFilename
+     *
      * @throws   PHPExcel_Reader_Exception
      */
     public function listWorksheetInfo( $pFilename )
     {
         // Check if file exists
         if ( !file_exists( $pFilename ) ) {
-            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! File does not exist."
-            );
+            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename .
+                                                 " for reading! File does not exist." );
         }
         
         $worksheetInfo = [];
         
         $zipClass = PHPExcel_Settings::getZipClass();
         
-        $zip = new $zipClass;
+        $zip = new $zipClass();
         if ( !$zip->open( $pFilename ) ) {
             throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! Error opening file." );
         }
         
         $xml = new XMLReader();
         $res = $xml->open( 'zip://' . realpath( $pFilename ) . '#content.xml', NULL,
-                           PHPExcel_Settings::getLibXmlLoaderOptions()
-        );
+                           PHPExcel_Settings::getLibXmlLoaderOptions() );
         $xml->setParserProperty( 2, TRUE );
         
         //	Step into the first level of content of the XML
@@ -304,6 +304,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
      * Loads PHPExcel from file
      *
      * @param    string $pFilename
+     *
      * @return    PHPExcel
      * @throws    PHPExcel_Reader_Exception
      */
@@ -335,6 +336,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
      *
      * @param    string   $pFilename
      * @param    PHPExcel $objPHPExcel
+     *
      * @return    PHPExcel
      * @throws    PHPExcel_Reader_Exception
      */
@@ -342,8 +344,8 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
     {
         // Check if file exists
         if ( !file_exists( $pFilename ) ) {
-            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! File does not exist."
-            );
+            throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename .
+                                                 " for reading! File does not exist." );
         }
         
         $timezoneObj = new DateTimeZone( 'Europe/London' );
@@ -351,15 +353,14 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
         
         $zipClass = PHPExcel_Settings::getZipClass();
         
-        $zip = new $zipClass;
+        $zip = new $zipClass();
         if ( !$zip->open( $pFilename ) ) {
             throw new PHPExcel_Reader_Exception( "Could not open " . $pFilename . " for reading! Error opening file." );
         }
         
         //		echo '<h1>Meta Information</h1>';
         $xml = simplexml_load_string( $zip->getFromName( "meta.xml" ), 'SimpleXMLElement',
-                                      PHPExcel_Settings::getLibXmlLoaderOptions()
-        );
+                                      PHPExcel_Settings::getLibXmlLoaderOptions() );
         $namespacesMeta = $xml->getNamespaces( TRUE );
         //		echo '<pre>';
         //		print_r($namespacesMeta);
@@ -449,8 +450,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
         
         //		echo '<h1>Workbook Content</h1>';
         $xml = simplexml_load_string( $zip->getFromName( "content.xml" ), 'SimpleXMLElement',
-                                      PHPExcel_Settings::getLibXmlLoaderOptions()
-        );
+                                      PHPExcel_Settings::getLibXmlLoaderOptions() );
         $namespacesContent = $xml->getNamespaces( TRUE );
         //		echo '<pre>';
         //		print_r($namespacesContent);
@@ -545,8 +545,8 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
                                     $text = implode( "\n", $textArray );
                                     //									echo $text,'<br />';
                                     $objPHPExcel->getActiveSheet()
-                                                ->getComment( $columnID . $rowID
-                                                )//																	->setAuthor( $author )
+                                                ->getComment( $columnID .
+                                                              $rowID )//																	->setAuthor( $author )
                                                 ->setText( $this->_parseRichText( $text ) );
                                 }
                                 
@@ -618,12 +618,11 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
                                             $type = PHPExcel_Cell_DataType::TYPE_NUMERIC;
                                             $dateObj = new DateTime( $cellDataOfficeAttributes[ 'date-value' ], $GMT );
                                             $dateObj->setTimeZone( $timezoneObj );
-                                            list( $year, $month, $day, $hour, $minute, $second
-                                                ) = explode( ' ', $dateObj->format( 'Y m d H i s' ) );
+                                            list( $year, $month, $day, $hour, $minute, $second ) =
+                                                explode( ' ', $dateObj->format( 'Y m d H i s' ) );
                                             $dataValue =
                                                 PHPExcel_Shared_Date::FormattedPHPToExcel( $year, $month, $day, $hour,
-                                                                                           $minute, $second
-                                                );
+                                                                                           $minute, $second );
                                             if ( $dataValue != floor( $dataValue ) ) {
                                                 $formatting = PHPExcel_Style_NumberFormat::FORMAT_DATE_XLSX15 . ' ' .
                                                               PHPExcel_Style_NumberFormat::FORMAT_DATE_TIME4;
@@ -636,11 +635,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
                                             $dataValue = PHPExcel_Shared_Date::PHPToExcel( strtotime( '01-01-1970 ' .
                                                                                                       implode( ':',
                                                                                                                sscanf( $cellDataOfficeAttributes[ 'time-value' ],
-                                                                                                                       'PT%dH%dM%dS'
-                                                                                                               )
-                                                                                                      )
-                                                                                           )
-                                            );
+                                                                                                                       'PT%dH%dM%dS' ) ) ) );
                                             $formatting = PHPExcel_Style_NumberFormat::FORMAT_DATE_TIME4;
                                             break;
                                     }
@@ -663,17 +658,15 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
                                         //	Only replace in alternate array entries (i.e. non-quoted blocks)
                                         if ( $tKey = !$tKey ) {
                                             $value = preg_replace( '/\[([^\.]+)\.([^\.]+):\.([^\.]+)\]/Ui', '$1!$2:$3',
-                                                                   $value
-                                            );    //  Cell range reference in another sheet
-                                            $value = preg_replace( '/\[([^\.]+)\.([^\.]+)\]/Ui', '$1!$2', $value
-                                            );       //  Cell reference in another sheet
-                                            $value = preg_replace( '/\[\.([^\.]+):\.([^\.]+)\]/Ui', '$1:$2', $value
-                                            );    //  Cell range reference
-                                            $value = preg_replace( '/\[\.([^\.]+)\]/Ui', '$1', $value
-                                            );                  //  Simple cell reference
-                                            $value =
-                                                PHPExcel_Calculation::_translateSeparator( ';', ',', $value, $inBraces
-                                                );
+                                                                   $value );    //  Cell range reference in another sheet
+                                            $value = preg_replace( '/\[([^\.]+)\.([^\.]+)\]/Ui', '$1!$2',
+                                                                   $value );       //  Cell reference in another sheet
+                                            $value = preg_replace( '/\[\.([^\.]+):\.([^\.]+)\]/Ui', '$1:$2',
+                                                                   $value );    //  Cell range reference
+                                            $value = preg_replace( '/\[\.([^\.]+)\]/Ui', '$1',
+                                                                   $value );                  //  Simple cell reference
+                                            $value = PHPExcel_Calculation::_translateSeparator( ';', ',', $value,
+                                                                                                $inBraces );
                                         }
                                     }
                                     unset( $value );
@@ -695,8 +688,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
                                                 $objPHPExcel->getActiveSheet()
                                                             ->getCell( $columnID . $rID )
                                                             ->setValueExplicit( ( ( $hasCalculatedValue ) ?
-                                                                $cellDataFormula : $dataValue ), $type
-                                                            );
+                                                                $cellDataFormula : $dataValue ), $type );
                                                 if ( $hasCalculatedValue ) {
                                                     //													echo 'Forumla result is '.$dataValue.'<br />';
                                                     $objPHPExcel->getActiveSheet()
@@ -712,8 +704,7 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
                                                     $objPHPExcel->getActiveSheet()
                                                                 ->getStyle( $columnID . $rID )
                                                                 ->getNumberFormat()
-                                                                ->setFormatCode( PHPExcel_Style_NumberFormat::FORMAT_GENERAL
-                                                                );
+                                                                ->setFormatCode( PHPExcel_Style_NumberFormat::FORMAT_GENERAL );
                                                 }
                                                 if ( $hyperlink !== NULL ) {
                                                     $objPHPExcel->getActiveSheet()
@@ -736,11 +727,9 @@ class PHPExcel_Reader_OOCalc extends PHPExcel_Reader_Abstract implements PHPExce
                                         $columnTo = $columnID;
                                         if ( isset( $cellDataTableAttributes[ 'number-columns-spanned' ] ) ) {
                                             $columnTo =
-                                                PHPExcel_Cell::stringFromColumnIndex( PHPExcel_Cell::columnIndexFromString( $columnID
-                                                                                      ) +
+                                                PHPExcel_Cell::stringFromColumnIndex( PHPExcel_Cell::columnIndexFromString( $columnID ) +
                                                                                       $cellDataTableAttributes[ 'number-columns-spanned' ] -
-                                                                                      2
-                                                );
+                                                                                      2 );
                                         }
                                         $rowTo = $rowID;
                                         if ( isset( $cellDataTableAttributes[ 'number-rows-spanned' ] ) ) {

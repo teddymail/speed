@@ -102,12 +102,12 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
     /**
      * Create a new PHPExcel_Style
      *
-     * @param boolean $isSupervisor Flag indicating if this is a supervisor or not
-     *        Leave this value at default unless you understand exactly what
-     *    its ramifications are
+     * @param boolean $isSupervisor  Flag indicating if this is a supervisor or not
+     *                               Leave this value at default unless you understand exactly what
+     *                               its ramifications are
      * @param boolean $isConditional Flag indicating if this is a conditional style or not
-     *    Leave this value at default unless you understand exactly what
-     *    its ramifications are
+     *                               Leave this value at default unless you understand exactly what
+     *                               its ramifications are
      */
     public function __construct( $isSupervisor = FALSE, $isConditional = FALSE )
     {
@@ -169,6 +169,7 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
      * Build style array from subcomponents
      *
      * @param array $array
+     *
      * @return array
      */
     public function getStyleArray( $array )
@@ -211,8 +212,9 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
      * );
      * </code>
      *
-     * @param    array    $pStyles Array containing style information
+     * @param    array    $pStyles   Array containing style information
      * @param     boolean $pAdvanced Advanced mode for setting borders.
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Style
      */
@@ -355,8 +357,7 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
                                                           'right',
                                                           'bottom',
                                                           'left'
-                                                      ], $edges
-                            );
+                                                      ], $edges );
                             
                             // inner edges that are not touching the region should take the 'inside' border properties if they have been set
                             foreach ( $innerEdges as $innerEdge ) {
@@ -477,8 +478,8 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
                         for ( $row = $rangeStart[ 1 ]; $row <= $rangeEnd[ 1 ]; ++$row ) {
                             $rowDimension = $this->getActiveSheet()
                                                  ->getRowDimension( $row );
-                            $oldXfIndex = $rowDimension->getXfIndex() === NULL ? 0 : $rowDimension->getXfIndex(
-                            ); // row without explicit style should be formatted based on default style
+                            $oldXfIndex = $rowDimension->getXfIndex() === NULL ? 0 :
+                                $rowDimension->getXfIndex(); // row without explicit style should be formatted based on default style
                             $rowDimension->setXfIndex( $newXfIndexes[ $oldXfIndex ] );
                         }
                         break;
@@ -555,6 +556,7 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
      * Set font
      *
      * @param PHPExcel_Style_Font $font
+     *
      * @return PHPExcel_Style
      */
     public function setFont( PHPExcel_Style_Font $font )
@@ -609,6 +611,7 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
      * Set Conditional Styles. Only used on supervisor.
      *
      * @param PHPExcel_Style_Conditional[] $pValue Array of condtional styles
+     *
      * @return PHPExcel_Style
      */
     public function setConditionalStyles( $pValue = NULL )
@@ -682,8 +685,7 @@ class PHPExcel_Style extends PHPExcel_Style_Supervisor implements PHPExcel_IComp
         
         return md5( $this->_fill->getHashCode() . $this->_font->getHashCode() . $this->_borders->getHashCode() .
                     $this->_alignment->getHashCode() . $this->_numberFormat->getHashCode() . $hashConditionals .
-                    $this->_protection->getHashCode() . ( $this->_quotePrefix ? 't' : 'f' ) . __CLASS__
-        );
+                    $this->_protection->getHashCode() . ( $this->_quotePrefix ? 't' : 'f' ) . __CLASS__ );
     }
     
     /**

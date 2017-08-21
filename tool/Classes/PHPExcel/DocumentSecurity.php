@@ -108,6 +108,7 @@ class PHPExcel_DocumentSecurity
      * Set LockRevision
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_DocumentSecurity
      */
     function setLockRevision( $pValue = FALSE )
@@ -131,6 +132,7 @@ class PHPExcel_DocumentSecurity
      * Set LockStructure
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_DocumentSecurity
      */
     function setLockStructure( $pValue = FALSE )
@@ -154,6 +156,7 @@ class PHPExcel_DocumentSecurity
      * Set LockWindows
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_DocumentSecurity
      */
     function setLockWindows( $pValue = FALSE )
@@ -178,6 +181,7 @@ class PHPExcel_DocumentSecurity
      *
      * @param string  $pValue
      * @param boolean $pAlreadyHashed If the password has already been hashed, set this to true
+     *
      * @return PHPExcel_DocumentSecurity
      */
     function setRevisionsPassword( $pValue = '', $pAlreadyHashed = FALSE )
@@ -205,6 +209,7 @@ class PHPExcel_DocumentSecurity
      *
      * @param string  $pValue
      * @param boolean $pAlreadyHashed If the password has already been hashed, set this to true
+     *
      * @return PHPExcel_DocumentSecurity
      */
     function setWorkbookPassword( $pValue = '', $pAlreadyHashed = FALSE )

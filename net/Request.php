@@ -10,6 +10,12 @@
 
 namespace supjos\net;
 
+use function apache_request_headers;
+use function function_exists;
+use function is_string;
+use function str_replace;
+use function strtolower;
+
 /**
  * The Request class means the HTTP request object
  * License: MIT
@@ -19,6 +25,7 @@ namespace supjos\net;
  */
 class Request extends \Object
 {
+    
     /**
      * Get the HTTP request header
      *
@@ -43,7 +50,29 @@ class Request extends \Object
      */
     public function getHeaders()
     {
-        return apache_request_headers();
+        if ( !function_exists( 'apache_request_headers' ) ) {
+            return $this->getRequestHeaders();
+        } else {
+            return apache_request_headers();
+        }
+    }
+    
+    /**
+     * To instead the apache_request_headers using the getRequestHeaders function
+     *
+     * @return mixed
+     */
+    private function getRequestHeaders()
+    {
+        foreach ( $_SERVER as $headerName => $headerValue ) {
+            if ( substr( $headerName, 0, 5 ) == 'HTTP_' ) {
+                $headers[ str_replace( ' ', '-',
+                                       ucwords( strtolower( str_replace( '-', ' ', substr( $headerName, 5 ) ) ) ) ) ] =
+                    $headerValue;
+            }
+        }
+        
+        return $headers;
     }
     
     /**
@@ -320,6 +349,60 @@ class Request extends \Object
         } else {
             return NULL;
         }
+    }
+    
+    /**
+     * @param string $getKey The GET key to obtain the get value
+     *
+     * @return null|array|string|mixed The value you want to obtain, or null means nothing
+     */
+    public function get( $getKey = '' )
+    {
+        if ( empty( $getKey ) ) {
+            return $_GET;
+        } else if ( is_string( $getKey ) ) {
+            if ( isset( $_GET[ $getKey ] ) ) {
+                return $_GET[ $getKey ];
+            }
+        }
+        
+        return NULL;
+    }
+    
+    /**
+     * @param string $postKey The POST key to obtain the get value
+     *
+     * @return null|array|string|mixed The value you want to obtain, or null means nothing
+     */
+    public function post( $postKey = '' )
+    {
+        if ( empty( $postKey ) ) {
+            return $_POST;
+        } else if ( is_string( $postKey ) ) {
+            if ( isset( $_POST[ $postKey ] ) ) {
+                return $_POST[ $postKey ];
+            }
+        }
+        
+        return NULL;
+    }
+    
+    /**
+     * @param string $serverKey The SERVER key to obtain the get value
+     *
+     * @return null|array|string|mixed The value you want to obtain, or null means nothing
+     */
+    public function server( $serverKey = '' )
+    {
+        if ( empty( $serverKey ) ) {
+            return $_SERVER;
+        } else if ( is_string( $serverKey ) ) {
+            if ( isset( $_SERVER[ $serverKey ] ) ) {
+                return $_SERVER[ $serverKey ];
+            }
+        }
+        
+        return NULL;
     }
     
     

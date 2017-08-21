@@ -19,19 +19,19 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category    PHPExcel
- * @package    PHPExcel
+ * @category     PHPExcel
+ * @package      PHPExcel
  * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
- * @version    1.8.0, 2014-03-02
+ * @license      http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ * @version      1.8.0, 2014-03-02
  */
 
 /**
  * PHPExcel_DocumentProperties
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_DocumentProperties
 {
@@ -153,6 +153,7 @@ class PHPExcel_DocumentProperties
      * Set Creator
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCreator( $pValue = '' )
@@ -176,6 +177,7 @@ class PHPExcel_DocumentProperties
      * Set Last Modified By
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setLastModifiedBy( $pValue = '' )
@@ -199,6 +201,7 @@ class PHPExcel_DocumentProperties
      * Set Created
      *
      * @param datetime $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCreated( $pValue = NULL )
@@ -232,6 +235,7 @@ class PHPExcel_DocumentProperties
      * Set Modified
      *
      * @param datetime $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setModified( $pValue = NULL )
@@ -265,6 +269,7 @@ class PHPExcel_DocumentProperties
      * Set Title
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setTitle( $pValue = '' )
@@ -288,6 +293,7 @@ class PHPExcel_DocumentProperties
      * Set Description
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setDescription( $pValue = '' )
@@ -311,6 +317,7 @@ class PHPExcel_DocumentProperties
      * Set Subject
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setSubject( $pValue = '' )
@@ -334,6 +341,7 @@ class PHPExcel_DocumentProperties
      * Set Keywords
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setKeywords( $pValue = '' )
@@ -357,6 +365,7 @@ class PHPExcel_DocumentProperties
      * Set Category
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCategory( $pValue = '' )
@@ -380,6 +389,7 @@ class PHPExcel_DocumentProperties
      * Set Company
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCompany( $pValue = '' )
@@ -403,6 +413,7 @@ class PHPExcel_DocumentProperties
      * Set Manager
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setManager( $pValue = '' )
@@ -426,6 +437,7 @@ class PHPExcel_DocumentProperties
      * Check if a Custom Property is defined
      *
      * @param string $propertyName
+     *
      * @return boolean
      */
     public function isCustomPropertySet( $propertyName )
@@ -437,6 +449,7 @@ class PHPExcel_DocumentProperties
      * Get a Custom Property Value
      *
      * @param string $propertyName
+     *
      * @return string
      */
     public function getCustomPropertyValue( $propertyName )
@@ -450,6 +463,7 @@ class PHPExcel_DocumentProperties
      * Get a Custom Property Type
      *
      * @param string $propertyName
+     *
      * @return string
      */
     public function getCustomPropertyType( $propertyName )
@@ -466,10 +480,11 @@ class PHPExcel_DocumentProperties
      * @param mixed  $propertyValue
      * @param string $propertyType
      *     'i'    : Integer
-     *   'f' : Floating Point
-     *   's' : String
-     *   'd' : Date/Time
-     *   'b' : Boolean
+     *     'f' : Floating Point
+     *     's' : String
+     *     'd' : Date/Time
+     *     'b' : Boolean
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCustomProperty( $propertyName, $propertyValue = '', $propertyType = NULL )
@@ -480,8 +495,7 @@ class PHPExcel_DocumentProperties
                                                                          self::PROPERTY_TYPE_STRING,
                                                                          self::PROPERTY_TYPE_DATE,
                                                                          self::PROPERTY_TYPE_BOOLEAN
-                                                                     ]
-            ) )
+                                                                     ] ) )
         ) {
             if ( $propertyValue === NULL ) {
                 $propertyType = self::PROPERTY_TYPE_STRING;

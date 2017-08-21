@@ -27,18 +27,21 @@ class EigenvalueDecomposition
     
     /**
      *    Row and column dimension (square matrix).
+     *
      * @var int
      */
     private $n;
     
     /**
      *    Internal symmetry flag.
+     *
      * @var int
      */
     private $issymmetric;
     
     /**
      *    Arrays for internal storage of eigenvalues.
+     *
      * @var array
      */
     private $d = [];
@@ -46,24 +49,28 @@ class EigenvalueDecomposition
     
     /**
      *    Array for internal storage of eigenvectors.
+     *
      * @var array
      */
     private $V = [];
     
     /**
      *    Array for internal storage of nonsymmetric Hessenberg form.
+     *
      * @var array
      */
     private $H = [];
     
     /**
      *    Working storage for nonsymmetric algorithm.
+     *
      * @var array
      */
     private $ort;
     
     /**
      *    Used for complex scalar division.
+     *
      * @var float
      */
     private $cdivr;
@@ -557,10 +564,14 @@ class EigenvalueDecomposition
                     if ( $m == $l ) {
                         break;
                     }
-                    if ( abs( $this->H[ $m ][ $m - 1 ] ) * ( abs( $q ) + abs( $r ) ) <
-                         $eps * ( abs( $p ) * ( abs( $this->H[ $m - 1 ][ $m - 1 ]
-                                                ) + abs( $z ) + abs( $this->H[ $m + 1 ][ $m + 1 ]
-                                                ) ) )
+                    if ( abs( $this->H[ $m ][ $m - 1 ] ) * ( abs( $q ) + abs( $r ) ) < $eps * ( abs( $p ) *
+                                                                                                ( abs( $this->H[ $m -
+                                                                                                                 1 ][ $m -
+                                                                                                                      1 ] ) +
+                                                                                                  abs( $z ) +
+                                                                                                  abs( $this->H[ $m +
+                                                                                                                 1 ][ $m +
+                                                                                                                      1 ] ) ) )
                     ) {
                         break;
                     }
@@ -743,8 +754,7 @@ class EigenvalueDecomposition
                                     ( -$sa - $w * $this->H[ $i ][ $n ] - $q * $this->H[ $i ][ $n - 1 ] ) / $x;
                             } else {
                                 $this->cdiv( -$r - $y * $this->H[ $i ][ $n - 1 ], -$s - $y * $this->H[ $i ][ $n ], $z,
-                                             $q
-                                );
+                                             $q );
                                 $this->H[ $i + 1 ][ $n - 1 ] = $this->cdivr;
                                 $this->H[ $i + 1 ][ $n ] = $this->cdivi;
                             }
@@ -788,7 +798,9 @@ class EigenvalueDecomposition
      *    Constructor: Check for symmetry, then construct the eigenvalue decomposition
      *
      * @access public
+     *
      * @param A  Square matrix
+     *
      * @return Structure to access D and V.
      */
     public function __construct( $Arg )

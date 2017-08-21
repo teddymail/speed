@@ -173,6 +173,7 @@ class PHPExcel_Shared_Escher_DggContainer
      * Get an option for the drawing group
      *
      * @param int $property The number specifies the option
+     *
      * @return mixed
      */
     public function getOPT( $property )

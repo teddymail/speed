@@ -11,8 +11,11 @@
 
 namespace supjos\net;
 
+use function apache_response_headers;
+
 class Response extends \Object
 {
+    
     /**
      * Set the HTTP response header to the current request
      *
@@ -28,7 +31,7 @@ class Response extends \Object
     }
     
     /**
-     * @param string $headerName The HTTP header name you want to set
+     * @param string $headerName  The HTTP header name you want to set
      * @param string $headerValue The corresponding HTTP header value will be set
      */
     public function setHeader( $headerName, $headerValue )
@@ -47,15 +50,16 @@ class Response extends \Object
         if ( $request->getHeader( 'Accept' ) == 'application/json' ) {
             $this->setStatusCode( 200 );
             $this->setHeader( 'Content-Type', 'application/json;charset=UTF-8' );
-            exit( json_encode( $endData ) );
+            echo json_encode( $endData );
         } elseif ( $request->getHeader( 'Accept' ) == 'application/xml' ) {
             $this->setStatusCode( 200 );
             $this->setHeader( 'Content-Type', 'application/xml;charset=UTF-8' );
-            exit( $this->formatXml( $endData, '', TRUE ) );
+            echo $this->formatXml( $endData, '', TRUE );
         } else {
             $this->setStatusCode( 200 );
-            exit( $endData );
+            echo $endData;
         }
+        exit( 0 );
     }
     
     /**
@@ -78,8 +82,8 @@ class Response extends \Object
     /**
      * Change the array data into xml format
      *
-     * @param array       $data The data
-     * @param string      $head The head tag
+     * @param array       $data      The data
+     * @param string      $head      The head tag
      * @param boolean     $simplexml Generate the simple xml, recommend simple-xml
      *
      * @param bool|string $end
@@ -147,7 +151,7 @@ class Response extends \Object
     /**
      * Write XML data to the client
      *
-     * @param mixed|array|string $endData The data which you want to turn into xml format
+     * @param mixed|array|string $endData   The data which you want to turn into xml format
      * @param bool               $simpleXml The format of the response xml, ```simpleXml``` or not
      */
     public function asXml( $endData, $simpleXml = TRUE )
@@ -184,7 +188,18 @@ class Response extends \Object
      */
     public function getHeaders()
     {
-        return apache_response_headers();
+        if ( !function_exists( 'apache_response_headers' ) ) {
+            $resultResponseHeaders = [];
+            $headersList = headers_list();
+            foreach ( $headersList as $header ) {
+                $header = explode( ":", $header );
+                $resultResponseHeaders[ array_shift( $header ) ] = trim( implode( ":", $header ) );
+            }
+            
+            return $resultResponseHeaders;
+        } else {
+            return apache_response_headers();
+        }
     }
     
     /**

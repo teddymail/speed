@@ -57,6 +57,7 @@ class PHPExcel_Writer_PDF_DomPDF extends PHPExcel_Writer_PDF_Core implements PHP
      *  Save PHPExcel to file
      *
      * @param   string $pFilename Name of the file to save as
+     *
      * @throws  PHPExcel_Writer_Exception
      */
     public function save( $pFilename = NULL )
@@ -108,8 +109,8 @@ class PHPExcel_Writer_PDF_DomPDF extends PHPExcel_Writer_PDF_Core implements PHP
         $pdf = new DOMPDF();
         $pdf->set_paper( strtolower( $paperSize ), $orientation );
         
-        $pdf->load_html( $this->generateHTMLHeader( FALSE ) . $this->generateSheetData() . $this->generateHTMLFooter()
-        );
+        $pdf->load_html( $this->generateHTMLHeader( FALSE ) . $this->generateSheetData() .
+                         $this->generateHTMLFooter() );
         $pdf->render();
         
         //  Write to file

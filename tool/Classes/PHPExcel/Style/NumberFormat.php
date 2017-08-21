@@ -35,6 +35,7 @@
  */
 class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements PHPExcel_IComparable
 {
+    
     /* Pre-defined formats */
     
     const FORMAT_GENERAL                 = 'General';
@@ -102,11 +103,11 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
     /**
      * Create a new PHPExcel_Style_NumberFormat
      *
-     * @param    boolean $isSupervisor Flag indicating if this is a supervisor or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isSupervisor        Flag indicating if this is a supervisor or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
-     * @param    boolean $isConditional Flag indicating if this is a conditional style or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isConditional       Flag indicating if this is a conditional style or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
      */
     public function __construct( $isSupervisor = FALSE, $isConditional = FALSE )
@@ -135,6 +136,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
      * Build style array from subcomponents
      *
      * @param array $array
+     *
      * @return array
      */
     public function getStyleArray( $array )
@@ -154,6 +156,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
      * </code>
      *
      * @param    array $pStyles Array containing style information
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Style_NumberFormat
      */
@@ -198,6 +201,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
      * Set Format Code
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Style_NumberFormat
      */
     public function setFormatCode( $pValue = PHPExcel_Style_NumberFormat::FORMAT_GENERAL )
@@ -237,6 +241,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
      * Set Built-In Format Code
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Style_NumberFormat
      */
     public function setBuiltInFormatCode( $pValue = 0 )
@@ -324,6 +329,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
      * Get built-in format code
      *
      * @param    int $pIndex
+     *
      * @return    string
      */
     public static function builtInFormatCode( $pIndex )
@@ -346,6 +352,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
      * Get built-in format code index
      *
      * @param    string $formatCode
+     *
      * @return    int|boolean
      */
     public static function builtInFormatCodeIndex( $formatCode )
@@ -373,8 +380,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
                         ->getHashCode();
         }
         
-        return md5( $this->_formatCode . $this->_builtInFormatCode . __CLASS__
-        );
+        return md5( $this->_formatCode . $this->_builtInFormatCode . __CLASS__ );
     }
     
     /**
@@ -528,8 +534,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
                 $size = strlen( $block[ 0 ] );
                 $offset = $block[ 1 ];
                 
-                $blockValue = sprintf( '%0' . $size . 'd', fmod( $number, $divisor )
-                );
+                $blockValue = sprintf( '%0' . $size . 'd', fmod( $number, $divisor ) );
                 $number = floor( $number / $divisor );
                 $mask = substr_replace( $mask, $blockValue, $offset, $size );
             }
@@ -547,12 +552,14 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
     /**
      * Convert a value in a pre-defined format to a PHP string
      *
-     * @param mixed  $value Value to format
-     * @param string $format Format code
+     * @param mixed  $value    Value to format
+     * @param string $format   Format code
      * @param array  $callBack Callback function for additional formatting of string
+     *
      * @return string    Formatted string
      */
-    public static function toFormattedString( $value = '0', $format = PHPExcel_Style_NumberFormat::FORMAT_GENERAL, $callBack = NULL )
+    public static function toFormattedString( $value = '0', $format = PHPExcel_Style_NumberFormat::FORMAT_GENERAL,
+        $callBack = NULL )
     {
         // For now we do not treat strings although section 4 of a format code affects strings
         if ( !is_numeric( $value ) ) {
@@ -629,8 +636,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
                 $format = str_replace( [
                                            '"',
                                            '*'
-                                       ], '', $format
-                );
+                                       ], '', $format );
                 
                 // Find out if we need thousands separator
                 // This is indicated by a comma enclosed by a digit placeholder:
@@ -680,8 +686,7 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
                         if ( $useThousands ) {
                             $value =
                                 number_format( $value, strlen( $right ), PHPExcel_Shared_String::getDecimalSeparator(),
-                                               PHPExcel_Shared_String::getThousandsSeparator()
-                                );
+                                               PHPExcel_Shared_String::getThousandsSeparator() );
                             $value = preg_replace( $number_regex, $value, $format );
                         } else {
                             if ( preg_match( '/[0#]E[+-]0/i', $format ) ) {

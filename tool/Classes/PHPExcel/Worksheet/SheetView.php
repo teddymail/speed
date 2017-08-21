@@ -35,6 +35,7 @@
  */
 class PHPExcel_Worksheet_SheetView
 {
+    
     /* Sheet View types */
     
     const SHEETVIEW_NORMAL             = 'normal';
@@ -98,6 +99,7 @@ class PHPExcel_Worksheet_SheetView
      * Valid values range from 10 to 400.
      *
      * @param    int $pValue
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Worksheet_SheetView
      */
@@ -130,6 +132,7 @@ class PHPExcel_Worksheet_SheetView
      * Valid values range from 10 to 400.
      *
      * @param    int $pValue
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Worksheet_SheetView
      */
@@ -163,6 +166,7 @@ class PHPExcel_Worksheet_SheetView
      *        'pageBreakPreview'    self::SHEETVIEW_PAGE_BREAK_PREVIEW
      *
      * @param    string $pValue
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Worksheet_SheetView
      */

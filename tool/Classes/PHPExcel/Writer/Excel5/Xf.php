@@ -79,54 +79,63 @@ class PHPExcel_Writer_Excel5_Xf
     
     /**
      * Index to the FONT record. Index 4 does not exist
+     *
      * @var integer
      */
     private $_fontIndex;
     
     /**
      * An index (2 bytes) to a FORMAT record (number format).
+     *
      * @var integer
      */
     public $_numberFormatIndex;
     
     /**
      * 1 bit, apparently not used.
+     *
      * @var integer
      */
     public $_text_justlast;
     
     /**
      * The cell's foreground color.
+     *
      * @var integer
      */
     public $_fg_color;
     
     /**
      * The cell's background color.
+     *
      * @var integer
      */
     public $_bg_color;
     
     /**
      * Color of the bottom border of the cell.
+     *
      * @var integer
      */
     public $_bottom_color;
     
     /**
      * Color of the top border of the cell.
+     *
      * @var integer
      */
     public $_top_color;
     
     /**
      * Color of the left border of the cell.
+     *
      * @var integer
      */
     public $_left_color;
     
     /**
      * Color of the right border of the cell.
+     *
      * @var integer
      */
     public $_right_color;
@@ -135,6 +144,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Constructor
      *
      * @access public
+     *
      * @param PHPExcel_Style    The XF format
      */
     public function __construct( PHPExcel_Style $style = NULL )
@@ -171,11 +181,9 @@ class PHPExcel_Writer_Excel5_Xf
             $style = 0xFFF5;
         } else {
             $style = self::_mapLocked( $this->_style->getProtection()
-                                                    ->getLocked()
-            );
+                                                    ->getLocked() );
             $style |= self::_mapHidden( $this->_style->getProtection()
-                                                     ->getHidden()
-                ) << 1;
+                                                     ->getHidden() ) << 1;
         }
         
         // Flags to indicate if attributes have been set.
@@ -185,60 +193,51 @@ class PHPExcel_Writer_Excel5_Xf
                                          ->getWrapText() ) ? 1 : 0;
         $atr_bdr = ( self::_mapBorderStyle( $this->_style->getBorders()
                                                          ->getBottom()
-                                                         ->getBorderStyle()
-            ) || self::_mapBorderStyle( $this->_style->getBorders()
-                                                     ->getTop()
-                                                     ->getBorderStyle()
-            ) || self::_mapBorderStyle( $this->_style->getBorders()
-                                                     ->getLeft()
-                                                     ->getBorderStyle()
-            ) || self::_mapBorderStyle( $this->_style->getBorders()
-                                                     ->getRight()
-                                                     ->getBorderStyle()
-            ) ) ? 1 : 0;
+                                                         ->getBorderStyle() ) ||
+                     self::_mapBorderStyle( $this->_style->getBorders()
+                                                         ->getTop()
+                                                         ->getBorderStyle() ) ||
+                     self::_mapBorderStyle( $this->_style->getBorders()
+                                                         ->getLeft()
+                                                         ->getBorderStyle() ) ||
+                     self::_mapBorderStyle( $this->_style->getBorders()
+                                                         ->getRight()
+                                                         ->getBorderStyle() ) ) ? 1 : 0;
         $atr_pat = ( ( $this->_fg_color != 0x40 ) || ( $this->_bg_color != 0x41 ) ||
                      self::_mapFillType( $this->_style->getFill()
-                                                      ->getFillType()
-                     ) ) ? 1 : 0;
+                                                      ->getFillType() ) ) ? 1 : 0;
         $atr_prot = self::_mapLocked( $this->_style->getProtection()
-                                                   ->getLocked()
-            ) | self::_mapHidden( $this->_style->getProtection()
-                                               ->getHidden()
-            );
+                                                   ->getLocked() ) | self::_mapHidden( $this->_style->getProtection()
+                                                                                                    ->getHidden() );
         
         // Zero the default border colour if the border has not been set.
         if ( self::_mapBorderStyle( $this->_style->getBorders()
                                                  ->getBottom()
-                                                 ->getBorderStyle()
-            ) == 0
+                                                 ->getBorderStyle() ) == 0
         ) {
             $this->_bottom_color = 0;
         }
         if ( self::_mapBorderStyle( $this->_style->getBorders()
                                                  ->getTop()
-                                                 ->getBorderStyle()
-            ) == 0
+                                                 ->getBorderStyle() ) == 0
         ) {
             $this->_top_color = 0;
         }
         if ( self::_mapBorderStyle( $this->_style->getBorders()
                                                  ->getRight()
-                                                 ->getBorderStyle()
-            ) == 0
+                                                 ->getBorderStyle() ) == 0
         ) {
             $this->_right_color = 0;
         }
         if ( self::_mapBorderStyle( $this->_style->getBorders()
                                                  ->getLeft()
-                                                 ->getBorderStyle()
-            ) == 0
+                                                 ->getBorderStyle() ) == 0
         ) {
             $this->_left_color = 0;
         }
         if ( self::_mapBorderStyle( $this->_style->getBorders()
                                                  ->getDiagonal()
-                                                 ->getBorderStyle()
-            ) == 0
+                                                 ->getBorderStyle() ) == 0
         ) {
             $this->_diag_color = 0;
         }
@@ -250,13 +249,11 @@ class PHPExcel_Writer_Excel5_Xf
         $ifmt = $this->_numberFormatIndex;  // Index to FORMAT record
         
         $align = $this->_mapHAlign( $this->_style->getAlignment()
-                                                 ->getHorizontal()
-        );       // Alignment
+                                                 ->getHorizontal() );       // Alignment
         $align |= ( int )$this->_style->getAlignment()
                                       ->getWrapText() << 3;
         $align |= self::_mapVAlign( $this->_style->getAlignment()
-                                                 ->getVertical()
-            ) << 4;
+                                                 ->getVertical() ) << 4;
         $align |= $this->_text_justlast << 7;
         
         $used_attrib = $atr_num << 2;
@@ -271,20 +268,16 @@ class PHPExcel_Writer_Excel5_Xf
         
         $border1 = self::_mapBorderStyle( $this->_style->getBorders()
                                                        ->getLeft()
-                                                       ->getBorderStyle()
-        );          // Border line style and color
+                                                       ->getBorderStyle() );          // Border line style and color
         $border1 |= self::_mapBorderStyle( $this->_style->getBorders()
                                                         ->getRight()
-                                                        ->getBorderStyle()
-            ) << 4;
+                                                        ->getBorderStyle() ) << 4;
         $border1 |= self::_mapBorderStyle( $this->_style->getBorders()
                                                         ->getTop()
-                                                        ->getBorderStyle()
-            ) << 8;
+                                                        ->getBorderStyle() ) << 8;
         $border1 |= self::_mapBorderStyle( $this->_style->getBorders()
                                                         ->getBottom()
-                                                        ->getBorderStyle()
-            ) << 12;
+                                                        ->getBorderStyle() ) << 12;
         $border1 |= $this->_left_color << 16;
         $border1 |= $this->_right_color << 23;
         
@@ -302,11 +295,9 @@ class PHPExcel_Writer_Excel5_Xf
         $border2 |= $this->_diag_color << 14;
         $border2 |= self::_mapBorderStyle( $this->_style->getBorders()
                                                         ->getDiagonal()
-                                                        ->getBorderStyle()
-            ) << 21;
+                                                        ->getBorderStyle() ) << 21;
         $border2 |= self::_mapFillType( $this->_style->getFill()
-                                                     ->getFillType()
-            ) << 26;
+                                                     ->getFillType() ) << 26;
         
         $header = pack( "vv", $record, $length );
         
@@ -318,9 +309,8 @@ class PHPExcel_Writer_Excel5_Xf
         
         $data = pack( "vvvC", $ifnt, $ifmt, $style, $align );
         $data .= pack( "CCC", self::_mapTextRotation( $this->_style->getAlignment()
-                                                                   ->getTextRotation()
-        ), $biff8_options, $used_attrib
-        );
+                                                                   ->getTextRotation() ), $biff8_options,
+                       $used_attrib );
         $data .= pack( "VVv", $border1, $border2, $icv );
         
         return ( $header . $data );
@@ -340,6 +330,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's bottom border color
      *
      * @access public
+     *
      * @param int $colorIndex Color index
      */
     function setBottomColor( $colorIndex )
@@ -351,6 +342,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's top border color
      *
      * @access public
+     *
      * @param int $colorIndex Color index
      */
     function setTopColor( $colorIndex )
@@ -362,6 +354,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's left border color
      *
      * @access public
+     *
      * @param int $colorIndex Color index
      */
     function setLeftColor( $colorIndex )
@@ -373,6 +366,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's right border color
      *
      * @access public
+     *
      * @param int $colorIndex Color index
      */
     function setRightColor( $colorIndex )
@@ -384,6 +378,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's diagonal border color
      *
      * @access public
+     *
      * @param int $colorIndex Color index
      */
     function setDiagColor( $colorIndex )
@@ -395,6 +390,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's foreground color
      *
      * @access public
+     *
      * @param int $colorIndex Color index
      */
     function setFgColor( $colorIndex )
@@ -406,6 +402,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Sets the cell's background color
      *
      * @access public
+     *
      * @param int $colorIndex Color index
      */
     function setBgColor( $colorIndex )
@@ -418,6 +415,7 @@ class PHPExcel_Writer_Excel5_Xf
      * It can be date, time, currency, etc...
      *
      * @access public
+     *
      * @param integer $numberFormatIndex Index to format record
      */
     function setNumberFormatIndex( $numberFormatIndex )
@@ -437,6 +435,7 @@ class PHPExcel_Writer_Excel5_Xf
     
     /**
      * Map of BIFF2-BIFF8 codes for border styles
+     *
      * @static    array of int
      *
      */
@@ -461,6 +460,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Map border style
      *
      * @param string $borderStyle
+     *
      * @return int
      */
     private static function _mapBorderStyle( $borderStyle )
@@ -474,6 +474,7 @@ class PHPExcel_Writer_Excel5_Xf
     
     /**
      * Map of BIFF2-BIFF8 codes for fill types
+     *
      * @static    array of int
      *
      */
@@ -507,6 +508,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Map fill type
      *
      * @param string $fillType
+     *
      * @return int
      */
     private static function _mapFillType( $fillType )
@@ -520,6 +522,7 @@ class PHPExcel_Writer_Excel5_Xf
     
     /**
      * Map of BIFF2-BIFF8 codes for horizontal alignment
+     *
      * @static    array of int
      *
      */
@@ -537,6 +540,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Map to BIFF2-BIFF8 codes for horizontal alignment
      *
      * @param string $hAlign
+     *
      * @return int
      */
     private function _mapHAlign( $hAlign )
@@ -550,6 +554,7 @@ class PHPExcel_Writer_Excel5_Xf
     
     /**
      * Map of BIFF2-BIFF8 codes for vertical alignment
+     *
      * @static    array of int
      *
      */
@@ -564,6 +569,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Map to BIFF2-BIFF8 codes for vertical alignment
      *
      * @param string $vAlign
+     *
      * @return int
      */
     private static function _mapVAlign( $vAlign )
@@ -579,6 +585,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Map to BIFF8 codes for text rotation angle
      *
      * @param int $textRotation
+     *
      * @return int
      */
     private static function _mapTextRotation( $textRotation )
@@ -598,6 +605,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Map locked
      *
      * @param string
+     *
      * @return int
      */
     private static function _mapLocked( $locked )
@@ -618,6 +626,7 @@ class PHPExcel_Writer_Excel5_Xf
      * Map hidden
      *
      * @param string
+     *
      * @return int
      */
     private static function _mapHidden( $hidden )

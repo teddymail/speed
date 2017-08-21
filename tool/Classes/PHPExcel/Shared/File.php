@@ -35,6 +35,7 @@
  */
 class PHPExcel_Shared_File
 {
+    
     /*
      * Use Temp or File Upload Temp for temporary files
      *
@@ -72,6 +73,7 @@ class PHPExcel_Shared_File
      * Verify if a file exists
      *
      * @param    string $pFilename Filename
+     *
      * @return bool
      */
     public static function file_exists( $pFilename )
@@ -103,6 +105,7 @@ class PHPExcel_Shared_File
      * Returns canonicalized absolute pathname, also for ZIP archives
      *
      * @param string $pFilename
+     *
      * @return string
      */
     public static function realpath( $pFilename )

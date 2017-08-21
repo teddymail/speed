@@ -19,9 +19,9 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Calculation
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license        http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
  * @version        1.8.0, 2014-03-02
  */
@@ -37,9 +37,9 @@ if ( !defined( 'PHPEXCEL_ROOT' ) ) {
 /**
  * PHPExcel_Calculation_TextData
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Calculation
- * @copyright    Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2014 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Calculation_TextData
 {
@@ -84,6 +84,7 @@ class PHPExcel_Calculation_TextData
      * CHARACTER
      *
      * @param    string $character Value
+     *
      * @return    int
      */
     public static function CHARACTER( $character )
@@ -105,6 +106,7 @@ class PHPExcel_Calculation_TextData
      * TRIMNONPRINTABLE
      *
      * @param    mixed $stringValue Value to check
+     *
      * @return    string
      */
     public static function TRIMNONPRINTABLE( $stringValue = '' )
@@ -132,6 +134,7 @@ class PHPExcel_Calculation_TextData
      * TRIMSPACES
      *
      * @param    mixed $stringValue Value to check
+     *
      * @return    string
      */
     public static function TRIMSPACES( $stringValue = '' )
@@ -155,6 +158,7 @@ class PHPExcel_Calculation_TextData
      * ASCIICODE
      *
      * @param    string $characters Value
+     *
      * @return    int
      */
     public static function ASCIICODE( $characters )
@@ -228,10 +232,11 @@ class PHPExcel_Calculation_TextData
      * This function converts a number to text using currency format, with the decimals rounded to the specified place.
      * The format used is $#,##0.00_);($#,##0.00)..
      *
-     * @param    float $value The value to format
-     * @param    int   $decimals The number of digits to display to the right of the decimal point.
+     * @param    float $value             The value to format
+     * @param    int   $decimals          The number of digits to display to the right of the decimal point.
      *                                    If decimals is negative, number is rounded to the left of the decimal point.
      *                                    If you omit decimals, it is assumed to be 2
+     *
      * @return    string
      */
     public static function DOLLAR( $value = 0, $decimals = 2 )
@@ -264,9 +269,10 @@ class PHPExcel_Calculation_TextData
     /**
      * SEARCHSENSITIVE
      *
-     * @param    string $needle The string to look for
+     * @param    string $needle   The string to look for
      * @param    string $haystack The string in which to look
-     * @param    int    $offset Offset within $haystack
+     * @param    int    $offset   Offset within $haystack
+     *
      * @return    string
      */
     public static function SEARCHSENSITIVE( $needle, $haystack, $offset = 1 )
@@ -303,9 +309,10 @@ class PHPExcel_Calculation_TextData
     /**
      * SEARCHINSENSITIVE
      *
-     * @param    string $needle The string to look for
+     * @param    string $needle   The string to look for
      * @param    string $haystack The string in which to look
-     * @param    int    $offset Offset within $haystack
+     * @param    int    $offset   Offset within $haystack
+     *
      * @return    string
      */
     public static function SEARCHINSENSITIVE( $needle, $haystack, $offset = 1 )
@@ -345,6 +352,7 @@ class PHPExcel_Calculation_TextData
      * @param    mixed   $value Value to check
      * @param    integer $decimals
      * @param    boolean $no_commas
+     *
      * @return    boolean
      */
     public static function FIXEDFORMAT( $value, $decimals = 2, $no_commas = FALSE )
@@ -377,6 +385,7 @@ class PHPExcel_Calculation_TextData
      *
      * @param    string $value Value
      * @param    int    $chars Number of characters
+     *
      * @return    string
      */
     public static function LEFT( $value = '', $chars = 1 )
@@ -407,6 +416,7 @@ class PHPExcel_Calculation_TextData
      * @param    string $value Value
      * @param    int    $start Start character
      * @param    int    $chars Number of characters
+     *
      * @return    string
      */
     public static function MID( $value = '', $start = 1, $chars = NULL )
@@ -437,6 +447,7 @@ class PHPExcel_Calculation_TextData
      *
      * @param    string $value Value
      * @param    int    $chars Number of characters
+     *
      * @return    string
      */
     public static function RIGHT( $value = '', $chars = 1 )
@@ -465,6 +476,7 @@ class PHPExcel_Calculation_TextData
      * STRINGLENGTH
      *
      * @param    string $value Value
+     *
      * @return    string
      */
     public static function STRINGLENGTH( $value = '' )
@@ -490,6 +502,7 @@ class PHPExcel_Calculation_TextData
      * Converts a string value to upper case.
      *
      * @param    string $mixedCaseString
+     *
      * @return    string
      */
     public static function LOWERCASE( $mixedCaseString )
@@ -512,6 +525,7 @@ class PHPExcel_Calculation_TextData
      * Converts a string value to upper case.
      *
      * @param    string $mixedCaseString
+     *
      * @return    string
      */
     public static function UPPERCASE( $mixedCaseString )
@@ -534,6 +548,7 @@ class PHPExcel_Calculation_TextData
      * Converts a string value to upper case.
      *
      * @param    string $mixedCaseString
+     *
      * @return    string
      */
     public static function PROPERCASE( $mixedCaseString )
@@ -554,9 +569,10 @@ class PHPExcel_Calculation_TextData
      * REPLACE
      *
      * @param    string $oldText String to modify
-     * @param    int    $start Start character
-     * @param    int    $chars Number of characters
+     * @param    int    $start   Start character
+     * @param    int    $chars   Number of characters
      * @param    string $newText String to replace in defined position
+     *
      * @return    string
      */
     public static function REPLACE( $oldText = '', $start = 1, $chars = NULL, $newText )
@@ -577,10 +593,11 @@ class PHPExcel_Calculation_TextData
     /**
      * SUBSTITUTE
      *
-     * @param    string  $text Value
+     * @param    string  $text     Value
      * @param    string  $fromText From Value
-     * @param    string  $toText To Value
+     * @param    string  $toText   To Value
      * @param    integer $instance Instance Number
+     *
      * @return    string
      */
     public static function SUBSTITUTE( $text = '', $fromText = '', $toText = '', $instance = 0 )
@@ -627,6 +644,7 @@ class PHPExcel_Calculation_TextData
      * RETURNSTRING
      *
      * @param    mixed $testValue Value to check
+     *
      * @return    boolean
      */
     public static function RETURNSTRING( $testValue = '' )
@@ -645,8 +663,9 @@ class PHPExcel_Calculation_TextData
     /**
      * TEXTFORMAT
      *
-     * @param    mixed  $value Value to check
+     * @param    mixed  $value  Value to check
      * @param    string $format Format mask to use
+     *
      * @return    boolean
      */
     public static function TEXTFORMAT( $value, $format )

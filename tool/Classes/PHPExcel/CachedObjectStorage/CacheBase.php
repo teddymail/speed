@@ -101,6 +101,7 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
      * Is a value set in the current PHPExcel_CachedObjectStorage_ICache for an indexed cell?
      *
      * @param    string $pCoord Coordinate address of the cell to check
+     *
      * @return    boolean
      */
     public function isDataSet( $pCoord )
@@ -119,7 +120,8 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
      * Move a cell object from one address to another
      *
      * @param    string $fromAddress Current address of the cell to move
-     * @param    string $toAddress Destination address of the cell to move
+     * @param    string $toAddress   Destination address of the cell to move
+     *
      * @return    boolean
      */
     public function moveCell( $fromAddress, $toAddress )
@@ -142,6 +144,7 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
      * Add or Update a cell in cache
      *
      * @param    PHPExcel_Cell $cell Cell to update
+     *
      * @return    void
      * @throws    PHPExcel_Exception
      */
@@ -156,6 +159,7 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
      * Delete a cell in cache identified by coordinate address
      *
      * @param    string $pCoord Coordinate address of the cell to delete
+     *
      * @throws    PHPExcel_Exception
      */
     public function deleteCacheData( $pCoord )
@@ -269,8 +273,9 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     /**
      * Get highest worksheet column
      *
-     * @param   string $row Return the highest column for the specified row,
+     * @param   string $row                Return the highest column for the specified row,
      *                                     or the highest column of any row if no row number is passed
+     *
      * @return  string     Highest column name
      */
     public function getHighestColumn( $row = NULL )
@@ -296,8 +301,9 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     /**
      * Get highest worksheet row
      *
-     * @param   string $column Return the highest row for the specified column,
+     * @param   string $column             Return the highest row for the specified column,
      *                                     or the highest row of any column if no column letter is passed
+     *
      * @return  int        Highest row number
      */
     public function getHighestRow( $column = NULL )
@@ -340,6 +346,7 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
      * Clone the cell collection
      *
      * @param    PHPExcel_Worksheet $parent The new worksheet
+     *
      * @return    void
      */
     public function copyCellCollection( PHPExcel_Worksheet $parent )

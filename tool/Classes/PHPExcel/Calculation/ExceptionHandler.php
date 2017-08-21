@@ -44,8 +44,7 @@ class PHPExcel_Calculation_ExceptionHandler
         set_error_handler( [
                                'PHPExcel_Calculation_Exception',
                                'errorHandlerCallback'
-                           ], E_ALL
-        );
+                           ], E_ALL );
     }
     
     /**

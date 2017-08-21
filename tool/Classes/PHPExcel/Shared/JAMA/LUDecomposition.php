@@ -13,9 +13,9 @@
  *    LU decomposition is in the solution of square systems of simultaneous
  *    linear equations. This will fail if isNonsingular() returns false.
  *
- * @author Paul Meagher
- * @author Bartosz Matosiuk
- * @author Michael Bommarito
+ * @author  Paul Meagher
+ * @author  Bartosz Matosiuk
+ * @author  Michael Bommarito
  * @version 1.1
  * @license PHP v3.0
  */
@@ -27,30 +27,35 @@ class PHPExcel_Shared_JAMA_LUDecomposition
     
     /**
      *    Decomposition storage
+     *
      * @var array
      */
     private $LU = [];
     
     /**
      *    Row dimension.
+     *
      * @var int
      */
     private $m;
     
     /**
      *    Column dimension.
+     *
      * @var int
      */
     private $n;
     
     /**
      *    Pivot sign.
+     *
      * @var int
      */
     private $pivsign;
     
     /**
      *    Internal storage of pivot vector.
+     *
      * @var array
      */
     private $piv = [];
@@ -59,6 +64,7 @@ class PHPExcel_Shared_JAMA_LUDecomposition
      *    LU Decomposition constructor.
      *
      * @param $A Rectangular matrix
+     *
      * @return Structure to access L, U and piv.
      */
     public function __construct( $A )
@@ -236,6 +242,7 @@ class PHPExcel_Shared_JAMA_LUDecomposition
      *    Solve A*X = B
      *
      * @param  $B  A Matrix with as many rows as A and any number of columns.
+     *
      * @return  X so that L*U*X = B(piv,:)
      * @PHPExcel_Calculation_Exception  IllegalArgumentException Matrix row dimensions must agree.
      * @PHPExcel_Calculation_Exception  RuntimeException  Matrix is singular.

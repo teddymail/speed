@@ -115,6 +115,7 @@ class PHPExcel_Worksheet_RowDimension
      * Set Row Index
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_RowDimension
      */
     public function setRowIndex( $pValue )
@@ -138,6 +139,7 @@ class PHPExcel_Worksheet_RowDimension
      * Set Row Height
      *
      * @param double $pValue
+     *
      * @return PHPExcel_Worksheet_RowDimension
      */
     public function setRowHeight( $pValue = -1 )
@@ -161,6 +163,7 @@ class PHPExcel_Worksheet_RowDimension
      * Set ZeroHeight
      *
      * @param bool $pValue
+     *
      * @return PHPExcel_Worksheet_RowDimension
      */
     public function setzeroHeight( $pValue = FALSE )
@@ -184,6 +187,7 @@ class PHPExcel_Worksheet_RowDimension
      * Set Visible
      *
      * @param bool $pValue
+     *
      * @return PHPExcel_Worksheet_RowDimension
      */
     public function setVisible( $pValue = TRUE )
@@ -209,6 +213,7 @@ class PHPExcel_Worksheet_RowDimension
      * Value must be between 0 and 7
      *
      * @param int $pValue
+     *
      * @throws PHPExcel_Exception
      * @return PHPExcel_Worksheet_RowDimension
      */
@@ -237,6 +242,7 @@ class PHPExcel_Worksheet_RowDimension
      * Set Collapsed
      *
      * @param bool $pValue
+     *
      * @return PHPExcel_Worksheet_RowDimension
      */
     public function setCollapsed( $pValue = TRUE )
@@ -260,6 +266,7 @@ class PHPExcel_Worksheet_RowDimension
      * Set index to cellXf
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_RowDimension
      */
     public function setXfIndex( $pValue = 0 )

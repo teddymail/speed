@@ -298,8 +298,7 @@ class PHPExcel_Writer_Excel5_Escher
                 
                 // number of shapes in this drawing (including group shape)
                 $countShapes = count( $this->_object->getSpgrContainer()
-                                                    ->getChildren()
-                );
+                                                    ->getChildren() );
                 $innerData .= $header . pack( 'VV', $countShapes, $this->_object->getLastSpId() );
                 //$innerData .= $header . pack('VV', 0, 0);
                 // write the spgrContainer
@@ -436,8 +435,8 @@ class PHPExcel_Writer_Excel5_Escher
                     $recType = 0xF010;
                     
                     // start coordinates
-                    list( $column, $row
-                        ) = PHPExcel_Cell::coordinateFromString( $this->_object->getStartCoordinates() );
+                    list( $column, $row ) =
+                        PHPExcel_Cell::coordinateFromString( $this->_object->getStartCoordinates() );
                     $c1 = PHPExcel_Cell::columnIndexFromString( $column ) - 1;
                     $r1 = $row - 1;
                     
@@ -460,8 +459,7 @@ class PHPExcel_Writer_Excel5_Escher
                     
                     $clientAnchorData =
                         pack( 'vvvvvvvvv', $this->_object->getSpFlag(), $c1, $startOffsetX, $r1, $startOffsetY, $c2,
-                              $endOffsetX, $r2, $endOffsetY
-                        );
+                              $endOffsetX, $r2, $endOffsetY );
                     
                     $length = strlen( $clientAnchorData );
                     

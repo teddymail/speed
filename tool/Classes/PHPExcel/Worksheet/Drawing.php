@@ -104,8 +104,9 @@ class PHPExcel_Worksheet_Drawing extends PHPExcel_Worksheet_BaseDrawing implemen
     /**
      * Set Path
      *
-     * @param    string  $pValue File path
+     * @param    string  $pValue      File path
      * @param    boolean $pVerifyFile Verify file
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Worksheet_Drawing
      */
@@ -136,8 +137,7 @@ class PHPExcel_Worksheet_Drawing extends PHPExcel_Worksheet_BaseDrawing implemen
      */
     public function getHashCode()
     {
-        return md5( $this->_path . parent::getHashCode() . __CLASS__
-        );
+        return md5( $this->_path . parent::getHashCode() . __CLASS__ );
     }
     
     /**

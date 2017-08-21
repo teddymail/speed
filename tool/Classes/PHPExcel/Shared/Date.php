@@ -89,6 +89,7 @@ class PHPExcel_Shared_Date
      * Set the Excel calendar (Windows 1900 or Mac 1904)
      *
      * @param     integer $baseDate Excel base date (1900 or 1904)
+     *
      * @return     boolean                        Success or failure
      */
     public static function setExcelCalendar( $baseDate )
@@ -119,10 +120,11 @@ class PHPExcel_Shared_Date
     /**
      *    Convert a date from Excel to PHP
      *
-     * @param        long    $dateValue Excel date/time value
-     * @param        boolean $adjustToTimezone Flag indicating whether $dateValue should be treated as
+     * @param        long    $dateValue                   Excel date/time value
+     * @param        boolean $adjustToTimezone            Flag indicating whether $dateValue should be treated as
      *                                                    a UST timestamp, or adjusted to UST
-     * @param        string  $timezone The timezone for finding the adjustment from UST
+     * @param        string  $timezone                    The timezone for finding the adjustment from UST
+     *
      * @return        long        PHP serialized date/time
      */
     public static function ExcelToPHP( $dateValue = 0, $adjustToTimezone = FALSE, $timezone = NULL )
@@ -164,6 +166,7 @@ class PHPExcel_Shared_Date
      * Convert a date from Excel to a PHP Date/Time object
      *
      * @param    integer $dateValue Excel date/time value
+     *
      * @return    integer                        PHP date/time object
      */
     public static function ExcelToPHPObject( $dateValue = 0 )
@@ -186,10 +189,11 @@ class PHPExcel_Shared_Date
     /**
      *    Convert a date from PHP to Excel
      *
-     * @param    mixed   $dateValue PHP serialized date/time or date object
-     * @param    boolean $adjustToTimezone Flag indicating whether $dateValue should be treated as
+     * @param    mixed   $dateValue                       PHP serialized date/time or date object
+     * @param    boolean $adjustToTimezone                Flag indicating whether $dateValue should be treated as
      *                                                    a UST timestamp, or adjusted to UST
-     * @param    string  $timezone The timezone for finding the adjustment from UST
+     * @param    string  $timezone                        The timezone for finding the adjustment from UST
+     *
      * @return    mixed        Excel date/time value
      *                            or boolean FALSE on failure
      */
@@ -201,13 +205,11 @@ class PHPExcel_Shared_Date
         if ( ( is_object( $dateValue ) ) && ( $dateValue instanceof DateTime ) ) {
             $retValue = self::FormattedPHPToExcel( $dateValue->format( 'Y' ), $dateValue->format( 'm' ),
                                                    $dateValue->format( 'd' ), $dateValue->format( 'H' ),
-                                                   $dateValue->format( 'i' ), $dateValue->format( 's' )
-            );
+                                                   $dateValue->format( 'i' ), $dateValue->format( 's' ) );
         } elseif ( is_numeric( $dateValue ) ) {
             $retValue =
                 self::FormattedPHPToExcel( date( 'Y', $dateValue ), date( 'm', $dateValue ), date( 'd', $dateValue ),
-                                           date( 'H', $dateValue ), date( 'i', $dateValue ), date( 's', $dateValue )
-                );
+                                           date( 'H', $dateValue ), date( 'i', $dateValue ), date( 's', $dateValue ) );
         }
         date_default_timezone_set( $saveTimeZone );
         
@@ -225,6 +227,7 @@ class PHPExcel_Shared_Date
      * @param    long $hours
      * @param    long $minutes
      * @param    long $seconds
+     *
      * @return  long                Excel date/time value
      */
     public static function FormattedPHPToExcel( $year, $month, $day, $hours = 0, $minutes = 0, $seconds = 0 )
@@ -270,15 +273,14 @@ class PHPExcel_Shared_Date
      * Is a given cell a date/time?
      *
      * @param     PHPExcel_Cell $pCell
+     *
      * @return     boolean
      */
     public static function isDateTime( PHPExcel_Cell $pCell )
     {
         return self::isDateTimeFormat( $pCell->getWorksheet()
-                                             ->getStyle( $pCell->getCoordinate()
-                                             )
-                                             ->getNumberFormat()
-        );
+                                             ->getStyle( $pCell->getCoordinate() )
+                                             ->getNumberFormat() );
     }
     
     //	function isDateTime()
@@ -287,6 +289,7 @@ class PHPExcel_Shared_Date
      * Is a given number format a date/time?
      *
      * @param     PHPExcel_Style_NumberFormat $pFormat
+     *
      * @return     boolean
      */
     public static function isDateTimeFormat( PHPExcel_Style_NumberFormat $pFormat )
@@ -302,6 +305,7 @@ class PHPExcel_Shared_Date
      * Is a given number format code a date/time?
      *
      * @param     string $pFormatCode
+     *
      * @return     boolean
      */
     public static function isDateTimeFormatCode( $pFormatCode = '' )
@@ -379,6 +383,7 @@ class PHPExcel_Shared_Date
      * Convert a date/time string to Excel time
      *
      * @param    string $dateValue Examples: '2009-12-31', '2009-12-31 15:59', '2009-12-31 15:59:10'
+     *
      * @return    float|FALSE        Excel date/time serial value
      */
     public static function stringToExcel( $dateValue = '' )
@@ -387,8 +392,7 @@ class PHPExcel_Shared_Date
             return FALSE;
         }
         if ( !preg_match( '/^(\d{1,4}[ \.\/\-][A-Z]{3,9}([ \.\/\-]\d{1,4})?|[A-Z]{3,9}[ \.\/\-]\d{1,4}([ \.\/\-]\d{1,4})?|\d{1,4}[ \.\/\-]\d{1,4}([ \.\/\-]\d{1,4})?)( \d{1,2}:\d{1,2}(:\d{1,2})?)?$/iu',
-                          $dateValue
-        )
+                          $dateValue )
         ) {
             return FALSE;
         }

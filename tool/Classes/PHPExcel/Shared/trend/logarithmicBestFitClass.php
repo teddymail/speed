@@ -49,6 +49,7 @@ class PHPExcel_Logarithmic_Best_Fit extends PHPExcel_Best_Fit
      * Return the Y-Value for a specified value of X
      *
      * @param     float $xValue X-Value
+     *
      * @return     float                        Y-Value
      * */
     public function getValueOfYForX( $xValue )
@@ -62,6 +63,7 @@ class PHPExcel_Logarithmic_Best_Fit extends PHPExcel_Best_Fit
      * Return the X-Value for a specified value of Y
      *
      * @param     float $yValue Y-Value
+     *
      * @return     float                        X-Value
      * */
     public function getValueOfXForY( $yValue )
@@ -75,6 +77,7 @@ class PHPExcel_Logarithmic_Best_Fit extends PHPExcel_Best_Fit
      * Return the Equation of the best-fit line
      *
      * @param     int $dp Number of places of decimal precision to display
+     *
      * @return     string
      * */
     public function getEquation( $dp = 0 )

@@ -62,7 +62,7 @@ class PHPExcel_Worksheet_RowIterator implements Iterator
     /**
      * Create a new row iterator
      *
-     * @param    PHPExcel_Worksheet $subject The worksheet to iterate over
+     * @param    PHPExcel_Worksheet $subject  The worksheet to iterate over
      * @param    integer            $startRow The row number at which to start iterating
      */
     public function __construct( PHPExcel_Worksheet $subject = NULL, $startRow = 1 )

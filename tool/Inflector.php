@@ -10,7 +10,9 @@
 
 namespace supjos\tool;
 
-class Inflector
+use Object;
+
+class Inflector extends Object
 {
     
     /**

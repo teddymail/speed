@@ -35,6 +35,7 @@
  */
 class PHPExcel_Worksheet_MemoryDrawing extends PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
 {
+    
     /* Rendering functions */
     
     const RENDERING_DEFAULT = 'imagepng';
@@ -105,6 +106,7 @@ class PHPExcel_Worksheet_MemoryDrawing extends PHPExcel_Worksheet_BaseDrawing im
      * Set image resource
      *
      * @param    $value resource
+     *
      * @return PHPExcel_Worksheet_MemoryDrawing
      */
     public function setImageResource( $value = NULL )
@@ -134,6 +136,7 @@ class PHPExcel_Worksheet_MemoryDrawing extends PHPExcel_Worksheet_BaseDrawing im
      * Set rendering function
      *
      * @param string $value
+     *
      * @return PHPExcel_Worksheet_MemoryDrawing
      */
     public function setRenderingFunction( $value = PHPExcel_Worksheet_MemoryDrawing::RENDERING_DEFAULT )
@@ -157,6 +160,7 @@ class PHPExcel_Worksheet_MemoryDrawing extends PHPExcel_Worksheet_BaseDrawing im
      * Set mime type
      *
      * @param string $value
+     *
      * @return PHPExcel_Worksheet_MemoryDrawing
      */
     public function setMimeType( $value = PHPExcel_Worksheet_MemoryDrawing::MIMETYPE_DEFAULT )
@@ -188,8 +192,7 @@ class PHPExcel_Worksheet_MemoryDrawing extends PHPExcel_Worksheet_BaseDrawing im
     public function getHashCode()
     {
         return md5( $this->_renderingFunction . $this->_mimeType . $this->_uniqueName . parent::getHashCode() .
-                    __CLASS__
-        );
+                    __CLASS__ );
     }
     
     /**

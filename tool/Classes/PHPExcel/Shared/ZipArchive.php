@@ -62,6 +62,7 @@ class PHPExcel_Shared_ZipArchive
      * Open a new zip archive
      *
      * @param    string $fileName Filename for the zip archive
+     *
      * @return    boolean
      */
     public function open( $fileName )
@@ -86,7 +87,7 @@ class PHPExcel_Shared_ZipArchive
      * Add a new file to the zip archive from a string of raw data.
      *
      * @param    string $localname Directory/Name of the file to add to the zip archive
-     * @param    string $contents String of data to add to the zip archive
+     * @param    string $contents  String of data to add to the zip archive
      */
     public function addFromString( $localname, $contents )
     {
@@ -97,8 +98,7 @@ class PHPExcel_Shared_ZipArchive
         fclose( $handle );
         
         $res = $this->_zip->add( $this->_tempDir . '/' . $filenameParts[ "basename" ], PCLZIP_OPT_REMOVE_PATH,
-                                 $this->_tempDir, PCLZIP_OPT_ADD_PATH, $filenameParts[ "dirname" ]
-        );
+                                 $this->_tempDir, PCLZIP_OPT_ADD_PATH, $filenameParts[ "dirname" ] );
         if ( $res == 0 ) {
             throw new PHPExcel_Writer_Exception( "Error zipping files : " . $this->_zip->errorInfo( TRUE ) );
         }
@@ -110,6 +110,7 @@ class PHPExcel_Shared_ZipArchive
      * Find if given fileName exist in archive (Emulate ZipArchive locateName())
      *
      * @param        string $fileName Filename for the file in zip archive
+     *
      * @return        boolean
      */
     public function locateName( $fileName )
@@ -133,6 +134,7 @@ class PHPExcel_Shared_ZipArchive
      * Extract file from archive by given fileName (Emulate ZipArchive getFromName())
      *
      * @param        string $fileName Filename for the file in zip archive
+     *
      * @return        string  $contents        File string contents
      */
     public function getFromName( $fileName )

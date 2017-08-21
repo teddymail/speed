@@ -1,6 +1,6 @@
 {
   "name": "supjos/speed",
-  "description": "Most extremely fast & slim php framework",
+  "description": "Most extremely fast php framework",
   "type": "library",
   "require": {
     "php": ">=5.5.0"

@@ -115,6 +115,7 @@ class PHPExcel_Worksheet_ColumnDimension
      * Set ColumnIndex
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Worksheet_ColumnDimension
      */
     public function setColumnIndex( $pValue )
@@ -138,6 +139,7 @@ class PHPExcel_Worksheet_ColumnDimension
      * Set Width
      *
      * @param double $pValue
+     *
      * @return PHPExcel_Worksheet_ColumnDimension
      */
     public function setWidth( $pValue = -1 )
@@ -161,6 +163,7 @@ class PHPExcel_Worksheet_ColumnDimension
      * Set Auto Size
      *
      * @param bool $pValue
+     *
      * @return PHPExcel_Worksheet_ColumnDimension
      */
     public function setAutoSize( $pValue = FALSE )
@@ -184,6 +187,7 @@ class PHPExcel_Worksheet_ColumnDimension
      * Set Visible
      *
      * @param bool $pValue
+     *
      * @return PHPExcel_Worksheet_ColumnDimension
      */
     public function setVisible( $pValue = TRUE )
@@ -209,6 +213,7 @@ class PHPExcel_Worksheet_ColumnDimension
      * Value must be between 0 and 7
      *
      * @param int $pValue
+     *
      * @throws PHPExcel_Exception
      * @return PHPExcel_Worksheet_ColumnDimension
      */
@@ -237,6 +242,7 @@ class PHPExcel_Worksheet_ColumnDimension
      * Set Collapsed
      *
      * @param bool $pValue
+     *
      * @return PHPExcel_Worksheet_ColumnDimension
      */
     public function setCollapsed( $pValue = TRUE )
@@ -260,6 +266,7 @@ class PHPExcel_Worksheet_ColumnDimension
      * Set index to cellXf
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_ColumnDimension
      */
     public function setXfIndex( $pValue = 0 )

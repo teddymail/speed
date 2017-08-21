@@ -53,8 +53,8 @@ abstract class PHPExcel_Style_Supervisor
     /**
      * Create a new PHPExcel_Style_Alignment
      *
-     * @param    boolean $isSupervisor Flag indicating if this is a supervisor or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isSupervisor        Flag indicating if this is a supervisor or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
      */
     public function __construct( $isSupervisor = FALSE )
@@ -67,6 +67,7 @@ abstract class PHPExcel_Style_Supervisor
      * Bind parent. Only used for supervisor
      *
      * @param PHPExcel $parent
+     *
      * @return PHPExcel_Style_Supervisor
      */
     public function bindParent( $parent, $parentPropertyName = NULL )

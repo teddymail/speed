@@ -54,6 +54,7 @@ class PHPExcel_HashTable
      * Create a new PHPExcel_HashTable
      *
      * @param    PHPExcel_IComparable[] $pSource Optional source array to create HashTable from
+     *
      * @throws    PHPExcel_Exception
      */
     public function __construct( $pSource = NULL )
@@ -68,6 +69,7 @@ class PHPExcel_HashTable
      * Add HashTable items from source
      *
      * @param    PHPExcel_IComparable[] $pSource Source array to create HashTable from
+     *
      * @throws    PHPExcel_Exception
      */
     public function addFromSource( $pSource = NULL )
@@ -88,6 +90,7 @@ class PHPExcel_HashTable
      * Add HashTable item
      *
      * @param    PHPExcel_IComparable $pSource Item to add
+     *
      * @throws    PHPExcel_Exception
      */
     public function add( PHPExcel_IComparable $pSource = NULL )
@@ -103,6 +106,7 @@ class PHPExcel_HashTable
      * Remove HashTable item
      *
      * @param    PHPExcel_IComparable $pSource Item to remove
+     *
      * @throws    PHPExcel_Exception
      */
     public function remove( PHPExcel_IComparable $pSource = NULL )
@@ -149,6 +153,7 @@ class PHPExcel_HashTable
      * Get index for hash code
      *
      * @param    string $pHashCode
+     *
      * @return    int    Index
      */
     public function getIndexForHashCode( $pHashCode = '' )
@@ -160,6 +165,7 @@ class PHPExcel_HashTable
      * Get by index
      *
      * @param    int $pIndex
+     *
      * @return    PHPExcel_IComparable
      *
      */
@@ -176,6 +182,7 @@ class PHPExcel_HashTable
      * Get by hashcode
      *
      * @param    string $pHashCode
+     *
      * @return    PHPExcel_IComparable
      *
      */

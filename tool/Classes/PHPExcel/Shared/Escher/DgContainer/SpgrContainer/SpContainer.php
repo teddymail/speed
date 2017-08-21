@@ -235,6 +235,7 @@ class PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer
      * Get an option for the Shape Group Container
      *
      * @param int $property The number specifies the option
+     *
      * @return mixed
      */
     public function getOPT( $property )

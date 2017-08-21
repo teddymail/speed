@@ -44,6 +44,7 @@ class PHPExcel_Shared_PasswordHasher
      * Spreadsheet_Excel_Writer by Xavier Noguer <xnoguer@rezebra.com>.
      *
      * @param    string $pPassword Password to hash
+     *
      * @return    string                Hashed password
      */
     public static function hashPassword( $pPassword = '' )

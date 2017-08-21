@@ -24,24 +24,28 @@ class PHPExcel_Shared_JAMA_QRDecomposition
     
     /**
      *    Array for internal storage of decomposition.
+     *
      * @var array
      */
     private $QR = [];
     
     /**
      *    Row dimension.
+     *
      * @var integer
      */
     private $m;
     
     /**
      *    Column dimension.
+     *
      * @var integer
      */
     private $n;
     
     /**
      *    Array for internal storage of diagonal of R.
+     *
      * @var  array
      */
     private $Rdiag = [];
@@ -50,6 +54,7 @@ class PHPExcel_Shared_JAMA_QRDecomposition
      *    QR Decomposition computed by Householder reflections.
      *
      * @param matrix $A Rectangular matrix
+     *
      * @return Structure to access R and the Householder vectors and compute Q.
      */
     public function __construct( $A )
@@ -205,6 +210,7 @@ class PHPExcel_Shared_JAMA_QRDecomposition
      *    Least squares solution of A*X = B
      *
      * @param Matrix $B A Matrix with as many rows as A and any number of columns.
+     *
      * @return Matrix Matrix that minimizes the two norm of Q*R*X-B.
      */
     public function solve( $B )
