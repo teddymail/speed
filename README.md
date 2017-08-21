@@ -1,6 +1,9 @@
 # Speed #
-			Most popular and slim PHP framework																						Josin <www.supjos.com|774542602@qq.com>
+			Most popular and slim PHP framework							Josin <www.supjos.com|774542602@qq.com>
+## Simple Install ##
 
+	composer require supjos/speed
+			
 ## Simple Example ##
 
 	use App;
