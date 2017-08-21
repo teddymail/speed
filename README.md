@@ -5,9 +5,7 @@
 	composer require supjos/speed
 			
 ## Simple Example ##
-
-	use App;
-	
+		
 	$app = new App();
 	
 	$app->get('/', function($req, $res){
@@ -133,9 +131,7 @@ The** Speed ** framework was designed to the api projects, also for the WEB appl
 If you want to create a application, which want a better and more easy using, deal the** GET ** and** POST ** request, if you using the** Speed **, you can writing the code like below:
 
 For example:
-
-	use App;
-	
+		
 	$app = new App();
 	
 	// The following two method, will catch all the GET & POST  request
@@ -180,8 +176,7 @@ For example:
 Also the** Speed ** framework can be used to develop the WEB applications, as the** Response ** class provide some method to redering the template.
 
 For example:
-
-	use App;
+	
 	use supjos\database\Query;
 	
 	$app = new App();
