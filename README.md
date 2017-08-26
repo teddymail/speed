@@ -24,7 +24,7 @@
 
 ### IOC ###
 
-The IOC was implemented by a components class named [[ Reflex ]], User can use the IOC class to use the Object-Create process more convinent.
+The IOC was implemented by a components class named [[ Reflex ]], User can use the IOC class to use the Object-Create process more convenient.
 
 For example:
 	
