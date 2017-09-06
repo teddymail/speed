@@ -116,6 +116,7 @@ class Query extends Object implements QueryInterface
     {
         
         if ( is_array( $selectFields ) && !empty( $selectFields ) ) {
+            $this->SELECT = '';
             foreach ( $selectFields as $field ) {
                 $this->SELECT .= "`$field`" . ', ';
             }
