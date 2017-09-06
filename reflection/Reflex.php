@@ -61,12 +61,18 @@ class Reflex extends Object
     /**
      * @param string $className
      * @param array  $configs
+     *
+     * @return bool TRUE means success, otherwise false
      */
     public function set( $className, $configs = [] )
     {
         if ( !empty( $className ) && !isset( $this->_container[ $className ] ) ) {
             $this->_container[ $className ] = empty( $configs ) ? [] : $configs;
+            
+            return TRUE;
         }
+        
+        return FALSE;
     }
     
     /**
@@ -90,10 +96,7 @@ class Reflex extends Object
                 $dependencyClassName = $constructorParameters[ 0 ]->getClass()
                                                                   ->getName();
                 if ( isset( $this->_container[ $dependencyClassName ] ) ) {
-                    $classData = [
-                        'class' => $className,
-                        $this->get( $dependencyClassName )
-                    ];
+                    $classData = ['class' => $className, $this->get( $dependencyClassName )];
                     
                     return $this->_objects[ $className ] = App::createObject( $classData, $params );
                 } else {

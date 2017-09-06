@@ -1,0 +1,43 @@
+[
+    {
+        "name": "supjos/speed",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/liqiongfan/speed.git",
+            "reference": "e126a80e4387a313adb0f0c3398d8f15afc387b2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/liqiongfan/speed/e126a80e4387a313adb0f0c3398d8f15afc387b2.zip",
+            "reference": "e126a80e4387a313adb0f0c3398d8f15afc387b2",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.0"
+        },
+        "time": "2017-08-18T02:23:36+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "supjos\\speed\\": ""
+            },
+            "files": [
+                "App.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Josins",
+                "email": "774542602@qq.com"
+            }
+        ],
+        "description": "Most extremely fast php framework"
+    }
+]

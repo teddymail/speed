@@ -1,0 +1,25 @@
+{
+  "name": "supjos/speed",
+  "description": "Most extremely fast php framework",
+  "type": "library",
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Josins",
+      "email": "774542602@qq.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "supjos\\speed\\": ""
+    },
+    "files": [
+      "App.php",
+      "Object.php"
+    ]
+  }
+}

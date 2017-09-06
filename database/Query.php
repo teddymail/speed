@@ -50,19 +50,14 @@ class Query extends Object implements QueryInterface
     /**
      * @var The fetchStyle or the $fetchRealStyle
      */
-    public $fetchStyle = 'array', $fetchRealStyle = [
-        'array'  => PDO::FETCH_ASSOC,
-        'both'   => PDO::FETCH_BOTH,
-        'class'  => PDO::FETCH_CLASS,
-        'into'   => PDO::FETCH_INTO,
-        'lazy'   => PDO::FETCH_LAZY,
-        'num'    => PDO::FETCH_NUM,
-        'object' => PDO::FETCH_OBJ
-    ];
+    public $fetchStyle = 'array', $fetchRealStyle = ['array'  => PDO::FETCH_ASSOC, 'both' => PDO::FETCH_BOTH,
+                                                     'class'  => PDO::FETCH_CLASS, 'into' => PDO::FETCH_INTO,
+                                                     'lazy'   => PDO::FETCH_LAZY, 'num' => PDO::FETCH_NUM,
+                                                     'object' => PDO::FETCH_OBJ];
     /**
      * @var The variables which will be used to generate the SQL statement.
      */
-    private $SELECT, $DISTINCT, $FROM, $WHERE, $GROUP, $HAVING, $ORDER, $LIMIT;
+    private $SELECT = '*', $DISTINCT, $FROM, $WHERE, $GROUP, $HAVING, $ORDER, $LIMIT;
     /**
      * @var string The SQL Raw which will be join into the Prepare statement execute
      */
@@ -232,10 +227,7 @@ class Query extends Object implements QueryInterface
     private function getSqlSort( $phpSort = SORT_ASC )
     {
         
-        $sortOrder = [
-            SORT_DESC => 'DESC',
-            SORT_ASC  => 'ASC'
-        ];
+        $sortOrder = [SORT_DESC => 'DESC', SORT_ASC => 'ASC'];
         
         return $sortOrder[ $phpSort ];
     }
@@ -307,7 +299,6 @@ class Query extends Object implements QueryInterface
      */
     function distinct()
     {
-        
         $this->DISTINCT = 'DISTINCT';
     }
     
@@ -318,7 +309,6 @@ class Query extends Object implements QueryInterface
      */
     function one()
     {
-        
         $prepareStatements = $this->execute( $this->buildPrepareSql(), $this->bindArray );
         
         $resultRow = $prepareStatements->fetch( $this->fetchRealStyle[ $this->fetchStyle ] );
@@ -392,25 +382,10 @@ class Query extends Object implements QueryInterface
     private function buildPrepareSql()
     {
         
-        return str_replace( [
-                                '{SELECT}',
-                                '{DISTINCT}',
-                                '{FROM}',
-                                '{WHERE}',
-                                '{GROUP}',
-                                '{HAVING}',
-                                '{ORDER}',
-                                '{LIMIT}'
-                            ], [
-                                $this->SELECT,
-                                $this->DISTINCT,
-                                $this->FROM,
-                                $this->WHERE,
-                                $this->GROUP,
-                                $this->HAVING,
-                                $this->ORDER,
-                                $this->LIMIT
-                            ], $this->sqlStatements );
+        return str_replace( ['{SELECT}', '{DISTINCT}', '{FROM}', '{WHERE}', '{GROUP}', '{HAVING}', '{ORDER}',
+                                '{LIMIT}'],
+                            [$this->SELECT, $this->DISTINCT, $this->FROM, $this->WHERE, $this->GROUP, $this->HAVING,
+                                $this->ORDER, $this->LIMIT], $this->sqlStatements );
     }
     
     /**
@@ -468,14 +443,8 @@ class Query extends Object implements QueryInterface
      */
     private function buildExecuteSql( $executeSql )
     {
-        
-        return preg_replace( [
-                                 '/\{\{%(\w+)\}\}/',
-                                 '/\[\[(\w+)\]\]/'
-                             ], [
-                                 $this->getConfigDbPrefix() . '$1',
-                                 "`$1`"
-                             ], $executeSql );
+        return preg_replace( ['/\{\{%(\w+)\}\}/', '/\[\[(\w+)\]\]/'], [$this->getConfigDbPrefix() . '$1', "`$1`"],
+                             $executeSql );
     }
     
     /**
@@ -547,13 +516,19 @@ class Query extends Object implements QueryInterface
     /**
      * @param $resultStyle Setting the result style, It can be one of the following: ```array```, ```both```,
      *                     ```class```, ```into```, ```lazy```, ```num```, ```object```
+     *
+     * @return bool TRUE success, otherwise false
      */
     public function setResultStyle( $resultStyle )
     {
         
         if ( array_key_exists( $resultStyle, $this->fetchRealStyle ) ) {
             $this->fetchStyle = $resultStyle;
+            
+            return TRUE;
         }
+        
+        return FALSE;
     }
     
     /**
@@ -619,7 +594,7 @@ class Query extends Object implements QueryInterface
      */
     private function __clone()
     {
-    
+        
     }
     
     

@@ -15,7 +15,6 @@
 
 namespace supjos\exception;
 
-
 use Exception;
 
 class BaseException extends Exception
@@ -28,8 +27,6 @@ class BaseException extends Exception
     
     public function __toString()
     {
-        echo '<pre>';
-        
         return parent::__toString();
     }
     

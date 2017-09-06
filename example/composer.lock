@@ -1,0 +1,57 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "a8fa22fae3f8d18bdf4279491a43e7e3",
+    "packages": [
+        {
+            "name": "supjos/speed",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/liqiongfan/speed.git",
+                "reference": "e126a80e4387a313adb0f0c3398d8f15afc387b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/liqiongfan/speed/e126a80e4387a313adb0f0c3398d8f15afc387b2.zip",
+                "reference": "e126a80e4387a313adb0f0c3398d8f15afc387b2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "supjos\\speed\\": ""
+                },
+                "files": [
+                    "App.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josins",
+                    "email": "774542602@qq.com"
+                }
+            ],
+            "description": "Most extremely fast php framework",
+            "time": "2017-08-18T02:23:36+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
