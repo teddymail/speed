@@ -211,9 +211,9 @@ Below are the [[ GoodController ]] which provide the good's service to user.
 	use App;
 	use supjos\net\Response;
 	use supjos\database\Query;
-	use supjos\base\ServiceController;
+	use supjos\base\ServerController;
 	
-	class GoodController extends ServiceController
+	class GoodController extends ServerController
 	{
 		function goodPrice()
 		{
