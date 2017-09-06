@@ -106,7 +106,8 @@ class Response extends \Object
         foreach ( $data as $key => $val ) {
             if ( is_array( $val ) ) {
                 $child = $this->formatXml( $val, NULL, $simplexml, FALSE );
-                $str .= "<{$key}>" . $child . "</{$key}>";
+                // $str .= "<{$key}>" . $child . "</{$key}>";
+                $str .= "<item>" . $child . "</item>";
             } else {
                 if ( is_numeric( $val ) ) {
                     if ( is_numeric( $key ) ) {
